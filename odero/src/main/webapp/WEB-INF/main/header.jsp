@@ -14,7 +14,7 @@
 				<span class="icon-bar"></span> <span class="icon-bar"></span> <span
 					class="icon-bar"></span>
 			</button>
-			<a href="#" style="color: white"> <img id="logo_img"
+			<a href="main.do" style="color: white"> <img id="logo_img"
 				src="image/logo.PNG">
 			</a>
 		</div>
@@ -24,7 +24,7 @@
 				<li class="nav_main"><strong><a href="#">맛집</a></strong></li>
 				<li class="nav_main"><strong><a href="#">놀거리</a></strong></li>
 				<li class="nav_main"><strong><a href="#">자유게시판</a></strong></li>
-				<li class="nav_main"><strong><a href="#">후기게시판</a></strong></li>
+				<li class="nav_main"><strong><a href="review_list.do">후기게시판</a></strong></li>
 			</ul>
 			<ul class="navbar-right nav navbar-nav mynav" id="nav-right">
 				<li class="nav_main" id="loginBtn"><strong><a

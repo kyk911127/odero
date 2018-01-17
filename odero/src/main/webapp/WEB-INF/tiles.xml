@@ -7,6 +7,6 @@
 		<put-attribute name="footer" value="/WEB-INF/main/footer.jsp"></put-attribute>
 	</definition>
 	<definition name="*/*" extends="main">
-		<put-attribute name="body" value="/WEB-INF/{1}/{2}.jsp"></put-attribute>
+		<put-attribute name="content" value="/WEB-INF/{1}/{2}.jsp"></put-attribute>
 	</definition>
 </tiles-definitions>
