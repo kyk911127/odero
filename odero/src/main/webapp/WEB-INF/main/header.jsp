@@ -29,7 +29,7 @@
 			<ul class="navbar-right nav navbar-nav mynav" id="nav-right">
 				<li class="nav_main" id="loginBtn"><strong><a
 						href="#loginModal" data-toggle="modal">로그인</a></strong></li>
-				<li class="nav_main"><strong><a href="#">마이페이지</a></strong></li>
+				<li class="nav_main"><strong><a href="mypage.do">마이페이지</a></strong></li>
 			</ul>
 			<div class="modal fade" id="loginModal" tabindex="-1" role="dialog"
 				aria-labelledby="myModalLabel" aria-hidden="true"
