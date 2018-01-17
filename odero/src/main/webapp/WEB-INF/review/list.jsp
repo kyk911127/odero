@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
 <!-- gallery css -->
-<link rel="stylesheet" type="text/css" href="board/css/gallery.css" />
+<link rel="stylesheet" type="text/css" href="css/gallery.css" />
 <script type="text/javascript">
 $(".hover").mouseleave(
 	function () {
@@ -17,7 +17,7 @@ $(".hover").mouseleave(
 	}
 );
 function insert(){
-	location.href="insert.jsp"
+	location.href="review_insert"
 }
 </script>
 </head>
