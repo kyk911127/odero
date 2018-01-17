@@ -1,0 +1,190 @@
+@charset "EUC-KR";
+
+/*별점 css*/
+.star-input>.input,
+.star-input>.input>input:focus+label,
+.star-input>.input>input:checked+label{
+    display: inline-block;
+    vertical-align: top;
+    background: url(../cb_detail/image/star1.png) no-repeat;
+}
+.star-input{
+    white-space: nowrap;
+}
+.star-input>.input{
+    display:inline-block;
+    width: 100px;
+    background-size: 100px;
+    height: 19px;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+}
+.star-input>.input>input{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+.star-input>.input.focus{
+    outline: 1px dotted #ddd;
+}
+.star-input>.input>label{
+    width: 10px;
+    height: 0;
+    padding: 19px 0 0 0;
+    overflow: hidden;
+    float: left;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+    cursor: default;
+}
+.star-input>.input>input:focus+label,
+.star-input>.input>input:checked+label{
+    background-size: 100px;
+    background-position: 0 bottom;
+}
+/* .star-input>.input>label:hover~label{
+    background-image: none;
+}
+.star-input>.input>label[for="p1"]{ 
+    width: 2px;
+    z-index: 50;
+}
+*/
+.star-input>output{
+    display: inline-block;
+    width: 36px;
+    text-align: right;
+}
+.star-input>output>b{
+    font:bold 18px Helvetica, Arial, sans-serif;
+    vertical-align: middle;
+}
+
+
+
+/*리뷰별점 css*/
+.cbc_rating>.input,
+.cbc_rating>.input>label:hover,
+.cbc_rating>.input>input:focus+label,
+.cbc_rating>.input>input:checked+label{
+    display: inline-block;
+    vertical-align: top;
+    background: url(../cb_detail/image/star1.png) no-repeat;
+}
+.cbc_rating{
+    white-space: nowrap;
+}
+.cbc_rating>.input{
+    display:inline-block;
+    width: 100px;
+    background-size: 100px;
+    height: 19px;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+}
+.cbc_rating>.input>input{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+.cbc_rating>.input.focus{
+    outline: 1px dotted #ddd;
+}
+.cbc_rating>.input>label{
+    width: 10px;
+    height: 0;
+    padding: 19px 0 0 0;
+    overflow: hidden;
+    float: left;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.cbc_rating>.input>label:hover,
+.cbc_rating>.input>input:focus+label,
+.cbc_rating>.input>input:checked+label{
+    background-size: 100px;
+    background-position: 0 bottom;
+}
+.cbc_rating>.input>label:hover~label{
+    background-image: none;
+}
+.cbc_rating>output{
+    display: inline-block;
+    width: 36px;
+    text-align: right;
+}
+.cbc_rating>output>strong{
+   /*  font:bold 18px Helvetica, Arial, sans-serif;
+    vertical-align: middle; */
+}
+
+
+/*수정하기별점 css*/
+.update_rating>.input,
+.update_rating>.input>label:hover,
+.update_rating>.input>input:focus+label,
+.update_rating>.input>input:checked+label{
+    display: inline-block;
+    vertical-align: top;
+    background: url(../cb_detail/image/star1.png) no-repeat;
+}
+.update_rating{
+    white-space: nowrap;
+}
+.update_rating>.input{
+    display:inline-block;
+    width: 100px;
+    background-size: 100px;
+    height: 19px;
+    white-space: nowrap;
+    overflow: hidden;
+    position: relative;
+}
+.update_rating>.input>input{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+}
+.update_rating>.input.focus{
+    outline: 1px dotted #ddd;
+}
+.update_rating>.input>label{
+    width: 10px;
+    height: 0;
+    padding: 19px 0 0 0;
+    overflow: hidden;
+    float: left;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.update_rating>.input>label:hover,
+.update_rating>.input>input:focus+label,
+.update_rating>.input>input:checked+label{
+    background-size: 100px;
+    background-position: 0 bottom;
+}
+.update_rating>.input>label:hover~label{
+    background-image: none;
+}
+.update_rating>output{
+    display: inline-block;
+    width: 36px;
+    text-align: right;
+}
+.update_rating>output>strong{
+   /*  font:bold 18px Helvetica, Arial, sans-serif;
+    vertical-align: middle; */
+}
+
+
