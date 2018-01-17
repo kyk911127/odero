@@ -31,6 +31,6 @@
 	<!-- MapperFactoryBean --> <!-- 쿼리문 전송 ssf.openSession()-->
 	<bean id="mapper" class="org.mybatis.spring.mapper.MapperFactoryBean"
 		p:sqlSessionFactory-ref="ssf"
-		p:mapperInterface="com.sist.review.dao.ReviewMapper"
+		p:mapperInterface="com.sist.main.dao.MainMapper"
 	/>
 </beans>

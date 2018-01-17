@@ -15,7 +15,7 @@
 					class="icon-bar"></span>
 			</button>
 			<a href="#" style="color: white"> <img id="logo_img"
-				src="../image/logo.PNG">
+				src="image/logo.PNG">
 			</a>
 		</div>
 		<div class="navbar-collapse collapse">
