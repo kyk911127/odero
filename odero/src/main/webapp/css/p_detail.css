@@ -67,10 +67,16 @@ ul, li {
    line-height: 40px; 
    color: #fff
 }
+/* ¸ð´Þ  */
+.bora{
+	left: 25%;
+	margin: 0;
+}
 
-/* modal */
 .mo_content {
-   top: 25.5px;
+   width: 950px;
+   height: 700px;
+   top: 100px;
    padding: 30px 10px;
    background-color: rgba(10, 10, 10, 0.9);
 }
@@ -84,6 +90,9 @@ ul, li {
 .close:hover, .close:focus {
    color: #fff;
    cursor: pointer
+}
+#img01{
+	pading:2px;
 }
 
 /* ¸®ºä  */

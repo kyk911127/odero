@@ -30,6 +30,7 @@
    span.onclick = function() {
       modal.style.display = "none";
    }
+   
 </script>
 </head>
 <body>
@@ -53,11 +54,12 @@
    </div>
    
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-lg">
+      <div class="modal-dialog modal-lg bora">
          <div class="modal-content mo_content">
             <button type="button" class="close" data-dismiss="modal"><img src="p_image/closebtn.png"></button>
-            <div id="modal-body">
-               <div class="fotorama" data-nav="thumbs" style="margin: 20px auto; width: 510px; height: 580px">
+            <div id="modal-body modal-dimg">
+               <div class="fotorama" data-width="800" data-maxwidth="100%" data-ratio="16/9" data-allowfullscreen="true"
+     				data-nav="thumbs" data-thumbmargin="20px 0" data-thumbfit="cover" style="margin:30px auto; width: 800px; height: 600px">
                   <c:forEach var="i" begin="1" end="3">
                      <img id="img01" src="p_image/top.jpg"> 
                      <img id="img01" src="p_image/top1.jpg"> 
@@ -65,6 +67,7 @@
                      <img id="img01" src="p_image/top3.jpg">
                   </c:forEach>
                </div>
+               
 <!--                <div class="fotorama" data-nav="thumbs">
                   <a href="p_image/top.jpg"><img src="p_image/top.jpg" width="144" height="96"></a>
                   <a href="p_image/top.jpg"><img src="p_image/top.jpg" width="64" height="128"></a>
