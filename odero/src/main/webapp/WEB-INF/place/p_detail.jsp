@@ -26,7 +26,7 @@
       modal.style.display = "block";
       modalImg.src = this.src;
       captionText.innerHTML = this.alt;
-   } 
+   }
    span.onclick = function() {
       modal.style.display = "none";
    }
