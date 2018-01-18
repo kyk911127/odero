@@ -1,0 +1,109 @@
+@CHARSET "EUC-KR";
+.row {
+	margin-bottom: 15px;
+	height: 100%;
+	border: 1px dashed rgb(204, 204, 204);
+	padding: 15px 20px 20px 20px;
+}
+
+h3 {
+	border-bottom: 1px solid #dbdbdb;
+	padding: 0 0 20px 15px;
+	margin-bottom: 15px;
+	font-weight: bold;
+}
+
+td {
+	padding: 5px;
+	font-size: 14px;
+}
+
+ul, li {
+	list-style: none;
+	padding: 5px 0;
+}
+
+.li_1, .li_2 {
+	margin-bottom: 5px;
+}
+
+.tag_1, .tag_2 {
+	float: left;
+	padding: 2px 5px;
+	background-color: #DEEBF7;
+	border-radius: 20px;
+	color: #002060;
+	margin-right: 10px
+}
+
+/* top image */
+.detail_img {
+	width: 20%;
+	float: left;
+	position: relative
+}
+
+.place_img {
+	border-radius: 5px;
+	position: relative;
+	width: 100%; 
+	height: 100%;
+	cursor: pointer 
+}
+
+.img_more {
+	position: absolute;
+	width: 185px;
+	height: 40px;
+	bottom: 30px;
+	right: 30px;
+	background: rgba(0, 0, 0, 0.6);
+	border-radius: 50px;
+	display: block
+}
+
+.i_more {
+	text-align: center; 
+	line-height: 40px; 
+	color: #fff
+}
+
+/* modal */
+.modal-content {
+	top: 25.5px;
+	padding: 30px 10px;
+	background-color: rgba(10, 10, 10, 0.9);
+}
+
+.close {
+	position: absolute;
+	right: 20px;
+	top: 20px;
+}
+
+.close:hover, .close:focus {
+	color: #fff;
+	cursor: pointer
+}
+
+/* ¸®ºä  */
+.user_info {
+	float: left;
+	text-align: center;
+	margin: 10px auto;
+	width: 140px; 
+}
+
+.review_info {
+	width: 97%;
+}
+
+.reply_ta {
+	margin-bottom: 10px; 
+	float: left
+}
+
+.im {
+	height: 100%;
+	border-radius: 30px;
+}
