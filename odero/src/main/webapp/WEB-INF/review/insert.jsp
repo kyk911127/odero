@@ -22,9 +22,9 @@
 }
 </style>
 <script type="text/javascript">
+var fileIndex=0;
 $(function(){
 	$('#add').click(function(){
-		alert("dd");
 		$('#fileView').append(
 			'<tr id="f'+(fileIndex)+'">'+
 				'<td width="20%">ÆÄÀÏ'+(fileIndex+1)+'</td>'+
