@@ -7,10 +7,6 @@
 <meta charset="EUC-KR">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
-<!-- css, js 연결하기 -->
-<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.min.js"></script>
 <style type="text/css">
 .row{
 	margin: 0px auto;
@@ -26,6 +22,25 @@
 }
 </style>
 <script type="text/javascript">
+$(function(){
+	$('#add').click(function(){
+		alert("dd");
+		$('#fileView').append(
+			'<tr id="f'+(fileIndex)+'">'+
+				'<td width="20%">파일'+(fileIndex+1)+'</td>'+
+				'<td width="80%" align="left">'+
+					'<input type="file" name="files['+fileIndex+']" size="15">'+
+				'</td>'+
+			'</tr>'); // 계속 추가
+		fileIndex=fileIndex+1;
+	});
+	$('#cancel').click(function(){
+		$('#f'+(fileIndex-1)).remove();	// 뒤에서부터 삭제
+		fileIndex -= 1;
+		if(fileIndex<0)
+			fileIndex=0;
+	});
+});
 function register(){
 	var frm = document.forms[0];
 	
@@ -74,6 +89,21 @@ function register(){
 				<td width="20%" class="text-center">작성자</td>
 				<td width="80%" class="text-left">
 					<input type="text" name="name" size="15" readonly="readonly">
+				</td>
+			</tr>
+			<tr>
+				<td width="20%" class="text-center">첨부파일</td>
+				<td width="80%" class="text-left">
+					<table class="table table-hover">
+						<tr>
+							<td class="text-right">
+								<input type="button" class="btn btn-xs btn-info" id="add" value="추가">
+								<input type="button" class="btn btn-xs btn-danger" id="cancel" value="취소">
+							</td>
+						</tr>
+					</table>
+					<table class="table table-hover" id="fileView">
+					</table>
 				</td>
 			</tr>
 			<tr>

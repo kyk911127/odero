@@ -17,7 +17,7 @@ $(".hover").mouseleave(
 	}
 );
 function insert(){
-	location.href="review_insert"
+	location.href="review_insert.do"
 }
 </script>
 </head>
