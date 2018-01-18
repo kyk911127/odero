@@ -23,6 +23,12 @@ input.login_join{
 #join-content{
 	height: 500px;
 }
+#log_pwd{
+	font-family: '¸¼Àº °íµñ';
+}
+#join_pwd, #join_pwd2{
+	font-family: '¸¼Àº °íµñ';
+}
 </style>
 <script type="text/javascript">
 $(function(){

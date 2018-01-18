@@ -11,6 +11,7 @@
     opacity: 0.4;
     font-size: 14px;
 }
+
 </style>
 <script type="text/javascript">
 $(function(){
