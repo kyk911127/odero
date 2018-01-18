@@ -21,7 +21,7 @@
 .main_wrap {
    position: relative;
    min-height: 100%;
-   padding-bottom: 120px;
+   /* padding-bottom: 120px; */
    margin: 0px auto;
    width: 100%;
 }
@@ -89,7 +89,7 @@ html, body {
    background: #ededed;
    width: 100%;
    height: 120px;
-   position: absolute;
+   /* position: absolute; */
    left: 0;
    bottom: 0;
    padding-top: 40px;
