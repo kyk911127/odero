@@ -11,7 +11,7 @@
 
  .box1{
 	margin-top:7%;
-	width:80%;
+	width:100%;
 	margin: 0px auto;
 }
 
@@ -99,29 +99,30 @@
 
 
 .tmap_1{
-	width:80%; 
+	width:100%; 
 	height:70%; 
-	float:left;
+	
 }
 .tmap_2{
-	width:20%; 
-	height:550px; 
-	float:left; 
+	width:80%; 
+	height:200px;  
 	background-color:#FAFAFA;
+	padding:1%;
 }
 .route-title{
+	width:100%;
 	height:50px;
 }
 .route-content{
-	height:450px;
+	width:100%
 }
 
 .route-name{
-	background-color:#424242; color:white; width:90%; height:75px; margin-left:3%; margin:0px auto; padding:3%;
+	background-color:#424242; color:white; width:20%; height:100px; float:left;
 }
 
 .route-time{
-	background-color:white;  width:100%; height:70px; padding-left:10%;
+	background-color:white;  width:10%; height:100px;float:left;
 }
 .btn-like{
 	height:50px;
@@ -131,7 +132,29 @@
 	background-color:#F3ABBA; 
 	font-color:#ffffff;
 }
-
+.tmap_td {
+	border-bottom: 1.5px solid #888; 
+}
+.tmap_td_b {
+	border-top: 2px solid #888; 
+}
+.tmap_table {
+	width:100%;
+	height:50px;
+}
+.tmap_detail {
+	font-size: 15px;
+}
+.tmap_title {
+	font-size: 20px;
+}
+.tmap_res {
+	font-size: 15px;
+}
+.tmap_wrap {
+	background: #666;
+	color:#fff;
+}
 </style>
 
 <!-- <script type="text/javascript">
@@ -152,13 +175,13 @@
 				<div class="tmap_1">
 					<div id="map_div"></div>  
 				</div>
-				<!--거리계산  -->
+				
+<%-- 				<!--거리계산  -->
 				<div class="tmap_2">
 					<!-- 거리계산 제목  -->
 					<div class="route-title">
 						<h4 class="text-center" style="padding:0%;">
-							<img src="img_1/foot.png" style="padding:0%; padding-left:0%;">
-								<b>거리계산</b>
+							<b>거리계산</b>
 						</h4>
 					</div>
 					
@@ -187,8 +210,120 @@
 						</button>
 					</center>
 					</div>
-				</div>
+				</div> --%>
+				<center>
+				<div class="tmap_2">
+					<center>
+						<table class="tmap_table">
+							<tr>
+								<td width=47% class="tmap_td"></td>
+								<td width=6% rowspan="2" class="text-center">거리계산</td>
+								<td width=47% class="tmap_td"></td>
+							</tr>
+							<tr>
+								<td class="tmap_td_b"></td>
+								<td class="tmap_td_b"></td>
+							</tr>
+						</table>
+						<table width="100%" height="100px">
+							<tr>
+								<td width="24%">
+									<table width="100%" class="tmap_wrap">
+										<tr>
+											<td>
+												<img src=""> <span class="tmap_title">가게 이름</span>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<img src=""> <span class="tmap_detail">인천시 연수구 연수2동</span>
+											</td>
+										</tr>
+										<tr>
+											<td class="text-right">
+												<img src=""> <span class="tmap_detail">조회수</span>
+												<img src=""> <span class="tmap_detail">찜&nbsp;&nbsp;</span>
+											</td>
+										</tr>
+									</table>
+								</td>
+								<td width="13%">
+									<center>
+										<table>
+											<tr>
+												<td class="tmap_res">
+													<span style="">이동 거리 </span><span>100m</span>
+												</td>
+											</tr>
+											<tr>
+												<td class="tmap_res">
+													<span>이동 시간 </span><span>3분</span>
+												</td>
+											</tr>
+										</table>
+									</center>
+								</td>
+								<td width="24%">
+									<table width="100%" class="tmap_wrap">
+										<tr>
+											<td>
+												<img src=""> <span class="tmap_title">가게 이름</span>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<img src=""> <span class="tmap_detail">인천시 연수구 연수2동</span>
+											</td>
+										</tr>
+										<tr>
+											<td class="text-right">
+												<img src=""> <span class="tmap_detail">조회수</span>
+												<img src=""> <span class="tmap_detail">찜&nbsp;&nbsp;</span>
+											</td>
+										</tr>
+									</table>
+								</td>
+								<td width="13%">
+									<center>
+										<table>
+											<tr>
+												<td class="tmap_res">
+													<span style="">이동 거리 </span><span>100m</span>
+												</td>
+											</tr>
+											<tr>
+												<td class="tmap_res">
+													<span>이동 시간 </span><span>3분</span>
+												</td>
+											</tr>
+										</table>
+									</center>
+								</td>
+								<td width="24%">
+									<table width="100%" class="tmap_wrap">
+										<tr>
+											<td>
+												<img src=""> <span class="tmap_title">가게 이름</span>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<img src=""> <span class="tmap_detail">인천시 연수구 연수2동</span>
+											</td>
+										</tr>
+										<tr>
+											<td class="text-right">
+												<img src=""> <span class="tmap_detail">조회수</span>
+												<img src=""> <span class="tmap_detail">찜&nbsp;&nbsp;</span>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
+					</center>
 				</div>	
+				</center>
 			</div>
 		</div>
 		
