@@ -14,18 +14,24 @@
 <!-- <script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
 <script type="text/javascript" src="js/bootstrap.min.js"></script> -->
 <style type="text/css">
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumpenscript.css);
+@import url(http://fonts.googleapis.com/earlyaccess/jejuhallasan.css);
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
 * {
    box-sizing: border-box;
    -webkit-box-sizing: border-box;
    -moz-box-sizing: border-box;
    text-decoration: none;
-   font-family:'배달의민족 주아';
+   font-family: 'Jeju Gothic';
 }
 
 .main_wrap {
    position: relative;
    min-height: 100%;
-   padding-bottom: 120px;
+   /* padding-bottom: 120px; */
    margin: 0px auto;
    width: 100%;
 }
@@ -93,7 +99,7 @@ html, body {
    background: #ededed;
    width: 100%;
    height: 120px;
-   position: absolute;
+   /* position: absolute; */
    left: 0;
    bottom: 0;
    padding-top: 40px;

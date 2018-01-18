@@ -8,7 +8,7 @@
 </head>
 <body>
 	<div id="footer_1">
-               <strong>COMPANY&nbsp;&nbsp;&nbsp;</strong> <span>오데고컴퍼니</span>
+               <strong>COMPANY&nbsp;&nbsp;&nbsp;</strong> <span>오데로컴퍼니</span>
                &nbsp;&nbsp;&nbsp;&nbsp;
             </div>
             <div id="footer_2">
@@ -21,7 +21,7 @@
                &nbsp;&nbsp;&nbsp;&nbsp;
             </div>
             <div id="footer_4">
-               <strong>E-MAIL&nbsp;&nbsp;&nbsp;</strong> <span>o@dego.com</span>
+               <strong>E-MAIL&nbsp;&nbsp;&nbsp;</strong> <span>o@dero.com</span>
                &nbsp;&nbsp;&nbsp;&nbsp;
             </div>
             <br> <br>

@@ -22,20 +22,20 @@
 }
 </style>
 <script type="text/javascript">
+var fileIndex=0;
 $(function(){
 	$('#add').click(function(){
-		alert("dd");
 		$('#fileView').append(
 			'<tr id="f'+(fileIndex)+'">'+
-				'<td width="20%">파일'+(fileIndex+1)+'</td>'+
+				'<td width="20%">사진'+(fileIndex+1)+'</td>'+
 				'<td width="80%" align="left">'+
 					'<input type="file" name="files['+fileIndex+']" size="15">'+
 				'</td>'+
-			'</tr>'); // 계속 추가
+			'</tr>');
 		fileIndex=fileIndex+1;
 	});
 	$('#cancel').click(function(){
-		$('#f'+(fileIndex-1)).remove();	// 뒤에서부터 삭제
+		$('#f'+(fileIndex-1)).remove();
 		fileIndex -= 1;
 		if(fileIndex<0)
 			fileIndex=0;

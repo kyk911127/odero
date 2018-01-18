@@ -9,7 +9,7 @@
 table tr td{
 	font-size: 20px;
 }
-input{
+input.login_join{
 	border: 0px;
 	border-bottom: 3px solid #EDEDED;
 }
@@ -45,13 +45,13 @@ $(function(){
 			<tr>
 				<td width="30%">ID</td>
 				<td width="70%">
-					<input id="log_id" type="text" name="id" autocomplete="off" >
+					<input class="login_join" id="log_id" type="text" name="id" autocomplete="off" >
 				</td>
 			</tr>	
 			<tr>
 				<td width="30%">PWD</td>
 				<td width="70%">
-					<input id="log_pwd" type="password" name="pwd" autocomplete="off" >
+					<input class="login_join" id="log_pwd" type="password" name="pwd" autocomplete="off" >
 				</td>
 			</tr>	
 			<tr>

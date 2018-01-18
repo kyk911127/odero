@@ -70,35 +70,35 @@ $(function(){
 			<tr>
 				<td width="30%">이름</td>
 				<td width="70%">
-					<input type="text" id="join_name" name="name" autocomplete="off" placeholder="이름을 입력하세요." required>
+					<input class="login_join" type="text" id="join_name" name="name" autocomplete="off" placeholder="이름을 입력하세요." required>
 				</td>
 			</tr>
 			<tr>
 				<td width="30%">아이디</td>
 				<td width="65%">
-					<input type="text" id="join_id" name="id" autocomplete="off" placeholder="'-'를 제외한 핸드폰 번호를 입력하세요." maxlength="11" required>
+					<input class="login_join" type="text" id="join_id" name="id" autocomplete="off" placeholder="'-'를 제외한 핸드폰 번호를 입력하세요." maxlength="11" required>
 				</td>
 				<td width="5%">
 					<input type="button" class="btn btn-default btn-md" name="id" value="중복확인">
 				</td>
 			</tr>	
-			<tr>
+			<tr> 
 				<td width="30%">비밀번호</td>
 				<td width="70%">
-					<input type="password" id="join_pwd" name="pwd" autocomplete="off" placeholder="비밀번호를 입력하세요.">
+					<input class="login_join" type="password" id="join_pwd" name="pwd" autocomplete="off" placeholder="비밀번호를 입력하세요.">
 				</td>
 			</tr>
 			<tr>
 				<td width="30%">비밀번호 확인</td>
 				<td width="65%">
-					<input type="password" id="join_pwd2" name="pwd2" autocomplete="off" placeholder="비밀번호를 한번 더 입력하세요.">
+					<input class="login_join" type="password" id="join_pwd2" name="pwd2" autocomplete="off" placeholder="비밀번호를 한번 더 입력하세요.">
 				</td>
 				<td width="5%"class="text-center"><span id="pwdcheck"></span></td>
 			</tr>	
 			<tr>
 				<td colspan="3" class="text-center">
 					<input id="joinBtn" class="btn btn-lg btn-default" type="submit" value="JOIN">
-				</td>
+				</td> 
 			</tr>
 		</table>
 	</center>
