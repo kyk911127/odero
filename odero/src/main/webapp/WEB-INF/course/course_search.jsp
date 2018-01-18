@@ -44,6 +44,7 @@
    opacity: 0.3;
    color: #fff;
    padding: 5px 10px;
+   font-size: 15px;
    border: none;
    margin: 8px;
 }
@@ -231,11 +232,11 @@ function initTmap(){
          <input type="submit" value=' °Ë   »ö ' class="search_btn">
          </center>
       </div>
-    
    </div>
-     
-   <div>
+    <div>
 		<jsp:include page="date2.jsp"></jsp:include>
-   </div>
+   	</div>
+     
+   
 </body>
 </html>
