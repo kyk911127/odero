@@ -18,11 +18,9 @@ public class ReviewController {
 	private ReviewDao dao;
 	@RequestMapping("review_list.do")
 	public String reviewList(String page, Model model) {
-		System.out.println("dd");
 		if (page == null)
 			page = "1";
 		int curpage = Integer.parseInt(page);
-		System.out.println(curpage);
 		int rowSize = 9;
 		int start = (rowSize * curpage) - (rowSize - 1);
 		int end = rowSize * curpage;

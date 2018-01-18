@@ -9,7 +9,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
 <!-- gallery css -->
-<link rel="stylesheet" type="text/css" href="css/gallery.css" />
+<link rel="stylesheet" type="text/css" href="board/css/gallery.css" />
 <script type="text/javascript">
 $(".hover").mouseleave(
 	function () {
