@@ -6,22 +6,29 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
-<!-- <link rel="stylesheet"type="text/css" href="css/bootstrap.min.css" > -->
-<link rel="stylesheet"type="text/css" href="css/course.css" >
-
-
-<!-- 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script> -->
 
 <style type="text/css">
 
-/* 
- div{
-		border:1px solid black;
-	}  */
+ .box1{
+	margin-top:7%;
+	width:80%;
+	margin: 0px auto;
+}
+
+/*소제목 1틀  */
+.box1_title{
+	width:60%;
+	margin:2% auto; 
+	border:1px solid #E6E6E6; 
+	padding:1%;
+}
+.box1_title {
+	margin-bottom: 30px;
+}
+
+.tag-title {
+	margin-top: 8px;
+}
 	.date { 
 		position:relative; /*감싸는 레이어에 포지션 속성을 잡아주는 게 필수!(relative, absolute, fixed 중 택1*/ 
 		width:100%; 
@@ -75,7 +82,7 @@
 	 margin-bottom:30px;
 }
 .small{
-	margin-top:100px;
+	margin-top:3%;
 }
 .title{
 	 margin:2%; 
@@ -84,15 +91,53 @@
 	width:50%; padding:2%;background-color:#fff; margin:0px auto;
 }
 
-	 
+	#Mymodal{
+   position: fixed;
+   top:25%;
+     height: 300px;}
+
+
+
+.tmap_1{
+	width:80%; 
+	height:70%; 
+	float:left;
+}
+.tmap_2{
+	width:20%; 
+	height:550px; 
+	float:left; 
+	background-color:#FAFAFA;
+}
+.route-title{
+	height:50px;
+}
+.route-content{
+	height:450px;
+}
+
+.route-name{
+	background-color:#424242; color:white; width:90%; height:75px; margin-left:3%; margin:0px auto; padding:3%;
+}
+
+.route-time{
+	background-color:white;  width:100%; height:70px; padding-left:10%;
+}
+.btn-like{
+	height:50px;
+}
+
+.like{
+	background-color:#F3ABBA; 
+	font-color:#ffffff;
+}
+
 </style>
 
-<script type="text/javascript">
-
+<!-- <script type="text/javascript">
 	$(document).ready(function() {
-
 	}); 
-</script>
+</script> -->
 
 </head>
 <body>
@@ -104,27 +149,30 @@
 			<div class="box1">
 				
 				<!--지도  -->
-				<div class="tmap_1" style="width:80%; height:70%; float:left;">
+				<div class="tmap_1">
 					<div id="map_div"></div>  
 				</div>
 				<!--거리계산  -->
-				<div class="tmap_2" style="width:20%; height:550px; float:left; background-color:#FAFAFA">
+				<div class="tmap_2">
 					<!-- 거리계산 제목  -->
-					<div class="map_route" style="height:50px;">
-						<h4 class="text-center" style="padding:0%;"><img src="img_1/foot.png" style="padding:0%; padding-left:0%;"><b>거리계산</b></h4>
+					<div class="route-title">
+						<h4 class="text-center" style="padding:0%;">
+							<img src="img_1/foot.png" style="padding:0%; padding-left:0%;">
+								<b>거리계산</b>
+						</h4>
 					</div>
 					
 					<!-- 거리계산내용 -->
-					<div class="route" style="height:450px;">
+					<div class="route-content">
 						<c:forEach begin="1" end="3">
 						<!-- 가게이름/주소 -->
-						<div class="" style="background-color:#424242; color:white; width:90%; height:75px; margin-left:3%; margin:0px auto; padding:3%;">
+						<div class="route-name">
 							<font size="4pt"><b>1. 도미노피자</b></font>
-							<hr style="margin:0px auto; width:90%; padding-bottom:1%;;">
+							<hr style="margin:0px auto; width:90%; padding-bottom:1%;">
 							<font size="1.5pt">서울특별시 마포구 창전로 45 서강한화오벨리스크스위</font>
 						</div>
 						<!-- 이동거리/시간 -->
-						<div class="" style="background-color:white;  width:100%; height:70px; padding-left:10%;">
+						<div class="route-time">
 							<h5>이동거리 : 400M</h5>
 							<h5>이동시간 : 7분</h5>
 						</div>
@@ -132,9 +180,9 @@
 					</div>
 					
 					<!-- 코스 찜하기 버튼 -->
-					<div class="btn_like" style="height:50px;">
+					<div class="btn-like">
 					<center>
-						<button type="button" class="btn" data-toggle="modal" data-target="#myModal" aria-hidden="true" style="background-color:#F3ABBA; color:#ffffff;">
+						<button type="button" class="btn like" data-toggle="modal" data-target="#myModal" aria-hidden="true">
 							<b>코스찜하기</b>
 						</button>
 					</center>
@@ -143,7 +191,6 @@
 				</div>	
 			</div>
 		</div>
-		
 		
 		<!-- Modal -->
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -166,7 +213,7 @@
 	      </div>
 	      <div class="modal-footer">
 	      	<center>
-		      	<button type="button" class="btn btn-default" style="background-color:white; border:1px solid balck;"><b>코스 찜</b></button>
+		      	<button type="button" class="btn btn-default" style="background-color:white;"><b>코스 찜</b></button>
 		        <button type="button" class="btn btn-default" style="background-color:white" data-dismiss="modal"><b>취소</b></button>
 	        </center>
 	      </div>
@@ -177,8 +224,7 @@
 	
 
 	
-	<div class="container">
-		
+	<div class="container" style="background-color:#FAFAFA; margin-top:3%;">
 		<div class="small">
 		
 		<!--맛집 리스트  -->
@@ -194,14 +240,14 @@
 	               	<!--가게 이름  -->
 		            	<a href="#" style="color: black; text-decoration:none;">
 		                	<img src="img_1/food.png" style="float:left; margin:2%">
-		                    <h5 class="tag-title text-left">도미노피자</h5>
+		                    <h5 class="tag-title text-left">가게이름</h5>
 		                </a>
 	                   	<hr style="margin:2%;">
 	                <!-- 가게 이미지 -->
 	                    <img src="img_1/food3.jpg" style="width:100%; height:250px;">
 	                    <br>
 	                    <hr style="margin:2%;">
-	                    <p>어쩌구 저쩌구</p>
+	                    <p></p>
 	                </div>
 	           	   </div>
 	           </div>
