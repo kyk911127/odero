@@ -18,30 +18,42 @@
 <link href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
 <script type="text/javascript">
-   var modal = document.getElementById('myMordal');
-   var img = document.getElementById('myImg');
-   var modalImg = document.getElementById("img01");
-   var captionText = document.getElementById("caption");
-   img.onclick = function() {
-      modal.style.display = "block";
-      modalImg.src = this.src;
-      captionText.innerHTML = this.alt;
-   }
-   span.onclick = function() {
-      modal.style.display = "none";
-   }
-   
+/* window.onload = function(){
+	var modal = document.getElementById('myModal');
+	var img = document.getElementById('myImg');
+	var modalImg = document.getElementById("img01");
+
+	   img.onclick = function() {
+		  alert(modal);
+		  alert(img);
+		  alert(modalImg);
+	      modal.style.display = "none";
+	      modalImg.src = this.src;
+	      captionText.innerHTML = this.alt;
+	   } 
+} */
+$(function(){
+	$('.detail_img').find('.place_img').each(function(){     
+		
+		$('.place_img').click(function(){     
+			var pp =$(this).attr('src');
+			$('.fo').html("<img src='" + pp + "'>");   
+		});  
+	}); 
+	
+	
+});   
 </script>
 </head>
 <body>
    <div class="container-fluid top_container">
       <div class="row imagerow" style="position: relative;">
-         <c:forEach var="i" begin="1" end="5">
+         <c:forEach var="i" items="${timg }" varStatus="a">
             <div class="detail_img" data-target="#myModal" data-toggle="modal">
                <div style="border-left: 8px solid #fff;">
-                  <img class="place_img" id="myImg" src="p_image/top.jpg">
+                  <img class="place_img" id="pimg${a.index }" src="${i }">
                </div>
-            </div>
+            </div> 
          </c:forEach>
          <div>
             <a href="#" data-target="#myModal" data-toggle="modal">
@@ -56,17 +68,14 @@
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg bora">
          <div class="modal-content mo_content">
-          <!--   <button type="button" class="close" data-dismiss="modal"><img src="p_image/closebtn.png"></button> -->
-          	<span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
-            <div id="modal-body modal-dimg">	<!--  data-thumbmargin="20px 0"  -->
-               <div class="fotorama fo" data-width="800" data-maxwidth="100%" data-ratio="16/9" data-allowfullscreen="true"
-     				data-nav="thumbs" data-thumbfit="cover">
-                  <c:forEach var="i" begin="1" end="3">
-                     <img id="img01" src="p_image/top.jpg"> 
-                     <img id="img01" src="p_image/top1.jpg"> 
-                     <img id="img01" src="p_image/top2.jpg">
-                     <img id="img01" src="p_image/top3.jpg">
-                  </c:forEach>
+          	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <div id="modal-body">	<!--  data-thumbmargin="20px 0"  -->
+               <div class="fotorama fo" data-width="800" data-maxwidth="100%" data-ratio="16/9" data-allowfullscreen="true" data-nav="thumbs" data-thumbfit="cover">
+     				<%-- <c:forEach var="i" items="${timg }">
+                        <img src="${i }">
+                     </c:forEach>  --%>
                </div>
                
 <!--                <div class="fotorama" data-nav="thumbs">
@@ -133,12 +142,22 @@
                </tr>
             </table>
          </div>
-      </div>
+      </div> 
 
       <div class="row row_map">
          <h3>Áöµµ</h3>
-         <div>
-            <img src="p_image/map.PNG" width="100%">
+         <div id="map" style="width:100%;height:400px;">
+         <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=90ca2826f787f6d4fc01f89cb8bcdce3"></script>
+		 <script>
+			var container = document.getElementById('map');
+			var options = {
+				center: new daum.maps.LatLng(33.450701, 126.570667),
+				level: 3
+			};
+	
+			var map = new daum.maps.Map(container, options);
+		  </script>
+            <!-- <img src="p_image/map.PNG" width="100%"> -->
          </div>
       </div>
       <div class="row row_review">
