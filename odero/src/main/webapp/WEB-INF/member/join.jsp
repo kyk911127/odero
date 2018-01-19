@@ -5,14 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title></title>
-<style>
-::-webkit-input-placeholder {
-    color: black;
-    opacity: 0.4;
-    font-size: 14px;
-}
 
-</style>
 <script type="text/javascript">
 $(function(){
 	var flag=false;

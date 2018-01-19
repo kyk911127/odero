@@ -170,49 +170,84 @@ $(document).ready(function(){
 	
 	<%-- c:forEach var="i" begin="1" end="3"> --%>
 	<div class="row cart">
-	
-	<div class="map_div col-lg-12">
-	<hr class="soften" /><h3 class="sub_text">코스 경로</h3><hr class="soften" /> 
-		<div class="map">
-		
+<div class="table_wrap">
+	<hr class="soften" /><h3 class="sub_text">추천 가게 리스트  Best5 &nbsp;
+	<a href="mypage_list.do"><button class="btn btn-success btn-xs">더보기 </button></a> <hr class="soften" /> 
+		</h3> 
 
-		</div>
-	
-	</div>
-	</div>
-	<div class="table_wrap">
-
-
-	<hr class="soften" /><h3 class="sub_text">코스 개별정보</h3><hr class="soften" /> 
-	
-	
-	<br><br>
-
-           <c:forEach var="i" begin="1" end="3">
+           
           <table class="table table-hover" id="table_content" width=600>
  			<tr>
- 				<th width="10%">번호</th>
- 				<th width="30%">코스이름</th>
- 				<th width="10%">조회수</th>
- 				<th width="20%">자세히</th>
- 				<th width="20%">삭제</th>
- 			</tr>
- 			<tr>
- 				<td width="10%">$번호</td>
- 				<td width="30%">$코스이름</td>
- 				<td width="10%">$조회수</td>
- 				<td width="20%"><button class="btn btn-info btn-xs">보기</button></td>
- 				<td width="20%"><button class="btn btn-danger btn-xs">삭제</button></td>
+ 				<th width="5%">번호</th>
+ 				<th width="40%" class="text-center">가게이름</th>
+ 				<th width="40%" class="text-center">가게경로</th>
+ 				<th width="5%">추천</th>
+ 				<th width="5%">자세히</th>
+ 				<th width="5%">삭제</th>
  			</tr>
  			
+ 			<c:forEach var="i" begin="1" end="5">
+ 			<tr>
+ 				<td width="5%">${i}</td>
+ 				<td width="40%" class="text-center">$코스이름</td>
+ 				<td width="40%" class="text-center">$코스경로</td>
+ 				<td width="5%">$추천</td>
+ 				<td width="5%"><button class="btn btn-info btn-xs">보기</button></td>
+ 				<td width="5%"><button class="btn btn-danger btn-xs">삭제</button></td>
+ 			</tr>
+ 			  </c:forEach>
+ 			<tr>
+ 				<td colspan="6" class="text-right"> 자세한 목록은 자세히보기를 누르세요</td>
+ 			</tr> 			
           </table>
 
-          <hr class="hr" />
-         </c:forEach>
+        <!--   <hr class="hr" /> -->
+       
 
-	<br><br>
 
 	
+	</div>
+	</div>
+	
+	<br><br>
+<div class="table_wrap">
+
+
+	<hr class="soften" /><h3 class="sub_text">추천 코스 리스트 Best5 &nbsp;
+	<a href="mypage_list.do"><button class="btn btn-success btn-xs">더보기 </button></a> <hr class="soften" /> 
+	
+	</h3> 
+	
+
+         
+          <table class="table table-hover" id="table_content" width=600>
+ 			<tr>
+ 				<th width="5%">번호</th>
+ 				<th width="40%" class="text-center">코스이름</th>
+ 				<th width="40%" class="text-center">코스경로</th>
+ 				<th width="5%">추천</th>
+ 				<th width="5%">자세히</th>
+ 				<th width="5%">삭제</th>
+ 			</tr>
+ 			  <c:forEach var="i" begin="1" end="5">
+ 			<tr>
+ 				<td width="5%">${i}</td>
+ 				<td width="40%" class="text-center">$코스이름</td>
+ 				<td width="40%" class="text-center">$코스경로</td>
+ 				<td width="5%">$추천</td>
+ 				<td width="5%"><button class="btn btn-info btn-xs">보기</button></td>
+ 				<td width="5%"><button class="btn btn-danger btn-xs">삭제</button></td>
+ 			</tr>
+ 			      </c:forEach>
+ 			      
+ 			<tr>
+ 				<td colspan="6" class="text-right"> 자세한 목록은 자세히보기를 누르세요</td>
+ 			</tr>
+          </table>
+			
+       
+   
+
 	</div>
 
 

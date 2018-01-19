@@ -8,22 +8,22 @@
 <title>Insert title here</title>
 
 <style type="text/css">
-
- .box1{
+/* div{
+	border : 1px solid black;
+} */
+ .sc_box{
 	margin-top:7%;
 	width:100%;
 	margin: 0px auto;
 }
 
 /*소제목 1틀  */
-.box1_title{
+.sc_title{
 	width:60%;
 	margin:2% auto; 
 	border:1px solid #E6E6E6; 
 	padding:1%;
-}
-.box1_title {
-	margin-bottom: 30px;
+		margin-bottom: 30px;
 }
 
 .tag-title {
@@ -65,7 +65,7 @@
   
   background:#fff;
   transition:all 0.2s ease;
-  border:1.5px dashed #DFE2E6;
+  border:2px dashed #DFE2E6;
   margin-top: 10px;
   box-sizing: border-box;
   border-radius: 5px;
@@ -81,8 +81,8 @@
 	margin:0px;
 	 margin-bottom:30px;
 }
-.small{
-	margin-top:3%;
+.rc_box{
+	padding-top:3%;
 }
 .title{
 	 margin:2%; 
@@ -99,31 +99,18 @@
 
 
 .tmap_1{
-	width:100%; 
+	width:80%; 
 	height:70%; 
+	margin:0px auto;
 	
 }
 .tmap_2{
-	width:80%; 
-	height:200px;  
+	width:63%; 
+	height:230px;  
 	background-color:#FAFAFA;
 	padding:1%;
 }
-.route-title{
-	width:100%;
-	height:50px;
-}
-.route-content{
-	width:100%
-}
 
-.route-name{
-	background-color:#424242; color:white; width:20%; height:100px; float:left;
-}
-
-.route-time{
-	background-color:white;  width:10%; height:100px;float:left;
-}
 .btn-like{
 	height:50px;
 }
@@ -142,19 +129,38 @@
 	width:100%;
 	height:50px;
 }
-.tmap_detail {
-	font-size: 15px;
-}
 .tmap_title {
-	font-size: 20px;
+	font-size: 18px;
+	float:left;
 }
+.tmap_detail {
+	font-size: 12px;
+}
+
 .tmap_res {
-	font-size: 15px;
+	font-size: 13px;
 }
 .tmap_wrap {
+	padding:2%;
 	background: #666;
 	color:#fff;
+	 width:100%; 
 }
+.rc_title{
+	margin:2%;
+}
+.rc{
+	background-color:#FAFAFA; 
+	margin-top:0%;
+}
+.sc_ti{
+	color:#2E2E2E;; height:30px; font-weight: bold;
+}
+
+table{
+	border:1px solid black;
+}
+
 </style>
 
 <!-- <script type="text/javascript">
@@ -164,60 +170,24 @@
 
 </head>
 <body>
-		<div class="container-fluid">
-			<div class="box1_title">
-				<h2 class="text-center" style="color:#000; height:30px; font-weight: bold">추 천 코 스</h2><br>
-				<h4 class="text-center" style="color:#2E2E2E; height:30px;font-weight: bold">▼▼▼▼▼</h4>
+		<div class="container-fluid sc">
+			<div class="sc_title">
+				<h2 class="sc_ti text-center">추 천 코 스</h2><br>
+				<h4 class="sc_ti text-center">▼▼▼▼▼</h4>
 			</div>
-			<div class="box1">
-				
+			<div class="sc_box">
 				<!--지도  -->
 				<div class="tmap_1">
 					<div id="map_div"></div>  
 				</div>
-				
-<%-- 				<!--거리계산  -->
-				<div class="tmap_2">
-					<!-- 거리계산 제목  -->
-					<div class="route-title">
-						<h4 class="text-center" style="padding:0%;">
-							<b>거리계산</b>
-						</h4>
-					</div>
-					
-					<!-- 거리계산내용 -->
-					<div class="route-content">
-						<c:forEach begin="1" end="3">
-						<!-- 가게이름/주소 -->
-						<div class="route-name">
-							<font size="4pt"><b>1. 도미노피자</b></font>
-							<hr style="margin:0px auto; width:90%; padding-bottom:1%;">
-							<font size="1.5pt">서울특별시 마포구 창전로 45 서강한화오벨리스크스위</font>
-						</div>
-						<!-- 이동거리/시간 -->
-						<div class="route-time">
-							<h5>이동거리 : 400M</h5>
-							<h5>이동시간 : 7분</h5>
-						</div>
-						</c:forEach>
-					</div>
-					
-					<!-- 코스 찜하기 버튼 -->
-					<div class="btn-like">
-					<center>
-						<button type="button" class="btn like" data-toggle="modal" data-target="#myModal" aria-hidden="true">
-							<b>코스찜하기</b>
-						</button>
-					</center>
-					</div>
-				</div> --%>
+
 				<center>
-				<div class="tmap_2">
-					<center>
+					<div class="tmap_2">
+						<center>
 						<table class="tmap_table">
 							<tr>
 								<td width=47% class="tmap_td"></td>
-								<td width=6% rowspan="2" class="text-center">거리계산</td>
+								<td width=6% rowspan="2" class="text-center"><h4><b>거리계산</b></h4></td>
 								<td width=47% class="tmap_td"></td>
 							</tr>
 							<tr>
@@ -225,31 +195,71 @@
 								<td class="tmap_td_b"></td>
 							</tr>
 						</table>
-						<table width="100%" height="100px">
+						<table width="95%" height="100px">
 							<tr>
+						<!--1번  -->
 								<td width="24%">
-									<table width="100%" class="tmap_wrap">
+									<table class="tmap_wrap">
 										<tr>
 											<td>
-												<img src=""> <span class="tmap_title">가게 이름</span>
+												<img src="img_1/play.png" style="float:left;margin:5px;"><h4 style="margin:5px;">&nbsp;가게 이름</h4>
 											</td>
 										</tr>
 										<tr>
 											<td>
-												<img src=""> <span class="tmap_detail">인천시 연수구 연수2동</span>
+												<span class="tmap_detail">&nbsp;인천시 연수구 연수2동</span>
 											</td>
 										</tr>
 										<tr>
 											<td class="text-right">
-												<img src=""> <span class="tmap_detail">조회수</span>
-												<img src=""> <span class="tmap_detail">찜&nbsp;&nbsp;</span>
+												<span class="tmap_detail glyphicon glyphicon-eye-open">조회수</span>
+												<span class="tmap_detail glyphicon glyphicon-heart">찜&nbsp;</span>
 											</td>
 										</tr>
 									</table>
 								</td>
 								<td width="13%">
 									<center>
-										<table>
+									<span class="glyphicon glyphicon-chevron-right"></span>
+										<table style="float:left; margin:3%;">
+											<tr>
+												<td class="tmap_res">
+													<span>이동 거리 </span><span>100m</span>
+												</td>
+											</tr>
+											<tr>
+												<td class="tmap_res">
+													<span>이동 시간 </span><span>3분</span>
+												</td>
+											</tr>
+										</table>
+									</center>
+								</td>
+						<!--2번  -->
+								<td width="24%">
+									<table class="tmap_wrap">
+										<tr>
+											<td>
+												<img src="img_1/play.png" style="float:left;margin:5px;"><h4 style="margin:5px;">&nbsp;가게 이름</h4>
+											</td>
+										</tr>
+										<tr>
+											<td>
+												<span class="tmap_detail">&nbsp;인천시 연수구 연수2동</span>
+											</td>
+										</tr>
+										<tr>
+											<td class="text-right">
+												<span class="tmap_detail glyphicon glyphicon-eye-open">조회수</span>
+												<span class="tmap_detail glyphicon glyphicon-heart">찜&nbsp;</span>
+											</td>
+										</tr>
+									</table>
+								</td>
+								<td width="13%" style="">
+									<center>
+									<span class="glyphicon glyphicon-chevron-right"></span><!-- 이동거리 화살표 -->
+										<table style="float:left; margin:3%;">
 											<tr>
 												<td class="tmap_res">
 													<span style="">이동 거리 </span><span>100m</span>
@@ -263,67 +273,45 @@
 										</table>
 									</center>
 								</td>
+						<!-- 3번 -->
 								<td width="24%">
-									<table width="100%" class="tmap_wrap">
+									<table class="tmap_wrap">
 										<tr>
 											<td>
-												<img src=""> <span class="tmap_title">가게 이름</span>
+												<img src="img_1/play.png" style="float:left;margin:5px;"><h4 style="margin:5px;">&nbsp;가게 이름</h4>
 											</td>
 										</tr>
 										<tr>
 											<td>
-												<img src=""> <span class="tmap_detail">인천시 연수구 연수2동</span>
+												<span class="tmap_detail">&nbsp;인천시 연수구 연수2동</span>
 											</td>
 										</tr>
 										<tr>
 											<td class="text-right">
-												<img src=""> <span class="tmap_detail">조회수</span>
-												<img src=""> <span class="tmap_detail">찜&nbsp;&nbsp;</span>
+												<span class="tmap_detail glyphicon glyphicon-eye-open">조회수</span>
+												<span class="tmap_detail glyphicon glyphicon-heart">찜&nbsp;</span>
 											</td>
 										</tr>
 									</table>
 								</td>
-								<td width="13%">
-									<center>
-										<table>
-											<tr>
-												<td class="tmap_res">
-													<span style="">이동 거리 </span><span>100m</span>
-												</td>
-											</tr>
-											<tr>
-												<td class="tmap_res">
-													<span>이동 시간 </span><span>3분</span>
-												</td>
-											</tr>
-										</table>
-									</center>
-								</td>
-								<td width="24%">
-									<table width="100%" class="tmap_wrap">
-										<tr>
-											<td>
-												<img src=""> <span class="tmap_title">가게 이름</span>
-											</td>
-										</tr>
-										<tr>
-											<td>
-												<img src=""> <span class="tmap_detail">인천시 연수구 연수2동</span>
-											</td>
-										</tr>
-										<tr>
-											<td class="text-right">
-												<img src=""> <span class="tmap_detail">조회수</span>
-												<img src=""> <span class="tmap_detail">찜&nbsp;&nbsp;</span>
-											</td>
-										</tr>
-									</table>
+							</tr>
+						</table>
+				<!--코스 찜 하기 버튼  -->
+						<table>
+							<tr>
+								<td class="btn-like text-center">
+									<button type="button" class="btn like" data-toggle="modal" data-target="#myModal" aria-hidden="true" style=" outline: none;">
+										<b>코스 찜하기</b>
+									</button>
 								</td>
 							</tr>
 						</table>
 					</center>
 				</div>	
 				</center>
+			</div>
+			<div style="width:63%; margin:0px auto;">
+				<hr>
 			</div>
 		</div>
 		
@@ -343,13 +331,13 @@
 	      	<center>
 	        	<img src="img_1/date.jpg" width="300px" height="300px">
 	        	<br clear=left>
-	        		<h5><b>선택하신 데이트 코스를 찜 하시겠습니까?</b></h5>
+	        		<h5 style="margin-top:2%;"><b>선택하신 데이트 코스를 찜 하시겠습니까?</b></h5>
 	        </center>
 	      </div>
 	      <div class="modal-footer">
 	      	<center>
-		      	<button type="button" class="btn btn-default" style="background-color:white;"><b>코스 찜</b></button>
-		        <button type="button" class="btn btn-default" style="background-color:white" data-dismiss="modal"><b>취소</b></button>
+		      	<button type="button" class="btn btn-default" style="background-color:white;outline: none;"><b>코스 찜</b></button>
+		        <button type="button" class="btn btn-default" style="background-color:white;outline: none;" data-dismiss="modal" ><b>취소</b></button>
 	        </center>
 	      </div>
 	    </div>
@@ -357,11 +345,8 @@
 	  </center>
 	</div>
 	
-
-	
-	<div class="container" style="background-color:#FAFAFA; margin-top:3%;">
-		<div class="small">
-		
+	<div class="container rc">
+		<div class="rc_box">
 		<!--맛집 리스트  -->
         <div class="row">
            	<div class="title"> 
@@ -372,17 +357,42 @@
 	     	   <div class="col-md-4 text-center">
 	        	   <div class="box">
 	               	<div class="box-content">
-	               	<!--가게 이름  -->
-		            	<a href="#" style="color: black; text-decoration:none;">
-		                	<img src="img_1/food.png" style="float:left; margin:2%">
-		                    <h5 class="tag-title text-left">가게이름</h5>
+	               	<!--맛집 이름  -->
+	               		<a href="#" style="color: black; text-decoration:none;">
+			                <h4><span class="glyphicon glyphicon-cutlery" style="float:left; margin:2%"></span></h4>
+			                <h4 class="tag-title text-left" style="float:left;">가게이름</h4><br>
 		                </a>
-	                   	<hr style="margin:2%;">
-	                <!-- 가게 이미지 -->
-	                    <img src="img_1/food3.jpg" style="width:100%; height:250px;">
-	                    <br>
 	                    <hr style="margin:2%;">
-	                    <p></p>
+	                <!-- 맛집 이미지 -->
+	                	<div class=rc_img>
+		                    <img src="img_1/food3.jpg" style="width:100%; height:250px;">
+		                    <br>
+		                    <hr style="margin:2%;">
+		                </div>
+		            <!-- 맛집정보 -->
+		                <div class="rc_detail">
+		                	<table class="" width=100%>
+		                		<tr>
+		                			<td class="text-left">
+		                				<span class="glyphicon glyphicon-map-marker"><b>&nbsp;지역구</b></span>
+		                			</td>
+		                		</tr>
+		                		<tr>
+		                			<td class="text-left">
+		                				<span class="glyphicon glyphicon-usd"><b> 가격</b></span>
+		                			</td>
+		                		</tr><tr>
+		                			<td class="text-left">
+		                				<span class="glyphicon glyphicon-time"><b> 평일 11:00~20:00</b></span>
+		                			</td>
+		                		</tr><tr>
+		                			<td class="text-right">
+		                				<span class="glyphicon glyphicon-eye-open" style="margin:5px;"></span>88<!--조회수  -->
+										<span class="glyphicon glyphicon-heart" style="margin:5px;"></span>4<!--찜 수   -->
+		                			</td>
+		                		</tr>
+		                	</table>
+						</div>
 	                </div>
 	           	   </div>
 	           </div>
@@ -400,14 +410,37 @@
 	                    <div class="box">
 	                        <div class="box-content">
 		                        <a href="#" style="color: black; text-decoration:none;">
-			                        <img src="img_1/play.png" style="float:left; margin:2%">
-			                        <h5 class="tag-title text-left">도미노피자</h5>
-		                        </a>
+			                		<h4><span class="glyphicon glyphicon-map-marker" style="float:left; margin:2%"></span></h4>
+			                		<h4 class="tag-title text-left" style="float:left;">가게이름</h4><br>
+		                		</a>
 	                            <hr style="margin:2%;">
 	                            <img src="img_1/play1.jpg" style="width:100%; height:250px;">
-	                            <br><br>
+	                            <br>
 	                            <hr style="margin:2%;">
-	                            <p>어쩌구 저쩌구</p>
+		            <!-- 가게정보 -->
+		                <div class="rc_detail">
+		                	<table class="" width=100%>
+		                		<tr>
+		                			<td class="text-left">
+		                				<span class="glyphicon glyphicon-map-marker"><b>&nbsp;지역구</b></span>
+		                			</td>
+		                		</tr>
+		                		<tr>
+		                			<td class="text-left">
+		                				<span class="glyphicon glyphicon-usd"><b> 가격</b></span>
+		                			</td>
+		                		</tr><tr>
+		                			<td class="text-left">
+		                				<span class="glyphicon glyphicon-time"><b> 평일 11:00~20:00</b></span>
+		                			</td>
+		                		</tr><tr>
+		                			<td class="text-right">
+		                				<span class="glyphicon glyphicon-eye-open" style="margin:5px;"></span>88
+										<span class="glyphicon glyphicon-heart" style="margin:5px;"></span>4
+		                			</td>
+		                		</tr>
+		                	</table>
+						</div>
 	                        </div>
 	                    </div>
 	                </div>
@@ -426,14 +459,37 @@
 	                    <div class="box">
 	                        <div class="box-content">
 		                        <a href="#" style="color: black; text-decoration:none;">
-		                            <img src="img_1/cafe.png" style="float:left; margin:2%">
-		                            <h5 class="tag-title text-left">도미노피자</h5>
-		                        </a>
+			                		<h4><span class="glyphicon glyphicon-glass" style="float:left; margin:2%"></span></h4>
+			                		<h4 class="tag-title text-left" style="float:left;">가게이름</h4><br>
+		                		</a>
 	                            <hr style="margin:2%;">
 	                            <img src="img_1/cafe1.png" style="width:100%; height:250px;">
 	                            <br><br>
 	                            <hr style="margin:2%;">
-	                            <p>어쩌구 저쩌구</p>
+		            <!-- 가게정보 -->
+		                <div class="rc_detail">
+		                	<table class="" width=100%>
+		                		<tr>
+		                			<td class="text-left">
+		                				<span class="glyphicon glyphicon-map-marker"><b>&nbsp;지역구</b></span>
+		                			</td>
+		                		</tr>
+		                		<tr>
+		                			<td class="text-left">
+		                				<span class="glyphicon glyphicon-usd"><b> 가격</b></span>
+		                			</td>
+		                		</tr><tr>
+		                			<td class="text-left">
+		                				<span class="glyphicon glyphicon-time"><b> 평일 11:00~20:00</b></span>
+		                			</td>
+		                		</tr><tr>
+		                			<td class="text-right">
+		                				<span class="glyphicon glyphicon-eye-open" style="margin:5px;"></span>88
+										<span class="glyphicon glyphicon-heart" style="margin:5px;"></span>4
+		                			</td>
+		                		</tr>
+		                	</table>
+						</div>
 	                        </div>
 	                    </div>
 	                </div>
