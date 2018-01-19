@@ -17,7 +17,7 @@
 </script>
 </head>
 <body>
-   <div class="container-fluid">
+   <div class="container-fluid" id="container">
       <div class="fotorama" data-width="100%" data-ratio="800/600" data-width="100%" data-height="450px" data-nav="false"
          data-transition="slide" data-clicktransition="crossfade" data-loop="true" data-autoplay="true">
          <div data-fit="cover" style="background-image: url(image/couple2.jpg); background-size:100%;background-position: center">
