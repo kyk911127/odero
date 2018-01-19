@@ -1,0 +1,135 @@
+.pc .box_space .info_area .tit_space, .pc .box_space .info_area .tags {
+	display: block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap
+}
+.wrap {
+	position: relative;
+	width: 100%
+}
+
+.wrap.main {
+	padding-top: 0
+}
+
+.wrap.fixed {
+	position: fixed;
+	overflow: hidden;
+	height: 100%
+}
+
+.wrap.fixed .dimmed {
+	position: absolute
+}
+
+.wrap.notice {
+	padding-top: 39px
+}
+#content_wraper {
+	position: relative
+}
+
+#content_wraper:after {
+	content: '';
+	display: table;
+	clear: both
+	
+}
+
+.section_search {
+	position: relative;
+	width: 100%
+}
+
+.section_search span {
+	vertical-align: middle
+}
+
+.recomm_wrap h2 {
+	font-family: "NanumBarunGothicBold";
+	vertical-align: top;
+	margin-bottom: 7px;
+	font-size: 12px;
+	display: none;
+}
+
+.recomm_wrap {
+	overflow: hidden;
+	position: relative;
+	padding: 18px 20px 18px;
+	max-height: 162px;
+	width: 100%;
+	background-color: #704de4;
+	-webkit-transform: translate3d(0, 0, 0);
+	-webkit-transform: translateZ(0);
+	will-change: transform;
+	color: #fff
+}
+.pc .recomm_wrap {
+	padding: 0
+}
+
+.recomm_wrap .recomm_list {
+	margin-left: -3px;
+	overflow: hidden;
+	max-height: 99px
+}
+.pc .recomm_wrap .recomm_list {
+	width: 728px;
+	height: 70px;
+	margin: 0 auto;
+	color: #fff;
+	font-size: 0;
+	text-align: center
+}
+
+@media ( min-width :1258px) {
+	.pc .recomm_wrap .recomm_list {
+/* 		width: 1158px */
+	}
+}
+
+.recomm_wrap .recomm_list .recomm_item {
+	display: inline-block;
+	height: 27px;
+	line-height: 28px;
+	border: 1px solid #997aff;
+	margin: 3px 2px;
+	font-size: 13px
+}
+
+.pc .recomm_wrap .recomm_list .recomm_item {
+	position: relative;
+	height: 70px;
+	margin: 0;
+	border: 0;
+	font-size: 16px;
+	line-height: 18px
+}
+
+.pc .recomm_wrap .recomm_list .recomm_item:first-child {
+	margin-left: 0
+}
+
+.recomm_wrap .recomm_list a {
+	display: inline-block;
+	padding: 0 9px;
+	color: #fff;
+	vertical-align: middle
+}
+
+.pc .recomm_wrap .recomm_list a {
+	padding: 27px 20px 25px;
+	font-family: "NanumBarunGothicBold", sans-serif;
+	font-size: 16px
+}
+
+.pc .recomm_wrap .recomm_list a:before {
+	content: '#'
+}
+
+.pc .recomm_wrap .recomm_list a:hover {
+	color: #ffd014;
+	text-decoration: underline
+}
