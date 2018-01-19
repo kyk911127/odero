@@ -56,10 +56,11 @@
    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog modal-lg bora">
          <div class="modal-content mo_content">
-            <button type="button" class="close" data-dismiss="modal"><img src="p_image/closebtn.png"></button>
-            <div id="modal-body modal-dimg">
-               <div class="fotorama" data-width="800" data-maxwidth="100%" data-ratio="16/9" data-allowfullscreen="true"
-     				data-nav="thumbs" data-thumbmargin="20px 0" data-thumbfit="cover" style="margin:30px auto; width: 800px; height: 600px">
+          <!--   <button type="button" class="close" data-dismiss="modal"><img src="p_image/closebtn.png"></button> -->
+          	<span class="close" onclick="document.getElementById('myModal').style.display='none'">&times;</span>
+            <div id="modal-body modal-dimg">	<!--  data-thumbmargin="20px 0"  -->
+               <div class="fotorama fo" data-width="800" data-maxwidth="100%" data-ratio="16/9" data-allowfullscreen="true"
+     				data-nav="thumbs" data-thumbfit="cover">
                   <c:forEach var="i" begin="1" end="3">
                      <img id="img01" src="p_image/top.jpg"> 
                      <img id="img01" src="p_image/top1.jpg"> 
@@ -89,10 +90,17 @@
       <div class="row row_info">
          <h3>엉망징창키친 홍대점</h3>
          <div style="padding: 15px; border-bottom: 1px solid #dbdbdb;">
-            <span>
-               <img src="p_image/different.png" style="width: 20px">&nbsp;&nbsp; 이색/체험
+         	<!-- <span class="glyphicon glyphicon-tent" aria-hidden="true"></span> 이색/체험 -->
+            <span class="cate_span">
+               <img class="cate_icon" src="p_image/tent.png">&nbsp; 이색/체험
             </span>
-            <table>
+             <span class="cate_span">
+               <img class="cate_icon" src="p_image/restaurant.png">&nbsp; 맛집
+            </span>
+             <span class="cate_span">
+               <img class="cate_icon" src="p_image/coffee.png">&nbsp; 까페
+            </span>
+            <table style="margin: 20px 0;">
                <tr>
                   <td width="20%">주소</td>
                   <td>서울특별시 마포구 서교동 358-113 5층 노란색문</td>
@@ -109,7 +117,7 @@
                   <td width="20%">키워드</td>
                   <td>
                      <ul class="tags">
-                        <li class="li_1" style="padding:5px 0;">
+                        <li class="li_1">
                            <div class="tag_1">기분내기</div>
                            <div class="tag_1">고백하기좋은</div>
                            <div class="tag_1">기념일</div>

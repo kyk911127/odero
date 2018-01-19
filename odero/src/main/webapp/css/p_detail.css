@@ -20,11 +20,11 @@ td {
 
 ul, li {
    list-style: none;
-/*    padding: 5px 0; */
 }
 
 .li_1, .li_2 {
    margin-bottom: 5px;
+   padding: 5px 0;
 }
 
 .tag_1, .tag_2 {
@@ -67,17 +67,18 @@ ul, li {
    line-height: 40px; 
    color: #fff
 }
+
 /* 모달  */
-.bora{
+.bora {
 	left: 25%;
 	margin: 0;
 }
 
 .mo_content {
-   width: 950px;
+   width: 1000px;
    height: 700px;
    top: 100px;
-   padding: 30px 10px;
+   padding: 55px 10px 30px 10px;
    background-color: rgba(10, 10, 10, 0.9);
 }
 
@@ -85,14 +86,27 @@ ul, li {
    position: absolute;
    right: 20px;
    top: 20px;
+   font-size: 30px;
+   color: #ffffff;
 }
 
 .close:hover, .close:focus {
    color: #fff;
    cursor: pointer
 }
-#img01{
-	pading:2px;
+
+.modal-content {    
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+/* 포토라마 */
+.fo {
+	margin: 30px auto; 
+	width: 800px; 
+	height: 600px
 }
 
 /* 리뷰  */
@@ -115,4 +129,12 @@ ul, li {
 .im {
    height: 100%;
    border-radius: 30px;
+}
+
+.cate_span {
+	margin-right: 15px;	
+}
+
+.cate_icon {
+	width: 24px;
 }
