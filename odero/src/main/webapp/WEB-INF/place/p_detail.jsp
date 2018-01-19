@@ -115,7 +115,7 @@
                </tr>
                <tr>
                   <td width="20%">키워드</td>
-                  <td>
+                  <td> 
                      <ul class="tags">
                         <li class="li_1">
                            <div class="tag_1">기분내기</div>
