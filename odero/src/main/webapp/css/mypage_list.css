@@ -105,7 +105,11 @@ hr.soften {
 .table_img {
 	height:300px;
 	margin:0 10px 0 20px;
-	
+}
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {
+    padding: 3px;
+    line-height: 1.42857143;
+    vertical-align: top;
 }
 @media screen and (min-width: 480px) {
    .table_img {
