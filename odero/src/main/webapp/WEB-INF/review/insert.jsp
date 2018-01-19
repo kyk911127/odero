@@ -73,7 +73,7 @@ $(function(){
 <div class="container" style="margin-top: 50px">
 	<div class="row">
 		<center><h3><b>후기 작성</b></h3><br></center>
-		
+		<form action="insert_ok.do" method="post">
 		<table class="table table-hover" style="width: 70%; margin: 0px auto;" >
 			<tr>
 				<td width="20%" class="text-center">제목</td>
@@ -109,6 +109,24 @@ $(function(){
 				</td>
 			</tr>
 			<tr>
+				<td colspan="2">
+					<div class="map_wrap">
+						<div id="map" style="width:100%;height:100%;"></div>
+						<div id="menu_wrap" class="bg_white">
+       						<div class="option">
+           						<div>
+                					키워드 : <input type="text" id="keyword" size="15" value="상호명 입력"> 
+                    				<input type="button" value="검색" id="mapsearch" onclick="searchPlaces(); return false;"> 
+								</div>
+        					</div>
+        					<hr>
+					        <ul id="placesList"></ul>
+					        <div id="pagination"></div>
+    					</div>
+					</div>
+				</td>
+			</tr>
+			<tr>
 				<td colspan="2" class="text-center">
 				</td>
 			</tr>
@@ -124,26 +142,8 @@ $(function(){
 				</td>
 			</tr>
 		 </table>
+		 </form>
 	</div>
-		
-
-
-<div class="map_wrap">
-<div id="map" style="width:100%;height:100%;"></div>
-<div id="menu_wrap" class="bg_white">
-        <div class="option">
-            <div>
-                <form onsubmit="searchPlaces(); return false;">
-                    키워드 : <input type="text" id="keyword" size="15" placeholder="상호명 입력"> 
-                    <button type="submit">검색하기</button> 
-                </form>
-            </div>
-        </div>
-        <hr>
-        <ul id="placesList"></ul>
-        <div id="pagination"></div>
-    </div>
-</div>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=641146c1d3ef1301e2a1f709fdc1b146&libraries=services"></script>
 <script>
 //마커를 담을 배열입니다
@@ -170,11 +170,14 @@ searchPlaces();
 // 키워드 검색을 요청하는 함수입니다
 function searchPlaces() {
 
-    var keyword = document.getElementById('keyword').value;
+    var keyword = $('#keyword').val();
 
     if (!keyword.replace(/^\s+|\s+$/g, '')) {
         alert('키워드를 입력해주세요!');
         return false;
+    } 
+    if (keyword=="상호명 입력"){
+    	return false;
     }
 
     // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
@@ -184,7 +187,6 @@ function searchPlaces() {
 // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
 function placesSearchCB(data, status, pagination) {
     if (status === daum.maps.services.Status.OK) {
-
         // 정상적으로 검색이 완료됐으면
         // 검색 목록과 마커를 표출합니다
         displayPlaces(data);
@@ -201,7 +203,6 @@ function placesSearchCB(data, status, pagination) {
 
         alert('검색 결과 중 오류가 발생했습니다.');
         return;
-
     }
 }
 
@@ -277,9 +278,8 @@ function getListItem(index, places) {
     } else {
         itemStr += '    <span>' +  places.address_name  + '</span>'; 
     }
-                 
-      itemStr += '  <span class="tel">' + places.phone  + '</span>' +
-                '</div>';           
+    	itemStr += '  <span class="tel">' + places.phone  + '</span>' +
+        '</div>';           
 
     el.innerHTML = itemStr;
     el.className = 'item';
