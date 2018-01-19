@@ -23,10 +23,7 @@ input.login_join{
 #join-content{
 	height: 500px;
 }
-#log_pwd{
-	font-family: '¸¼Àº °íµñ';
-}
-#join_pwd, #join_pwd2{
+#log_pwd, #join_pwd, #join_pwd2{
 	font-family: '¸¼Àº °íµñ';
 }
 </style>
@@ -63,7 +60,7 @@ $(function(){
 			<tr>
 				<td colspan="2" class="text-center">
 					<a class="btn btn-md btn-default" type="button" id="join" href="#joinModal" data-toggle="modal">JOIN</a>
-					<div class="modal fade" id="joinModal" tabindex="-1" role="dialog"
+<%-- 					<div class="modal fade" id="joinModal" tabindex="-1" role="dialog"
 						aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
 						<div class="modal-dialog" id="join-modal">
 							<div class="modal-content" id="join-content">
@@ -80,7 +77,7 @@ $(function(){
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> --%>
 					<input class="btn btn-md btn-default" type="submit" value="LOGIN">
 				</td>
 				

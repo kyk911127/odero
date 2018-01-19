@@ -8,7 +8,7 @@
 <script type="text/javascript">
 
 $('#loginModal').on('shown.bs.modal', function () {
-	  $('#myInput').trigger('focus')
+	  $('#loginModal').trigger('focus')
 });
 </script>
 </head>
@@ -27,8 +27,8 @@ $('#loginModal').on('shown.bs.modal', function () {
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav mynav">
 				<li class="nav_main"><strong><a href="course_search.do">데이트코스</a></strong></li>
-				<li class="nav_main"><strong><a href="#">맛집</a></strong></li>
-				<li class="nav_main"><strong><a href="#">놀거리</a></strong></li>
+				<li class="nav_main"><strong><a href="p_list.do">맛집</a></strong></li>
+				<li class="nav_main"><strong><a href="p_detail.do">놀거리</a></strong></li>
 				<li class="nav_main"><strong><a href="#">자유게시판</a></strong></li>
 				<li class="nav_main"><strong><a href="review_list.do">후기게시판</a></strong></li>
 			</ul>
@@ -37,7 +37,7 @@ $('#loginModal').on('shown.bs.modal', function () {
 						href="#loginModal" data-toggle="modal">로그인</a></strong></li>
 				<li class="nav_main"><strong><a href="mypage.do">마이페이지</a></strong></li>
 			</ul>
-			<div class="modal fade" id="loginModal" tabindex="-1" role="dialog"
+<%-- 			<div class="modal fade" id="loginModal" tabindex="-1" role="dialog"
 				aria-labelledby="myModalLabel" aria-hidden="true"
 				data-keyboard="false" data-backdrop="static">
 				<div class="modal-dialog" id="login-modal">
@@ -53,6 +53,23 @@ $('#loginModal').on('shown.bs.modal', function () {
 						<div class="modal-body">
 							<jsp:include page="../member/login.jsp" />
 						</div>
+					</div>
+				</div>
+			</div> --%>
+			<div class="modal fade" id="loginModal" tabindex="-1"
+				role="dialog" aria-labelledby="exampleModalCenterTitle"
+				aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLongTitle">Modal
+								title</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">...</div>
 					</div>
 				</div>
 			</div>

@@ -5,9 +5,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class PlaceController {
-	@RequestMapping("place.do")
+	@RequestMapping("p_list.do")
 	public String place_page() {
-		return "place/place";
+		return "place/p_list";
 	}
 	
 	@RequestMapping("p_detail.do")
