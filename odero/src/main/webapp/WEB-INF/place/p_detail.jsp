@@ -142,7 +142,7 @@ $(function(){
                </tr>
             </table>
          </div>
-      </div>
+      </div> 
 
       <div class="row row_map">
          <h3>Áöµµ</h3>
