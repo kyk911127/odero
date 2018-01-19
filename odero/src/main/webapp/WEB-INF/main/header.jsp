@@ -5,6 +5,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
+<script type="text/javascript">
+
+$('#loginModal').on('shown.bs.modal', function () {
+	  $('#myInput').trigger('focus')
+});
+</script>
 </head>
 <body>
 	<div class="container-fluid" id="navbar-main">

@@ -171,9 +171,7 @@ password{
    }
 }
 </style>
-<script type="text/javascript">
-$.noConflict();
-</script>
+
 </head>
 <body>
    <div class="main_wrap">

@@ -354,6 +354,7 @@ div.snip1200:hover p, div.snip1200.hover p {
 	$(".hover").mouseleave(function() {
 		$(this).removeClass("hover");
 	});
+
 </script>
 </head>
 <body>
