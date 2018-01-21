@@ -28,6 +28,7 @@
 
 .tag-title {
 	margin-top: 8px;
+	float:left;
 }
 	.date { 
 		position:relative; /*감싸는 레이어에 포지션 속성을 잡아주는 게 필수!(relative, absolute, fixed 중 택1*/ 
@@ -157,8 +158,8 @@
 	color:#2E2E2E;; height:30px; font-weight: bold;
 }
 
-table{
-	border:1px solid black;
+.rc_detail{
+	font-size:5px;
 }
 
 </style>
@@ -202,7 +203,7 @@ table{
 									<table class="tmap_wrap">
 										<tr>
 											<td>
-												<img src="img_1/play.png" style="float:left;margin:5px;"><h4 style="margin:5px;">&nbsp;가게 이름</h4>
+												<img src="img_1/play.png" style="float:left; margin:5px;"><h4>&nbsp;가게 이름</h4>
 											</td>
 										</tr>
 										<tr>
@@ -278,7 +279,7 @@ table{
 									<table class="tmap_wrap">
 										<tr>
 											<td>
-												<img src="img_1/play.png" style="float:left;margin:5px;"><h4 style="margin:5px;">&nbsp;가게 이름</h4>
+												<img src="img_1/play.png" style="float:left;margin:5px;"><h4 style="margin:5px;">가게 이름</h4>
 											</td>
 										</tr>
 										<tr>
@@ -349,9 +350,8 @@ table{
 		<div class="rc_box">
 		<!--맛집 리스트  -->
         <div class="row">
-           	<div class="title"> 
-           		<h4 style="margin:0px; float:left"><b>▶ 추천</b></h4>
-           		<h4 style="margin:0px; color:#DF0101;"><b>맛집</b></h4>
+           	<div style="width:100%; height:25px;"	> 
+           		<h4 style="margin:0px; float:left"><b>▶ 추천</b><b style="color:#DF0101;">맛집</b></h4>
            	</div>
            	<c:forEach begin="1" end="3">
 	     	   <div class="col-md-4 text-center">
@@ -360,35 +360,37 @@ table{
 	               	<!--맛집 이름  -->
 	               		<a href="#" style="color: black; text-decoration:none;">
 			                <h4><span class="glyphicon glyphicon-cutlery" style="float:left; margin:2%"></span></h4>
-			                <h4 class="tag-title text-left" style="float:left;">가게이름</h4><br>
+			                <h4 class="tag-title text-left">가게이름</h4><br>
 		                </a>
 	                    <hr style="margin:2%;">
 	                <!-- 맛집 이미지 -->
 	                	<div class=rc_img>
 		                    <img src="img_1/food3.jpg" style="width:100%; height:250px;">
 		                    <br>
-		                    <hr style="margin:2%;">
+		                    <hr style="margin:3px;">
 		                </div>
 		            <!-- 맛집정보 -->
 		                <div class="rc_detail">
-		                	<table class="" width=100%>
+		                	<table width=100%>
 		                		<tr>
 		                			<td class="text-left">
-		                				<span class="glyphicon glyphicon-map-marker"><b>&nbsp;지역구</b></span>
+		                				<h5><span class="glyphicon glyphicon-map-marker"><b> 지역구</b></span></h5>
 		                			</td>
 		                		</tr>
 		                		<tr>
 		                			<td class="text-left">
-		                				<span class="glyphicon glyphicon-usd"><b> 가격</b></span>
+		                				<h5><span class="glyphicon glyphicon-usd"><b> 가격</b></span></h5>
 		                			</td>
 		                		</tr><tr>
 		                			<td class="text-left">
-		                				<span class="glyphicon glyphicon-time"><b> 평일 11:00~20:00</b></span>
+		                				<h5><span class="glyphicon glyphicon-time"><b> 평일 11:00~20:00</b></span></h5>
 		                			</td>
 		                		</tr><tr>
 		                			<td class="text-right">
-		                				<span class="glyphicon glyphicon-eye-open" style="margin:5px;"></span>88<!--조회수  -->
-										<span class="glyphicon glyphicon-heart" style="margin:5px;"></span>4<!--찜 수   -->
+		                				<h5>
+				                			<span class="glyphicon glyphicon-eye-open" style="margin:2px;">88</span><!--조회수  -->
+				                			<span class="glyphicon glyphicon-heart" style="margin:2px;">4</span><!--찜 수   -->
+				                		</h5>
 		                			</td>
 		                		</tr>
 		                	</table>
@@ -397,13 +399,15 @@ table{
 	           	   </div>
 	           </div>
             </c:forEach>
-        </div> 
+            </div>
+            
+        
+       
         
         <!--놀거리 리스트  -->
             <div class="row">
-            	<div class="title"> 
-            		<h4 style="margin:0px; float:left"><b>▶ 추천</b></h4>
-           		<h4 style="margin:0px; color:#DF0101;"><b>놀거리</b></h4>
+            	<div style="width:100%; height:25px;"> 
+            		<h4 style="margin:0px; float:left"><b>▶ 추천</b><b style="color:#DF0101;">놀거리</b></h4>
             	</div>
             	<c:forEach begin="1" end="3">
 	                <div class="col-md-4 text-center">
@@ -411,32 +415,34 @@ table{
 	                        <div class="box-content">
 		                        <a href="#" style="color: black; text-decoration:none;">
 			                		<h4><span class="glyphicon glyphicon-map-marker" style="float:left; margin:2%"></span></h4>
-			                		<h4 class="tag-title text-left" style="float:left;">가게이름</h4><br>
+			                		<h4 class="tag-title text-left">가게이름</h4><br>
 		                		</a>
 	                            <hr style="margin:2%;">
 	                            <img src="img_1/play1.jpg" style="width:100%; height:250px;">
 	                            <br>
-	                            <hr style="margin:2%;">
+	                            <hr style="margin:3px;">
 		            <!-- 가게정보 -->
 		                <div class="rc_detail">
 		                	<table class="" width=100%>
 		                		<tr>
 		                			<td class="text-left">
-		                				<span class="glyphicon glyphicon-map-marker"><b>&nbsp;지역구</b></span>
+		                				<h5><span class="glyphicon glyphicon-map-marker"><b> 지역구</b></span></h5>
 		                			</td>
 		                		</tr>
 		                		<tr>
 		                			<td class="text-left">
-		                				<span class="glyphicon glyphicon-usd"><b> 가격</b></span>
+		                				<h5><span class="glyphicon glyphicon-usd"><b> 가격</b></span></h5>
 		                			</td>
 		                		</tr><tr>
 		                			<td class="text-left">
-		                				<span class="glyphicon glyphicon-time"><b> 평일 11:00~20:00</b></span>
+		                				<h5><span class="glyphicon glyphicon-time"><b> 평일 11:00~20:00</b></span></h5>
 		                			</td>
 		                		</tr><tr>
 		                			<td class="text-right">
-		                				<span class="glyphicon glyphicon-eye-open" style="margin:5px;"></span>88
-										<span class="glyphicon glyphicon-heart" style="margin:5px;"></span>4
+		                				<h5>
+				                			<span class="glyphicon glyphicon-eye-open" style="margin:2px;">88</span><!--조회수  -->
+				                			<span class="glyphicon glyphicon-heart" style="margin:2px;">4</span><!--찜 수   -->
+				                		</h5>
 		                			</td>
 		                		</tr>
 		                	</table>
@@ -450,9 +456,8 @@ table{
             
             <!-- 카페 리스트 -->
             <div class="row">
-            	<div class="title"> 
-            		<h4 style="margin:0px; float:left"><b>▶ 추천</b></h4>
-           		<h4 style="margin:0px; color:#DF0101;"><b>카페</b></h4>
+            	<div style="width:100%; height:25px;">
+            		<h4 style="margin:0px; float:left"><b>▶ 추천</b><b style="color:#DF0101;">카페</b></h4>
             	</div>
             	<c:forEach begin="1" end="3">
 	                <div class="col-md-4 text-center">
@@ -460,43 +465,44 @@ table{
 	                        <div class="box-content">
 		                        <a href="#" style="color: black; text-decoration:none;">
 			                		<h4><span class="glyphicon glyphicon-glass" style="float:left; margin:2%"></span></h4>
-			                		<h4 class="tag-title text-left" style="float:left;">가게이름</h4><br>
+			                		<h4 class="tag-title text-left">가게이름</h4><br>
 		                		</a>
 	                            <hr style="margin:2%;">
 	                            <img src="img_1/cafe1.png" style="width:100%; height:250px;">
-	                            <br><br>
-	                            <hr style="margin:2%;">
+	                            <br>
+	                            <hr style="margin:3px;">
 		            <!-- 가게정보 -->
-		                <div class="rc_detail">
-		                	<table class="" width=100%>
-		                		<tr>
-		                			<td class="text-left">
-		                				<span class="glyphicon glyphicon-map-marker"><b>&nbsp;지역구</b></span>
-		                			</td>
-		                		</tr>
-		                		<tr>
-		                			<td class="text-left">
-		                				<span class="glyphicon glyphicon-usd"><b> 가격</b></span>
-		                			</td>
-		                		</tr><tr>
-		                			<td class="text-left">
-		                				<span class="glyphicon glyphicon-time"><b> 평일 11:00~20:00</b></span>
-		                			</td>
-		                		</tr><tr>
-		                			<td class="text-right">
-		                				<span class="glyphicon glyphicon-eye-open" style="margin:5px;"></span>88
-										<span class="glyphicon glyphicon-heart" style="margin:5px;"></span>4
-		                			</td>
-		                		</tr>
-		                	</table>
-						</div>
+				                <div class="rc_detail">
+				                	<table width=100%>
+				                		<tr>
+				                			<td class="text-left">
+				                				<h5><span class="glyphicon glyphicon-map-marker"><b> 지역구</b></span></h5>
+				                			</td>
+				                		</tr>
+				                		<tr>
+				                			<td class="text-left">
+				                				<h5><span class="glyphicon glyphicon-usd"><b> 가격</b></span></h5>
+				                			</td>
+				                		</tr><tr>
+				                			<td class="text-left">
+				                				<h5><span class="glyphicon glyphicon-time"><b> 평일 11:00~20:00</b></span></h5>
+				                			</td>
+				                		</tr><tr>
+				                			<td class="text-right">
+				                				<h5>
+				                					<span class="glyphicon glyphicon-eye-open" style="margin:2px;">88</span><!--조회수  -->
+				                					<span class="glyphicon glyphicon-heart" style="margin:2px;">4</span><!--찜 수   -->
+				                				</h5>
+				                			</td>
+				                		</tr>
+				                	</table>
+								</div>
 	                        </div>
 	                    </div>
 	                </div>
                 </c:forEach>
             </div> 
           </div>
-	</div>
 </div>
 	
 </body>
