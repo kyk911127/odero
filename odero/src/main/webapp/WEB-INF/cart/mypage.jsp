@@ -163,7 +163,7 @@ $(document).ready(function(){
 	<div class="tab_wrap">
 	
 
-	<span class="tab">내 정보</span>
+	<!-- <span class="tab">내 정보</span> -->
 	<a href="mypage_list.do"><span class="tab">찜 리스트</span></a>
 	</div>
 		
@@ -179,9 +179,9 @@ $(document).ready(function(){
           <table class="table table-hover" id="table_content" width=600>
  			<tr>
  				<th width="5%">번호</th>
- 				<th width="40%" class="text-center">가게이름</th>
+ 				<th width="30%" class="text-center">가게이름</th>
  				<th width="40%" class="text-center">가게경로</th>
- 				<th width="5%">추천</th>
+ 				<th width="15%">추천</th>
  				<th width="5%">자세히</th>
  				<th width="5%">삭제</th>
  			</tr>
@@ -189,9 +189,9 @@ $(document).ready(function(){
  			<c:forEach var="i" begin="1" end="5">
  			<tr>
  				<td width="5%">${i}</td>
- 				<td width="40%" class="text-center">$코스이름</td>
+ 				<td width="30%" class="text-center">$코스이름</td>
  				<td width="40%" class="text-center">$코스경로</td>
- 				<td width="5%">$추천</td>
+ 				<td width="15%">$추천</td>
  				<td width="5%"><button class="btn btn-info btn-xs">보기</button></td>
  				<td width="5%"><button class="btn btn-danger btn-xs">삭제</button></td>
  			</tr>
@@ -223,18 +223,18 @@ $(document).ready(function(){
           <table class="table table-hover" id="table_content" width=600>
  			<tr>
  				<th width="5%">번호</th>
- 				<th width="40%" class="text-center">코스이름</th>
+ 				<th width="30%" class="text-center">코스이름</th>
  				<th width="40%" class="text-center">코스경로</th>
- 				<th width="5%">추천</th>
+ 				<th width="15%">추천</th>
  				<th width="5%">자세히</th>
  				<th width="5%">삭제</th>
  			</tr>
  			  <c:forEach var="i" begin="1" end="5">
  			<tr>
  				<td width="5%">${i}</td>
- 				<td width="40%" class="text-center">$코스이름</td>
+ 				<td width="30%" class="text-center">$코스이름</td>
  				<td width="40%" class="text-center">$코스경로</td>
- 				<td width="5%">$추천</td>
+ 				<td width="15%">$추천</td>
  				<td width="5%"><button class="btn btn-info btn-xs">보기</button></td>
  				<td width="5%"><button class="btn btn-danger btn-xs">삭제</button></td>
  			</tr>
