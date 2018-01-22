@@ -207,6 +207,7 @@ password {
 }
 
 .best_wrap {
+	background-color: white;
    width: 48%;
    float: left;
    margin-bottom: 150px;

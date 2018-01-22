@@ -54,13 +54,13 @@
       <!-- BEST ¸ÀÁý/³î°Å¸® -->
       <div class="best_wrap" id="best_food">
          <h1>BEST ¸ÀÁý</h1>
-         <c:forEach var="i" begin="1" end="3">
+         <c:forEach var="fvo" items="${flist }">
             <div class="food_place snip1200">
-               <img src="image/food${i }.jpg">
+               <img src="${fvo.p_img }">
                <figcaption>
-    			<p>¼­¿ï½Ã ¸¶Æ÷±¸ µ¿µ¿µ¿</p>
+    			<p>${fvo.p_addr }</p>
     			<div class="heading">
-      			<h2>¸ÀÁý${i }</h2>
+      			<h2>${fvo.p_name }</h2>
     			</div>
   				</figcaption>
   				<a href="#"></a>
