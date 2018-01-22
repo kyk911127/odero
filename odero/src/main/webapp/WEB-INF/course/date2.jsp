@@ -196,14 +196,15 @@
 								<td class="tmap_td_b"></td>
 							</tr>
 						</table>
+						</center>
 						<table width="95%" height="100px">
 							<tr>
 						<!--1번  -->
 								<td width="24%">
 									<table class="tmap_wrap">
 										<tr>
-											<td>
-												<img src="img_1/play.png" style="float:left; margin:5px;"><h4>&nbsp;가게 이름</h4>
+											<td style="padding:3%;">
+												<scan class="glyphicon glyphicon-home">가게이름
 											</td>
 										</tr>
 										<tr>
@@ -240,8 +241,8 @@
 								<td width="24%">
 									<table class="tmap_wrap">
 										<tr>
-											<td>
-												<img src="img_1/play.png" style="float:left;margin:5px;"><h4 style="margin:5px;">&nbsp;가게 이름</h4>
+											<td style="padding:3%;">
+												<scan class="glyphicon glyphicon-home">가게이름
 											</td>
 										</tr>
 										<tr>
@@ -257,7 +258,7 @@
 										</tr>
 									</table>
 								</td>
-								<td width="13%" style="">
+								<td width="13%">
 									<center>
 									<span class="glyphicon glyphicon-chevron-right"></span><!-- 이동거리 화살표 -->
 										<table style="float:left; margin:3%;">
@@ -278,8 +279,8 @@
 								<td width="24%">
 									<table class="tmap_wrap">
 										<tr>
-											<td>
-												<img src="img_1/play.png" style="float:left;margin:5px;"><h4 style="margin:5px;">가게 이름</h4>
+											<td style="padding:3%;">
+												<scan class="glyphicon glyphicon-home">가게이름
 											</td>
 										</tr>
 										<tr>
@@ -309,7 +310,7 @@
 						</table>
 					</center>
 				</div>	
-				</center>
+				
 			</div>
 			<div style="width:63%; margin:0px auto;">
 				<hr>
