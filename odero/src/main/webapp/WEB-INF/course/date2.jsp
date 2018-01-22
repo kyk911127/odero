@@ -204,7 +204,7 @@
 									<table class="tmap_wrap">
 										<tr>
 											<td style="padding:3%;">
-												<scan class="glyphicon glyphicon-home">가게이름
+												<h4 style="float:left;"><scan class="glyphicon glyphicon-home" style="margin-right:10px;">가게이름</h4>
 											</td>
 										</tr>
 										<tr>
@@ -222,17 +222,20 @@
 								</td>
 								<td width="13%">
 									<center>
-									<span class="glyphicon glyphicon-chevron-right"></span>
+									<!-- <span class="glyphicon glyphicon-chevron-right"></span> -->
 										<table style="float:left; margin:3%;">
 											<tr>
 												<td class="tmap_res">
 													<span>이동 거리 </span><span>100m</span>
 												</td>
+												<td rowspan="2"><span class="glyphicon glyphicon-chevron-right"></span></td>
 											</tr>
 											<tr>
+											
 												<td class="tmap_res">
 													<span>이동 시간 </span><span>3분</span>
 												</td>
+												
 											</tr>
 										</table>
 									</center>
@@ -242,7 +245,7 @@
 									<table class="tmap_wrap">
 										<tr>
 											<td style="padding:3%;">
-												<scan class="glyphicon glyphicon-home">가게이름
+												<h4 style="float:left;"><scan class="glyphicon glyphicon-home" style="margin-right:10px;">가게이름</h4>
 											</td>
 										</tr>
 										<tr>
@@ -260,11 +263,14 @@
 								</td>
 								<td width="13%">
 									<center>
-									<span class="glyphicon glyphicon-chevron-right"></span><!-- 이동거리 화살표 -->
+									
 										<table style="float:left; margin:3%;">
 											<tr>
 												<td class="tmap_res">
-													<span style="">이동 거리 </span><span>100m</span>
+													<span>이동 거리 </span><span>100m</span>
+												</td>
+												<td rowspan="2">
+													<span class="glyphicon glyphicon-chevron-right"></span><!-- 이동거리 화살표 -->
 												</td>
 											</tr>
 											<tr>
@@ -280,7 +286,7 @@
 									<table class="tmap_wrap">
 										<tr>
 											<td style="padding:3%;">
-												<scan class="glyphicon glyphicon-home">가게이름
+												<h4 style="float:left;"><scan class="glyphicon glyphicon-home" style="margin-right:10px;">가게이름</h4>
 											</td>
 										</tr>
 										<tr>
