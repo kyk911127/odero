@@ -8,4 +8,5 @@ public interface MainMapper {
 			+ "FROM place "
 			+ "WHERE p_grade='f' ")
 	public PlaceVO best_food();*/
+	
 }
