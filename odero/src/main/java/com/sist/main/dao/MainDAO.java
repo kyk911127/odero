@@ -13,4 +13,7 @@ public class MainDAO {
 		
 		return mapper.best_food();
 	}
+	public List<PlaceVO> best_play(){
+		return mapper.best_play();
+	}
 }

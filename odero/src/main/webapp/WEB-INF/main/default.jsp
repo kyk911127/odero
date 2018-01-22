@@ -56,7 +56,7 @@
          <h1>BEST 맛집</h1>
          <c:forEach var="fvo" items="${flist }">
             <div class="food_place snip1200">
-               <img src="${fvo.p_img }">
+               <img src="${fvo.p_img }" width="100%" height="auto">
                <figcaption>
     			<p>${fvo.p_addr }</p>
     			<div class="heading">
@@ -70,13 +70,13 @@
       
       <div class="best_wrap" id="best_place">
          <h1>BEST 놀거리</h1>
-         <c:forEach var="i" begin="1" end="3">
+         <c:forEach var="pvo" items="${plist }">
             <div class="food_place snip1200">
-               <img src="image/place${i }.jpg">
+               <img src="${pvo.p_img }" width="100%" height="auto">
                <figcaption>
-    			<p>서울시 마포구 동동동</p>
+    			<p>${pvo.p_addr }</p>
     			<div class="heading">
-      			<h2>놀거리${i }</h2>
+      			<h2>${pvo.p_name }</h2>
     			</div>
   				</figcaption>
   				<a href="#"></a>

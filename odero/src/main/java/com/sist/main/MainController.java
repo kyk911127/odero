@@ -25,7 +25,20 @@ public class MainController {
 				vo.setP_img(arrImg[0]);
 			}
 		}
+		List<PlaceVO> plist = dao.best_play();
+		for(PlaceVO vo:plist){
+			String img = vo.getP_img();
+			
+			if(img.equals("-")){
+				vo.setP_img("image/no_img.png");
+			}else{
+				String[] arrImg = img.split(",");
+				vo.setP_img(arrImg[0]);
+			}
+		}
+		
 		model.addAttribute("flist", flist);
+		model.addAttribute("plist", plist);
 		return "main";
 	}
 }
