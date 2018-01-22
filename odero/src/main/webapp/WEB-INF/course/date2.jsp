@@ -204,7 +204,7 @@
 									<table class="tmap_wrap">
 										<tr>
 											<td style="padding:3%;">
-												<scan class="glyphicon glyphicon-home">가게이름
+												<h4 style="float:left;"><scan class="glyphicon glyphicon-home" style="margin-right:10px;">가게이름</h4>
 											</td>
 										</tr>
 										<tr>
@@ -245,7 +245,7 @@
 									<table class="tmap_wrap">
 										<tr>
 											<td style="padding:3%;">
-												<scan class="glyphicon glyphicon-home">가게이름
+												<h4 style="float:left;"><scan class="glyphicon glyphicon-home" style="margin-right:10px;">가게이름</h4>
 											</td>
 										</tr>
 										<tr>
@@ -286,7 +286,7 @@
 									<table class="tmap_wrap">
 										<tr>
 											<td style="padding:3%;">
-												<scan class="glyphicon glyphicon-home">가게이름
+												<h4 style="float:left;"><scan class="glyphicon glyphicon-home" style="margin-right:10px;">가게이름</h4>
 											</td>
 										</tr>
 										<tr>
