@@ -33,16 +33,16 @@
 	   } 
 } */
 $(function(){
-	$('.detail_img').find('.place_img').each(function(){     
-		
-		$('.place_img').click(function(){     
+	// alert("dd");
+	$('.place_img').click(function(){     
+		$('.place_img').each(function(){     
 			var pp =$(this).attr('src');
-			$('.fo').html("<img src='" + pp + "'>");   
-		});  
+			alert(pp);
+			$('.fo').append("<img src='" + pp + "'>");
+		});
+		return true;
 	}); 
-	
-	
-});   
+});  
 </script>
 </head>
 <body>
@@ -75,7 +75,7 @@ $(function(){
                <div class="fotorama fo" data-width="800" data-maxwidth="100%" data-ratio="16/9" data-allowfullscreen="true" data-nav="thumbs" data-thumbfit="cover">
      				<%-- <c:forEach var="i" items="${timg }">
                         <img src="${i }">
-                     </c:forEach>  --%>
+                     </c:forEach> --%>
                </div>
                
 <!--                <div class="fotorama" data-nav="thumbs">
@@ -140,13 +140,17 @@ $(function(){
                      </ul>
                   </td>
                </tr>
+				<tr>
+					<td width="20%">영업시간</td>
+					<td>매일 10:00 ~ 21:00</td>	
+				</tr>
             </table>
          </div>
       </div> 
 
       <div class="row row_map">
          <h3>지도</h3>
-         <div id="map" style="width:100%;height:400px;">
+         <div id="map" style="width:100%; height:450px;">
          <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=90ca2826f787f6d4fc01f89cb8bcdce3"></script>
 		 <script>
 			var container = document.getElementById('map');
