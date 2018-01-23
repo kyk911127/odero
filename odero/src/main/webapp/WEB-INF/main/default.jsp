@@ -72,7 +72,7 @@
          <h1>BEST ³î°Å¸®</h1>
          <c:forEach var="pvo" items="${plist }">
             <div class="food_place snip1200">
-               <img src="${pvo.p_img }" width="100%" height="auto">
+               <img src="image/no_img.png" width="100%" height="auto">
                <figcaption>
     			<p>${pvo.p_addr }</p>
     			<div class="heading">

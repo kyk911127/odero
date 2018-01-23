@@ -6,7 +6,9 @@
 	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:util="http://www.springframework.org/schema/util"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
@@ -15,15 +17,16 @@
 	<!-- db.properties파일 가져오기 -->
 	<util:properties id="db" location="/WEB-INF/config/db.properties"/>
 	<!-- DataSource -->
-	<bean id="ds" class="org.apache.commons.dbcp.BasicDataSource"
-		p:driverClassName="#{db[driver]}"
-		p:url="#{db[url]}"
-		p:username="#{db[username]}"
-		p:password="#{db[password]}"
-		p:maxActive="10"
-		p:maxIdle="10"
-		p:maxWait="-1"
-	/>
+    <bean id="ds"
+       class="org.apache.commons.dbcp.BasicDataSource"
+       p:driverClassName="#{db['driver']}"
+       p:url="#{db['url']}"
+       p:username="#{db['username']}"
+       p:password="#{db['password']}"
+       p:maxActive="10"
+       p:maxIdle="10"
+       p:maxWait="-1"
+    />
 	<!-- SqlSessionFactory -->	<!-- DB연결 getConnection, disConnection -->
 	<bean id="ssf" class="org.mybatis.spring.SqlSessionFactoryBean"
 		p:dataSource-ref="ds"
@@ -40,5 +43,9 @@
 	<bean id="cartMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"
 		p:sqlSessionFactory-ref="ssf"
 		p:mapperInterface="com.sist.cart.dao.CartMapper"
+	/>
+	<bean id="masterBoardMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"
+		p:sqlSessionFactory-ref="ssf"
+		p:mapperInterface="com.sist.masterBoard.dao.MasterBoardMapper"
 	/>
 </beans>

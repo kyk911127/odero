@@ -1,12 +1,25 @@
 package com.sist.cart;
+import java.util.List;
+import com.sist.cart.dao.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+
+
 @Controller
 public class CartController {
+	@Autowired
+	CartDAO dao;
 	@RequestMapping("mypage.do")
 	public String mypage(Model model) {
+<<<<<<< HEAD
 		
+=======
+		List<CartPlaceVO> list = dao.CartPlaceBest5();
+		model.addAttribute("list",list);
+>>>>>>> branch 'master' of https://github.com/kyk911127/odero
 		return "cart/mypage";
 	}
 	@RequestMapping("mypage_list.do")

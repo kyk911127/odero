@@ -1,0 +1,60 @@
+@CHARSET "EUC-KR";
+
+body, td, p, input, button, textarea, select {
+	font-family: µ¸¿ò;
+	font-size: 9pt;
+	color: #585858;
+	line-height: 130%;
+	margin-left: 0px;
+	margin-top: 0px;
+	box-sizing: content-box;
+}
+.table-th{
+	background-color: #e7ebf5;
+}
+table td a {
+	font-weight: 100;
+ 	
+ 	font-family: 'Jeju Gothic';
+	font-size: 15px;
+	color: #666666;
+	line-height: 20px;
+}
+.aa > td{
+	font-family: 'Jeju Gothic';
+	font-size: 15px;
+	color: #666666;
+	line-height: 20px;
+}
+
+body, textarea {
+	scrollbar-3dlight-color: #616161;
+	scrollbar-arrow-color: #ffffff;
+	scrollbar-base-color: #cfcfcf;
+	scrollbar-face-color: #cfcfcf;
+	scrollbar-highlight-color: #ffffff;
+	scrollbar-shadow-color: #595959;
+	scrollbar-darkshadow-color: #ffffff;
+}
+
+.row {
+	margin: 0 auto;
+	width: 750px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
