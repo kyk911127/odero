@@ -14,12 +14,9 @@ public class CartController {
 	CartDAO dao;
 	@RequestMapping("mypage.do")
 	public String mypage(Model model) {
-<<<<<<< HEAD
-		
-=======
+
 		List<CartPlaceVO> list = dao.CartPlaceBest5();
 		model.addAttribute("list",list);
->>>>>>> branch 'master' of https://github.com/kyk911127/odero
 		return "cart/mypage";
 	}
 	@RequestMapping("mypage_list.do")
