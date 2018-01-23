@@ -17,8 +17,8 @@ public class MyPageController {
 	@RequestMapping("mypage.do")
 	public String mypage(Model model) {
 
-		List<MyPagePlaceVO> list = dao.MyPlaceBest5();
-		model.addAttribute("list",list);
+	/*	List<MyPagePlaceVO> list = dao.MyPlaceBest5();
+		model.addAttribute("list",list);*/
 		return "cart/mypage";
 	}
 	@RequestMapping("mypage_list.do")

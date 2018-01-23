@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="css/cart_main.css" type="text/css">
 <link rel="stylesheet"
 	href="http://fonts.googleapis.com/earlyaccess/hanna.css">
-
+<link href="css/mypage.css" rel="stylesheet" type="text/css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!-- <script
@@ -19,81 +19,7 @@
 </script> 
 </head>
 <style>
-.pc {
-	
-}
 
-.container {
-	/* border-left: 1px solid gray;
-	border-right: 1px solid gray; */
-	padding-left: 5px;
-	height:100%
-}
-
-.header {
-	background-color: #DEEBF7;
-}
-
-.head {
-	padding-top: 5%; 
-}
-
-.section_cont {
-	background-color: #002060;
-}
-
-.recomm_wrap {
-	/* 	margin:10% 0 0 25%;
-	width:50%; */
-	margin-left: 17px;
-	background-color: #002060;
-}
-
-.head_wrap {
-	
-}
-
-._innerLink:hover {
-	text-decoration: none;
-}
-
-.btn_reserv_confirm {
-	background-color: #002060;
-}
-.btn_store {
-	background-color: #F3ABBA !important;
-}
-* {
-	margin: 0;
-	padding: 0;
-}
-
-html, body {
-	height: 100%;
-	width: 100%;
-}
-
-#_container { /*display:table;*/
-	
-}
-
-._layer {
-	top: 0;
-	left: 0;
-}
-
-._layerItem {
-	display: none;
-	position: fixed;
-	z-index: 9999;
-}
-
-._page {
-	width: 100%;
-	height: 100%;
-	float: left;
-	position: relative;
-}
 </style>
 <body>
 <body class="pc">
@@ -113,11 +39,21 @@ html, body {
 
 						<div id="content_wraper">
 							<section class="section_search">
-								<div class="head"></div>
 								<!-- <div class="head_wrap">
 			<h2><strong>헤드 스판</strong>들어가는부분</h2>
 		</div>  -->
-								<div class="recomm_wrap">
+		
+		
+	<div class="tab_wrap">
+	<a href="mypage.do"><span class="tab">마이페이지</span></a>
+	<!-- <a href="javascript:history.back()"><span class="tab">뒤로</span> -->
+	&nbsp;
+	|
+	&nbsp;
+	<a href="mypage.do"><span class="tab">코스 찜</span></a>
+	<a href="mypage.do"><span class="tab">가게 찜</span></a>
+	</div>
+							<!-- 	<div class="recomm_wrap">
 									<h2>추천 키워드</h2>
 									<ul class="recomm_list">
 										<li class="recomm_item"><a href="javascript:void(0);">태그1</a></li>
@@ -127,7 +63,7 @@ html, body {
 										<li class="recomm_item"><a href="javascript:void(0);">태그5</a></li>
 
 									</ul>
-								</div>
+								</div> -->
 							</section>
 							<section class="section_cont">
 								<div class="space_list_wrap">

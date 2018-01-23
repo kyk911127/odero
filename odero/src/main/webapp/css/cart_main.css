@@ -10363,7 +10363,6 @@ keyframes reset { 0%{
 .section_cont {
 	position: relative;
 	background: #f6f6f6;
-	padding-bottom: 45px
 }
 
 .section_cont .h_area {
@@ -15945,14 +15944,10 @@ keyframes reset { 0%{
 .main .section_cont {
 	position: relative;
 	width: 100%;
-	padding-bottom: 40px;
 	margin: 0;
 	background: #f6f6f6
 }
 
-.pc .main .section_cont {
-	padding-bottom: 100px
-}
 
 .main .section_cont .space_list {
 	padding: 0 17px 52px
@@ -22723,9 +22718,7 @@ opacity
 	right: -20px
 }
 
-.pc .section_cont {
-	padding-bottom: 100px
-}
+
 
 .pc .section_cont .h_area {
 	padding: 0

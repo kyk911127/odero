@@ -12,27 +12,8 @@
 <link rel="stylesheet" href="http://fonts.googleapis.com/earlyaccess/hanna.css">
 <link rel="stylesheet" href="https://cdn.rawgit.com/openhiun/hangul/14c0f6faa2941116bb53001d6a7dcd5e82300c3f/nanumbarungothic.css">
 
-<link href="css/mypage_list.css" rel="stylesheet" type="text/css">
+<link href="css/mypage.css" rel="stylesheet" type="text/css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<style type="text/css">
-
-
-</style>
-
-<!-- <script>
-$(document).ready(function(){
-	$(".cart_div").click(function(){
-    	/* $(".map_div").show(200,'swing'); */
-		$(".map_div").slideDown(200);
-	});
-	$(".map_div").click(function(){
-    	/* $(".map_div").hide(200); */
-		$(".map_div").slideUp(200);
-	});
-}); 
-
-
-</script> -->
 
 
 </head>
@@ -44,7 +25,6 @@ $(document).ready(function(){
 	<span class="tab">찜 삭제</span>
 	|
 	<span class="tab">목록</span>
-	<span class="tab">메인</span>
 	</div>
 		
 	
@@ -54,7 +34,7 @@ $(document).ready(function(){
 	<div class="cart_wrap">
 	<hr class="soften"><h3 class="sub_text text-left main_text">코스  전체보기</h3><hr class="soften">
 		<div class="col-lg-3 cart_div">
-			<img src="date1.jpg" class="cart_img">
+			<img src="c_image/date1.jpg" class="cart_img">
 			<table>
 			<tr>
 			<th>코스 1 :&nbsp;</th>
@@ -82,7 +62,7 @@ $(document).ready(function(){
 			</table>
 		</div>
 		<div class="col-lg-3 cart_div">
-			<img src="res1.jpg" class="cart_img">
+			<img src="c_image/res1.jpg" class="cart_img">
 			<table>
 			<tr>
 			<th>코스 2 :&nbsp;</th>
@@ -103,7 +83,7 @@ $(document).ready(function(){
 			</table>
 		</div>
 		<div class="col-lg-3 cart_div">
-			<img src="res2.jpg" class="cart_img">
+			<img src="c_image/res2.jpg" class="cart_img">
 			<table>
 			<tr>
 			<th>코스 3 :&nbsp;</th>
@@ -129,7 +109,7 @@ $(document).ready(function(){
 		<div class="map">
 		
 		<br>
-		<img src="map1.jpg" class="map_img">
+		<img src="c_image/map1.jpg" class="map_img">
 		</div>
 	
 		</div>
