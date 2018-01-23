@@ -48,4 +48,9 @@
 		p:sqlSessionFactory-ref="ssf"
 		p:mapperInterface="com.sist.masterBoard.dao.MasterBoardMapper"
 	/>
+	<bean id="mypageMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"
+		p:sqlSessionFactory-ref="ssf"
+		p:mapperInterface="com.sist.mypage.dao.MyPageMapper"
+	/>
+	
 </beans>
