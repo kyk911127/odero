@@ -40,10 +40,6 @@
 		p:sqlSessionFactory-ref="ssf"
 		p:mapperInterface="com.sist.review.dao.ReviewMapper"
 	/>
-	<bean id="cartMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"
-		p:sqlSessionFactory-ref="ssf"
-		p:mapperInterface="com.sist.cart.dao.CartMapper"
-	/>
 	<bean id="masterBoardMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"
 		p:sqlSessionFactory-ref="ssf"
 		p:mapperInterface="com.sist.masterBoard.dao.MasterBoardMapper"
