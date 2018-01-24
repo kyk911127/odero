@@ -1,4 +1,4 @@
-@CHARSET "EUC-KR";
+@CHARSET "UTF-8";
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
  
 * {
@@ -31,7 +31,7 @@ html, body {
    height: 100%;
 }
 
-/* ¸Ş´º */
+/* ë©”ë‰´ */
 #header {
    background: rgb(222, 235, 247);
    height: 170px;
@@ -69,7 +69,7 @@ html, body {
    height: 170px;
 }
 
-/* ÇªÅÍ */
+/* í‘¸í„° */
 #footer {
    background: #ededed;
    width: 100%;
@@ -91,7 +91,7 @@ html, body {
    margin-bottom: 102px;
 }
 
-/* ·Î±×ÀÎ ¸ğ´Ş */
+/* ë¡œê·¸ì¸ ëª¨ë‹¬ */
 #login-modal {
    position: fixed;
    top: 35%;
@@ -104,7 +104,7 @@ html, body {
 #login-content {
    height: 300px;
 }
-/* È°¼ºÈ­ */
+/* í™œì„±í™” */
 input {
    outline: none;
 }
@@ -267,7 +267,7 @@ password {
    float: left;
 }
 
-/* ¸ÀÁı, ³î°Å¸® hover */
+/* ë§›ì§‘, ë†€ê±°ë¦¬ hover */
 div.snip1200 {
    position: relative;
    overflow: hidden;
@@ -379,7 +379,7 @@ div.snip1200:hover p, div.snip1200.hover p {
    transition-delay: 0.35s;
 }
 
-/* ¸®ºä hover */
+/* ë¦¬ë·° hover */
 .snip1273 {
   position: relative;
   float: left;
@@ -523,7 +523,7 @@ input.login_join{
    height: 500px;
 }
 #log_pwd, #join_pwd, #join_pwd2{
-   font-family: '¸¼Àº °íµñ';
+   font-family: 'ë§‘ì€ ê³ ë”•';
 }
 
 

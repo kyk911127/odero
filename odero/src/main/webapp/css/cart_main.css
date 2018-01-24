@@ -1,4 +1,4 @@
-@charset "EUC-KR"; 
+@charset "UTF-8"; 
 
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 	blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn,
@@ -4679,7 +4679,7 @@ strong, .radio+label, .heading h3, .heading .h3, .option, .txt_price,
 
 body {
 	background: #f6f6f6;
-	font-family: NanumBarunGothic, '³ª´®¹Ù¸¥°íµñ', NanumGothic, 'µ¸¿ò', Dotum,
+	font-family: NanumBarunGothic, 'ë‚˜ëˆ”ë°”ë¥¸ê³ ë”•', NanumGothic, 'ë‹ì›€', Dotum,
 		Helvetica, 'Apple SD Gothic Neo', Sans-serif !important;
 	font-size: 12px;
 	line-height: 18px;
@@ -10348,7 +10348,7 @@ keyframes reset { 0%{
 }
 
 .spi_lst .spi_lst_release strong {
-	font-family: '³ª´®°íµñ', NamumGothic, 'Apple SD Gothic Neo', 'µ¸¿ò', dotum,
+	font-family: 'ë‚˜ëˆ”ê³ ë”•', NamumGothic, 'Apple SD Gothic Neo', 'ë‹ì›€', dotum,
 		sans-serif
 }
 
@@ -14052,7 +14052,7 @@ keyframes reset { 0%{
 }
 
 .btn_rounded_line.btn_share:after {
-	content: '°øÀ¯ÇÏ±â';
+	content: 'ê³µìœ í•˜ê¸°';
 	display: inline-block
 }
 
@@ -17471,7 +17471,7 @@ keyframes reset { 0%{
 	position: absolute;
 	top: 15px;
 	right: 30px;
-	content: '¿ø';
+	content: 'ì›';
 	font-family: "NanumBarunGothicBold", sans-serif;
 	font-size: 14px
 }
@@ -17890,7 +17890,7 @@ body:not (.pc ) .layer_select.type_filter .layer_footer .btn {
 	position: absolute;
 	top: 15px;
 	right: 30px;
-	content: '¿ø';
+	content: 'ì›';
 	font-family: "NanumBarunGothicBold", sans-serif;
 	font-size: 14px
 }
@@ -18599,7 +18599,7 @@ body:not (.pc ) .layer_select.type_filter .layer_footer .btn {
 
 .pc body {
 	background: #f6f6f6;
-	font-family: NanumBarunGothic, '³ª´®¹Ù¸¥°íµñ', NanumGothic, 'µ¸¿ò', Dotum,
+	font-family: NanumBarunGothic, 'ë‚˜ëˆ”ë°”ë¥¸ê³ ë”•', NanumGothic, 'ë‹ì›€', Dotum,
 		Helvetica, 'Apple SD Gothic Neo', Sans-serif;
 	min-width: 768px;
 	font-size: 16px;
@@ -25291,7 +25291,7 @@ opacity
 }
 
 .pc .btn_rounded_line.btn_share:after {
-	content: '°øÀ¯ÇÏ±â';
+	content: 'ê³µìœ í•˜ê¸°';
 	display: inline-block
 }
 
@@ -33564,7 +33564,7 @@ opacity
 }
 
 .won.active:after {
-	content: '¿ø';
+	content: 'ì›';
 	display: block;
 	position: absolute;
 	top: 17px;

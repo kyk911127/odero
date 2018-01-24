@@ -1,6 +1,6 @@
-@charset "EUC-KR";
+@charset "UTF-8";
 
-/*º°Á¡ css*/
+/*ë³„ì  css*/
 .star-input>.input,
 .star-input>.input>input:focus+label,
 .star-input>.input>input:checked+label{
@@ -66,7 +66,7 @@
 
 
 
-/*¸®ºäº°Á¡ css*/
+/*ë¦¬ë·°ë³„ì  css*/
 .cbc_rating>.input,
 .cbc_rating>.input>label:hover,
 .cbc_rating>.input>input:focus+label,
@@ -127,7 +127,7 @@
 }
 
 
-/*¼öÁ¤ÇÏ±âº°Á¡ css*/
+/*ìˆ˜ì •í•˜ê¸°ë³„ì  css*/
 .update_rating>.input,
 .update_rating>.input>label:hover,
 .update_rating>.input>input:focus+label,
