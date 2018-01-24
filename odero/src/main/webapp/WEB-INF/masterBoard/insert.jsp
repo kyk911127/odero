@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/masterBoard.css" type="text/css">
 </style>
@@ -12,27 +12,27 @@
 	<div class="container">
 		<div class="row">
 			<center>
-				<h3>°ø»çÁß</h3>
+				<h3>ê³µì‚¬ì¤‘</h3>
 				<form method="post" action="MasterBoardInsert_ok.do">
 				<table class="table table-hover" width=600>
 					<tr>
-						<td width=15% class="text-right">Á¦¸ñ</td>
+						<td width=15% class="text-right">ì œëª©</td>
 						<td width=85%><input type=text name=subject size=50></td>
 					</tr>
 					<tr>
-						<td width=15% class="text-right">³»¿ë</td>
+						<td width=15% class="text-right">ë‚´ìš©</td>
 						<td width=85%><textarea rows="10" cols="55" name=content></textarea>
 						</td>
 					</tr>
 					<tr>
-						<td width=15% class="text-right">ºñ¹Ð¹øÈ£</td>
+						<td width=15% class="text-right">ë¹„ë°€ë²ˆí˜¸</td>
 						<td width=85%><input type=password name=pwd size=10>
 						</td>
 					</tr>
 					<tr>
 						<td colspan="2" class="text-center">
-							<input type="submit" value="±Û¾²±â" class="btn btn-info"> 
-							<input type="button" value="Ãë¼Ò " class="btn btn-success" onclick="javascript:history.back()">
+							<input type="submit" value="ê¸€ì“°ê¸°" class="btn btn-info"> 
+							<input type="button" value="ì·¨ì†Œ " class="btn btn-success" onclick="javascript:history.back()">
 						</td>
 					</tr>
 				</table>

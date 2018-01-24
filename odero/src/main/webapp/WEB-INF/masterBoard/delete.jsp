@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert title here</title>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<style type="text/css">
@@ -17,12 +17,12 @@
 	<div class="container">
 		<div class="row">
 			<center>
-				<h3>»èÁ¦ÇÏ±â</h3>
+				<h3>ì‚­ì œí•˜ê¸°</h3>
 			</center>
 			<form method="post" action="MasterBoardDelete_ok.do">
 			<table class="table table-hover" width="300">
 				<tr>
-					<td width="30%" class="text-right">ºñ¹Ð¹øÈ£</td>
+					<td width="30%" class="text-right">ë¹„ë°€ë²ˆí˜¸</td>
 					<td width="70%" class="text-left">
 						<input type="password" name="pwd" size="13" />
 						<input type="hidden" name="no" value="${no}"/>
@@ -30,8 +30,8 @@
 				</tr>
 				<tr>
 					<td class="text-center" colspan="2">
-						<input type="submit" value="»èÁ¦"/>
-						<input type="button" onclick="javascript:history.back();" value="µÚ·Î°¡±â"/>
+						<input type="submit" value="ì‚­ì œ"/>
+						<input type="button" onclick="javascript:history.back();" value="ë’¤ë¡œê°€ê¸°"/>
 					</td>
 				</tr>
 			</table>

@@ -1,11 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.css"> -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -89,9 +89,9 @@ $(function() {
 	
 	initTmap();
 	
-   //select¹Ù²ð ¶§ ¼³Á¤
-   var reg = [["ÀºÆò±¸", "¸¶Æ÷±¸", "¼­´ë¹®±¸", "Á¾·Î±¸", "¿ë»ê±¸", "Áß&nbsp;&nbsp;&nbsp;±¸", "¼ºµ¿±¸"],
-              ["µ¿´ë¹®±¸", "±¤Áø±¸", "Áß¶û±¸", "¼ººÏ±¸", "³ë¿ø±¸", "µµºÀ±¸", "°­ºÏ±¸"]]
+   //selectë°”ë€” ë•Œ ì„¤ì •
+   var reg = [["ì€í‰êµ¬", "ë§ˆí¬êµ¬", "ì„œëŒ€ë¬¸êµ¬", "ì¢…ë¡œêµ¬", "ìš©ì‚°êµ¬", "ì¤‘&nbsp;&nbsp;&nbsp;êµ¬", "ì„±ë™êµ¬"],
+              ["ë™ëŒ€ë¬¸êµ¬", "ê´‘ì§„êµ¬", "ì¤‘ëž‘êµ¬", "ì„±ë¶êµ¬", "ë…¸ì›êµ¬", "ë„ë´‰êµ¬", "ê°•ë¶êµ¬"]]
    for(var i=0; i<2; i++) {
       for(var j=0; j<reg[i].length; j++){
          $("#reg_wrap_" + i +"_" + j).html("<input type='submit' value='" + reg[i][j]  + "' class='reg_btn sel_btn' name='reg_" + i +"_" + j + "'>");
@@ -99,12 +99,12 @@ $(function() {
    }
    $("#sel").change(function() {
       var select = $("#sel option:selected").val();
-      if(select == "°­ºÏ") {
-         reg = [["ÀºÆò±¸", "¸¶Æ÷±¸", "¼­´ë¹®±¸", "Á¾·Î±¸", "¿ë»ê±¸", "Áß±¸", "¼ºµ¿±¸"],
-                    ["µ¿´ë¹®±¸", "±¤Áø±¸", "Áß¶û±¸", "¼ººÏ±¸", "³ë¿ø±¸", "µµºÀ±¸", "Áß±¸"]];
+      if(select == "ê°•ë¶") {
+         reg = [["ì€í‰êµ¬", "ë§ˆí¬êµ¬", "ì„œëŒ€ë¬¸êµ¬", "ì¢…ë¡œêµ¬", "ìš©ì‚°êµ¬", "ì¤‘êµ¬", "ì„±ë™êµ¬"],
+                    ["ë™ëŒ€ë¬¸êµ¬", "ê´‘ì§„êµ¬", "ì¤‘ëž‘êµ¬", "ì„±ë¶êµ¬", "ë…¸ì›êµ¬", "ë„ë´‰êµ¬", "ì¤‘êµ¬"]];
       } else {
-         reg = [["°­¼­±¸", "¾çÃµ±¸", "¿µµîÆ÷±¸", "±¸·Î±¸", "µ¿ÀÛ±¸", "±ÝÃµ±¸", "°ü¾Ç±¸"],
-                    ["¼­ÃÊ±¸", "°­³²±¸", "¼ÛÆÄ±¸", "°­µ¿±¸"]];
+         reg = [["ê°•ì„œêµ¬", "ì–‘ì²œêµ¬", "ì˜ë“±í¬êµ¬", "êµ¬ë¡œêµ¬", "ë™ìž‘êµ¬", "ê¸ˆì²œêµ¬", "ê´€ì•…êµ¬"],
+                    ["ì„œì´ˆêµ¬", "ê°•ë‚¨êµ¬", "ì†¡íŒŒêµ¬", "ê°•ë™êµ¬"]];
       }
       for(var i=0; i<2; i++) {
          
@@ -118,13 +118,13 @@ $(function() {
       }
    });
 
-   //¼±ÅÃÇÒ ¶§ ¼±ÅÃÇØÁ¦ÇÒ ¶§ ¸ð¾ç ¹Ù²Ù±â => µ¿ÀûÀ¸·Î Ãß°¡µÈ ÅÂ±×¿¡´Â ÀÏ¹ÝÀûÀÎ ÀÌº¥Æ®´Â µ¿ÀÛÇÏÁö ¾ÊÀ½
+   //ì„ íƒí•  ë•Œ ì„ íƒí•´ì œí•  ë•Œ ëª¨ì–‘ ë°”ê¾¸ê¸° => ë™ì ìœ¼ë¡œ ì¶”ê°€ëœ íƒœê·¸ì—ëŠ” ì¼ë°˜ì ì¸ ì´ë²¤íŠ¸ëŠ” ë™ìž‘í•˜ì§€ ì•ŠìŒ
    $(document).on("click",".sel_btn",function(){
       var btn_bc = $(this).css("background-color");
-      if(btn_bc == "rgb(0, 0, 0)") {   // ¼±ÅÃ ÇØÁ¦ => ¼±ÅÃ
+      if(btn_bc == "rgb(0, 0, 0)") {   // ì„ íƒ í•´ì œ => ì„ íƒ
          $(this).css("background", "rgb(243, 171, 186)");
          $(this).css("opacity", "1");
-      } else {                     // ¼±ÅÃ => ¼±ÅÃ ÇØÁ¦
+      } else {                     // ì„ íƒ => ì„ íƒ í•´ì œ
          $(this).css("background", "rgb(0, 0, 0)");
          $(this).css("opacity", "0.3");
       }
@@ -147,14 +147,14 @@ function initTmap(){
    <div class="container">
    
       <div class="main_title_wrap">
-         <h1 class="main_title">µ¥ÀÌÆ® ÄÚ½º</h1>
+         <h1 class="main_title">ë°ì´íŠ¸ ì½”ìŠ¤</h1>
       </div>
       
       <div class="check_wrap">
-      <h2 class="title">Áö¿ª</h2>&nbsp;&nbsp;&nbsp; 
+      <h2 class="title">ì§€ì—­</h2>&nbsp;&nbsp;&nbsp; 
       <select class="form-control" id="sel">
-         <option value="°­ºÏ">°­ºÏ</option>
-         <option value="°­³²">°­³²</option>
+         <option value="ê°•ë¶">ê°•ë¶</option>
+         <option value="ê°•ë‚¨">ê°•ë‚¨</option>
       </select>
       <div id="check_region">
          <table width="100%">
@@ -163,7 +163,7 @@ function initTmap(){
                <c:forEach var="j" begin="0" end="6">
                   <td>
                      <div id="reg_wrap_${i }_${j}">
-                        <!-- °­³² / °­ºÏ ±¸ º¸¿©ÁÖ±â -->
+                        <!-- ê°•ë‚¨ / ê°•ë¶ êµ¬ ë³´ì—¬ì£¼ê¸° -->
                      </div>
                   </td>
                </c:forEach>
@@ -177,14 +177,14 @@ function initTmap(){
          <table width="100%">
             <tr>
                <td width=33%>
-                  <h2 class="title">¸ÀÁý</h2>
+                  <h2 class="title">ë§›ì§‘</h2>
                   <div id="keyword_1" class="keyword">
                      <table>
                         <c:forEach var="i" begin="1" end="2">
                               <tr>
                               <c:forEach var="j" begin="1" end="4">
                                  <td>
-                                    <input type="submit" value="Ä£ÀýÇÑ" class="key_btn sel_btn" name="k1_${i }_${j }">
+                                    <input type="submit" value="ì¹œì ˆí•œ" class="key_btn sel_btn" name="k1_${i }_${j }">
                                  </td>
                               </c:forEach>
                            </tr>
@@ -193,14 +193,14 @@ function initTmap(){
                   </div>
                </td>
                <td width=33%>
-                  <h2 class="title">Ä«Æä</h2>
+                  <h2 class="title">ì¹´íŽ˜</h2>
                   <div id="keyword_2" class="keyword">
                      <table>
                         <c:forEach var="i" begin="1" end="1">
                            <tr>
                            <c:forEach var="j" begin="1" end="4">
                               <td>
-                                 <input type="submit" value="ÈÞ½ÄÇÏ±â" class="key_btn sel_btn" name="k2_${i }_${j }">
+                                 <input type="submit" value="íœ´ì‹í•˜ê¸°" class="key_btn sel_btn" name="k2_${i }_${j }">
                               </td>
                            </c:forEach>
                            </tr>
@@ -209,14 +209,14 @@ function initTmap(){
                   </div>
                </td>
                <td width=33%>
-                  <h2 class="title">³î°Å¸®</h2>
+                  <h2 class="title">ë†€ê±°ë¦¬</h2>
                   <div id="keyword_3" class="keyword">
                      <table>
                         <c:forEach var="i" begin="1" end="2">
                            <tr>
                            <c:forEach var="j" begin="1" end="4">
                               <td>
-                                 <input type="submit" value="±âºÐÀüÈ¯" class="key_btn sel_btn" name="k3_${i }_${j }">
+                                 <input type="submit" value="ê¸°ë¶„ì „í™˜" class="key_btn sel_btn" name="k3_${i }_${j }">
                               </td>
                            </c:forEach>
                            </tr>
@@ -230,7 +230,7 @@ function initTmap(){
       </div>
       <div class="search_wrap">
          <center>
-         <input type="submit" value=' °Ë   »ö ' class="search_btn">
+         <input type="submit" value=' ê²€   ìƒ‰ ' class="search_btn">
          </center>
       </div>
    </div>

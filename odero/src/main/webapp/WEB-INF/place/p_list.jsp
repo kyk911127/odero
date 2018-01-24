@@ -1,16 +1,16 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
 <link rel="stylesheet" type="text/css" href="css/p_list.css">
-<!-- ÀÌ¹ÌÁö½½¶óÀÌµå  -->
+<!-- ì´ë¯¸ì§€ìŠ¬ë¼ì´ë“œ  -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> <!-- Ãæµ¹ -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> <!-- ì¶©ëŒ -->
 
 
 <script type="text/javascript">
@@ -24,16 +24,16 @@ $(function(){
       
       var S=$(this).attr("value"); 
       
-      if(S=="ÀÌ»ö/Ã¼Çè" || S=="¸ÀÁı/Ä«Æä")
+      if(S=="ì´ìƒ‰/ì²´í—˜" || S=="ë§›ì§‘/ì¹´í˜")
       {
-         if(S=="ÀÌ»ö/Ã¼Çè")
+         if(S=="ì´ìƒ‰/ì²´í—˜")
          {
             $('#food').css("background", "rgb(203, 203, 203)");
             $(this).css("background", "rgb(3, 32, 95)");
             $(this).css("color","white");
             
          }
-         else if(S=="¸ÀÁı/Ä«Æä")
+         else if(S=="ë§›ì§‘/ì¹´í˜")
          {
             $('#play').css("background", "rgb(203, 203, 203)");
             $(this).css("background", "rgb(3, 32, 95)");
@@ -42,9 +42,9 @@ $(function(){
          }
       }
       
-      else if(S=="°­³²" || S=="°­ºÏ")
+      else if(S=="ê°•ë‚¨" || S=="ê°•ë¶")
       {
-         if(S=="°­³²")
+         if(S=="ê°•ë‚¨")
          {
             $('#gangbuk').css("background", "rgb(203, 203, 203)");
             $(this).css("background", "rgb(3, 32, 95)");
@@ -54,7 +54,7 @@ $(function(){
             $('.gangnam_d').show();
             
          }
-         else if(S=="°­ºÏ")
+         else if(S=="ê°•ë¶")
          {
             $('#gangnam').css("background", "rgb(203, 203, 203)");
             $(this).css("background", "rgb(3, 32, 95)");
@@ -127,26 +127,26 @@ $(function(){
     <!-- Wrapper for slides -->
     <div class="carousel-inner ">
       <div class="item active tp_slideimg">
-        <img src="#" alt="Best ³î°Å¸®" style="width:100%; height:100%;">
+        <img src="#" alt="Best ë†€ê±°ë¦¬" style="width:100%; height:100%;">
            <ol class="tp_imgol">
-              <li class="tp_imgloc">¼­¿ï½Ã °­µ¿±¸ ÃµÈ£µ¿</li>
-              <li class="tp_imgname">"ÂŞ²ÙÂŞ²ÙÂŞ²Ù¹Ì"</li>
+              <li class="tp_imgloc">ì„œìš¸ì‹œ ê°•ë™êµ¬ ì²œí˜¸ë™</li>
+              <li class="tp_imgname">"ì­ˆê¾¸ì­ˆê¾¸ì­ˆê¾¸ë¯¸"</li>
            </ol>
       </div>
 
       <div class="item tp_slideimg">
-        <img src="img/la.jpg" alt="Best ¸ÀÁı" style="width:100%; height:100%;">
+        <img src="img/la.jpg" alt="Best ë§›ì§‘" style="width:100%; height:100%;">
         <ol class="tp_imgol">
-              <li class="tp_imgloc">¼­¿ï½Ã ¸¶Æ÷±¸ ¼­±³µ¿</li>
-              <li class="tp_imgname">"´ëÆĞ»ï°ã»ì"</li>
+              <li class="tp_imgloc">ì„œìš¸ì‹œ ë§ˆí¬êµ¬ ì„œêµë™</li>
+              <li class="tp_imgname">"ëŒ€íŒ¨ì‚¼ê²¹ì‚´"</li>
            </ol>
       </div>
     
       <div class="item tp_slideimg">
-        <img src="" alt="Best Ä«Æä" style="width:100%; height:100%;">
+        <img src="" alt="Best ì¹´í˜" style="width:100%; height:100%;">
         <ol class="tp_imgol">
-              <li class="tp_imgloc">¼­¿ï½Ã °­³²±¸ ¿ª»ïµ¿</li>
-              <li class="tp_imgname">"³»°¡ÁÁ¾ÆÇÏ´ÂÇÇÀÚ"</li>
+              <li class="tp_imgloc">ì„œìš¸ì‹œ ê°•ë‚¨êµ¬ ì—­ì‚¼ë™</li>
+              <li class="tp_imgname">"ë‚´ê°€ì¢‹ì•„í•˜ëŠ”í”¼ì"</li>
            </ol>
       </div>
     </div>
@@ -158,67 +158,67 @@ $(function(){
    <div class="row">
       <div class="text-center tp_select">
        <p>
-          <label>&nbsp;&nbsp;Ä«Å×°í¸®</label>
+          <label>&nbsp;&nbsp;ì¹´í…Œê³ ë¦¬</label>
        </p>
          <ul class="tp_ul">
-            <li class="tp_li play_li"><input type="button" class="btn btn-lg btn-navy" id="play" value="ÀÌ»ö/Ã¼Çè"></li>
-            <li class="tp_li"><input type="button" class="btn btn-lg btn-navy" id="food" value="¸ÀÁı/Ä«Æä"></li>
+            <li class="tp_li play_li"><input type="button" class="btn btn-lg btn-navy" id="play" value="ì´ìƒ‰/ì²´í—˜"></li>
+            <li class="tp_li"><input type="button" class="btn btn-lg btn-navy" id="food" value="ë§›ì§‘/ì¹´í˜"></li>
             
          </ul>
       </div>
       <hr>
        <div class="text-center tp_select">
        <p>
-          <label>&nbsp;&nbsp;Áö¿ª</label>
+          <label>&nbsp;&nbsp;ì§€ì—­</label>
        </p>
          <ul class="tp_ul">
-            <li class="tp_li gangnam_li"><input type="button" class="btn btn-lg btn-navy" id="gangnam" value="°­³²"></li>
-            <li class="tp_li"><input type="button" class="btn btn-lg btn-navy" id="gangbuk" value="°­ºÏ"></li>
+            <li class="tp_li gangnam_li"><input type="button" class="btn btn-lg btn-navy" id="gangnam" value="ê°•ë‚¨"></li>
+            <li class="tp_li"><input type="button" class="btn btn-lg btn-navy" id="gangbuk" value="ê°•ë¶"></li>
          </ul>
       </div>
       <div class="loc_pick">
          <div class="text-center tp_loc gangnam_d">
             <ul class="tp_ul">
-               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gn" value="°­¼­±¸"></li>
-                  <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gn" value="±¸·Î±¸"></li>
-                  <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gn" value="¾çÃµ±¸"></li>
-                  <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gn" value="±İÃµ±¸"></li>
-                  <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gn" value="¿µµîÆ÷±¸"></li>
-                  <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gn" value="°ü¾Ç±¸"></li>
+               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gn" value="ê°•ì„œêµ¬"></li>
+                  <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gn" value="êµ¬ë¡œêµ¬"></li>
+                  <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gn" value="ì–‘ì²œêµ¬"></li>
+                  <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gn" value="ê¸ˆì²œêµ¬"></li>
+                  <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gn" value="ì˜ë“±í¬êµ¬"></li>
+                  <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gn" value="ê´€ì•…êµ¬"></li>
                   <br>
-                  <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gn" value="µ¿ÀÛ±¸"></li>
-                  <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gn" value="¼­ÃÊ±¸"></li>
-                  <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gn" value="°­³²±¸"></li>
-                  <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gn" value="¼ÛÆÄ±¸"></li>
-                  <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gn" value="°­µ¿±¸"></li>
+                  <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gn" value="ë™ì‘êµ¬"></li>
+                  <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gn" value="ì„œì´ˆêµ¬"></li>
+                  <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gn" value="ê°•ë‚¨êµ¬"></li>
+                  <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gn" value="ì†¡íŒŒêµ¬"></li>
+                  <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gn" value="ê°•ë™êµ¬"></li>
                
             </ul>
          </div>
          <div class="text-center tp_loc gangbuk_d">
             <ul class="tp_ul">
-               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="¸¶Æ÷±¸"></li>
-               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="¼­´ë¹®±¸"></li>
-               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="ÀºÆò±¸"></li>
-               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="¿ë»ê±¸"></li>
-               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="Áß±¸"></li>
-               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="Á¾·Î±¸"></li>
-               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="¼ºµ¿±¸"></li>
+               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="ë§ˆí¬êµ¬"></li>
+               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="ì„œëŒ€ë¬¸êµ¬"></li>
+               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="ì€í‰êµ¬"></li>
+               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="ìš©ì‚°êµ¬"></li>
+               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="ì¤‘êµ¬"></li>
+               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="ì¢…ë¡œêµ¬"></li>
+               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="ì„±ë™êµ¬"></li>
                
-               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="µ¿´ë¹®±¸"></li>
-               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="¼ººÏ±¸"></li>
-               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="±¤Áø±¸"></li>
-               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="Áß¶û±¸"></li>
-               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="³ë¿ø±¸"></li>
-               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="°­ºÏ±¸"></li>
-               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="µµºÀ±¸"></li>
+               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="ë™ëŒ€ë¬¸êµ¬"></li>
+               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="ì„±ë¶êµ¬"></li>
+               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="ê´‘ì§„êµ¬"></li>
+               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="ì¤‘ë‘êµ¬"></li>
+               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="ë…¸ì›êµ¬"></li>
+               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="ê°•ë¶êµ¬"></li>
+               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="ë„ë´‰êµ¬"></li>
             
             </ul>
            </div>  
        </div>
       <div class="tp_search">
       <hr style="border:black 1px solid;">
-         <input type="button" class="btn btn-pink" id="Sbtn" value="°Ë»öÇÏ±â" >
-            <!-- <span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;°Ë»ö&nbsp; -->
+         <input type="button" class="btn btn-pink" id="Sbtn" value="ê²€ìƒ‰í•˜ê¸°" >
+            <!-- <span class="glyphicon glyphicon-search"></span>&nbsp;&nbsp;ê²€ìƒ‰&nbsp; -->
       </div>
             
    </div>
@@ -231,19 +231,19 @@ $(function(){
                      </a>
                      <div class="card-block">
                          
-                         <h4 class="tp_tname">ÂŞ²ÙÂŞ²ÙÂŞ²Ù¹Ì</h4>
+                         <h4 class="tp_tname">ì­ˆê¾¸ì­ˆê¾¸ì­ˆê¾¸ë¯¸</h4>
                          <div class="tp_locname">
                          <span class="glyphicon glyphicon-map-marker"></span>
-                               	 ¼­¿ï½Ã °­µ¿±¸ ÃµÈ£µ¿
+                               	 ì„œìš¸ì‹œ ê°•ë™êµ¬ ì²œí˜¸ë™
                          </div>
                          <div class="tp_keyword">
-                             #±âºĞ³»±â #Èú¸µ #Ä£ÀıÇÑ  
+                             #ê¸°ë¶„ë‚´ê¸° #íë§ #ì¹œì ˆí•œ  
                          </div>
                       
                      </div>
                      <div class="card-footer">
-                         <small>1¸¸¿ø ~ 2¸¸¿ø</small>
-                         <button class="btn btn-secondary float-right btn-sm jjimbtn"><i class="icon-heart">¢¾ÂòÇÏ±â</i></button>
+                         <small>1ë§Œì› ~ 2ë§Œì›</small>
+                         <button class="btn btn-secondary float-right btn-sm jjimbtn"><i class="icon-heart">â™¥ì°œí•˜ê¸°</i></button>
                          <!-- <button class="btn btn-sm jjimbtn"><span class="glyphicon glyphicon-heart">12</span></button> -->
                      </div>
                  </div>
@@ -260,18 +260,18 @@ $(function(){
                      </a>
                      <div class="card-block">
                          
-                         <h4 class="tp_tname">ÂŞ²ÙÂŞ²ÙÂŞ²Ù¹Ì</h4>
+                         <h4 class="tp_tname">ì­ˆê¾¸ì­ˆê¾¸ì­ˆê¾¸ë¯¸</h4>
                          <div class="tp_locname">
                          <span class="glyphicon glyphicon-map-marker"></span>
-                                	¼­¿ï½Ã °­µ¿±¸ ÃµÈ£µ¿
+                                	ì„œìš¸ì‹œ ê°•ë™êµ¬ ì²œí˜¸ë™
                          </div>
                          <div class="tp_keyword">
-                             #±âºĞ³»±â #Èú¸µ #Ä£ÀıÇÑ  
+                             #ê¸°ë¶„ë‚´ê¸° #íë§ #ì¹œì ˆí•œ  
                          </div>
                       
                      </div>
                      <div class="card-footer">
-                         <small>1¸¸¿ø ~ 2¸¸¿ø</small>
+                         <small>1ë§Œì› ~ 2ë§Œì›</small>
                          <button class="btn btn-secondary float-right btn-sm jjimbtn"><span class="glyphicon glyphicon-heart">12</span></button>
                          <!-- <button class="btn btn-sm jjimbtn"><span class="glyphicon glyphicon-heart">12</span></button> -->
                      </div>
@@ -281,11 +281,11 @@ $(function(){
       </div>
       <div class="text-center">
          <ul class="pagination">
-         	<li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">ÀÌÀü</span></a></li>
+         	<li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">ì´ì „</span></a></li>
          	<c:forEach var="i" begin="1" end="10">
              <li class=""><a href="#">${i } <span class="sr-only">(current)</span></a></li>
              </c:forEach>
-              <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">´ÙÀ½</span></a></li>
+              <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">ë‹¤ìŒ</span></a></li>
            </ul>
       </div>
    </div>

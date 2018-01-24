@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="ko" xml:lang="ko" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -30,7 +30,7 @@ html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre,
 }
 
 body, code {
-	font: 0.75em "µ¸¿ò", Dotum, AppleGothic, sans-serif;
+	font: 0.75em "ë‹ì›€", Dotum, AppleGothic, sans-serif;
 	color: #1c1c1c;
 	background: #fff;
 }
@@ -265,7 +265,7 @@ li {
 
 input, select, textarea {
 	font-size: 100%;
-	font-family: "µ¸¿ò", Dotum;
+	font-family: "ë‹ì›€", Dotum;
 	color: #1b1b1b;
 	vertical-align: middle;
 }
@@ -312,44 +312,44 @@ a {
 		<div class="show-ctrl">
 			<h2>Front Remocon</h2>
 			<p class="admin">
-				<a href="/admin/php/index.php" target="_blank">¼îÇÎ¸ô °ü¸®ÀÚ ¹Ù·Î°¡±â</a>
+				<a href="/admin/php/index.php" target="_blank">ì‡¼í•‘ëª° ê´€ë¦¬ìž ë°”ë¡œê°€ê¸°</a>
 			</p>
 			<p class="use">
-				<a href="#introduce">¼îÇÎ¸ô °ü¸®ÀÚ ±â´ÉÀ» »ç¿ëÇÏ½Ã°Ú½À´Ï±î?</a>
+				<a href="#introduce">ì‡¼í•‘ëª° ê´€ë¦¬ìž ê¸°ëŠ¥ì„ ì‚¬ìš©í•˜ì‹œê² ìŠµë‹ˆê¹Œ?</a>
 			</p>
 			<p class="manual">
 				<a href="//img.echosting.cafe24.com/guide/customerManual.pdf"
-					target="_blank">¼îÇÎ¸ô °ü¸®ÀÚ ¸Å´º¾ó</a>
+					target="_blank">ì‡¼í•‘ëª° ê´€ë¦¬ìž ë§¤ë‰´ì–¼</a>
 			</p>
 			<ul class="choice">
 				<li
-					title="»ç¿ëÇÔÀ¸·Î ¼³Á¤ÇÏ¸é, ¿øÇÏ´Â ºÎºÐÀ» ¹Ù·Î ¼öÁ¤ÇÒ ¼ö ÀÖµµ·Ï °ü¸®ÀÚ ÆäÀÌÁö¸¦ ¸µÅ©ÇÏ¿© ÁÝ´Ï´Ù. ¿øÇÏ´Â ºÎºÐÀÇ °ü¸®ÀÚ ¼³Á¤°ú µðÀÚÀÎ ÆíÁýÀ» ÇÒ ¼ö ÀÖ½À´Ï´Ù."
+					title="ì‚¬ìš©í•¨ìœ¼ë¡œ ì„¤ì •í•˜ë©´, ì›í•˜ëŠ” ë¶€ë¶„ì„ ë°”ë¡œ ìˆ˜ì •í•  ìˆ˜ ìžˆë„ë¡ ê´€ë¦¬ìž íŽ˜ì´ì§€ë¥¼ ë§í¬í•˜ì—¬ ì¤ë‹ˆë‹¤. ì›í•˜ëŠ” ë¶€ë¶„ì˜ ê´€ë¦¬ìž ì„¤ì •ê³¼ ë””ìžì¸ íŽ¸ì§‘ì„ í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤."
 					class="yes"><label><input name="active" type="radio"
-						value="1"> »ç¿ëÇÔ</label></li>
-				<li title="»ç¿ë¾ÈÇÔÀ¸·Î ¼³Á¤ÇÏ¸é, ±âÁ¸ ¼îÇÎ¸ô È­¸éÀÇ °¢ ÆäÀÌÁö·Î ÀÌµ¿ ÇÒ ¼ö ÀÖ½À´Ï´Ù."
+						value="1"> ì‚¬ìš©í•¨</label></li>
+				<li title="ì‚¬ìš©ì•ˆí•¨ìœ¼ë¡œ ì„¤ì •í•˜ë©´, ê¸°ì¡´ ì‡¼í•‘ëª° í™”ë©´ì˜ ê° íŽ˜ì´ì§€ë¡œ ì´ë™ í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤."
 					class="no selected"><label><input name="active"
-						type="radio" value="0"> »ç¿ë¾ÈÇÔ</label></li>
+						type="radio" value="0"> ì‚¬ìš©ì•ˆí•¨</label></li>
 			</ul>
 			<div id="introduce" style="display: none;">
-				<strong class="title">¼îÇÎ¸ô °ü¸®ÀÚ ±â´É</strong>
+				<strong class="title">ì‡¼í•‘ëª° ê´€ë¦¬ìž ê¸°ëŠ¥</strong>
 				<p>
-					¼îÇÎ¸ô °ü¸®ÀÚ ±â´ÉÀÌ¶õ? °ü¸®ÀÚ ÆäÀÌÁö¿¡ Á¢¼ÓÇÏÁö ¾Ê°íµµ ¼îÇÎ¸ô È­¸é¿¡<br> <strong>´ëÇ¥¿î¿µÀÚ·Î
-						·Î±×ÀÎ ½Ã, ¿øÇÏ´Â ºÎºÐÀ» ¹Ù·Î ¼öÁ¤ÇÒ ¼ö ÀÖµµ·Ï °ü¸®ÀÚ ¼³Á¤ ÆäÀÌÁö¸¦<br> ¸µÅ© ¶Ç´Â µðÀÚÀÎ ÆíÁýÃ¢À» ¸µÅ©
-						ÇØÁÖ´Â ±â´É
-					</strong>À» ¸»ÇÕ´Ï´Ù.
+					ì‡¼í•‘ëª° ê´€ë¦¬ìž ê¸°ëŠ¥ì´ëž€? ê´€ë¦¬ìž íŽ˜ì´ì§€ì— ì ‘ì†í•˜ì§€ ì•Šê³ ë„ ì‡¼í•‘ëª° í™”ë©´ì—<br> <strong>ëŒ€í‘œìš´ì˜ìžë¡œ
+						ë¡œê·¸ì¸ ì‹œ, ì›í•˜ëŠ” ë¶€ë¶„ì„ ë°”ë¡œ ìˆ˜ì •í•  ìˆ˜ ìžˆë„ë¡ ê´€ë¦¬ìž ì„¤ì • íŽ˜ì´ì§€ë¥¼<br> ë§í¬ ë˜ëŠ” ë””ìžì¸ íŽ¸ì§‘ì°½ì„ ë§í¬
+						í•´ì£¼ëŠ” ê¸°ëŠ¥
+					</strong>ì„ ë§í•©ë‹ˆë‹¤.
 				</p>
 				<ul>
-					<li><strong>* »ç¿ëÇÔ</strong> : °ü¸®ÀÚ ¼³Á¤ ÆäÀÌÁö ¹× µðÀÚÀÎ ÆíÁýÃ¢ ¸µÅ©ÇÏ¿© ¹Ù·Î ¼öÁ¤ÇÒ
-						¼ö ÀÖ½À´Ï´Ù.</li>
-					<li><strong>* »ç¿ë¾ÈÇÔ</strong> : ±âÁ¸ ¼îÇÎ¸ô È­¸éÀÇ ÆäÀÌÁö¸¦ ÀÌµ¿ÇÒ ¼ö ÀÖ½À´Ï´Ù.</li>
+					<li><strong>* ì‚¬ìš©í•¨</strong> : ê´€ë¦¬ìž ì„¤ì • íŽ˜ì´ì§€ ë° ë””ìžì¸ íŽ¸ì§‘ì°½ ë§í¬í•˜ì—¬ ë°”ë¡œ ìˆ˜ì •í• 
+						ìˆ˜ ìžˆìŠµë‹ˆë‹¤.</li>
+					<li><strong>* ì‚¬ìš©ì•ˆí•¨</strong> : ê¸°ì¡´ ì‡¼í•‘ëª° í™”ë©´ì˜ íŽ˜ì´ì§€ë¥¼ ì´ë™í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤.</li>
 				</ul>
-				<button class="hide" type="button">·¹ÀÌ¾î ´Ý±â</button>
+				<button class="hide" type="button">ë ˆì´ì–´ ë‹«ê¸°</button>
 				<span class="edge"></span>
 			</div>
-			<button class="close" type="button" value="0">¼îÇÎ¸ô °ü¸®ÀÚ ±â´É Á¢±â</button>
+			<button class="close" type="button" value="0">ì‡¼í•‘ëª° ê´€ë¦¬ìž ê¸°ëŠ¥ ì ‘ê¸°</button>
 		</div>
 		<div class="hide-ctrl">
-			<button class="open" style="display: none;" type="button" value="1">¿­±â</button>
+			<button class="open" style="display: none;" type="button" value="1">ì—´ê¸°</button>
 		</div>
 	</div>
 </body>

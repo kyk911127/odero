@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
@@ -21,16 +21,16 @@
 		</div>
 		<div class="navbar-collapse collapse">
 			<ul class="nav navbar-nav mynav">
-				<li class="nav_main"><strong><a href="course_search.do">µ¥ÀÌÆ®ÄÚ½º</a></strong></li>
-				<li class="nav_main"><strong><a href="p_list.do">¸ÀÁý</a></strong></li>
-				<li class="nav_main"><strong><a href="p_detail.do">³î°Å¸®</a></strong></li>
-				<li class="nav_main"><strong><a href="#">ÀÚÀ¯°Ô½ÃÆÇ</a></strong></li>
-				<li class="nav_main"><strong><a href="review_list.do">ÈÄ±â°Ô½ÃÆÇ</a></strong></li>
+				<li class="nav_main"><strong><a href="course_search.do">ë°ì´íŠ¸ì½”ìŠ¤</a></strong></li>
+				<li class="nav_main"><strong><a href="p_list.do">ë§›ì§‘</a></strong></li>
+				<li class="nav_main"><strong><a href="p_detail.do">ë†€ê±°ë¦¬</a></strong></li>
+				<li class="nav_main"><strong><a href="#">ìžìœ ê²Œì‹œíŒ</a></strong></li>
+				<li class="nav_main"><strong><a href="review_list.do">í›„ê¸°ê²Œì‹œíŒ</a></strong></li>
 			</ul>
 			<ul class="navbar-right nav navbar-nav mynav" id="nav-right">
 				<li class="nav_main" id="loginBtn"><strong><a
-						href="#loginModal" data-toggle="modal">·Î±×ÀÎ</a></strong></li>
-				<li class="nav_main"><strong><a href="mypage.do">¸¶ÀÌÆäÀÌÁö</a></strong></li>
+						href="#loginModal" data-toggle="modal">ë¡œê·¸ì¸</a></strong></li>
+				<li class="nav_main"><strong><a href="mypage.do">ë§ˆì´íŽ˜ì´ì§€</a></strong></li>
 			</ul>
 		</div>
 	</div>

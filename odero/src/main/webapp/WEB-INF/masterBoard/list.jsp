@@ -1,32 +1,32 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Welcome BoardMaster</title>
 <link rel="stylesheet" href="css/masterBoard.css" type="text/css">
 </head>
 <body>
 	<div class="container">
 		<div class="row">
-			<h3>°ø»çÁß <img alt="È÷¸´" src="masterBoard_img/Settings.png"/></h3>
+			<h3>ê³µì‚¬ì¤‘ <img alt="ížˆë¦¿" src="masterBoard_img/Settings.png"/></h3>
 			<table class="table table-hover" width="700">
 				<tr>
 					<td class="text-left">
-						<a href="MasterBoardInsert.do" class="btn btn-sm btn-primary">»õ±Û</a>
+						<a href="MasterBoardInsert.do" class="btn btn-sm btn-primary">ìƒˆê¸€</a>
 					</td>
 				</tr>
 			</table>
 			<table class="table table-hover" width="700">
 				<tr class="table-th">
-					<th class="text-center" width="10%">¹øÈ£</th>
-					<th class="text-center" width="45%">Á¦¸ñ</th>
-					<th class="text-center" width="15%">ÀÌ¸§</th>
-					<th class="text-center" width="20%">ÀÛ¼ºÀÏ</th>
-					<th class="text-center" width="10%">Á¶È¸¼ö</th>
+					<th class="text-center" width="10%">ë²ˆí˜¸</th>
+					<th class="text-center" width="45%">ì œëª©</th>
+					<th class="text-center" width="15%">ì´ë¦„</th>
+					<th class="text-center" width="20%">ìž‘ì„±ì¼</th>
+					<th class="text-center" width="10%">ì¡°íšŒìˆ˜</th>
 				</tr>
 				<c:forEach var="vo" items="${list}">
 					<tr class="aa">
@@ -47,8 +47,8 @@
 	
 	<div class="container text-center">
 		<ul class="pagination">
-       		<li><a href="selectsave.do?page=${curpage<11?curpage:curpage-10}&saveNum=${num}">¢¸¢¸</a></li>
-       		<li><a href="selectsave.do?page=${curpage<2?curpage:curpage-1}&saveNum=${num}">¢¸</a></li>
+       		<li><a href="selectsave.do?page=${curpage<11?curpage:curpage-10}&saveNum=${num}">â—€â—€</a></li>
+       		<li><a href="selectsave.do?page=${curpage<2?curpage:curpage-1}&saveNum=${num}">â—€</a></li>
        				
        		<fmt:parseNumber var="num1" value="${curpage/10}" integerOnly="true"/>
        		<c:set var="num1" value="${num1<=0?1:num1*10}"/>  
@@ -67,8 +67,8 @@
        				</c:when>
        			</c:choose>
        		</c:forEach>
-       		<li><a href="selectsave.do?page=${curpage<totalpage?curpage+1:curpage}&saveNum=${num}">¢º</a></li>
-            <li><a href="selectsave.do?page=${curpage<=totalpage-10?curpage+10:curpage}&saveNum=${num}">¢º¢º</a></li>
+       		<li><a href="selectsave.do?page=${curpage<totalpage?curpage+1:curpage}&saveNum=${num}">â–¶</a></li>
+            <li><a href="selectsave.do?page=${curpage<=totalpage-10?curpage+10:curpage}&saveNum=${num}">â–¶â–¶</a></li>
 		</ul>
 	</div>
 	<div class="container" style="height:300px;"></div>

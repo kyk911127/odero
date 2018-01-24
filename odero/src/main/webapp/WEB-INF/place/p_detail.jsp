@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-   pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"> -->
 <link rel="stylesheet" type="text/css" href="css/p_detail.css">
@@ -58,7 +58,7 @@ $(function(){
          <div>
             <a href="#" data-target="#myModal" data-toggle="modal">
                <div class="img_more">
-                  <p class="i_more">»çÁø ´õº¸±â &nbsp;<img src="p_image/right-arrow.png"></p>
+                  <p class="i_more">ì‚¬ì§„ ë”ë³´ê¸° &nbsp;<img src="p_image/right-arrow.png"></p>
                </div>
             </a>
          </div>
@@ -97,59 +97,59 @@ $(function(){
    </div>
    <div class="container mid_container">
       <div class="row row_info">
-         <h3>¾û¸ÁÂ¡Ã¢Å°Ä£ È«´ëÁ¡</h3>
+         <h3>ì—‰ë§ì§•ì°½í‚¤ì¹œ í™ëŒ€ì </h3>
          <div style="padding: 15px; border-bottom: 1px solid #dbdbdb;">
-         	<!-- <span class="glyphicon glyphicon-tent" aria-hidden="true"></span> ÀÌ»ö/Ã¼Çè -->
+         	<!-- <span class="glyphicon glyphicon-tent" aria-hidden="true"></span> ì´ìƒ‰/ì²´í—˜ -->
             <span class="cate_span">
-               <img class="cate_icon" src="p_image/tent.png">&nbsp; ÀÌ»ö/Ã¼Çè
+               <img class="cate_icon" src="p_image/tent.png">&nbsp; ì´ìƒ‰/ì²´í—˜
             </span>
              <span class="cate_span">
-               <img class="cate_icon" src="p_image/restaurant.png">&nbsp; ¸ÀÁý
+               <img class="cate_icon" src="p_image/restaurant.png">&nbsp; ë§›ì§‘
             </span>
              <span class="cate_span">
-               <img class="cate_icon" src="p_image/coffee.png">&nbsp; ±îÆä
+               <img class="cate_icon" src="p_image/coffee.png">&nbsp; ê¹ŒíŽ˜
             </span>
             <table style="margin: 20px 0;">
                <tr>
-                  <td width="20%">ÁÖ¼Ò</td>
-                  <td>¼­¿ïÆ¯º°½Ã ¸¶Æ÷±¸ ¼­±³µ¿ 358-113 5Ãþ ³ë¶õ»ö¹®</td>
+                  <td width="20%">ì£¼ì†Œ</td>
+                  <td>ì„œìš¸íŠ¹ë³„ì‹œ ë§ˆí¬êµ¬ ì„œêµë™ 358-113 5ì¸µ ë…¸ëž€ìƒ‰ë¬¸</td>
                </tr>
                <tr>
-                  <td width="20%">ÀüÈ­¹øÈ£</td>
+                  <td width="20%">ì „í™”ë²ˆí˜¸</td>
                   <td>02-313-9977</td>
                </tr>
                <tr>
-                  <td width="20%">°¡°Ý´ë</td>
-                  <td>2¸¸¿ø ~ 5¸¸¿ø</td>
+                  <td width="20%">ê°€ê²©ëŒ€</td>
+                  <td>2ë§Œì› ~ 5ë§Œì›</td>
                </tr>
                <tr>
-                  <td width="20%">Å°¿öµå</td>
+                  <td width="20%">í‚¤ì›Œë“œ</td>
                   <td> 
                      <ul class="tags">
                         <li class="li_1">
-                           <div class="tag_1">±âºÐ³»±â</div>
-                           <div class="tag_1">°í¹éÇÏ±âÁÁÀº</div>
-                           <div class="tag_1">±â³äÀÏ</div>
-                           <div class="tag_1">Áøµµ³ª°¡±â</div>
-                           <div class="tag_1">ÇÁ·ÎÆ÷Áî</div> <br>
+                           <div class="tag_1">ê¸°ë¶„ë‚´ê¸°</div>
+                           <div class="tag_1">ê³ ë°±í•˜ê¸°ì¢‹ì€</div>
+                           <div class="tag_1">ê¸°ë…ì¼</div>
+                           <div class="tag_1">ì§„ë„ë‚˜ê°€ê¸°</div>
+                           <div class="tag_1">í”„ë¡œí¬ì¦ˆ</div> <br>
                         </li>
                         <li class="li_2">
-                           <div class="tag_2">Èú¸µ</div>
-                           <div class="tag_2">ÈÞ½ÄÇÏ±â</div> <br>
+                           <div class="tag_2">ížë§</div>
+                           <div class="tag_2">íœ´ì‹í•˜ê¸°</div> <br>
                         </li>
                      </ul>
                   </td>
                </tr>
 				<tr>
-					<td width="20%">¿µ¾÷½Ã°£</td>
-					<td>¸ÅÀÏ 10:00 ~ 21:00</td>	
+					<td width="20%">ì˜ì—…ì‹œê°„</td>
+					<td>ë§¤ì¼ 10:00 ~ 21:00</td>	
 				</tr>
             </table>
          </div>
       </div> 
 
       <div class="row row_map">
-         <h3>Áöµµ</h3>
+         <h3>ì§€ë„</h3>
          <div id="map" style="width:100%; height:450px;">
          <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=90ca2826f787f6d4fc01f89cb8bcdce3"></script>
 		 <script>
@@ -165,7 +165,7 @@ $(function(){
          </div>
       </div>
       <div class="row row_review">
-         <h3>¾û¸ÁÂ¡Ã¢Å°Ä£ÀÇ ¸®ºä(10)</h3>
+         <h3>ì—‰ë§ì§•ì°½í‚¤ì¹œì˜ ë¦¬ë·°(10)</h3>
          <table class="review_list">
             <c:forEach var="i" begin="1" end="3">
                <tr style="border-bottom: 1px solid #dbdbdb;">
@@ -174,19 +174,19 @@ $(function(){
                         <div class="user_img">
                            <img src="p_image/user.png" class="im">
                         </div>
-                        <div class="user_name" style="margin-top: 10px">´ÞÇØ</div>
+                        <div class="user_name" style="margin-top: 10px">ë‹¬í•´</div>
                      </div>
                   </td>
                   <td width="87%" style="padding: 20px 0">
                      <div class="review_info">
                         <p class="review_content">
-                           ¿Ü±¹¿¡ ¿Â °Í °°Àº ´À³¦ÀÌ µå´Â Ä«Æä. ÃµÀåµµ ³ô°í ¹®µµ
-                           Å©À¸°í. º®¸éÀÇ ±×¸²µéµµ Å­Á÷Å­Á÷. ½Ã¿ø½Ã¿øÇØ¼­ ÁÁ¾Æ¿ä! Å×ÀÌºí »çÀÌ °£°Ýµµ ³Ð½À´Ï´Ù. ÇÚµå µå¸³ Ä¿ÇÇµµ ¸¶½Ç ¼ö
-                           ÀÖ°í¿ä ¾ÆÄ§¿¡´Â ¸ð´× »§ ºßÆäµµ ÇØ¿ä! À½·á °¡°Ý + 9,000¿ø(?) Á¤µµ ³»¸é ±×³¯ °« ±¸¿î »§°ú »ø·¯µå,
-                           ÇÜ, ½ºÅ©·¥ºí µîÀ» µå½Ç ¼ö ÀÖ½À´Ï´Ù. Àú´Â ÆäÆÛ¹ÎÆ® Æ¼¿Í Æ¼¶ó¹Ì¼ö¸¦ ÁÖ¹®Çß¾î¿ä. ÆäÆÛ¹ÎÆ®Æ¼´Â Áú ¾È ÁÁÀº °Å
-                           ¸¶½Ã¸é µÇ°Ô ¿ªÇÑµ¥.. ¿©±â´Â Çâ°ú ¸ÀÀÌ ÈÇ¸¢Çß¾î¿ä! ºê·çÀ× µµ±¸µµ °°ÀÌ Áà¼­ ÁÁ±¸¿ä. Æ¼¶ó¹Ì¼ö´Â ¸¶½ºÄ«Æ÷³×ÀÇ
-                           ±íÀº ¸ÀÀÌ Àß ´À²¸Á®¿ä. ¹ØÀÇ ½ÃÆ®´Â ¿¡½ºÇÁ·¹¼Ò¿¡ Èï°ÇÈ÷ Àû¼ÅÁ® ÀÖ½À´Ï´Ù. Ä÷¸®Æ¼ÀÖ´Â Ä¿ÇÇ¶ó ¸ÀÀº ÀÖÁö¸¸ Á¶±Ý ´ú
-                           Àû¼ÅÁÖ¸é ´õ ÁÁÀ» °Í °°¾Æ¿ä.</p>
+                           ì™¸êµ­ì— ì˜¨ ê²ƒ ê°™ì€ ëŠë‚Œì´ ë“œëŠ” ì¹´íŽ˜. ì²œìž¥ë„ ë†’ê³  ë¬¸ë„
+                           í¬ìœ¼ê³ . ë²½ë©´ì˜ ê·¸ë¦¼ë“¤ë„ í¼ì§í¼ì§. ì‹œì›ì‹œì›í•´ì„œ ì¢‹ì•„ìš”! í…Œì´ë¸” ì‚¬ì´ ê°„ê²©ë„ ë„“ìŠµë‹ˆë‹¤. í•¸ë“œ ë“œë¦½ ì»¤í”¼ë„ ë§ˆì‹¤ ìˆ˜
+                           ìžˆê³ ìš” ì•„ì¹¨ì—ëŠ” ëª¨ë‹ ë¹µ ë·”íŽ˜ë„ í•´ìš”! ìŒë£Œ ê°€ê²© + 9,000ì›(?) ì •ë„ ë‚´ë©´ ê·¸ë‚  ê°“ êµ¬ìš´ ë¹µê³¼ ìƒëŸ¬ë“œ,
+                           í–„, ìŠ¤í¬ëž¨ë¸” ë“±ì„ ë“œì‹¤ ìˆ˜ ìžˆìŠµë‹ˆë‹¤. ì €ëŠ” íŽ˜í¼ë¯¼íŠ¸ í‹°ì™€ í‹°ë¼ë¯¸ìˆ˜ë¥¼ ì£¼ë¬¸í–ˆì–´ìš”. íŽ˜í¼ë¯¼íŠ¸í‹°ëŠ” ì§ˆ ì•ˆ ì¢‹ì€ ê±°
+                           ë§ˆì‹œë©´ ë˜ê²Œ ì—­í•œë°.. ì—¬ê¸°ëŠ” í–¥ê³¼ ë§›ì´ í›Œë¥­í–ˆì–´ìš”! ë¸Œë£¨ìž‰ ë„êµ¬ë„ ê°™ì´ ì¤˜ì„œ ì¢‹êµ¬ìš”. í‹°ë¼ë¯¸ìˆ˜ëŠ” ë§ˆìŠ¤ì¹´í¬ë„¤ì˜
+                           ê¹Šì€ ë§›ì´ ìž˜ ëŠê»´ì ¸ìš”. ë°‘ì˜ ì‹œíŠ¸ëŠ” ì—ìŠ¤í”„ë ˆì†Œì— í¥ê±´ížˆ ì ì…”ì ¸ ìžˆìŠµë‹ˆë‹¤. í€„ë¦¬í‹°ìžˆëŠ” ì»¤í”¼ë¼ ë§›ì€ ìžˆì§€ë§Œ ì¡°ê¸ˆ ëœ
+                           ì ì…”ì£¼ë©´ ë” ì¢‹ì„ ê²ƒ ê°™ì•„ìš”.</p>
                         <span class="review_date">2018-01-02</span>
                      </div>
                   </td>
@@ -198,13 +198,13 @@ $(function(){
       <div class="row row_reply">
          <div class="col-md-12" style="padding: 0px 20px">
             <h4>
-               <span class="com_title"><b>¸®ºä¾²±â</b></span>
+               <span class="com_title"><b>ë¦¬ë·°ì“°ê¸°</b></span>
             </h4>
             <div class="reply_write">
                <form method=post action="">
                   <input type="hidden" name=bno value="">
                   <textarea class="reply_ta" rows="4" cols="140" name="msg"></textarea>
-                  <input type="button" class="btn btn-info btn-sm pull-right" value="µî    ·Ï" style="width: 75px; height: 90px">
+                  <input type="button" class="btn btn-info btn-sm pull-right" value="ë“±    ë¡" style="width: 75px; height: 90px">
                </form>
             </div>
          </div>

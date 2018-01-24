@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 
 <style type="text/css">
@@ -17,7 +17,7 @@
 	margin: 0px auto;
 }
 
-/*º“¡¶∏Ò 1∆≤  */
+/*ÏÜåÏ†úÎ™© 1ÌãÄ  */
 .sc_title{
 	width:60%;
 	margin:2% auto; 
@@ -31,7 +31,7 @@
 	float:left;
 }
 	.date { 
-		position:relative; /*∞®ΩŒ¥¬ ∑π¿ÃæÓø° ∆˜¡ˆº« º”º∫¿ª ¿‚æ∆¡÷¥¬ ∞‘ « ºˆ!(relative, absolute, fixed ¡ﬂ ≈√1*/ 
+		position:relative; /*Í∞êÏã∏Îäî Î†àÏù¥Ïñ¥Ïóê Ìè¨ÏßÄÏÖò ÏÜçÏÑ±ÏùÑ Ïû°ÏïÑÏ£ºÎäî Í≤å ÌïÑÏàò!(relative, absolute, fixed Ï§ë ÌÉù1*/ 
 		width:100%; 
 		height:2000px;
 		text-align:center; 
@@ -173,11 +173,11 @@
 <body>
 		<div class="container-fluid sc">
 			<div class="sc_title">
-				<h2 class="sc_ti text-center">√ﬂ √µ ƒ⁄ Ω∫</h2><br>
-				<h4 class="sc_ti text-center">°Â°Â°Â°Â°Â</h4>
+				<h2 class="sc_ti text-center">Ï∂î Ï≤ú ÏΩî Ïä§</h2><br>
+				<h4 class="sc_ti text-center">‚ñº‚ñº‚ñº‚ñº‚ñº</h4>
 			</div>
 			<div class="sc_box">
-				<!--¡ˆµµ  -->
+				<!--ÏßÄÎèÑ  -->
 				<div class="tmap_1">
 					<div id="map_div"></div>  
 				</div>
@@ -188,7 +188,7 @@
 						<table class="tmap_table">
 							<tr>
 								<td width=47% class="tmap_td"></td>
-								<td width=6% rowspan="2" class="text-center"><h4><b>∞≈∏Æ∞ËªÍ</b></h4></td>
+								<td width=6% rowspan="2" class="text-center"><h4><b>Í±∞Î¶¨Í≥ÑÏÇ∞</b></h4></td>
 								<td width=47% class="tmap_td"></td>
 							</tr>
 							<tr>
@@ -199,23 +199,23 @@
 						</center>
 						<table width="95%" height="100px">
 							<tr>
-						<!--1π¯  -->
+						<!--1Î≤à  -->
 								<td width="24%">
 									<table class="tmap_wrap">
 										<tr>
 											<td style="padding:3%;">
-												<h4 style="float:left;"><scan class="glyphicon glyphicon-home" style="margin-right:10px;">∞°∞‘¿Ã∏ß</h4>
+												<h4 style="float:left;"><scan class="glyphicon glyphicon-home" style="margin-right:10px;">Í∞ÄÍ≤åÏù¥Î¶Ñ</h4>
 											</td>
 										</tr>
 										<tr>
 											<td>
-												<span class="tmap_detail">&nbsp;¿Œ√µΩ√ ø¨ºˆ±∏ ø¨ºˆ2µø</span>
+												<span class="tmap_detail">&nbsp;Ïù∏Ï≤úÏãú Ïó∞ÏàòÍµ¨ Ïó∞Ïàò2Îèô</span>
 											</td>
 										</tr>
 										<tr>
 											<td class="text-right">
-												<span class="tmap_detail glyphicon glyphicon-eye-open">¡∂»∏ºˆ</span>
-												<span class="tmap_detail glyphicon glyphicon-heart">¬Ú&nbsp;</span>
+												<span class="tmap_detail glyphicon glyphicon-eye-open">Ï°∞ÌöåÏàò</span>
+												<span class="tmap_detail glyphicon glyphicon-heart">Ï∞ú&nbsp;</span>
 											</td>
 										</tr>
 									</table>
@@ -226,37 +226,37 @@
 										<table style="float:left; margin:3%;">
 											<tr>
 												<td class="tmap_res">
-													<span>¿Ãµø ∞≈∏Æ </span><span>100m</span>
+													<span>Ïù¥Îèô Í±∞Î¶¨ </span><span>100m</span>
 												</td>
 												<td rowspan="2"><span class="glyphicon glyphicon-chevron-right"></span></td>
 											</tr>
 											<tr>
 											
 												<td class="tmap_res">
-													<span>¿Ãµø Ω√∞£ </span><span>3∫–</span>
+													<span>Ïù¥Îèô ÏãúÍ∞Ñ </span><span>3Î∂Ñ</span>
 												</td>
 												
 											</tr>
 										</table>
 									</center>
 								</td>
-						<!--2π¯  -->
+						<!--2Î≤à  -->
 								<td width="24%">
 									<table class="tmap_wrap">
 										<tr>
 											<td style="padding:3%;">
-												<h4 style="float:left;"><scan class="glyphicon glyphicon-home" style="margin-right:10px;">∞°∞‘¿Ã∏ß</h4>
+												<h4 style="float:left;"><scan class="glyphicon glyphicon-home" style="margin-right:10px;">Í∞ÄÍ≤åÏù¥Î¶Ñ</h4>
 											</td>
 										</tr>
 										<tr>
 											<td>
-												<span class="tmap_detail">&nbsp;¿Œ√µΩ√ ø¨ºˆ±∏ ø¨ºˆ2µø</span>
+												<span class="tmap_detail">&nbsp;Ïù∏Ï≤úÏãú Ïó∞ÏàòÍµ¨ Ïó∞Ïàò2Îèô</span>
 											</td>
 										</tr>
 										<tr>
 											<td class="text-right">
-												<span class="tmap_detail glyphicon glyphicon-eye-open">¡∂»∏ºˆ</span>
-												<span class="tmap_detail glyphicon glyphicon-heart">¬Ú&nbsp;</span>
+												<span class="tmap_detail glyphicon glyphicon-eye-open">Ï°∞ÌöåÏàò</span>
+												<span class="tmap_detail glyphicon glyphicon-heart">Ï∞ú&nbsp;</span>
 											</td>
 										</tr>
 									</table>
@@ -267,49 +267,49 @@
 										<table style="float:left; margin:3%;">
 											<tr>
 												<td class="tmap_res">
-													<span>¿Ãµø ∞≈∏Æ </span><span>100m</span>
+													<span>Ïù¥Îèô Í±∞Î¶¨ </span><span>100m</span>
 												</td>
 												<td rowspan="2">
-													<span class="glyphicon glyphicon-chevron-right"></span><!-- ¿Ãµø∞≈∏Æ »≠ªÏ«• -->
+													<span class="glyphicon glyphicon-chevron-right"></span><!-- Ïù¥ÎèôÍ±∞Î¶¨ ÌôîÏÇ¥Ìëú -->
 												</td>
 											</tr>
 											<tr>
 												<td class="tmap_res">
-													<span>¿Ãµø Ω√∞£ </span><span>3∫–</span>
+													<span>Ïù¥Îèô ÏãúÍ∞Ñ </span><span>3Î∂Ñ</span>
 												</td>
 											</tr>
 										</table>
 									</center>
 								</td>
-						<!-- 3π¯ -->
+						<!-- 3Î≤à -->
 								<td width="24%">
 									<table class="tmap_wrap">
 										<tr>
 											<td style="padding:3%;">
-												<h4 style="float:left;"><scan class="glyphicon glyphicon-home" style="margin-right:10px;">∞°∞‘¿Ã∏ß</h4>
+												<h4 style="float:left;"><scan class="glyphicon glyphicon-home" style="margin-right:10px;">Í∞ÄÍ≤åÏù¥Î¶Ñ</h4>
 											</td>
 										</tr>
 										<tr>
 											<td>
-												<span class="tmap_detail">&nbsp;¿Œ√µΩ√ ø¨ºˆ±∏ ø¨ºˆ2µø</span>
+												<span class="tmap_detail">&nbsp;Ïù∏Ï≤úÏãú Ïó∞ÏàòÍµ¨ Ïó∞Ïàò2Îèô</span>
 											</td>
 										</tr>
 										<tr>
 											<td class="text-right">
-												<span class="tmap_detail glyphicon glyphicon-eye-open">¡∂»∏ºˆ</span>
-												<span class="tmap_detail glyphicon glyphicon-heart">¬Ú&nbsp;</span>
+												<span class="tmap_detail glyphicon glyphicon-eye-open">Ï°∞ÌöåÏàò</span>
+												<span class="tmap_detail glyphicon glyphicon-heart">Ï∞ú&nbsp;</span>
 											</td>
 										</tr>
 									</table>
 								</td>
 							</tr>
 						</table>
-				<!--ƒ⁄Ω∫ ¬Ú «œ±‚ πˆ∆∞  -->
+				<!--ÏΩîÏä§ Ï∞ú ÌïòÍ∏∞ Î≤ÑÌäº  -->
 						<table>
 							<tr>
 								<td class="btn-like text-center">
 									<button type="button" class="btn like" data-toggle="modal" data-target="#myModal" aria-hidden="true" style=" outline: none;">
-										<b>ƒ⁄Ω∫ ¬Ú«œ±‚</b>
+										<b>ÏΩîÏä§ Ï∞úÌïòÍ∏∞</b>
 									</button>
 								</td>
 							</tr>
@@ -329,23 +329,23 @@
 	  <div class="modal-dialog">
 	    <div class="modal-content" style="width:400px;">
 	      <div class="modal-header">
-	      <!-- ∏¥ﬁ ¥›±‚ -->
+	      <!-- Î™®Îã¨ Îã´Í∏∞ -->
 	        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	        	<span aria-hidden="true">&times;</span>
 	        </button>
 	      </div>
-	      <!-- ∏¥ﬁ ≥ªøÎ -->
+	      <!-- Î™®Îã¨ ÎÇ¥Ïö© -->
 	      <div class="modal-body">
 	      	<center>
 	        	<img src="img_1/date.jpg" width="300px" height="300px">
 	        	<br clear=left>
-	        		<h5 style="margin-top:2%;"><b>º±≈√«œΩ≈ µ•¿Ã∆Æ ƒ⁄Ω∫∏¶ ¬Ú «œΩ√∞⁄Ω¿¥œ±Ó?</b></h5>
+	        		<h5 style="margin-top:2%;"><b>ÏÑ†ÌÉùÌïòÏã† Îç∞Ïù¥Ìä∏ ÏΩîÏä§Î•º Ï∞ú ÌïòÏãúÍ≤†ÏäµÎãàÍπå?</b></h5>
 	        </center>
 	      </div>
 	      <div class="modal-footer">
 	      	<center>
-		      	<button type="button" class="btn btn-default" style="background-color:white;outline: none;"><b>ƒ⁄Ω∫ ¬Ú</b></button>
-		        <button type="button" class="btn btn-default" style="background-color:white;outline: none;" data-dismiss="modal" ><b>√Îº“</b></button>
+		      	<button type="button" class="btn btn-default" style="background-color:white;outline: none;"><b>ÏΩîÏä§ Ï∞ú</b></button>
+		        <button type="button" class="btn btn-default" style="background-color:white;outline: none;" data-dismiss="modal" ><b>Ï∑®ÏÜå</b></button>
 	        </center>
 	      </div>
 	    </div>
@@ -355,48 +355,48 @@
 	
 	<div class="container rc">
 		<div class="rc_box">
-		<!--∏¿¡˝ ∏ÆΩ∫∆Æ  -->
+		<!--ÎßõÏßë Î¶¨Ïä§Ìä∏  -->
         <div class="row">
            	<div style="width:100%; height:25px;"	> 
-           		<h4 style="margin:0px; float:left"><b>¢∫ √ﬂ√µ</b><b style="color:#DF0101;">∏¿¡˝</b></h4>
+           		<h4 style="margin:0px; float:left"><b>‚ñ∂ Ï∂îÏ≤ú</b><b style="color:#DF0101;">ÎßõÏßë</b></h4>
            	</div>
            	<c:forEach begin="1" end="3">
 	     	   <div class="col-md-4 text-center">
 	        	   <div class="box">
 	               	<div class="box-content">
-	               	<!--∏¿¡˝ ¿Ã∏ß  -->
+	               	<!--ÎßõÏßë Ïù¥Î¶Ñ  -->
 	               		<a href="#" style="color: black; text-decoration:none;">
 			                <h4><span class="glyphicon glyphicon-cutlery" style="float:left; margin:2%"></span></h4>
-			                <h4 class="tag-title text-left">∞°∞‘¿Ã∏ß</h4><br>
+			                <h4 class="tag-title text-left">Í∞ÄÍ≤åÏù¥Î¶Ñ</h4><br>
 		                </a>
 	                    <hr style="margin:2%;">
-	                <!-- ∏¿¡˝ ¿ÃπÃ¡ˆ -->
+	                <!-- ÎßõÏßë Ïù¥ÎØ∏ÏßÄ -->
 	                	<div class=rc_img>
 		                    <img src="img_1/food3.jpg" style="width:100%; height:250px;">
 		                    <br>
 		                    <hr style="margin:3px;">
 		                </div>
-		            <!-- ∏¿¡˝¡§∫∏ -->
+		            <!-- ÎßõÏßëÏ†ïÎ≥¥ -->
 		                <div class="rc_detail">
 		                	<table width=100%>
 		                		<tr>
 		                			<td class="text-left">
-		                				<h5><span class="glyphicon glyphicon-map-marker"><b> ¡ˆø™±∏</b></span></h5>
+		                				<h5><span class="glyphicon glyphicon-map-marker"><b> ÏßÄÏó≠Íµ¨</b></span></h5>
 		                			</td>
 		                		</tr>
 		                		<tr>
 		                			<td class="text-left">
-		                				<h5><span class="glyphicon glyphicon-usd"><b> ∞°∞›</b></span></h5>
+		                				<h5><span class="glyphicon glyphicon-usd"><b> Í∞ÄÍ≤©</b></span></h5>
 		                			</td>
 		                		</tr><tr>
 		                			<td class="text-left">
-		                				<h5><span class="glyphicon glyphicon-time"><b> ∆Ú¿œ 11:00~20:00</b></span></h5>
+		                				<h5><span class="glyphicon glyphicon-time"><b> ÌèâÏùº 11:00~20:00</b></span></h5>
 		                			</td>
 		                		</tr><tr>
 		                			<td class="text-right">
 		                				<h5>
-				                			<span class="glyphicon glyphicon-eye-open" style="margin:2px;">88</span><!--¡∂»∏ºˆ  -->
-				                			<span class="glyphicon glyphicon-heart" style="margin:2px;">4</span><!--¬Ú ºˆ   -->
+				                			<span class="glyphicon glyphicon-eye-open" style="margin:2px;">88</span><!--Ï°∞ÌöåÏàò  -->
+				                			<span class="glyphicon glyphicon-heart" style="margin:2px;">4</span><!--Ï∞ú Ïàò   -->
 				                		</h5>
 		                			</td>
 		                		</tr>
@@ -411,10 +411,10 @@
         
        
         
-        <!--≥Ó∞≈∏Æ ∏ÆΩ∫∆Æ  -->
+        <!--ÎÜÄÍ±∞Î¶¨ Î¶¨Ïä§Ìä∏  -->
             <div class="row">
             	<div style="width:100%; height:25px;"> 
-            		<h4 style="margin:0px; float:left"><b>¢∫ √ﬂ√µ</b><b style="color:#DF0101;">≥Ó∞≈∏Æ</b></h4>
+            		<h4 style="margin:0px; float:left"><b>‚ñ∂ Ï∂îÏ≤ú</b><b style="color:#DF0101;">ÎÜÄÍ±∞Î¶¨</b></h4>
             	</div>
             	<c:forEach begin="1" end="3">
 	                <div class="col-md-4 text-center">
@@ -422,33 +422,33 @@
 	                        <div class="box-content">
 		                        <a href="#" style="color: black; text-decoration:none;">
 			                		<h4><span class="glyphicon glyphicon-map-marker" style="float:left; margin:2%"></span></h4>
-			                		<h4 class="tag-title text-left">∞°∞‘¿Ã∏ß</h4><br>
+			                		<h4 class="tag-title text-left">Í∞ÄÍ≤åÏù¥Î¶Ñ</h4><br>
 		                		</a>
 	                            <hr style="margin:2%;">
 	                            <img src="img_1/play1.jpg" style="width:100%; height:250px;">
 	                            <br>
 	                            <hr style="margin:3px;">
-		            <!-- ∞°∞‘¡§∫∏ -->
+		            <!-- Í∞ÄÍ≤åÏ†ïÎ≥¥ -->
 		                <div class="rc_detail">
 		                	<table class="" width=100%>
 		                		<tr>
 		                			<td class="text-left">
-		                				<h5><span class="glyphicon glyphicon-map-marker"><b> ¡ˆø™±∏</b></span></h5>
+		                				<h5><span class="glyphicon glyphicon-map-marker"><b> ÏßÄÏó≠Íµ¨</b></span></h5>
 		                			</td>
 		                		</tr>
 		                		<tr>
 		                			<td class="text-left">
-		                				<h5><span class="glyphicon glyphicon-usd"><b> ∞°∞›</b></span></h5>
+		                				<h5><span class="glyphicon glyphicon-usd"><b> Í∞ÄÍ≤©</b></span></h5>
 		                			</td>
 		                		</tr><tr>
 		                			<td class="text-left">
-		                				<h5><span class="glyphicon glyphicon-time"><b> ∆Ú¿œ 11:00~20:00</b></span></h5>
+		                				<h5><span class="glyphicon glyphicon-time"><b> ÌèâÏùº 11:00~20:00</b></span></h5>
 		                			</td>
 		                		</tr><tr>
 		                			<td class="text-right">
 		                				<h5>
-				                			<span class="glyphicon glyphicon-eye-open" style="margin:2px;">88</span><!--¡∂»∏ºˆ  -->
-				                			<span class="glyphicon glyphicon-heart" style="margin:2px;">4</span><!--¬Ú ºˆ   -->
+				                			<span class="glyphicon glyphicon-eye-open" style="margin:2px;">88</span><!--Ï°∞ÌöåÏàò  -->
+				                			<span class="glyphicon glyphicon-heart" style="margin:2px;">4</span><!--Ï∞ú Ïàò   -->
 				                		</h5>
 		                			</td>
 		                		</tr>
@@ -461,10 +461,10 @@
             </div>  
             
             <!--  -->
-            <!-- ƒ´∆‰ ∏ÆΩ∫∆Æ -->
+            <!-- Ïπ¥Ìéò Î¶¨Ïä§Ìä∏ -->
             <div class="row">
             	<div style="width:100%; height:25px;">
-            		<h4 style="margin:0px; float:left"><b>¢∫ √ﬂ√µ</b><b style="color:#DF0101;">ƒ´∆‰</b></h4>
+            		<h4 style="margin:0px; float:left"><b>‚ñ∂ Ï∂îÏ≤ú</b><b style="color:#DF0101;">Ïπ¥Ìéò</b></h4>
             	</div>
             	<c:forEach begin="1" end="3">
 	                <div class="col-md-4 text-center">
@@ -472,33 +472,33 @@
 	                        <div class="box-content">
 		                        <a href="#" style="color: black; text-decoration:none;">
 			                		<h4><span class="glyphicon glyphicon-glass" style="float:left; margin:2%"></span></h4>
-			                		<h4 class="tag-title text-left">∞°∞‘¿Ã∏ß</h4><br>
+			                		<h4 class="tag-title text-left">Í∞ÄÍ≤åÏù¥Î¶Ñ</h4><br>
 		                		</a>
 	                            <hr style="margin:2%;">
 	                            <img src="img_1/cafe1.png" style="width:100%; height:250px;">
 	                            <br>
 	                            <hr style="margin:3px;">
-		            <!-- ∞°∞‘¡§∫∏ -->
+		            <!-- Í∞ÄÍ≤åÏ†ïÎ≥¥ -->
 				                <div class="rc_detail">
 				                	<table width=100%>
 				                		<tr>
 				                			<td class="text-left">
-				                				<h5><span class="glyphicon glyphicon-map-marker"><b> ¡ˆø™±∏</b></span></h5>
+				                				<h5><span class="glyphicon glyphicon-map-marker"><b> ÏßÄÏó≠Íµ¨</b></span></h5>
 				                			</td>
 				                		</tr>
 				                		<tr>
 				                			<td class="text-left">
-				                				<h5><span class="glyphicon glyphicon-usd"><b> ∞°∞›</b></span></h5>
+				                				<h5><span class="glyphicon glyphicon-usd"><b> Í∞ÄÍ≤©</b></span></h5>
 				                			</td>
 				                		</tr><tr>
 				                			<td class="text-left">
-				                				<h5><span class="glyphicon glyphicon-time"><b> ∆Ú¿œ 11:00~20:00</b></span></h5>
+				                				<h5><span class="glyphicon glyphicon-time"><b> ÌèâÏùº 11:00~20:00</b></span></h5>
 				                			</td>
 				                		</tr><tr>
 				                			<td class="text-right">
 				                				<h5>
-				                					<span class="glyphicon glyphicon-eye-open" style="margin:2px;">88</span><!--¡∂»∏ºˆ  -->
-				                					<span class="glyphicon glyphicon-heart" style="margin:2px;">4</span><!--¬Ú ºˆ   -->
+				                					<span class="glyphicon glyphicon-eye-open" style="margin:2px;">88</span><!--Ï°∞ÌöåÏàò  -->
+				                					<span class="glyphicon glyphicon-heart" style="margin:2px;">4</span><!--Ï∞ú Ïàò   -->
 				                				</h5>
 				                			</td>
 				                		</tr>

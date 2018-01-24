@@ -1,12 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 
 <html>
 <head>
-<meta charset=EUC-KR">
+<meta charset=UTF-8">
 <title>Insert title here</title>
 
 <link rel="stylesheet" href="http://fonts.googleapis.com/earlyaccess/hanna.css">
@@ -40,41 +40,41 @@ $(document).ready(function(){
 	<div class="tab_wrap">
 	
 
-	<!-- <span class="tab">³» Á¤º¸</span> -->
-	<a href="mypage_list.do"><span class="tab">Âò ¸®½ºÆ®</span></a>
+	<!-- <span class="tab">ë‚´ ì •ë³´</span> -->
+	<a href="mypage_list.do"><span class="tab">ì°œ ë¦¬ìŠ¤íŠ¸</span></a>
 	</div>
 		
 	
 	<%-- c:forEach var="i" begin="1" end="3"> --%>
 	<div class="row cart">
 <div class="table_wrap">
-	<hr class="soften" /><h3 class="sub_text">ÃßÃµ °¡°Ô ¸®½ºÆ®  Best5 &nbsp;
-	<a href="mypage_list.do"><button class="btn btn-success btn-xs">´õº¸±â </button></a> <hr class="soften" /> 
+	<hr class="soften" /><h3 class="sub_text">ì¶”ì²œ ê°€ê²Œ ë¦¬ìŠ¤íŠ¸  Best5 &nbsp;
+	<a href="mypage_list.do"><button class="btn btn-success btn-xs">ë”ë³´ê¸° </button></a> <hr class="soften" /> 
 		</h3> 
 
            
           <table class="table table-hover" id="table_content" width=600>
  			<tr>
- 				<th width="5%">¹øÈ£</th>
- 				<th width="30%" class="text-center">°¡°ÔÀÌ¸§</th>
- 				<th width="40%" class="text-center">°¡°Ô°æ·Î</th>
- 				<th width="15%">ÃßÃµ</th>
- 				<th width="5%">ÀÚ¼¼È÷</th>
- 				<th width="5%">»èÁ¦</th>
+ 				<th width="5%">ë²ˆí˜¸</th>
+ 				<th width="30%" class="text-center">ê°€ê²Œì´ë¦„</th>
+ 				<th width="40%" class="text-center">ê°€ê²Œê²½ë¡œ</th>
+ 				<th width="15%">ì¶”ì²œ</th>
+ 				<th width="5%">ìžì„¸ížˆ</th>
+ 				<th width="5%">ì‚­ì œ</th>
  			</tr>
  			
  			<c:forEach var="i" begin="1" end="5">
  			<tr>
  				<td width="5%">${i}</td>
- 				<td width="30%" class="text-center">$ÄÚ½ºÀÌ¸§</td>
- 				<td width="40%" class="text-center">$ÄÚ½º°æ·Î</td>
- 				<td width="15%">$ÃßÃµ</td>
- 				<td width="5%"><button class="btn btn-info btn-xs">º¸±â</button></td>
- 				<td width="5%"><button class="btn btn-danger btn-xs">»èÁ¦</button></td>
+ 				<td width="30%" class="text-center">$ì½”ìŠ¤ì´ë¦„</td>
+ 				<td width="40%" class="text-center">$ì½”ìŠ¤ê²½ë¡œ</td>
+ 				<td width="15%">$ì¶”ì²œ</td>
+ 				<td width="5%"><button class="btn btn-info btn-xs">ë³´ê¸°</button></td>
+ 				<td width="5%"><button class="btn btn-danger btn-xs">ì‚­ì œ</button></td>
  			</tr>
  			  </c:forEach>
  			<tr>
- 				<td colspan="6" class="text-right"> ÀÚ¼¼ÇÑ ¸ñ·ÏÀº ÀÚ¼¼È÷º¸±â¸¦ ´©¸£¼¼¿ä</td>
+ 				<td colspan="6" class="text-right"> ìžì„¸í•œ ëª©ë¡ì€ ìžì„¸ížˆë³´ê¸°ë¥¼ ëˆ„ë¥´ì„¸ìš”</td>
  			</tr> 			
           </table>
 
@@ -90,8 +90,8 @@ $(document).ready(function(){
 <div class="table_wrap">
 
 
-	<hr class="soften" /><h3 class="sub_text">ÃßÃµ ÄÚ½º ¸®½ºÆ® Best5 &nbsp;
-	<a href="mypage_list.do"><button class="btn btn-success btn-xs">´õº¸±â </button></a> <hr class="soften" /> 
+	<hr class="soften" /><h3 class="sub_text">ì¶”ì²œ ì½”ìŠ¤ ë¦¬ìŠ¤íŠ¸ Best5 &nbsp;
+	<a href="mypage_list.do"><button class="btn btn-success btn-xs">ë”ë³´ê¸° </button></a> <hr class="soften" /> 
 	
 	</h3> 
 	
@@ -99,26 +99,26 @@ $(document).ready(function(){
          
           <table class="table table-hover" id="table_content" width=600>
  			<tr>
- 				<th width="5%">¹øÈ£</th>
- 				<th width="30%" class="text-center">ÄÚ½ºÀÌ¸§</th>
- 				<th width="40%" class="text-center">ÄÚ½º°æ·Î</th>
- 				<th width="15%">ÃßÃµ</th>
- 				<th width="5%">ÀÚ¼¼È÷</th>
- 				<th width="5%">»èÁ¦</th>
+ 				<th width="5%">ë²ˆí˜¸</th>
+ 				<th width="30%" class="text-center">ì½”ìŠ¤ì´ë¦„</th>
+ 				<th width="40%" class="text-center">ì½”ìŠ¤ê²½ë¡œ</th>
+ 				<th width="15%">ì¶”ì²œ</th>
+ 				<th width="5%">ìžì„¸ížˆ</th>
+ 				<th width="5%">ì‚­ì œ</th>
  			</tr>
  			  <c:forEach var="i" begin="1" end="5">
  			<tr>
  				<td width="5%">${i}</td>
- 				<td width="30%" class="text-center">$ÄÚ½ºÀÌ¸§</td>
- 				<td width="40%" class="text-center">$ÄÚ½º°æ·Î</td>
- 				<td width="15%">$ÃßÃµ</td>
- 				<td width="5%"><button class="btn btn-info btn-xs">º¸±â</button></td>
- 				<td width="5%"><button class="btn btn-danger btn-xs">»èÁ¦</button></td>
+ 				<td width="30%" class="text-center">$ì½”ìŠ¤ì´ë¦„</td>
+ 				<td width="40%" class="text-center">$ì½”ìŠ¤ê²½ë¡œ</td>
+ 				<td width="15%">$ì¶”ì²œ</td>
+ 				<td width="5%"><button class="btn btn-info btn-xs">ë³´ê¸°</button></td>
+ 				<td width="5%"><button class="btn btn-danger btn-xs">ì‚­ì œ</button></td>
  			</tr>
  			      </c:forEach>
  			      
  			<tr>
- 				<td colspan="6" class="text-right"> ÀÚ¼¼ÇÑ ¸ñ·ÏÀº ÀÚ¼¼È÷º¸±â¸¦ ´©¸£¼¼¿ä</td>
+ 				<td colspan="6" class="text-right"> ìžì„¸í•œ ëª©ë¡ì€ ìžì„¸ížˆë³´ê¸°ë¥¼ ëˆ„ë¥´ì„¸ìš”</td>
  			</tr>
           </table>
 			

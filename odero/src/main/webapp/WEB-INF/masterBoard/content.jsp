@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert title here</title>
 	<link rel="stylesheet" href="css/masterBoard.css" type="text/css">
 	<style type="text/css">
@@ -18,24 +18,24 @@
 	<div class="container">
 		<div class="row">
 			<center>
-				<h3>°ø»çÁß</h3>
+				<h3>ê³µì‚¬ì¤‘</h3>
 				<table class="table table-hover" width="600">
 					<tr>
-						<td width="20%" class="text-center success">¹øÈ£</td>
+						<td width="20%" class="text-center success">ë²ˆí˜¸</td>
 						<td width="30%" class="text-center">${vo.no}</td>
-						<td width="20%" class="text-center success">ÀÛ¼ºÀÏ</td>
+						<td width="20%" class="text-center success">ìž‘ì„±ì¼</td>
 						<td width="30%" class="text-center">
 							<fmt:formatDate value="${vo.regdate}" pattern="yyyy-MM-dd"/>
 						</td>
 					</tr>
 					<tr>
-						<td width="20%" class="text-center success">ÀÌ¸§</td>
+						<td width="20%" class="text-center success">ì´ë¦„</td>
 						<td width="30%" class="text-center">${vo.name}</td>
-						<td width="20%" class="text-center success">Á¶È¸¼ö</td>
+						<td width="20%" class="text-center success">ì¡°íšŒìˆ˜</td>
 						<td width="30%" class="text-center">${vo.hit}</td>
 					</tr>
 					<tr>
-						<td width="20%" class="text-center success">Á¦¸ñ</td>
+						<td width="20%" class="text-center success">ì œëª©</td>
 						<td colspan="3" class="text-center">${vo.subject}</td>
 					</tr>
 					<tr>
@@ -43,9 +43,9 @@
 					</tr>
 					<tr>
 						<td colspan="4" class="text-right">
-							<a href="MasterBoardUpdate.do?no=${vo.no}" class="btn btn-sm btn-success">¼öÁ¤</a>
-							<a href="MasterBoardDelete.do?no=${vo.no}" class="btn btn-sm btn-primary">»èÁ¦</a>
-							<a href="MasterBoard.do" class="btn btn-sm btn-info">¸ñ·Ï</a>
+							<a href="MasterBoardUpdate.do?no=${vo.no}" class="btn btn-sm btn-success">ìˆ˜ì •</a>
+							<a href="MasterBoardDelete.do?no=${vo.no}" class="btn btn-sm btn-primary">ì‚­ì œ</a>
+							<a href="MasterBoard.do" class="btn btn-sm btn-info">ëª©ë¡</a>
 						</td>
 					</tr>
 				</table>

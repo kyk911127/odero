@@ -1,9 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/masterBoard.css" type="text/css">
 <style type="text/css">
@@ -17,35 +17,35 @@
 	<div class="container">
 		<div class="row">
 			<center>
-				<h3>¼öÁ¤ÇÏ±â</h3>
+				<h3>ìˆ˜ì •í•˜ê¸°</h3>
 			</center>
 			<form method="post" action="MasterBoardUpdate_ok.do">
 				<table class="table table-hover" width=600>
 					<tr>
-						<td width=15% class="text-right">ÀÌ¸§</td>
+						<td width=15% class="text-right">ì´ë¦„</td>
 						<td width=85%><input type=text name=name size=15
 							value="${vo.name }"> <input type=hidden name=no
 							value="${vo.no }"></td>
 					</tr>
 					<tr>
-						<td width=15% class="text-right">Á¦¸ñ</td>
+						<td width=15% class="text-right">ì œëª©</td>
 						<td width=85%><input type=text name=subject size=50
 							value="${vo.subject }"></td>
 					</tr>
 					<tr>
-						<td width=15% class="text-right">³»¿ë</td>
+						<td width=15% class="text-right">ë‚´ìš©</td>
 						<td width=85%><textarea rows="10" cols="55" name=content>${vo.content }</textarea>
 						</td>
 					</tr>
 					<tr>
-						<td width=15% class="text-right">ºñ¹Ğ¹øÈ£</td>
+						<td width=15% class="text-right">ë¹„ë°€ë²ˆí˜¸</td>
 						<td width=85%><input type=password name=pwd size=10>
 						</td>
 					</tr>
 					<tr>
 						<td colspan="2" class="text-center">
-						<input type=submit	value=¼öÁ¤ class="btn btn-info"> 
-						<input type=button	value=Ãë¼Ò class="btn btn-success" onclick="javascript:history.back()">
+						<input type=submit	value=ìˆ˜ì • class="btn btn-info"> 
+						<input type=button	value=ì·¨ì†Œ class="btn btn-success" onclick="javascript:history.back()">
 					</td>
 					</tr>
 				</table>

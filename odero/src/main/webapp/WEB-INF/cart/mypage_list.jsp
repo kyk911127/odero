@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="css/cart_main.css" type="text/css">
 <link rel="stylesheet"
@@ -40,27 +40,27 @@
 						<div id="content_wraper">
 							<section class="section_search">
 								<!-- <div class="head_wrap">
-			<h2><strong>Çìµå ½ºÆÇ</strong>µé¾î°¡´ÂºÎºÐ</h2>
+			<h2><strong>í—¤ë“œ ìŠ¤íŒ</strong>ë“¤ì–´ê°€ëŠ”ë¶€ë¶„</h2>
 		</div>  -->
 		
 		
 	<div class="tab_wrap">
-	<a href="mypage.do"><span class="tab">¸¶ÀÌÆäÀÌÁö</span></a>
-	<!-- <a href="javascript:history.back()"><span class="tab">µÚ·Î</span> -->
+	<a href="mypage.do"><span class="tab">ë§ˆì´íŽ˜ì´ì§€</span></a>
+	<!-- <a href="javascript:history.back()"><span class="tab">ë’¤ë¡œ</span> -->
 	&nbsp;
 	|
 	&nbsp;
-	<a href="mypage.do"><span class="tab">ÄÚ½º Âò</span></a>
-	<a href="mypage.do"><span class="tab">°¡°Ô Âò</span></a>
+	<a href="mypage.do"><span class="tab">ì½”ìŠ¤ ì°œ</span></a>
+	<a href="mypage.do"><span class="tab">ê°€ê²Œ ì°œ</span></a>
 	</div>
 							<!-- 	<div class="recomm_wrap">
-									<h2>ÃßÃµ Å°¿öµå</h2>
+									<h2>ì¶”ì²œ í‚¤ì›Œë“œ</h2>
 									<ul class="recomm_list">
-										<li class="recomm_item"><a href="javascript:void(0);">ÅÂ±×1</a></li>
-										<li class="recomm_item"><a href="javascript:void(0);">ÅÂ±×2</a></li>
-										<li class="recomm_item"><a href="javascript:void(0);">ÅÂ±×3</a></li>
-										<li class="recomm_item"><a href="javascript:void(0);">ÅÂ±×4</a></li>
-										<li class="recomm_item"><a href="javascript:void(0);">ÅÂ±×5</a></li>
+										<li class="recomm_item"><a href="javascript:void(0);">íƒœê·¸1</a></li>
+										<li class="recomm_item"><a href="javascript:void(0);">íƒœê·¸2</a></li>
+										<li class="recomm_item"><a href="javascript:void(0);">íƒœê·¸3</a></li>
+										<li class="recomm_item"><a href="javascript:void(0);">íƒœê·¸4</a></li>
+										<li class="recomm_item"><a href="javascript:void(0);">íƒœê·¸5</a></li>
 
 									</ul>
 								</div> -->
@@ -72,7 +72,7 @@
 										<div class="flex_wrap column3 fluid" id="_spaceScroller">
 
 											<c:forEach var="i" begin="1" end="3">
-										 <!-- ÄÚ½ºÂò  -->
+										 <!-- ì½”ìŠ¤ì°œ  -->
 												<article class="box box_space _space" data-sly-item>
 													<div class="inner">
 														<a href="mypage_cos.do" class="_innerLink nclk">
@@ -81,36 +81,36 @@
 																	class="img lazy"></span>
 
 															</div> <span class="btns_reserv"><span
-																class="btn_reserv_confirm">ÃßÃµ<br>ÄÚ½º</span>
+																class="btn_reserv_confirm">ì¶”ì²œ<br>ì½”ìŠ¤</span>
 														</span>
 
 
 
 															<div class="info_area">
-																<h3 class="tit_space">${i }.ÃßÃµ µ¥ÀÌÆ® ÄÚ½º : Á¦¸ñ</h3>
+																<h3 class="tit_space">${i }.ì¶”ì²œ ë°ì´íŠ¸ ì½”ìŠ¤ : ì œëª©</h3>
 																<div class="tags">
-																	<span class='tag_area_name'>Áö¿ª½Ã Áö¿ª±¸</span>
+																	<span class='tag_area_name'>ì§€ì—­ì‹œ ì§€ì—­êµ¬</span>
 																	<c:forEach var="i" begin="1" end="5">
-																		<span>#ÅÂ±×${i }</span>
+																		<span>#íƒœê·¸${i }</span>
 																	</c:forEach>
 																</div>
 																<div class="info_price_hour">
-																	<strong class='price'>°¡°Ý´ë~°¡°Ý´ë</strong><span
-																		class='txt_unit'>&nbsp;1ÀÏ±âÁØ</span>
-																	<!-- 	<i class="sp_icon ico_npay">³×ÀÌ¹öÆäÀÌ »ç¿ë°¡´É</i> -->
+																	<strong class='price'>ê°€ê²©ëŒ€~ê°€ê²©ëŒ€</strong><span
+																		class='txt_unit'>&nbsp;1ì¼ê¸°ì¤€</span>
+																	<!-- 	<i class="sp_icon ico_npay">ë„¤ì´ë²„íŽ˜ì´ ì‚¬ìš©ê°€ëŠ¥</i> -->
 																</div>
 																<div class="info_number_love">
 																	<span class="txt_number_review"> <i
-																		class="sp_icon ico_review">¸®ºä¼ö</i><em>3</em>
+																		class="sp_icon ico_review">ë¦¬ë·°ìˆ˜</i><em>3</em>
 																	</span> <span class="txt_number_love"> <i
-																		class="sp_icon ico_love">ÁÁ¾Æ¿ä</i> <em>88</em>
+																		class="sp_icon ico_love">ì¢‹ì•„ìš”</i> <em>88</em>
 																	</span>
 																</div>
 															</div>
 														</a>
 													</div>
 												</article>
-											<!-- °¡°Ô Âò  -->
+											<!-- ê°€ê²Œ ì°œ  -->
 												<article class="box box_space _space" data-sly-item>
 													<div class="inner">
 														<a href="mypage_place.do" class="_innerLink nclk">
@@ -119,29 +119,29 @@
 																	class="img lazy"></span>
 
 															</div> <span class="btns_reserv"><span
-																class="btn_reserv_confirm btn_store">ÃßÃµ<br>°¡°Ô</span>
+																class="btn_reserv_confirm btn_store">ì¶”ì²œ<br>ê°€ê²Œ</span>
 														</span>
 
 
 
 															<div class="info_area">
-																<h3 class="tit_space">${i }.ÃßÃµ µ¥ÀÌÆ® ÄÚ½º : Á¦¸ñ</h3>
+																<h3 class="tit_space">${i }.ì¶”ì²œ ë°ì´íŠ¸ ì½”ìŠ¤ : ì œëª©</h3>
 																<div class="tags">
-																	<span class='tag_area_name'>Áö¿ª½Ã Áö¿ª±¸</span>
+																	<span class='tag_area_name'>ì§€ì—­ì‹œ ì§€ì—­êµ¬</span>
 																	<c:forEach var="i" begin="1" end="5">
-																		<span>#ÅÂ±×${i }</span>
+																		<span>#íƒœê·¸${i }</span>
 																	</c:forEach>
 																</div>
 																<div class="info_price_hour">
-																	<strong class='price'>°¡°Ý´ë~°¡°Ý´ë</strong><span
-																		class='txt_unit'>&nbsp;1ÀÏ±âÁØ</span>
-																	<!-- 	<i class="sp_icon ico_npay">³×ÀÌ¹öÆäÀÌ »ç¿ë°¡´É</i> -->
+																	<strong class='price'>ê°€ê²©ëŒ€~ê°€ê²©ëŒ€</strong><span
+																		class='txt_unit'>&nbsp;1ì¼ê¸°ì¤€</span>
+																	<!-- 	<i class="sp_icon ico_npay">ë„¤ì´ë²„íŽ˜ì´ ì‚¬ìš©ê°€ëŠ¥</i> -->
 																</div>
 																<div class="info_number_love">
 																	<span class="txt_number_review"> <i
-																		class="sp_icon ico_review">¸®ºä¼ö</i><em>3</em>
+																		class="sp_icon ico_review">ë¦¬ë·°ìˆ˜</i><em>3</em>
 																	</span> <span class="txt_number_love"> <i
-																		class="sp_icon ico_love">ÁÁ¾Æ¿ä</i> <em>88</em>
+																		class="sp_icon ico_love">ì¢‹ì•„ìš”</i> <em>88</em>
 																	</span>
 																</div>
 															</div>
@@ -153,12 +153,12 @@
 										</div>
 										<div class="pagination_div text-center">
 											<ul class="pagination">
-												<li><a href="#">ÀÌÀü</a></li>
+												<li><a href="#">ì´ì „</a></li>
 												<c:forEach var="i" begin="1" end="10">
 													<li><a href="#">${i }</a></li>
 
 												</c:forEach>
-												<li><a href="#">´ÙÀ½</a></li>
+												<li><a href="#">ë‹¤ìŒ</a></li>
 											</ul>
 										</div>
 									</div>

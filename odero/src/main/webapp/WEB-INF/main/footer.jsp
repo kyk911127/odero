@@ -1,18 +1,18 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 	<div id="footer_1">
-               <strong>COMPANY&nbsp;&nbsp;&nbsp;</strong> <span>¿Àµ¥·ÎÄÄÆÛ´Ï</span>
+               <strong>COMPANY&nbsp;&nbsp;&nbsp;</strong> <span>ì˜¤ë°ë¡œì»´í¼ë‹ˆ</span>
                &nbsp;&nbsp;&nbsp;&nbsp;
             </div>
             <div id="footer_2">
-               <strong>OWNER&nbsp;&nbsp;&nbsp;</strong> <span>Á¤½ÅÈÆ À±½Â±¸ ¹Ú¼­¸® ±Ç¿µ±Ô ¾çº¸¶ó À¯¿¹³ª ±è´Ù¼Ø ¹®¿¹½½ 
+               <strong>OWNER&nbsp;&nbsp;&nbsp;</strong> <span>ì •ì‹ í›ˆ ìœ¤ìŠ¹êµ¬ ë°•ì„œë¦¬ ê¶Œì˜ê·œ ì–‘ë³´ë¼ ìœ ì˜ˆë‚˜ ê¹€ë‹¤ì†œ ë¬¸ì˜ˆìŠ¬ 
                
                </span> &nbsp;&nbsp;&nbsp;&nbsp;
             </div>
@@ -26,8 +26,8 @@
             </div>
             <br> <br>
             <div id="footer_5">
-               <strong>ADDRESS&nbsp;&nbsp;&nbsp;</strong> <span>¼­¿ïÆ¯º°½Ã ¼­´ë¹®±¸
-                  ºÏ¾ÆÇöµ¿ 125-44 4Ãþ</span>
+               <strong>ADDRESS&nbsp;&nbsp;&nbsp;</strong> <span>ì„œìš¸íŠ¹ë³„ì‹œ ì„œëŒ€ë¬¸êµ¬
+                  ë¶ì•„í˜„ë™ 125-44 4ì¸µ</span>
             </div>
 </body>
 </html>

@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link  href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet"> <!-- 3 KB -->
 <script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script> <!-- 16 KB -->
@@ -40,20 +40,20 @@
          <div id="course_main">
          <c:forEach var="i" begin="1" end="4">
             <div class="course" style="background-image: url(image/couple${i}.jpg);">
-               <h2>µ¥ÀÌÆ® ÄÚ½º${i }</h2>
+               <h2>ë°ì´íŠ¸ ì½”ìŠ¤${i }</h2>
                <a href="#"></a>
             </div>
          </c:forEach>
          </div>
          <div id="course_sub">
-            <center><h1>°¡¼ººñ µ¥ÀÌÆ®</h1></center>
+            <center><h1>ê°€ì„±ë¹„ ë°ì´íŠ¸</h1></center>
          </div>
       </div>
       
       <div class="container">
-      <!-- BEST ¸ÀÁý/³î°Å¸® -->
+      <!-- BEST ë§›ì§‘/ë†€ê±°ë¦¬ -->
       <div class="best_wrap" id="best_food">
-         <h1>BEST ¸ÀÁý</h1>
+         <h1>BEST ë§›ì§‘</h1>
          <c:forEach var="fvo" items="${flist }">
             <div class="food_place snip1200">
                <img src="${fvo.p_img }" width="100%" height="auto">
@@ -69,7 +69,7 @@
       </div>
       
       <div class="best_wrap" id="best_place">
-         <h1>BEST ³î°Å¸®</h1>
+         <h1>BEST ë†€ê±°ë¦¬</h1>
          <c:forEach var="pvo" items="${plist }">
             <div class="food_place snip1200">
                <img src="image/no_img.png" width="100%" height="auto">
@@ -87,13 +87,13 @@
       <!-- BEST REVIEW -->
       <div class="review_wrap">
          <h1>BEST REVIEW</h1>
-         <h4>»ý»ýÇÑ ÈÄ±â</h4>
+         <h4>ìƒìƒí•œ í›„ê¸°</h4>
          <c:forEach var="i" begin="1" end="12">
             <div class="review snip1273">
                <img src="image/place1.jpg"> 
                <figcaption>
-				<h3>¸®ºäÇÒ Àå¼Ò</h3>
-				<p>¸®ºä Á¦¸ñ</p>
+				<h3>ë¦¬ë·°í•  ìž¥ì†Œ</h3>
+				<p>ë¦¬ë·° ì œëª©</p>
 				</figcaption> 
 				<a href="#"></a> 
             </div>
