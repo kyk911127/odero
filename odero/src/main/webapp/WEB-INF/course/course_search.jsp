@@ -87,7 +87,7 @@
 <script type="text/javascript">
 $(function() {
 	
-	initTmap();
+
 	
    //select바뀔 때 설정
    var reg = [["은평구", "마포구", "서대문구", "종로구", "용산구", "중&nbsp;&nbsp;&nbsp;구", "성동구"],
@@ -132,14 +132,7 @@ $(function() {
    
 });
 
-function initTmap(){
-	var map = new Tmap.Map({
-		div:'map_div',
-		width : "100%",
-		height : "550px",
-	});
-	map.setCenter(new Tmap.LonLat("126.986072", "37.570028").transform("EPSG:4326", "EPSG:3857"), 15);
-} 
+
 
 </script>
 </head>
