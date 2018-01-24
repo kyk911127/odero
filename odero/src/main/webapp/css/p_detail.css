@@ -110,7 +110,7 @@ ul, li {
 	height: 600px
 }
 
-/* 리뷰  */
+/* 댓글  */
 .user_info {
    float: left;
    text-align: center;
@@ -118,10 +118,11 @@ ul, li {
    width: 140px; 
 }
 
-.review_info {
+.reply_info {
    width: 97%;
 }
 
+/* 댓글 남기기 */
 .reply_ta {
    margin-bottom: 10px; 
    float: left
