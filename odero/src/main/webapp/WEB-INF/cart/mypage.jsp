@@ -49,12 +49,21 @@ $(document).ready(function(){
 <div class="row cart">
 
 <div class="table_wrap">
-	<hr class="soften" /><h3 class="sub_text">내 정보 &nbsp;
-	<a href="mypage_list.do"><button class="btn btn-success btn-xs">더보기 </button></a> <hr class="soften" /> </h3> 
+	<hr class="soften" /><h3 class="sub_text">내 정보 &nbsp; <hr class="soften" /> </h3> 
 
            
           <table class="table table-hover" id="table_content" width=600>
-          
+          	<tr>
+          		<td>name</td>
+          		<td>$name</td>
+          	</tr>
+          	<tr>
+          		<td>email</td>
+          		<td>$email</td>
+          	</tr>
+          	<tr>
+          		<td colspan="2"><input type=button value="modify" class="btn btn-sm btn-danger"></td>
+          	</tr>
           </table>
 </div>
          
