@@ -36,6 +36,10 @@
 		p:sqlSessionFactory-ref="ssf"
 		p:mapperInterface="com.sist.main.dao.MainMapper"
 	/>
+	<bean id="placeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"
+		p:sqlSessionFactory-ref="ssf"
+		p:mapperInterface="com.sist.place.dao.PlaceMapper"
+	/>
 	<bean id="reviewMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"
 		p:sqlSessionFactory-ref="ssf"
 		p:mapperInterface="com.sist.review.dao.ReviewMapper"
@@ -49,4 +53,7 @@
 		p:mapperInterface="com.sist.mypage.dao.MyPageMapper"
 	/>
 	
+	<!-- 멀티파일 업로드 -->
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"
+	/>
 </beans>

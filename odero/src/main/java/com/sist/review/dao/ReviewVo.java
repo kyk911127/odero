@@ -15,6 +15,7 @@ public class ReviewVo {
 	private Date r_reddate;
 	private String r_imgname;
 	private int r_imgcount; 
+	private String r_addr;
 	private List<MultipartFile> images;
 	
 	public List<MultipartFile> getImages() {
@@ -64,6 +65,12 @@ public class ReviewVo {
 	}
 	public void setR_reddate(Date r_reddate) {
 		this.r_reddate = r_reddate;
+	}
+	public String getR_addr() {
+		return r_addr;
+	}
+	public void setR_addr(String r_addr) {
+		this.r_addr = r_addr;
 	}
 	public String getR_imgname() {
 		return r_imgname;

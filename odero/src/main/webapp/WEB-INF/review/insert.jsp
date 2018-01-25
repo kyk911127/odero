@@ -1,10 +1,11 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta charset="EUC-KR">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="board/css/map.css" />
@@ -28,14 +29,19 @@
 <script type="text/javascript">
 var fileIndex=0;
 $(function(){
+	// »çÁø Ãß°¡
 	$('#add').click(function(){
 		$('#fileView').append(
 			'<tr id="f'+(fileIndex)+'">'+
-				'<td width="20%" id="file">ì‚¬ì§„'+(fileIndex+1)+'</td>'+
+				'<td width="20%" id="file">»çÁø'+(fileIndex+1)+'</td>'+
 				'<td width="80%" align="left">'+
-					'<input type="file" name="files['+fileIndex+']" size="15" id="file">'+
+					'<input type="file" name="images['+fileIndex+']" size="15" id="images'+(fileIndex)+'">'+
 				'</td>'+
 			'</tr>');
+		/* $('#images'+(fileIndex)).on('change', function() {
+            	$('#freeview').show();
+            readURL(this);
+         }); */
 		fileIndex=fileIndex+1;
 	});
 	$('#cancel').click(function(){
@@ -43,24 +49,56 @@ $(function(){
 		fileIndex -= 1;
 		if(fileIndex<0)
 			fileIndex=0;
+		$('#ff' + (fileIndex+1)).remove();
+		if(fileIndex==0){
+			$('#freeview').hidden();
+		}
 	});
-		
+	
+	/* //ÀÌ¹ÌÁö ¶ç¿ì±â
+	function readURL(input) {
+	      if (input.files && input.files[0]) {
+	         var reader = new FileReader();
+	         
+	         reader.onload = function(e) {
+	            $('#myimg').append('<div id="img"'+(fileIndex)+' style="display:inline-block;">'+
+	               '<img id=ff' + (fileIndex) + ' style="border:1px solid black;" src="#" width="200px;"; height="280px";/>'+      
+	               '</div>');
+	            $('#ff'+(fileIndex)).attr('src', e.target.result);
+	         }
+	         reader.readAsDataURL(input.files[0]);
+	      }
+	   } */
+	
+	// ÁÖ¼ÒÃ£±â
+	var keyword = $('#keyword').val();
+	$('#keyword').click(function(){
+		if(keyword=='»óÈ£¸í ÀÔ·Â'){
+			$('#keyword').val('');
+		}	
+	});
+	
+	// µî·Ï
 	$('#okbtn').click(function(){		
-		var title = $('#title').val();
-		var store = $('#store').val();
-		var title = $('#title').val();
-		var content = $('#content').val();
-		if(title.trim()==""){
-			alert('ì œëª©ì„ ì…ë ¥í•´ì£¼ì„¸ìš”');
-			$('#title').focus();
+		var subjecr = $('#r_subject').val();
+		var pname = $('#r_pname').val();
+		var addr = $('#r_addr').val();
+		var content = $('#r_content').val();
+		if(subjecr.trim()==""){
+			alert('Á¦¸ñÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä');
+			$('#r_subject').focus();
 			return false;
-		} else if(store.trim()==""){
-			alert('ê°€ê²Œëª…ì„ ì…ë ¥í•´ì£¼ì„¸ìš”');
-			$('#store').focus();
+		} else if(pname.trim()==""){
+			alert('°¡°Ô¸íÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä');
+			$('#r_pname').focus();
+			return false;
+		} else if(addr.trim()=="") {
+			alert('ÁÖ¼Ò¸¦ µî·ÏÇØÁÖ¼¼¿ä');
+			$('#keyword').focus();
 			return false;
 		} else if(content.trim()==""){
-			alert('ë‚´ìš©ì„ ì…ë ¥í•´ì£¼ì„¸ìš”');
-			$('#content').focus();
+			alert('³»¿ëÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä');
+			$('#r_content').focus();
 			return false;
 		} else {
 			$('#frm').submit();
@@ -72,51 +110,44 @@ $(function(){
 <body>
 <div class="container" style="margin-top: 50px">
 	<div class="row">
-		<center><h3><b>í›„ê¸° ì‘ì„±</b></h3><br></center>
-		<form action="insert_ok.do" method="post">
+		<center><h3><b>ÈÄ±â ÀÛ¼º</b></h3><br></center>
+		<form:form method="post" action="review_insert_ok.do" id="frm" enctype="multipart/form-data" modelAttribute="uploadForm">
 		<table class="table table-hover" style="width: 70%; margin: 0px auto;" >
 			<tr>
-				<td width="20%" class="text-center">ì œëª©</td>
+				<td width="20%" class="text-center">Á¦¸ñ</td>
 				<td width="80%" class="text-left">
-					<input type="text" name="title" id="title" size="50">
+					<input type="text" name="r_subject" id="r_subject" size="50">
 				</td>
 			</tr>
 			<tr>
-				<td width="20%" class="text-center">ê°€ê²Œëª…</td>
+				<td width="20%" class="text-center">°¡°Ô¸í</td>
 				<td width="80%" class="text-left">
-					<input type="text" name="store" id="store" size="30">
+					<input type="text" name="r_pname" id="r_pname" size="30">
 				</td>
 			</tr>
 			<tr>
-				<td width="20%" class="text-center">ì‘ì„±ì</td>
+				<td width="20%" class="text-center">ÀÛ¼ºÀÚ</td>
 				<td width="80%" class="text-left">
-					<input type="text" name="name" size="15" readonly="readonly">
+					<input type="text" name="m_id" size="15" readonly="readonly" value="1">
 				</td>
 			</tr>
 			<tr>
-				<td width="20%" class="text-center">ì²¨ë¶€íŒŒì¼</td>
+				<td width="20%" class="text-center">ÁÖ¼Ò</td>
 				<td width="80%" class="text-left">
-					<table class="table table-hover">
-						<tr>
-							<td class="text-right">
-								<input type="button" class="btn btn-xs btn-info" id="add" value="ì¶”ê°€">
-								<input type="button" class="btn btn-xs btn-danger" id="cancel" value="ì·¨ì†Œ">
-							</td>
-						</tr>
-					</table>
-					<table class="table table-hover" id="fileView">
-					</table>
+					<input type="text" name="r_addr" id="r_addr" size="50" readonly placeholder="ÁÖ¼Ò¸¦ °Ë»ö ÈÄ ¼±ÅÃÇØÁÖ¼¼¿ä!">
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2">
 					<div class="map_wrap">
+						<!-- Áöµµ -->
 						<div id="map" style="width:100%;height:100%;"></div>
+						<!-- °Ë»öÃ¢ -->
 						<div id="menu_wrap" class="bg_white">
        						<div class="option">
            						<div>
-                					í‚¤ì›Œë“œ : <input type="text" id="keyword" size="15" value="ìƒí˜¸ëª… ì…ë ¥"> 
-                    				<input type="button" value="ê²€ìƒ‰" id="mapsearch" onclick="searchPlaces(); return false;"> 
+                					°Ë»ö : <input type="text" id="keyword" size="15" value="»óÈ£¸í ÀÔ·Â"> 
+                    				<input type="button" value="°Ë»ö" id="mapsearch" onclick="searchPlaces(); return false;"> 
 								</div>
         					</div>
         					<hr>
@@ -127,115 +158,131 @@ $(function(){
 				</td>
 			</tr>
 			<tr>
-				<td colspan="2" class="text-center">
+				<td width="20%" class="text-center">Ã·ºÎÆÄÀÏ</td>
+				<td width="80%" class="text-left">
+					<table class="table table-hover">
+						<tr>
+							<td class="text-right">
+								<input type="button" class="btn btn-xs btn-info" id="add" value="Ãß°¡">
+								<input type="button" class="btn btn-xs btn-danger" id="cancel" value="Ãë¼Ò">
+							</td>
+						</tr>
+					</table>
+					<table class="table table-hover" id="fileView">
+					</table>
 				</td>
 			</tr>
+			<!-- <tr style="display: none;" id="freeview">
+				<td colspan="2" class="text-center">
+					<div style="display: inline-block;">
+						<div id="myimg" style="display: inline;"></div>
+					</div>
+				</td>
+			</tr> -->
 			<tr>
 				<td colspan="2">
-					<textarea rows="10" cols="100%" name="content" id="content"></textarea>
+					<textarea rows="10" cols="100%" name="r_content" id="r_content" placeholder="³»¿ëÀÔ·Â"></textarea>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2" class="text-center">
-					<input type="button" value="ë“±ë¡" id="okbtn">&nbsp;
-					<input type="button" value="ì·¨ì†Œ" id="btn" onclick="javascript:history.back();">
+					<input type="button" value="µî·Ï" id="okbtn">&nbsp;
+					<input type="button" value="Ãë¼Ò" id="btn" onclick="javascript:history.back();">
 				</td>
 			</tr>
 		 </table>
-		 </form>
+		 </form:form>
 	</div>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=641146c1d3ef1301e2a1f709fdc1b146&libraries=services"></script>
 <script>
-//ë§ˆì»¤ë¥¼ ë‹´ì„ ë°°ì—´ì…ë‹ˆë‹¤
-var markers = [];
+var mapContainer = document.getElementById('map'), 	// Áöµµ Ç¥½ÃÇÒ div 
+    mapOption = { 									// Áöµµ ¿É¼Ç
+        center: new daum.maps.LatLng(33.450701, 126.570667), // Áöµµ Áß½ÉÁÂÇ¥
+        level: 3 // Áöµµ È®´ë·¹º§
+    };
 
-var mapContainer = document.getElementById('map'), // ì§€ë„ë¥¼ í‘œì‹œí•  div 
-    mapOption = {
-        center: new daum.maps.LatLng(37.566826, 126.9786567), // ì§€ë„ì˜ ì¤‘ì‹¬ì¢Œí‘œ
-        level: 3 // ì§€ë„ì˜ í™•ëŒ€ ë ˆë²¨
-    };  
-
-// ì§€ë„ë¥¼ ìƒì„±í•©ë‹ˆë‹¤    
+// Áöµµ¸¦ Ç¥½ÃÇÒ div¿Í  Áöµµ ¿É¼ÇÀ¸·Î  Áöµµ »ı¼º
 var map = new daum.maps.Map(mapContainer, mapOption); 
 
-// ì¥ì†Œ ê²€ìƒ‰ ê°ì²´ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
-var ps = new daum.maps.services.Places();  
 
-// ê²€ìƒ‰ ê²°ê³¼ ëª©ë¡ì´ë‚˜ ë§ˆì»¤ë¥¼ í´ë¦­í–ˆì„ ë•Œ ì¥ì†Œëª…ì„ í‘œì¶œí•  ì¸í¬ìœˆë„ìš°ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
+//------------------------------------------------------------ ¸¶Ä¿ ------------------------------------------------------------
+//¸¶Ä¿¸¦ ´ãÀ» ¹è¿­
+var markers = [];
+
+
+//------------------------------------------------------------ °Ë»ö ------------------------------------------------------------
+//Àå¼Ò °Ë»ö °´Ã¼ »ı¼º
+var ps = new daum.maps.services.Places(); 
+
+//°Ë»ö °á°ú ¸ñ·ÏÀÌ³ª ¸¶Ä¿¸¦ Å¬¸¯ÇßÀ» ¶§ Àå¼Ò¸íÀ» Ç¥ÃâÇÒ ÀÎÆ÷À©µµ¿ì¸¦ »ı¼º
 var infowindow = new daum.maps.InfoWindow({zIndex:1});
 
-// í‚¤ì›Œë“œë¡œ ì¥ì†Œë¥¼ ê²€ìƒ‰í•©ë‹ˆë‹¤
+//Å°¿öµå·Î Àå¼Ò¸¦°Ë»ö
 searchPlaces();
 
-// í‚¤ì›Œë“œ ê²€ìƒ‰ì„ ìš”ì²­í•˜ëŠ” í•¨ìˆ˜ì…ë‹ˆë‹¤
+//Å°¿öµå °Ë»öÀ» ¿äÃ»ÇÏ´Â ÇÔ¼ö
 function searchPlaces() {
-
-    var keyword = $('#keyword').val();
+	var keyword = $('#keyword').val();
 
     if (!keyword.replace(/^\s+|\s+$/g, '')) {
-        alert('í‚¤ì›Œë“œë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”!');
+        alert('Å°¿öµå¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä!');
         return false;
     } 
-    if (keyword=="ìƒí˜¸ëª… ì…ë ¥"){
+    if (keyword=="»óÈ£¸í ÀÔ·Â"){
     	return false;
     }
-
-    // ì¥ì†Œê²€ìƒ‰ ê°ì²´ë¥¼ í†µí•´ í‚¤ì›Œë“œë¡œ ì¥ì†Œê²€ìƒ‰ì„ ìš”ì²­í•©ë‹ˆë‹¤
-    ps.keywordSearch( keyword, placesSearchCB); 
+    // Àå¼Ò°Ë»ö °´Ã¼¸¦ ÅëÇØ Å°¿öµå·Î Àå¼Ò°Ë»öÀ» ¿äÃ»
+    ps.keywordSearch(keyword, placesSearchCB); 
 }
 
-// ì¥ì†Œê²€ìƒ‰ì´ ì™„ë£Œëì„ ë•Œ í˜¸ì¶œë˜ëŠ” ì½œë°±í•¨ìˆ˜ ì…ë‹ˆë‹¤
+//Àå¼Ò°Ë»öÀÌ ¿Ï·áµÆÀ» ¶§ È£ÃâµÇ´Â Äİ¹éÇÔ¼ö
 function placesSearchCB(data, status, pagination) {
     if (status === daum.maps.services.Status.OK) {
-        // ì •ìƒì ìœ¼ë¡œ ê²€ìƒ‰ì´ ì™„ë£Œëìœ¼ë©´
-        // ê²€ìƒ‰ ëª©ë¡ê³¼ ë§ˆì»¤ë¥¼ í‘œì¶œí•©ë‹ˆë‹¤
+        // Á¤»óÀûÀ¸·Î °Ë»öÀÌ ¿Ï·áµÆÀ¸¸é °Ë»ö ¸ñ·Ï°ú ¸¶Ä¿¸¦ Ç¥Ãâ
         displayPlaces(data);
 
-        // í˜ì´ì§€ ë²ˆí˜¸ë¥¼ í‘œì¶œí•©ë‹ˆë‹¤
+        // ÆäÀÌÁö ¹øÈ£¸¦ Ç¥ÃâÇÕ´Ï´Ù
         displayPagination(pagination);
 
     } else if (status === daum.maps.services.Status.ZERO_RESULT) {
 
-        alert('ê²€ìƒ‰ ê²°ê³¼ê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.');
+        alert('°Ë»ö °á°ú°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.');
         return;
 
     } else if (status === daum.maps.services.Status.ERROR) {
 
-        alert('ê²€ìƒ‰ ê²°ê³¼ ì¤‘ ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.');
+        alert('°Ë»ö °á°ú Áß ¿À·ù°¡ ¹ß»ıÇß½À´Ï´Ù.');
         return;
+
     }
 }
 
-// ê²€ìƒ‰ ê²°ê³¼ ëª©ë¡ê³¼ ë§ˆì»¤ë¥¼ í‘œì¶œí•˜ëŠ” í•¨ìˆ˜ì…ë‹ˆë‹¤
+//---------------------------------------------------------- °Ë»ö ¿Ï·á ----------------------------------------------------------
+// °Ë»ö °á°ú ¸ñ·Ï°ú ¸¶Ä¿¸¦ Ç¥ÃâÇÏ´Â ÇÔ¼ö
 function displayPlaces(places) {
-
-    var listEl = document.getElementById('placesList'), 
-    menuEl = document.getElementById('menu_wrap'),
+	
+    var listEl = document.getElementById('placesList'), // °Ë»ö ¸ñ·Ï
+    menuEl = document.getElementById('menu_wrap'),		// °Ë»ö Æ²
     fragment = document.createDocumentFragment(), 
     bounds = new daum.maps.LatLngBounds(), 
     listStr = '';
     
-    // ê²€ìƒ‰ ê²°ê³¼ ëª©ë¡ì— ì¶”ê°€ëœ í•­ëª©ë“¤ì„ ì œê±°í•©ë‹ˆë‹¤
+    // °Ë»ö °á°ú ¸ñ·Ï¿¡ Ãß°¡µÈ Ç×¸ñµéÀ» Á¦°Å
     removeAllChildNods(listEl);
-
-    // ì§€ë„ì— í‘œì‹œë˜ê³  ìˆëŠ” ë§ˆì»¤ë¥¼ ì œê±°í•©ë‹ˆë‹¤
+    // Áöµµ¿¡ Ç¥½ÃµÇ°í ÀÖ´Â ¸¶Ä¿¸¦ Á¦°Å
     removeMarker();
     
     for ( var i=0; i<places.length; i++ ) {
-
-        // ë§ˆì»¤ë¥¼ ìƒì„±í•˜ê³  ì§€ë„ì— í‘œì‹œí•©ë‹ˆë‹¤
+        // ¸¶Ä¿¸¦ »ı¼ºÇÏ°í Áöµµ¿¡ Ç¥½Ã
         var placePosition = new daum.maps.LatLng(places[i].y, places[i].x),
-            marker = addMarker(placePosition, i), 
-            itemEl = getListItem(i, places[i]); // ê²€ìƒ‰ ê²°ê³¼ í•­ëª© Elementë¥¼ ìƒì„±í•©ë‹ˆë‹¤
-
-        // ê²€ìƒ‰ëœ ì¥ì†Œ ìœ„ì¹˜ë¥¼ ê¸°ì¤€ìœ¼ë¡œ ì§€ë„ ë²”ìœ„ë¥¼ ì¬ì„¤ì •í•˜ê¸°ìœ„í•´
-        // LatLngBounds ê°ì²´ì— ì¢Œí‘œë¥¼ ì¶”ê°€í•©ë‹ˆë‹¤
+            marker = addMarker(placePosition, i), // ¸¶Ä¿
+            itemEl = getListItem(i, places[i]); // °Ë»ö °á°ú Ç×¸ñ Element¸¦ »ı¼º
+            
+        // °Ë»öµÈ Àå¼Ò À§Ä¡¸¦ ±âÁØÀ¸·Î Áöµµ ¹üÀ§¸¦ Àç¼³Á¤ÇÏ±âÀ§ÇØ LatLngBounds °´Ã¼¿¡ ÁÂÇ¥¸¦ Ãß°¡
         bounds.extend(placePosition);
 
-        // ë§ˆì»¤ì™€ ê²€ìƒ‰ê²°ê³¼ í•­ëª©ì— mouseover í–ˆì„ë•Œ
-        // í•´ë‹¹ ì¥ì†Œì— ì¸í¬ìœˆë„ìš°ì— ì¥ì†Œëª…ì„ í‘œì‹œí•©ë‹ˆë‹¤
-        // mouseout í–ˆì„ ë•ŒëŠ” ì¸í¬ìœˆë„ìš°ë¥¼ ë‹«ìŠµë‹ˆë‹¤
-        (function(marker, title) {
+        // ¸¶Ä¿¿Í °Ë»ö°á°ú Ç×¸ñ¿¡ mouseover ÇßÀ»¶§ ÇØ´ç Àå¼Ò¿¡ ÀÎÆ÷À©µµ¿ì¿¡ Àå¼Ò¸íÀ» Ç¥½ÃÇÕ´Ï´Ù mouseout ÇßÀ» ¶§´Â ÀÎÆ÷À©µµ¿ì¸¦ ´İ½À´Ï´Ù
+        (function(marker, title, addr) {
             daum.maps.event.addListener(marker, 'mouseover', function() {
                 displayInfowindow(marker, title);
             });
@@ -251,20 +298,29 @@ function displayPlaces(places) {
             itemEl.onmouseout =  function () {
                 infowindow.close();
             };
-        })(marker, places[i].place_name);
+            // Å¬¸¯½Ã ÁÖ¼Ò °¡Á®¿À±â
+            daum.maps.event.addListener(marker, 'click', function() {
+                getAddr(addr);
+            });
+            
+            itemEl.onclick =  function () {
+                getAddr(addr);
+            };
+        })(marker, places[i].place_name,places[i].address_name); //µ¥ÀÌÅÍ ³Ñ±â±â
 
         fragment.appendChild(itemEl);
     }
 
-    // ê²€ìƒ‰ê²°ê³¼ í•­ëª©ë“¤ì„ ê²€ìƒ‰ê²°ê³¼ ëª©ë¡ Elemnetì— ì¶”ê°€í•©ë‹ˆë‹¤
+    // °Ë»ö°á°ú Ç×¸ñµéÀ» °Ë»ö°á°ú ¸ñ·Ï Elemnet¿¡ Ãß°¡
     listEl.appendChild(fragment);
     menuEl.scrollTop = 0;
 
-    // ê²€ìƒ‰ëœ ì¥ì†Œ ìœ„ì¹˜ë¥¼ ê¸°ì¤€ìœ¼ë¡œ ì§€ë„ ë²”ìœ„ë¥¼ ì¬ì„¤ì •í•©ë‹ˆë‹¤
+    // °Ë»öµÈ Àå¼Ò À§Ä¡¸¦ ±âÁØÀ¸·Î Áöµµ ¹üÀ§¸¦ Àç¼³Á¤
     map.setBounds(bounds);
 }
 
-// ê²€ìƒ‰ê²°ê³¼ í•­ëª©ì„ Elementë¡œ ë°˜í™˜í•˜ëŠ” í•¨ìˆ˜ì…ë‹ˆë‹¤
+//---------------------------------------------------------- °Ë»öµÈ ³»¿ëÃß°¡ ----------------------------------------------------------
+// °Ë»ö°á°ú Ç×¸ñÀ» Element·Î ¹İÈ¯ÇÏ´Â ÇÔ¼öÀÔ´Ï´Ù
 function getListItem(index, places) {
 
     var el = document.createElement('li'),
@@ -278,8 +334,9 @@ function getListItem(index, places) {
     } else {
         itemStr += '    <span>' +  places.address_name  + '</span>'; 
     }
-    	itemStr += '  <span class="tel">' + places.phone  + '</span>' +
-        '</div>';           
+                 
+      itemStr += '  <span class="tel">' + places.phone  + '</span>' +
+                '</div>';           
 
     el.innerHTML = itemStr;
     el.className = 'item';
@@ -287,63 +344,36 @@ function getListItem(index, places) {
     return el;
 }
 
-// ë§ˆì»¤ë¥¼ ìƒì„±í•˜ê³  ì§€ë„ ìœ„ì— ë§ˆì»¤ë¥¼ í‘œì‹œí•˜ëŠ” í•¨ìˆ˜ì…ë‹ˆë‹¤
+//---------------------------------------------------------- °Ë»öµÈ ¸¶Ä¿Ãß°¡ ----------------------------------------------------------
+// ¸¶Ä¿¸¦ »ı¼ºÇÏ°í Áöµµ À§¿¡ ¸¶Ä¿¸¦ Ç¥½ÃÇÏ´Â ÇÔ¼ö
 function addMarker(position, idx, title) {
-    var imageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // ë§ˆì»¤ ì´ë¯¸ì§€ url, ìŠ¤í”„ë¼ì´íŠ¸ ì´ë¯¸ì§€ë¥¼ ì”ë‹ˆë‹¤
-        imageSize = new daum.maps.Size(36, 37),  // ë§ˆì»¤ ì´ë¯¸ì§€ì˜ í¬ê¸°
+    var imageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // ¸¶Ä¿ ÀÌ¹ÌÁö url, ½ºÇÁ¶óÀÌÆ® ÀÌ¹ÌÁö¸¦ ¾¹´Ï´Ù
+        imageSize = new daum.maps.Size(36, 37),  // ¸¶Ä¿ ÀÌ¹ÌÁöÀÇ Å©±â
         imgOptions =  {
-            spriteSize : new daum.maps.Size(36, 691), // ìŠ¤í”„ë¼ì´íŠ¸ ì´ë¯¸ì§€ì˜ í¬ê¸°
-            spriteOrigin : new daum.maps.Point(0, (idx*46)+10), // ìŠ¤í”„ë¼ì´íŠ¸ ì´ë¯¸ì§€ ì¤‘ ì‚¬ìš©í•  ì˜ì—­ì˜ ì¢Œìƒë‹¨ ì¢Œí‘œ
-            offset: new daum.maps.Point(13, 37) // ë§ˆì»¤ ì¢Œí‘œì— ì¼ì¹˜ì‹œí‚¬ ì´ë¯¸ì§€ ë‚´ì—ì„œì˜ ì¢Œí‘œ
+            spriteSize : new daum.maps.Size(36, 691), // ½ºÇÁ¶óÀÌÆ® ÀÌ¹ÌÁöÀÇ Å©±â
+            spriteOrigin : new daum.maps.Point(0, (idx*46)+10), // ½ºÇÁ¶óÀÌÆ® ÀÌ¹ÌÁö Áß »ç¿ëÇÒ ¿µ¿ªÀÇ ÁÂ»ó´Ü ÁÂÇ¥
+            offset: new daum.maps.Point(13, 37) // ¸¶Ä¿ ÁÂÇ¥¿¡ ÀÏÄ¡½ÃÅ³ ÀÌ¹ÌÁö ³»¿¡¼­ÀÇ ÁÂÇ¥
         },
         markerImage = new daum.maps.MarkerImage(imageSrc, imageSize, imgOptions),
             marker = new daum.maps.Marker({
-            position: position, // ë§ˆì»¤ì˜ ìœ„ì¹˜
+            position: position, // ¸¶Ä¿ÀÇ À§Ä¡
             image: markerImage 
         });
 
-    marker.setMap(map); // ì§€ë„ ìœ„ì— ë§ˆì»¤ë¥¼ í‘œì¶œí•©ë‹ˆë‹¤
-    markers.push(marker);  // ë°°ì—´ì— ìƒì„±ëœ ë§ˆì»¤ë¥¼ ì¶”ê°€í•©ë‹ˆë‹¤
+    marker.setMap(map); // Áöµµ À§¿¡ ¸¶Ä¿¸¦ Ç¥ÃâÇÕ´Ï´Ù
+    markers.push(marker);  // ¹è¿­¿¡ »ı¼ºµÈ ¸¶Ä¿¸¦ Ãß°¡ÇÕ´Ï´Ù
 
-  //ë§ˆì»¤ì— click ì´ë²¤íŠ¸ë¥¼ ë“±ë¡í•©ë‹ˆë‹¤
-    daum.maps.event.addListener(marker, 'click', function() {
-    	alert(marker[1]);
-        // í´ë¦­ëœ ë§ˆì»¤ê°€ ì—†ê³ , click ë§ˆì»¤ê°€ í´ë¦­ëœ ë§ˆì»¤ê°€ ì•„ë‹ˆë©´
-        // ë§ˆì»¤ì˜ ì´ë¯¸ì§€ë¥¼ í´ë¦­ ì´ë¯¸ì§€ë¡œ ë³€ê²½í•©ë‹ˆë‹¤
-        if (!selectedMarker || selectedMarker !== marker) {
-
-            // í´ë¦­ëœ ë§ˆì»¤ ê°ì²´ê°€ nullì´ ì•„ë‹ˆë©´
-            // í´ë¦­ëœ ë§ˆì»¤ì˜ ì´ë¯¸ì§€ë¥¼ ê¸°ë³¸ ì´ë¯¸ì§€ë¡œ ë³€ê²½í•˜ê³ 
-            !!selectedMarker && selectedMarker.setImage(selectedMarker.normalImage);
-
-            // í˜„ì¬ í´ë¦­ëœ ë§ˆì»¤ì˜ ì´ë¯¸ì§€ëŠ” í´ë¦­ ì´ë¯¸ì§€ë¡œ ë³€ê²½í•©ë‹ˆë‹¤
-            marker.setImage(clickImage);
-        }
-
-        // í´ë¦­ëœ ë§ˆì»¤ë¥¼ í˜„ì¬ í´ë¦­ëœ ë§ˆì»¤ ê°ì²´ë¡œ ì„¤ì •í•©ë‹ˆë‹¤
-        selectedMarker = marker;
-    });
-    
     return marker;
 }
 
-
-
-// ì§€ë„ ìœ„ì— í‘œì‹œë˜ê³  ìˆëŠ” ë§ˆì»¤ë¥¼ ëª¨ë‘ ì œê±°í•©ë‹ˆë‹¤
-function removeMarker() {
-    for ( var i = 0; i < markers.length; i++ ) {
-        markers[i].setMap(null);
-    }   
-    markers = [];
-}
-
-// ê²€ìƒ‰ê²°ê³¼ ëª©ë¡ í•˜ë‹¨ì— í˜ì´ì§€ë²ˆí˜¸ë¥¼ í‘œì‹œëŠ” í•¨ìˆ˜ì…ë‹ˆë‹¤
+//---------------------------------------------------------- °Ë»ö ¸®½ºÆ® ÆäÀÌÁö ----------------------------------------------------------
+// °Ë»ö°á°ú ¸ñ·Ï ÇÏ´Ü¿¡ ÆäÀÌÁö¹øÈ£¸¦ Ç¥½Ã´Â ÇÔ¼öÀÔ´Ï´Ù
 function displayPagination(pagination) {
     var paginationEl = document.getElementById('pagination'),
         fragment = document.createDocumentFragment(),
         i; 
 
-    // ê¸°ì¡´ì— ì¶”ê°€ëœ í˜ì´ì§€ë²ˆí˜¸ë¥¼ ì‚­ì œí•©ë‹ˆë‹¤
+    // ±âÁ¸¿¡ Ãß°¡µÈ ÆäÀÌÁö¹øÈ£¸¦ »èÁ¦ÇÕ´Ï´Ù
     while (paginationEl.hasChildNodes()) {
         paginationEl.removeChild (paginationEl.lastChild);
     }
@@ -368,8 +398,8 @@ function displayPagination(pagination) {
     paginationEl.appendChild(fragment);
 }
 
-// ê²€ìƒ‰ê²°ê³¼ ëª©ë¡ ë˜ëŠ” ë§ˆì»¤ë¥¼ í´ë¦­í–ˆì„ ë•Œ í˜¸ì¶œë˜ëŠ” í•¨ìˆ˜ì…ë‹ˆë‹¤
-// ì¸í¬ìœˆë„ìš°ì— ì¥ì†Œëª…ì„ í‘œì‹œí•©ë‹ˆë‹¤
+//---------------------------------------------------------- ¸¶Ä¿ Å¬¸¯½Ã Á¤º¸º¸¿©ÁÖ±â ----------------------------------------------------------
+// °Ë»ö°á°ú ¸ñ·Ï ¶Ç´Â ¸¶Ä¿¸¦ Å¬¸¯ÇßÀ» ¶§ È£ÃâµÇ´Â ÇÔ¼ö, ÀÎÆ÷À©µµ¿ì¿¡ Àå¼Ò¸íÀ» Ç¥½Ã
 function displayInfowindow(marker, title) {
     var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
 
@@ -377,135 +407,25 @@ function displayInfowindow(marker, title) {
     infowindow.open(map, marker);
 }
 
- // ê²€ìƒ‰ê²°ê³¼ ëª©ë¡ì˜ ìì‹ Elementë¥¼ ì œê±°í•˜ëŠ” í•¨ìˆ˜ì…ë‹ˆë‹¤
+// ÁÖ¼Ò°¡Á®¿À±â
+function getAddr(addr) {
+	$('#r_addr').val(addr);
+}
+
+//---------------------------------------------------------- ¸¶Ä¿, °Ë»ö°á°ú Á¦°Å ----------------------------------------------------------
+// Áöµµ À§¿¡ Ç¥½ÃµÇ°í ÀÖ´Â ¸¶Ä¿¸¦ ¸ğµÎ Á¦°Å
+function removeMarker() {
+    for ( var i = 0; i < markers.length; i++ ) {
+        markers[i].setMap(null);
+    }   
+    markers = [];
+}
+
+// °Ë»ö°á°ú ¸ñ·ÏÀÇ ÀÚ½Ä Element¸¦ Á¦°ÅÇÏ´Â ÇÔ¼ö
 function removeAllChildNods(el) {   
     while (el.hasChildNodes()) {
         el.removeChild (el.lastChild);
     }
-}
-
-</script>
-
-<script type="text/javascript">
-// ë§ˆì»¤ì— ì´ë²¤íŠ¸ ë“±ë¡
-ar MARKER_WIDTH = 33, // ê¸°ë³¸, í´ë¦­ ë§ˆì»¤ì˜ ë„ˆë¹„
-    MARKER_HEIGHT = 36, // ê¸°ë³¸, í´ë¦­ ë§ˆì»¤ì˜ ë†’ì´
-    OFFSET_X = 12, // ê¸°ë³¸, í´ë¦­ ë§ˆì»¤ì˜ ê¸°ì¤€ Xì¢Œí‘œ
-    OFFSET_Y = MARKER_HEIGHT, // ê¸°ë³¸, í´ë¦­ ë§ˆì»¤ì˜ ê¸°ì¤€ Yì¢Œí‘œ
-    OVER_MARKER_WIDTH = 40, // ì˜¤ë²„ ë§ˆì»¤ì˜ ë„ˆë¹„
-    OVER_MARKER_HEIGHT = 42, // ì˜¤ë²„ ë§ˆì»¤ì˜ ë†’ì´
-    OVER_OFFSET_X = 13, // ì˜¤ë²„ ë§ˆì»¤ì˜ ê¸°ì¤€ Xì¢Œí‘œ
-    OVER_OFFSET_Y = OVER_MARKER_HEIGHT, // ì˜¤ë²„ ë§ˆì»¤ì˜ ê¸°ì¤€ Yì¢Œí‘œ
-    SPRITE_MARKER_URL = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markers_sprites2.png', // ìŠ¤í”„ë¼ì´íŠ¸ ë§ˆì»¤ ì´ë¯¸ì§€ URL
-    SPRITE_WIDTH = 126, // ìŠ¤í”„ë¼ì´íŠ¸ ì´ë¯¸ì§€ ë„ˆë¹„
-    SPRITE_HEIGHT = 146, // ìŠ¤í”„ë¼ì´íŠ¸ ì´ë¯¸ì§€ ë†’ì´
-    SPRITE_GAP = 10; // ìŠ¤í”„ë¼ì´íŠ¸ ì´ë¯¸ì§€ì—ì„œ ë§ˆì»¤ê°„ ê°„ê²©
-
-var markerSize = new daum.maps.Size(MARKER_WIDTH, MARKER_HEIGHT), // ê¸°ë³¸, í´ë¦­ ë§ˆì»¤ì˜ í¬ê¸°
-    markerOffset = new daum.maps.Point(OFFSET_X, OFFSET_Y), // ê¸°ë³¸, í´ë¦­ ë§ˆì»¤ì˜ ê¸°ì¤€ì¢Œí‘œ
-    overMarkerSize = new daum.maps.Size(OVER_MARKER_WIDTH, OVER_MARKER_HEIGHT), // ì˜¤ë²„ ë§ˆì»¤ì˜ í¬ê¸°
-    overMarkerOffset = new daum.maps.Point(OVER_OFFSET_X, OVER_OFFSET_Y), // ì˜¤ë²„ ë§ˆì»¤ì˜ ê¸°ì¤€ ì¢Œí‘œ
-    spriteImageSize = new daum.maps.Size(SPRITE_WIDTH, SPRITE_HEIGHT); // ìŠ¤í”„ë¼ì´íŠ¸ ì´ë¯¸ì§€ì˜ í¬ê¸°
-
-var positions = [  // ë§ˆì»¤ì˜ ìœ„ì¹˜
-        new daum.maps.LatLng(33.44975, 126.56967),
-        new daum.maps.LatLng(33.450579, 126.56956),
-        new daum.maps.LatLng(33.4506468, 126.5707)
-    ],
-    selectedMarker = null; // í´ë¦­í•œ ë§ˆì»¤ë¥¼ ë‹´ì„ ë³€ìˆ˜
-
-var mapContainer = document.getElementById('map'), // ì§€ë„ë¥¼ í‘œì‹œí•  div
-    mapOption = { 
-        center: new daum.maps.LatLng(33.450701, 126.570667), // ì§€ë„ì˜ ì¤‘ì‹¬ì¢Œí‘œ
-        level: 3 // ì§€ë„ì˜ í™•ëŒ€ ë ˆë²¨
-    };
-
-var map = new daum.maps.Map(mapContainer, mapOption); // ì§€ë„ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
-
-// ì§€ë„ ìœ„ì— ë§ˆì»¤ë¥¼ í‘œì‹œí•©ë‹ˆë‹¤
-for (var i = 0, len = positions.length; i < len; i++) {
-    var gapX = (MARKER_WIDTH + SPRITE_GAP), // ìŠ¤í”„ë¼ì´íŠ¸ ì´ë¯¸ì§€ì—ì„œ ë§ˆì»¤ë¡œ ì‚¬ìš©í•  ì´ë¯¸ì§€ Xì¢Œí‘œ ê°„ê²© ê°’
-        originY = (MARKER_HEIGHT + SPRITE_GAP) * i, // ìŠ¤í”„ë¼ì´íŠ¸ ì´ë¯¸ì§€ì—ì„œ ê¸°ë³¸, í´ë¦­ ë§ˆì»¤ë¡œ ì‚¬ìš©í•  Yì¢Œí‘œ ê°’
-        overOriginY = (OVER_MARKER_HEIGHT + SPRITE_GAP) * i, // ìŠ¤í”„ë¼ì´íŠ¸ ì´ë¯¸ì§€ì—ì„œ ì˜¤ë²„ ë§ˆì»¤ë¡œ ì‚¬ìš©í•  Yì¢Œí‘œ ê°’
-        normalOrigin = new daum.maps.Point(0, originY), // ìŠ¤í”„ë¼ì´íŠ¸ ì´ë¯¸ì§€ì—ì„œ ê¸°ë³¸ ë§ˆì»¤ë¡œ ì‚¬ìš©í•  ì˜ì—­ì˜ ì¢Œìƒë‹¨ ì¢Œí‘œ
-        clickOrigin = new daum.maps.Point(gapX, originY), // ìŠ¤í”„ë¼ì´íŠ¸ ì´ë¯¸ì§€ì—ì„œ ë§ˆìš°ìŠ¤ì˜¤ë²„ ë§ˆì»¤ë¡œ ì‚¬ìš©í•  ì˜ì—­ì˜ ì¢Œìƒë‹¨ ì¢Œí‘œ
-        overOrigin = new daum.maps.Point(gapX * 2, overOriginY); // ìŠ¤í”„ë¼ì´íŠ¸ ì´ë¯¸ì§€ì—ì„œ í´ë¦­ ë§ˆì»¤ë¡œ ì‚¬ìš©í•  ì˜ì—­ì˜ ì¢Œìƒë‹¨ ì¢Œí‘œ
-        
-    // ë§ˆì»¤ë¥¼ ìƒì„±í•˜ê³  ì§€ë„ìœ„ì— í‘œì‹œí•©ë‹ˆë‹¤
-    addMarker(positions[i], normalOrigin, overOrigin, clickOrigin);
-}
-
-// ë§ˆì»¤ë¥¼ ìƒì„±í•˜ê³  ì§€ë„ ìœ„ì— í‘œì‹œí•˜ê³ , ë§ˆì»¤ì— mouseover, mouseout, click ì´ë²¤íŠ¸ë¥¼ ë“±ë¡í•˜ëŠ” í•¨ìˆ˜ì…ë‹ˆë‹¤
-function addMarker(position, normalOrigin, overOrigin, clickOrigin) {
-
-    // ê¸°ë³¸ ë§ˆì»¤ì´ë¯¸ì§€, ì˜¤ë²„ ë§ˆì»¤ì´ë¯¸ì§€, í´ë¦­ ë§ˆì»¤ì´ë¯¸ì§€ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
-    var normalImage = createMarkerImage(markerSize, markerOffset, normalOrigin),
-        overImage = createMarkerImage(overMarkerSize, overMarkerOffset, overOrigin),
-        clickImage = createMarkerImage(markerSize, markerOffset, clickOrigin);
-    
-    // ë§ˆì»¤ë¥¼ ìƒì„±í•˜ê³  ì´ë¯¸ì§€ëŠ” ê¸°ë³¸ ë§ˆì»¤ ì´ë¯¸ì§€ë¥¼ ì‚¬ìš©í•©ë‹ˆë‹¤
-    var marker = new daum.maps.Marker({
-        map: map,
-        position: position,
-        image: normalImage
-    });
-
-    // ë§ˆì»¤ ê°ì²´ì— ë§ˆì»¤ì•„ì´ë””ì™€ ë§ˆì»¤ì˜ ê¸°ë³¸ ì´ë¯¸ì§€ë¥¼ ì¶”ê°€í•©ë‹ˆë‹¤
-    marker.normalImage = normalImage;
-
-    // ë§ˆì»¤ì— mouseover ì´ë²¤íŠ¸ë¥¼ ë“±ë¡í•©ë‹ˆë‹¤
-    daum.maps.event.addListener(marker, 'mouseover', function() {
-
-        // í´ë¦­ëœ ë§ˆì»¤ê°€ ì—†ê³ , mouseoverëœ ë§ˆì»¤ê°€ í´ë¦­ëœ ë§ˆì»¤ê°€ ì•„ë‹ˆë©´
-        // ë§ˆì»¤ì˜ ì´ë¯¸ì§€ë¥¼ ì˜¤ë²„ ì´ë¯¸ì§€ë¡œ ë³€ê²½í•©ë‹ˆë‹¤
-        if (!selectedMarker || selectedMarker !== marker) {
-            marker.setImage(overImage);
-        }
-    });
-
-    // ë§ˆì»¤ì— mouseout ì´ë²¤íŠ¸ë¥¼ ë“±ë¡í•©ë‹ˆë‹¤
-    daum.maps.event.addListener(marker, 'mouseout', function() {
-
-        // í´ë¦­ëœ ë§ˆì»¤ê°€ ì—†ê³ , mouseoutëœ ë§ˆì»¤ê°€ í´ë¦­ëœ ë§ˆì»¤ê°€ ì•„ë‹ˆë©´
-        // ë§ˆì»¤ì˜ ì´ë¯¸ì§€ë¥¼ ê¸°ë³¸ ì´ë¯¸ì§€ë¡œ ë³€ê²½í•©ë‹ˆë‹¤
-        if (!selectedMarker || selectedMarker !== marker) {
-            marker.setImage(normalImage);
-        }
-    });
-
-    // ë§ˆì»¤ì— click ì´ë²¤íŠ¸ë¥¼ ë“±ë¡í•©ë‹ˆë‹¤
-    daum.maps.event.addListener(marker, 'click', function() {
-		alert("ë– ë¼!");
-        // í´ë¦­ëœ ë§ˆì»¤ê°€ ì—†ê³ , click ë§ˆì»¤ê°€ í´ë¦­ëœ ë§ˆì»¤ê°€ ì•„ë‹ˆë©´
-        // ë§ˆì»¤ì˜ ì´ë¯¸ì§€ë¥¼ í´ë¦­ ì´ë¯¸ì§€ë¡œ ë³€ê²½í•©ë‹ˆë‹¤
-        if (!selectedMarker || selectedMarker !== marker) {
-
-            // í´ë¦­ëœ ë§ˆì»¤ ê°ì²´ê°€ nullì´ ì•„ë‹ˆë©´
-            // í´ë¦­ëœ ë§ˆì»¤ì˜ ì´ë¯¸ì§€ë¥¼ ê¸°ë³¸ ì´ë¯¸ì§€ë¡œ ë³€ê²½í•˜ê³ 
-            !!selectedMarker && selectedMarker.setImage(selectedMarker.normalImage);
-
-            // í˜„ì¬ í´ë¦­ëœ ë§ˆì»¤ì˜ ì´ë¯¸ì§€ëŠ” í´ë¦­ ì´ë¯¸ì§€ë¡œ ë³€ê²½í•©ë‹ˆë‹¤
-            marker.setImage(clickImage);
-        }
-
-        // í´ë¦­ëœ ë§ˆì»¤ë¥¼ í˜„ì¬ í´ë¦­ëœ ë§ˆì»¤ ê°ì²´ë¡œ ì„¤ì •í•©ë‹ˆë‹¤
-        selectedMarker = marker;
-    });
-}
-
-// MakrerImage ê°ì²´ë¥¼ ìƒì„±í•˜ì—¬ ë°˜í™˜í•˜ëŠ” í•¨ìˆ˜ì…ë‹ˆë‹¤
-function createMarkerImage(markerSize, offset, spriteOrigin) {
-    var markerImage = new daum.maps.MarkerImage(
-        SPRITE_MARKER_URL, // ìŠ¤í”„ë¼ì´íŠ¸ ë§ˆì»¤ ì´ë¯¸ì§€ URL
-        markerSize, // ë§ˆì»¤ì˜ í¬ê¸°
-        {
-            offset: offset, // ë§ˆì»¤ ì´ë¯¸ì§€ì—ì„œì˜ ê¸°ì¤€ ì¢Œí‘œ
-            spriteOrigin: spriteOrigin, // ìŠ¤íŠ¸ë¼ì´í”„ ì´ë¯¸ì§€ ì¤‘ ì‚¬ìš©í•  ì˜ì—­ì˜ ì¢Œìƒë‹¨ ì¢Œí‘œ
-            spriteSize: spriteImageSize // ìŠ¤í”„ë¼ì´íŠ¸ ì´ë¯¸ì§€ì˜ í¬ê¸°
-        }
-    );
-    
-    return markerImage;
 }
 </script>
 </div>
