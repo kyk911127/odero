@@ -36,6 +36,10 @@
 		p:sqlSessionFactory-ref="ssf"
 		p:mapperInterface="com.sist.main.dao.MainMapper"
 	/>
+	<bean id="placeMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"
+		p:sqlSessionFactory-ref="ssf"
+		p:mapperInterface="com.sist.place.dao.PlaceMapper"
+	/>
 	<bean id="reviewMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"
 		p:sqlSessionFactory-ref="ssf"
 		p:mapperInterface="com.sist.review.dao.ReviewMapper"
