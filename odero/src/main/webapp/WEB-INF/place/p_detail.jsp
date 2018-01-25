@@ -158,20 +158,41 @@
 
 		<div class="row row_map">
 			<h3>위치</h3>
-			<div id="map" style="width: 100%; height: 450px;">
-				<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=90ca2826f787f6d4fc01f89cb8bcdce3"></script>
-				<script>
-					var container = document.getElementById('map');
-					var options = {
-						center : new daum.maps.LatLng(33.450701, 126.570667),
-						level : 3
-					};
-
-					var map = new daum.maps.Map(container, options);
-				</script>
-				<!-- <img src="p_image/map.PNG" width="100%"> -->
-			</div>
+			<div id="map" style="width: 100%; height: 450px;"></div>
 		</div>
+			<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=90ca2826f787f6d4fc01f89cb8bcdce3"></script>
+			<script>
+				var mContainer = document.getElementById('map');
+				var mOptions = {
+					center : new daum.maps.LatLng(33.450701, 126.570667),
+					level : 3
+				};
+				
+				// 마커가 표시될 위치입니다 
+				// var markerPosition  = new daum.maps.LatLng(33.450701, 126.570667); 
+				
+				var map = new daum.maps.Map(mContainer, mOptions);	// 지도를 생성합니다
+
+				// 마커를 생성합니다
+				var marker = new daum.maps.Marker({
+				    position: mOptions.center
+				});
+
+				// 마커가 지도 위에 표시되도록 설정합니다
+				marker.setMap(map);
+				
+				var iwContent = '<div style="padding:5px; ">상호명!!</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+			    iwPosition = new daum.maps.LatLng(33.450701, 126.570667); //인포윈도우 표시 위치입니다
+
+				// 인포윈도우를 생성합니다
+				var infowindow = new daum.maps.InfoWindow({
+					position : iwPosition, 
+					content : iwContent 
+				});
+			    
+				infowindow.open(map, marker);
+			</script>
+
 		<div class="row row_reply">
 			<h3>엉망징창키친의 리뷰(10)</h3>
 			<table class="reply_list">
