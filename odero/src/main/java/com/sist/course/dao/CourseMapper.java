@@ -1,5 +1,5 @@
 package com.sist.course.dao;
 
-public class CourceMapper {
+public class CourseMapper {
 
 }
