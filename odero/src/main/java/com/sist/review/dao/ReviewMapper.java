@@ -8,14 +8,14 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectKey;
 /*
  * private int r_no;
-	private String m_id;     ¾ÆÀÌµð
-	private String r_subject;Á¦¸ñ
-	private String r_pname;  °¡°Ô¸í
-	private String r_content;³»¿ë
-	private String r_hit;    Á¶È¸¼ö
-	private Date r_reddate;  µî·Ï³¯Â¥
-	private String r_imgname;ÀÌ¹ÌÁöÀÌ¸§
-	private int r_imgcount;  ÀÌ¹ÌÁö¿©ºÎ
+	private String m_id;     ï¿½ï¿½ï¿½Ìµï¿½
+	private String r_subject;ï¿½ï¿½ï¿½ï¿½
+	private String r_pname;  ï¿½ï¿½ï¿½Ô¸ï¿½
+	private String r_content;ï¿½ï¿½ï¿½ï¿½
+	private String r_hit;    ï¿½ï¿½È¸ï¿½ï¿½
+	private Date r_reddate;  ï¿½ï¿½Ï³ï¿½Â¥
+	private String r_imgname;ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½Ì¸ï¿½
+	private int r_imgcount;  ï¿½Ì¹ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
  */
 public interface ReviewMapper {
 	//List
@@ -33,7 +33,7 @@ public interface ReviewMapper {
 	//Insert
 	@SelectKey(keyProperty="r_no", resultType=int.class, before=true, 
 			statement="SELECT NVL(MAX(r_no)+1,1) AS no FROM review")
-	@Insert("INSERT INTO review VALUES(r_no,r_subject=#{r_subject},r_pname=#{r_pname},r_content=#{r_content},0,SYSDATE,"
-		  + "r_imgname=#{r_imgname},r_imgcount=#{r_imgcount})")
+	@Insert("INSERT INTO review VALUES(r_no,#{m_id},#{r_subject},#{r_pname},#{r_content},0,SYSDATE,"
+		  + "#{r_imgname},#{r_imgcount},#{r_addr})")
 	public void reviewInsert(ReviewVo vo);
 }

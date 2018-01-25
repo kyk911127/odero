@@ -46,14 +46,33 @@ $(document).ready(function(){
 		
 	
 	<%-- c:forEach var="i" begin="1" end="3"> --%>
-	<div class="row cart">
+<div class="row cart">
+
 <div class="table_wrap">
-	<hr class="soften" /><h3 class="sub_text">추천 가게 리스트  Best5 &nbsp;
-	<a href="mypage_list.do"><button class="btn btn-success btn-xs">더보기 </button></a> <hr class="soften" /> 
-		</h3> 
+	<hr class="soften" /><h3 class="sub_text">내 정보 &nbsp; <hr class="soften" /> </h3> 
 
            
           <table class="table table-hover" id="table_content" width=600>
+          	<tr>
+          		<td>name</td>
+          		<td>$name</td>
+          	</tr>
+          	<tr>
+          		<td>email</td>
+          		<td>$email</td>
+          	</tr>
+          	<tr>
+          		<td colspan="2"><input type=button value="modify" class="btn btn-sm btn-danger"></td>
+          	</tr>
+          </table>
+</div>
+         
+<div class="table_wrap">
+	<hr class="soften" /><h3 class="sub_text">추천 가게 리스트  Best5 &nbsp;
+	<a href="mypage_list.do"><button class="btn btn-success btn-xs">더보기 </button></a> <hr class="soften" /> </h3> 
+
+           
+          <table class="table table-hover" width=600>
  			<tr>
  				<th width="5%">번호</th>
  				<th width="30%" class="text-center">가게이름</th>
@@ -84,7 +103,7 @@ $(document).ready(function(){
 
 	
 	</div>
-	</div>
+	
 	
 	<br><br>
 <div class="table_wrap">
@@ -126,7 +145,7 @@ $(document).ready(function(){
    
 
 	</div>
-
+</div>
 
 </div>
 	<%-- </c:forEach> --%>

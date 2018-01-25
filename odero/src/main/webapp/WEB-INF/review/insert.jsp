@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR"
     pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -34,13 +35,13 @@ $(function(){
 			'<tr id="f'+(fileIndex)+'">'+
 				'<td width="20%" id="file">사진'+(fileIndex+1)+'</td>'+
 				'<td width="80%" align="left">'+
-					'<input type="file" name="images['+fileIndex+']" size="15" id="file'+(fileIndex)+'">'+
+					'<input type="file" name="images['+fileIndex+']" size="15" id="images'+(fileIndex)+'">'+
 				'</td>'+
 			'</tr>');
-		$('#file'+(fileIndex)).on('change', function() {
+		/* $('#images'+(fileIndex)).on('change', function() {
             	$('#freeview').show();
             readURL(this);
-         });
+         }); */
 		fileIndex=fileIndex+1;
 	});
 	$('#cancel').click(function(){
@@ -54,7 +55,7 @@ $(function(){
 		}
 	});
 	
-	//이미지 띄우기
+	/* //이미지 띄우기
 	function readURL(input) {
 	      if (input.files && input.files[0]) {
 	         var reader = new FileReader();
@@ -67,8 +68,7 @@ $(function(){
 	         }
 	         reader.readAsDataURL(input.files[0]);
 	      }
-	   }
-	
+	   } */
 	
 	// 주소찾기
 	var keyword = $('#keyword').val();
@@ -80,21 +80,25 @@ $(function(){
 	
 	// 등록
 	$('#okbtn').click(function(){		
-		var title = $('#title').val();
-		var store = $('#store').val();
-		var title = $('#title').val();
-		var content = $('#content').val();
-		if(title.trim()==""){
+		var subjecr = $('#r_subject').val();
+		var pname = $('#r_pname').val();
+		var addr = $('#r_addr').val();
+		var content = $('#r_content').val();
+		if(subjecr.trim()==""){
 			alert('제목을 입력해주세요');
-			$('#title').focus();
+			$('#r_subject').focus();
 			return false;
-		} else if(store.trim()==""){
+		} else if(pname.trim()==""){
 			alert('가게명을 입력해주세요');
-			$('#store').focus();
+			$('#r_pname').focus();
+			return false;
+		} else if(addr.trim()=="") {
+			alert('주소를 등록해주세요');
+			$('#keyword').focus();
 			return false;
 		} else if(content.trim()==""){
 			alert('내용을 입력해주세요');
-			$('#content').focus();
+			$('#r_content').focus();
 			return false;
 		} else {
 			$('#frm').submit();
@@ -107,18 +111,18 @@ $(function(){
 <div class="container" style="margin-top: 50px">
 	<div class="row">
 		<center><h3><b>후기 작성</b></h3><br></center>
-		<form action="review_insert_ok.do" method="post" id="frm">
+		<form:form method="post" action="review_insert_ok.do" id="frm" enctype="multipart/form-data" modelAttribute="uploadForm">
 		<table class="table table-hover" style="width: 70%; margin: 0px auto;" >
 			<tr>
 				<td width="20%" class="text-center">제목</td>
 				<td width="80%" class="text-left">
-					<input type="text" name="r_subject" id="title" size="50">
+					<input type="text" name="r_subject" id="r_subject" size="50">
 				</td>
 			</tr>
 			<tr>
 				<td width="20%" class="text-center">가게명</td>
 				<td width="80%" class="text-left">
-					<input type="text" name="r_pname" id="storthisElement').show()e" size="30">
+					<input type="text" name="r_pname" id="r_pname" size="30">
 				</td>
 			</tr>
 			<tr>
@@ -130,7 +134,7 @@ $(function(){
 			<tr>
 				<td width="20%" class="text-center">주소</td>
 				<td width="80%" class="text-left">
-					<input type="text" name="r_addr" id="addr" size="50" readonly placeholder="주소를 검색 후 선택해주세요!">
+					<input type="text" name="r_addr" id="r_addr" size="50" readonly placeholder="주소를 검색 후 선택해주세요!">
 				</td>
 			</tr>
 			<tr>
@@ -168,16 +172,16 @@ $(function(){
 					</table>
 				</td>
 			</tr>
-			<tr style="display: none;" id="freeview">
+			<!-- <tr style="display: none;" id="freeview">
 				<td colspan="2" class="text-center">
 					<div style="display: inline-block;">
 						<div id="myimg" style="display: inline;"></div>
 					</div>
 				</td>
-			</tr>
+			</tr> -->
 			<tr>
 				<td colspan="2">
-					<textarea rows="10" cols="100%" name="content" id="content" placeholder="내용입력"></textarea>
+					<textarea rows="10" cols="100%" name="r_content" id="r_content" placeholder="내용입력"></textarea>
 				</td>
 			</tr>
 			<tr>
@@ -187,7 +191,7 @@ $(function(){
 				</td>
 			</tr>
 		 </table>
-		 </form>
+		 </form:form>
 	</div>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=641146c1d3ef1301e2a1f709fdc1b146&libraries=services"></script>
 <script>
@@ -405,7 +409,7 @@ function displayInfowindow(marker, title) {
 
 // 주소가져오기
 function getAddr(addr) {
-	$('#addr').val(addr);
+	$('#r_addr').val(addr);
 }
 
 //---------------------------------------------------------- 마커, 검색결과 제거 ----------------------------------------------------------
