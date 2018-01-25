@@ -17,7 +17,7 @@ public class PlaceDAO {
 		return mapper.placeListData(map);
 		
 	}
-	
+	 
 	//TotalPage
 		public int placeTotalList() {
 			return mapper.placeTotalList();
