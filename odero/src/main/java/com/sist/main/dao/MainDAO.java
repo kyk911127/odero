@@ -16,4 +16,7 @@ public class MainDAO {
 	public List<PlaceVO> best_play(){
 		return mapper.best_play();
 	}
+	public List<PlaceVO> best_course(String p_grade, String gu){
+		return mapper.best_course(p_grade, gu);
+	}
 }
