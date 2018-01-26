@@ -1,10 +1,6 @@
 package com.sist.review;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileInputStream;
-import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -41,32 +37,15 @@ public class ReviewController {
 			String img = vo.getR_imgname();
 			
 			if (img.equals("-")) {
-				vo.setR_imgname("");
+				img = "no_image.jpg";
+				vo.setR_imgname(img);
 			} else {
-				vo.setR_imgname(img.split(",")[0]);
+				img = img.split(",")[0];
+				vo.setR_imgname(img);
 			}
 		}
-		/*File file = new File("/home/sist/"+fname);
-		// 
-		res.setHeader("Content-Disposition", "attachment;filename="+URLEncoder.encode(fname,"utf-8")); // attachment : �ٿ�ε� �ұ�� â
-		res.setContentLength((int)file.length()); // 
-		
-		// ����ڿ��� ���� ���
-		BufferedInputStream bis = new BufferedInputStream(new FileInputStream(file)); // ���Ϸκ��� ī�ǹ޾ƿ���
-		BufferedOutputStream bos = new BufferedOutputStream(res.getOutputStream()); // ����ڿ��� ����ϱ�
-		
-		//���� ī��
-		int i=0;
-		byte[] buffer = new byte[1024];
-		while((i=bis.read(buffer, 0, 1024))!=-1){ // EOF �����ǳ� 
-			bos.write(buffer, 0, i);
-		}
-		bis.close();
-		bos.close();*/
-		
 		model.addAttribute("list", list);
-		
-		
+
 		int totalpage = dao.reviewTotalList();
 		model.addAttribute("curpage", curpage);
 		model.addAttribute("totalpage", totalpage);
@@ -81,31 +60,43 @@ public class ReviewController {
 
 	@RequestMapping("review_insert_ok")
 	public String reviewInsert(ReviewVo uploadForm) {
+		String path = "/home/sist/bigdataDev/odero/src/main/webapp/review/review_img";
 		List<MultipartFile> list = uploadForm.getImages();
-		File f = new File("/home/sist/");
+		File f = new File(path);
 		if (!f.exists())
 			f.mkdir();
 		if (list != null && list.size() > 0) {
 			String fname = "";
-			String fsize = "";
 			for (MultipartFile mf : list) {
 				String name = mf.getOriginalFilename();
-				File file = new File("/home/sist/" + name);
+				File file = new File(path+"/"+ name);
 				try {
 					mf.transferTo(file);
 				} catch (Exception e) {
 					System.out.println(e.getMessage());
 				}
 				fname += name + ",";
-				fsize += file.length() + ",";
 			}
 			uploadForm.setR_imgname(fname.substring(0, fname.lastIndexOf(",")));
 			uploadForm.setR_imgcount(list.size());
 		} else {
-			uploadForm.setR_imgname("");
+			uploadForm.setR_imgname("-");
 			uploadForm.setR_imgcount(0);
 		}
 		dao.reviewInsert(uploadForm);
 		return "redirect:review_list.do";
+	}
+	
+	@RequestMapping("review_detail.do")
+	public String reviewDetail(int r_no,Model model) {
+		dao.reviewHitIncrement(r_no);
+		ReviewVo vo = dao.reviewDetail(r_no);
+		
+		if (vo.getR_imgcount()>0) {
+			String[] images = vo.getR_imgname().split(",");
+			model.addAttribute("images",images);
+		}
+		model.addAttribute("vo", vo);
+		return "review/detail";
 	}
 }

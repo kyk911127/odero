@@ -1,14 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="board/css/map.css" />
+<link rel="stylesheet" type="text/css" href="review/css/map.css" />
 <style type="text/css">
 .row{
 	margin: 0px auto;
@@ -29,11 +29,11 @@
 <script type="text/javascript">
 var fileIndex=0;
 $(function(){
-	// »çÁø Ãß°¡
+	// ì‚¬ì§„ ì¶”ê°€
 	$('#add').click(function(){
 		$('#fileView').append(
 			'<tr id="f'+(fileIndex)+'">'+
-				'<td width="20%" id="file">»çÁø'+(fileIndex+1)+'</td>'+
+				'<td width="20%" id="file">ì‚¬ì§„'+(fileIndex+1)+'</td>'+
 				'<td width="80%" align="left">'+
 					'<input type="file" name="images['+fileIndex+']" size="15" id="images'+(fileIndex)+'">'+
 				'</td>'+
@@ -55,7 +55,7 @@ $(function(){
 		}
 	});
 	
-	/* //ÀÌ¹ÌÁö ¶ç¿ì±â
+	/* //ì´ë¯¸ì§€ ë„ìš°ê¸°
 	function readURL(input) {
 	      if (input.files && input.files[0]) {
 	         var reader = new FileReader();
@@ -70,34 +70,34 @@ $(function(){
 	      }
 	   } */
 	
-	// ÁÖ¼ÒÃ£±â
+	// ì£¼ì†Œì°¾ê¸°
 	var keyword = $('#keyword').val();
 	$('#keyword').click(function(){
-		if(keyword=='»óÈ£¸í ÀÔ·Â'){
+		if(keyword=='ìƒí˜¸ëª… ì…ë ¥'){
 			$('#keyword').val('');
 		}	
 	});
 	
-	// µî·Ï
+	// ë“±ë¡
 	$('#okbtn').click(function(){		
 		var subjecr = $('#r_subject').val();
 		var pname = $('#r_pname').val();
 		var addr = $('#r_addr').val();
 		var content = $('#r_content').val();
 		if(subjecr.trim()==""){
-			alert('Á¦¸ñÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä');
+			alert('ì œëª©ì„ ì…ë ¥í•´ì£¼ì„¸ìš”');
 			$('#r_subject').focus();
 			return false;
 		} else if(pname.trim()==""){
-			alert('°¡°Ô¸íÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä');
+			alert('ê°€ê²Œëª…ì„ ì…ë ¥í•´ì£¼ì„¸ìš”');
 			$('#r_pname').focus();
 			return false;
 		} else if(addr.trim()=="") {
-			alert('ÁÖ¼Ò¸¦ µî·ÏÇØÁÖ¼¼¿ä');
+			alert('ì£¼ì†Œë¥¼ ë“±ë¡í•´ì£¼ì„¸ìš”');
 			$('#keyword').focus();
 			return false;
 		} else if(content.trim()==""){
-			alert('³»¿ëÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä');
+			alert('ë‚´ìš©ì„ ì…ë ¥í•´ì£¼ì„¸ìš”');
 			$('#r_content').focus();
 			return false;
 		} else {
@@ -110,44 +110,44 @@ $(function(){
 <body>
 <div class="container" style="margin-top: 50px">
 	<div class="row">
-		<center><h3><b>ÈÄ±â ÀÛ¼º</b></h3><br></center>
+		<center><h3><b>í›„ê¸° ì‘ì„±</b></h3><br></center>
 		<form:form method="post" action="review_insert_ok.do" id="frm" enctype="multipart/form-data" modelAttribute="uploadForm">
 		<table class="table table-hover" style="width: 70%; margin: 0px auto;" >
 			<tr>
-				<td width="20%" class="text-center">Á¦¸ñ</td>
+				<td width="20%" class="text-center">ì œëª©</td>
 				<td width="80%" class="text-left">
 					<input type="text" name="r_subject" id="r_subject" size="50">
 				</td>
 			</tr>
 			<tr>
-				<td width="20%" class="text-center">°¡°Ô¸í</td>
+				<td width="20%" class="text-center">ê°€ê²Œëª…</td>
 				<td width="80%" class="text-left">
 					<input type="text" name="r_pname" id="r_pname" size="30">
 				</td>
 			</tr>
 			<tr>
-				<td width="20%" class="text-center">ÀÛ¼ºÀÚ</td>
+				<td width="20%" class="text-center">ì‘ì„±ì</td>
 				<td width="80%" class="text-left">
 					<input type="text" name="m_id" size="15" readonly="readonly" value="1">
 				</td>
 			</tr>
 			<tr>
-				<td width="20%" class="text-center">ÁÖ¼Ò</td>
+				<td width="20%" class="text-center">ì£¼ì†Œ</td>
 				<td width="80%" class="text-left">
-					<input type="text" name="r_addr" id="r_addr" size="50" readonly placeholder="ÁÖ¼Ò¸¦ °Ë»ö ÈÄ ¼±ÅÃÇØÁÖ¼¼¿ä!">
+					<input type="text" name="r_addr" id="r_addr" size="50" readonly placeholder="ì£¼ì†Œë¥¼ ê²€ìƒ‰ í›„ ì„ íƒí•´ì£¼ì„¸ìš”!">
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2">
 					<div class="map_wrap">
-						<!-- Áöµµ -->
+						<!-- ì§€ë„ -->
 						<div id="map" style="width:100%;height:100%;"></div>
-						<!-- °Ë»öÃ¢ -->
+						<!-- ê²€ìƒ‰ì°½ -->
 						<div id="menu_wrap" class="bg_white">
        						<div class="option">
            						<div>
-                					°Ë»ö : <input type="text" id="keyword" size="15" value="»óÈ£¸í ÀÔ·Â"> 
-                    				<input type="button" value="°Ë»ö" id="mapsearch" onclick="searchPlaces(); return false;"> 
+                					ê²€ìƒ‰ : <input type="text" id="keyword" size="15" value="ìƒí˜¸ëª… ì…ë ¥"> 
+                    				<input type="button" value="ê²€ìƒ‰" id="mapsearch" onclick="searchPlaces(); return false;"> 
 								</div>
         					</div>
         					<hr>
@@ -158,13 +158,13 @@ $(function(){
 				</td>
 			</tr>
 			<tr>
-				<td width="20%" class="text-center">Ã·ºÎÆÄÀÏ</td>
+				<td width="20%" class="text-center">ì²¨ë¶€íŒŒì¼</td>
 				<td width="80%" class="text-left">
 					<table class="table table-hover">
 						<tr>
 							<td class="text-right">
-								<input type="button" class="btn btn-xs btn-info" id="add" value="Ãß°¡">
-								<input type="button" class="btn btn-xs btn-danger" id="cancel" value="Ãë¼Ò">
+								<input type="button" class="btn btn-xs btn-info" id="add" value="ì¶”ê°€">
+								<input type="button" class="btn btn-xs btn-danger" id="cancel" value="ì·¨ì†Œ">
 							</td>
 						</tr>
 					</table>
@@ -181,13 +181,13 @@ $(function(){
 			</tr> -->
 			<tr>
 				<td colspan="2">
-					<textarea rows="10" cols="100%" name="r_content" id="r_content" placeholder="³»¿ëÀÔ·Â"></textarea>
+					<textarea rows="10" cols="100%" name="r_content" id="r_content" placeholder="ë‚´ìš©ì…ë ¥"></textarea>
 				</td>
 			</tr>
 			<tr>
 				<td colspan="2" class="text-center">
-					<input type="button" value="µî·Ï" id="okbtn">&nbsp;
-					<input type="button" value="Ãë¼Ò" id="btn" onclick="javascript:history.back();">
+					<input type="button" value="ë“±ë¡" id="okbtn">&nbsp;
+					<input type="button" value="ì·¨ì†Œ" id="btn" onclick="javascript:history.back();">
 				</td>
 			</tr>
 		 </table>
@@ -195,93 +195,93 @@ $(function(){
 	</div>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=641146c1d3ef1301e2a1f709fdc1b146&libraries=services"></script>
 <script>
-var mapContainer = document.getElementById('map'), 	// Áöµµ Ç¥½ÃÇÒ div 
-    mapOption = { 									// Áöµµ ¿É¼Ç
-        center: new daum.maps.LatLng(33.450701, 126.570667), // Áöµµ Áß½ÉÁÂÇ¥
-        level: 3 // Áöµµ È®´ë·¹º§
+var mapContainer = document.getElementById('map'), 	// ì§€ë„ í‘œì‹œí•  div 
+    mapOption = { 									// ì§€ë„ ì˜µì…˜
+        center: new daum.maps.LatLng(33.450701, 126.570667), // ì§€ë„ ì¤‘ì‹¬ì¢Œí‘œ
+        level: 3 // ì§€ë„ í™•ëŒ€ë ˆë²¨
     };
 
-// Áöµµ¸¦ Ç¥½ÃÇÒ div¿Í  Áöµµ ¿É¼ÇÀ¸·Î  Áöµµ »ı¼º
+// ì§€ë„ë¥¼ í‘œì‹œí•  divì™€  ì§€ë„ ì˜µì…˜ìœ¼ë¡œ  ì§€ë„ ìƒì„±
 var map = new daum.maps.Map(mapContainer, mapOption); 
 
 
-//------------------------------------------------------------ ¸¶Ä¿ ------------------------------------------------------------
-//¸¶Ä¿¸¦ ´ãÀ» ¹è¿­
+//------------------------------------------------------------ ë§ˆì»¤ ------------------------------------------------------------
+//ë§ˆì»¤ë¥¼ ë‹´ì„ ë°°ì—´
 var markers = [];
 
 
-//------------------------------------------------------------ °Ë»ö ------------------------------------------------------------
-//Àå¼Ò °Ë»ö °´Ã¼ »ı¼º
+//------------------------------------------------------------ ê²€ìƒ‰ ------------------------------------------------------------
+//ì¥ì†Œ ê²€ìƒ‰ ê°ì²´ ìƒì„±
 var ps = new daum.maps.services.Places(); 
 
-//°Ë»ö °á°ú ¸ñ·ÏÀÌ³ª ¸¶Ä¿¸¦ Å¬¸¯ÇßÀ» ¶§ Àå¼Ò¸íÀ» Ç¥ÃâÇÒ ÀÎÆ÷À©µµ¿ì¸¦ »ı¼º
+//ê²€ìƒ‰ ê²°ê³¼ ëª©ë¡ì´ë‚˜ ë§ˆì»¤ë¥¼ í´ë¦­í–ˆì„ ë•Œ ì¥ì†Œëª…ì„ í‘œì¶œí•  ì¸í¬ìœˆë„ìš°ë¥¼ ìƒì„±
 var infowindow = new daum.maps.InfoWindow({zIndex:1});
 
-//Å°¿öµå·Î Àå¼Ò¸¦°Ë»ö
+//í‚¤ì›Œë“œë¡œ ì¥ì†Œë¥¼ê²€ìƒ‰
 searchPlaces();
 
-//Å°¿öµå °Ë»öÀ» ¿äÃ»ÇÏ´Â ÇÔ¼ö
+//í‚¤ì›Œë“œ ê²€ìƒ‰ì„ ìš”ì²­í•˜ëŠ” í•¨ìˆ˜
 function searchPlaces() {
 	var keyword = $('#keyword').val();
 
     if (!keyword.replace(/^\s+|\s+$/g, '')) {
-        alert('Å°¿öµå¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä!');
+        alert('í‚¤ì›Œë“œë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”!');
         return false;
     } 
-    if (keyword=="»óÈ£¸í ÀÔ·Â"){
+    if (keyword=="ìƒí˜¸ëª… ì…ë ¥"){
     	return false;
     }
-    // Àå¼Ò°Ë»ö °´Ã¼¸¦ ÅëÇØ Å°¿öµå·Î Àå¼Ò°Ë»öÀ» ¿äÃ»
+    // ì¥ì†Œê²€ìƒ‰ ê°ì²´ë¥¼ í†µí•´ í‚¤ì›Œë“œë¡œ ì¥ì†Œê²€ìƒ‰ì„ ìš”ì²­
     ps.keywordSearch(keyword, placesSearchCB); 
 }
 
-//Àå¼Ò°Ë»öÀÌ ¿Ï·áµÆÀ» ¶§ È£ÃâµÇ´Â Äİ¹éÇÔ¼ö
+//ì¥ì†Œê²€ìƒ‰ì´ ì™„ë£Œëì„ ë•Œ í˜¸ì¶œë˜ëŠ” ì½œë°±í•¨ìˆ˜
 function placesSearchCB(data, status, pagination) {
     if (status === daum.maps.services.Status.OK) {
-        // Á¤»óÀûÀ¸·Î °Ë»öÀÌ ¿Ï·áµÆÀ¸¸é °Ë»ö ¸ñ·Ï°ú ¸¶Ä¿¸¦ Ç¥Ãâ
+        // ì •ìƒì ìœ¼ë¡œ ê²€ìƒ‰ì´ ì™„ë£Œëìœ¼ë©´ ê²€ìƒ‰ ëª©ë¡ê³¼ ë§ˆì»¤ë¥¼ í‘œì¶œ
         displayPlaces(data);
 
-        // ÆäÀÌÁö ¹øÈ£¸¦ Ç¥ÃâÇÕ´Ï´Ù
+        // í˜ì´ì§€ ë²ˆí˜¸ë¥¼ í‘œì¶œí•©ë‹ˆë‹¤
         displayPagination(pagination);
 
     } else if (status === daum.maps.services.Status.ZERO_RESULT) {
 
-        alert('°Ë»ö °á°ú°¡ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.');
+        alert('ê²€ìƒ‰ ê²°ê³¼ê°€ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.');
         return;
 
     } else if (status === daum.maps.services.Status.ERROR) {
 
-        alert('°Ë»ö °á°ú Áß ¿À·ù°¡ ¹ß»ıÇß½À´Ï´Ù.');
+        alert('ê²€ìƒ‰ ê²°ê³¼ ì¤‘ ì˜¤ë¥˜ê°€ ë°œìƒí–ˆìŠµë‹ˆë‹¤.');
         return;
 
     }
 }
 
-//---------------------------------------------------------- °Ë»ö ¿Ï·á ----------------------------------------------------------
-// °Ë»ö °á°ú ¸ñ·Ï°ú ¸¶Ä¿¸¦ Ç¥ÃâÇÏ´Â ÇÔ¼ö
+//---------------------------------------------------------- ê²€ìƒ‰ ì™„ë£Œ ----------------------------------------------------------
+// ê²€ìƒ‰ ê²°ê³¼ ëª©ë¡ê³¼ ë§ˆì»¤ë¥¼ í‘œì¶œí•˜ëŠ” í•¨ìˆ˜
 function displayPlaces(places) {
 	
-    var listEl = document.getElementById('placesList'), // °Ë»ö ¸ñ·Ï
-    menuEl = document.getElementById('menu_wrap'),		// °Ë»ö Æ²
+    var listEl = document.getElementById('placesList'), // ê²€ìƒ‰ ëª©ë¡
+    menuEl = document.getElementById('menu_wrap'),		// ê²€ìƒ‰ í‹€
     fragment = document.createDocumentFragment(), 
     bounds = new daum.maps.LatLngBounds(), 
     listStr = '';
     
-    // °Ë»ö °á°ú ¸ñ·Ï¿¡ Ãß°¡µÈ Ç×¸ñµéÀ» Á¦°Å
+    // ê²€ìƒ‰ ê²°ê³¼ ëª©ë¡ì— ì¶”ê°€ëœ í•­ëª©ë“¤ì„ ì œê±°
     removeAllChildNods(listEl);
-    // Áöµµ¿¡ Ç¥½ÃµÇ°í ÀÖ´Â ¸¶Ä¿¸¦ Á¦°Å
+    // ì§€ë„ì— í‘œì‹œë˜ê³  ìˆëŠ” ë§ˆì»¤ë¥¼ ì œê±°
     removeMarker();
     
     for ( var i=0; i<places.length; i++ ) {
-        // ¸¶Ä¿¸¦ »ı¼ºÇÏ°í Áöµµ¿¡ Ç¥½Ã
+        // ë§ˆì»¤ë¥¼ ìƒì„±í•˜ê³  ì§€ë„ì— í‘œì‹œ
         var placePosition = new daum.maps.LatLng(places[i].y, places[i].x),
-            marker = addMarker(placePosition, i), // ¸¶Ä¿
-            itemEl = getListItem(i, places[i]); // °Ë»ö °á°ú Ç×¸ñ Element¸¦ »ı¼º
+            marker = addMarker(placePosition, i), // ë§ˆì»¤
+            itemEl = getListItem(i, places[i]); // ê²€ìƒ‰ ê²°ê³¼ í•­ëª© Elementë¥¼ ìƒì„±
             
-        // °Ë»öµÈ Àå¼Ò À§Ä¡¸¦ ±âÁØÀ¸·Î Áöµµ ¹üÀ§¸¦ Àç¼³Á¤ÇÏ±âÀ§ÇØ LatLngBounds °´Ã¼¿¡ ÁÂÇ¥¸¦ Ãß°¡
+        // ê²€ìƒ‰ëœ ì¥ì†Œ ìœ„ì¹˜ë¥¼ ê¸°ì¤€ìœ¼ë¡œ ì§€ë„ ë²”ìœ„ë¥¼ ì¬ì„¤ì •í•˜ê¸°ìœ„í•´ LatLngBounds ê°ì²´ì— ì¢Œí‘œë¥¼ ì¶”ê°€
         bounds.extend(placePosition);
 
-        // ¸¶Ä¿¿Í °Ë»ö°á°ú Ç×¸ñ¿¡ mouseover ÇßÀ»¶§ ÇØ´ç Àå¼Ò¿¡ ÀÎÆ÷À©µµ¿ì¿¡ Àå¼Ò¸íÀ» Ç¥½ÃÇÕ´Ï´Ù mouseout ÇßÀ» ¶§´Â ÀÎÆ÷À©µµ¿ì¸¦ ´İ½À´Ï´Ù
+        // ë§ˆì»¤ì™€ ê²€ìƒ‰ê²°ê³¼ í•­ëª©ì— mouseover í–ˆì„ë•Œ í•´ë‹¹ ì¥ì†Œì— ì¸í¬ìœˆë„ìš°ì— ì¥ì†Œëª…ì„ í‘œì‹œí•©ë‹ˆë‹¤ mouseout í–ˆì„ ë•ŒëŠ” ì¸í¬ìœˆë„ìš°ë¥¼ ë‹«ìŠµë‹ˆë‹¤
         (function(marker, title, addr) {
             daum.maps.event.addListener(marker, 'mouseover', function() {
                 displayInfowindow(marker, title);
@@ -298,7 +298,7 @@ function displayPlaces(places) {
             itemEl.onmouseout =  function () {
                 infowindow.close();
             };
-            // Å¬¸¯½Ã ÁÖ¼Ò °¡Á®¿À±â
+            // í´ë¦­ì‹œ ì£¼ì†Œ ê°€ì ¸ì˜¤ê¸°
             daum.maps.event.addListener(marker, 'click', function() {
                 getAddr(addr);
             });
@@ -306,21 +306,21 @@ function displayPlaces(places) {
             itemEl.onclick =  function () {
                 getAddr(addr);
             };
-        })(marker, places[i].place_name,places[i].address_name); //µ¥ÀÌÅÍ ³Ñ±â±â
+        })(marker, places[i].place_name,places[i].address_name); //ë°ì´í„° ë„˜ê¸°ê¸°
 
         fragment.appendChild(itemEl);
     }
 
-    // °Ë»ö°á°ú Ç×¸ñµéÀ» °Ë»ö°á°ú ¸ñ·Ï Elemnet¿¡ Ãß°¡
+    // ê²€ìƒ‰ê²°ê³¼ í•­ëª©ë“¤ì„ ê²€ìƒ‰ê²°ê³¼ ëª©ë¡ Elemnetì— ì¶”ê°€
     listEl.appendChild(fragment);
     menuEl.scrollTop = 0;
 
-    // °Ë»öµÈ Àå¼Ò À§Ä¡¸¦ ±âÁØÀ¸·Î Áöµµ ¹üÀ§¸¦ Àç¼³Á¤
+    // ê²€ìƒ‰ëœ ì¥ì†Œ ìœ„ì¹˜ë¥¼ ê¸°ì¤€ìœ¼ë¡œ ì§€ë„ ë²”ìœ„ë¥¼ ì¬ì„¤ì •
     map.setBounds(bounds);
 }
 
-//---------------------------------------------------------- °Ë»öµÈ ³»¿ëÃß°¡ ----------------------------------------------------------
-// °Ë»ö°á°ú Ç×¸ñÀ» Element·Î ¹İÈ¯ÇÏ´Â ÇÔ¼öÀÔ´Ï´Ù
+//---------------------------------------------------------- ê²€ìƒ‰ëœ ë‚´ìš©ì¶”ê°€ ----------------------------------------------------------
+// ê²€ìƒ‰ê²°ê³¼ í•­ëª©ì„ Elementë¡œ ë°˜í™˜í•˜ëŠ” í•¨ìˆ˜ì…ë‹ˆë‹¤
 function getListItem(index, places) {
 
     var el = document.createElement('li'),
@@ -344,36 +344,36 @@ function getListItem(index, places) {
     return el;
 }
 
-//---------------------------------------------------------- °Ë»öµÈ ¸¶Ä¿Ãß°¡ ----------------------------------------------------------
-// ¸¶Ä¿¸¦ »ı¼ºÇÏ°í Áöµµ À§¿¡ ¸¶Ä¿¸¦ Ç¥½ÃÇÏ´Â ÇÔ¼ö
+//---------------------------------------------------------- ê²€ìƒ‰ëœ ë§ˆì»¤ì¶”ê°€ ----------------------------------------------------------
+// ë§ˆì»¤ë¥¼ ìƒì„±í•˜ê³  ì§€ë„ ìœ„ì— ë§ˆì»¤ë¥¼ í‘œì‹œí•˜ëŠ” í•¨ìˆ˜
 function addMarker(position, idx, title) {
-    var imageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // ¸¶Ä¿ ÀÌ¹ÌÁö url, ½ºÇÁ¶óÀÌÆ® ÀÌ¹ÌÁö¸¦ ¾¹´Ï´Ù
-        imageSize = new daum.maps.Size(36, 37),  // ¸¶Ä¿ ÀÌ¹ÌÁöÀÇ Å©±â
+    var imageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_number_blue.png', // ë§ˆì»¤ ì´ë¯¸ì§€ url, ìŠ¤í”„ë¼ì´íŠ¸ ì´ë¯¸ì§€ë¥¼ ì”ë‹ˆë‹¤
+        imageSize = new daum.maps.Size(36, 37),  // ë§ˆì»¤ ì´ë¯¸ì§€ì˜ í¬ê¸°
         imgOptions =  {
-            spriteSize : new daum.maps.Size(36, 691), // ½ºÇÁ¶óÀÌÆ® ÀÌ¹ÌÁöÀÇ Å©±â
-            spriteOrigin : new daum.maps.Point(0, (idx*46)+10), // ½ºÇÁ¶óÀÌÆ® ÀÌ¹ÌÁö Áß »ç¿ëÇÒ ¿µ¿ªÀÇ ÁÂ»ó´Ü ÁÂÇ¥
-            offset: new daum.maps.Point(13, 37) // ¸¶Ä¿ ÁÂÇ¥¿¡ ÀÏÄ¡½ÃÅ³ ÀÌ¹ÌÁö ³»¿¡¼­ÀÇ ÁÂÇ¥
+            spriteSize : new daum.maps.Size(36, 691), // ìŠ¤í”„ë¼ì´íŠ¸ ì´ë¯¸ì§€ì˜ í¬ê¸°
+            spriteOrigin : new daum.maps.Point(0, (idx*46)+10), // ìŠ¤í”„ë¼ì´íŠ¸ ì´ë¯¸ì§€ ì¤‘ ì‚¬ìš©í•  ì˜ì—­ì˜ ì¢Œìƒë‹¨ ì¢Œí‘œ
+            offset: new daum.maps.Point(13, 37) // ë§ˆì»¤ ì¢Œí‘œì— ì¼ì¹˜ì‹œí‚¬ ì´ë¯¸ì§€ ë‚´ì—ì„œì˜ ì¢Œí‘œ
         },
         markerImage = new daum.maps.MarkerImage(imageSrc, imageSize, imgOptions),
             marker = new daum.maps.Marker({
-            position: position, // ¸¶Ä¿ÀÇ À§Ä¡
+            position: position, // ë§ˆì»¤ì˜ ìœ„ì¹˜
             image: markerImage 
         });
 
-    marker.setMap(map); // Áöµµ À§¿¡ ¸¶Ä¿¸¦ Ç¥ÃâÇÕ´Ï´Ù
-    markers.push(marker);  // ¹è¿­¿¡ »ı¼ºµÈ ¸¶Ä¿¸¦ Ãß°¡ÇÕ´Ï´Ù
+    marker.setMap(map); // ì§€ë„ ìœ„ì— ë§ˆì»¤ë¥¼ í‘œì¶œí•©ë‹ˆë‹¤
+    markers.push(marker);  // ë°°ì—´ì— ìƒì„±ëœ ë§ˆì»¤ë¥¼ ì¶”ê°€í•©ë‹ˆë‹¤
 
     return marker;
 }
 
-//---------------------------------------------------------- °Ë»ö ¸®½ºÆ® ÆäÀÌÁö ----------------------------------------------------------
-// °Ë»ö°á°ú ¸ñ·Ï ÇÏ´Ü¿¡ ÆäÀÌÁö¹øÈ£¸¦ Ç¥½Ã´Â ÇÔ¼öÀÔ´Ï´Ù
+//---------------------------------------------------------- ê²€ìƒ‰ ë¦¬ìŠ¤íŠ¸ í˜ì´ì§€ ----------------------------------------------------------
+// ê²€ìƒ‰ê²°ê³¼ ëª©ë¡ í•˜ë‹¨ì— í˜ì´ì§€ë²ˆí˜¸ë¥¼ í‘œì‹œëŠ” í•¨ìˆ˜ì…ë‹ˆë‹¤
 function displayPagination(pagination) {
     var paginationEl = document.getElementById('pagination'),
         fragment = document.createDocumentFragment(),
         i; 
 
-    // ±âÁ¸¿¡ Ãß°¡µÈ ÆäÀÌÁö¹øÈ£¸¦ »èÁ¦ÇÕ´Ï´Ù
+    // ê¸°ì¡´ì— ì¶”ê°€ëœ í˜ì´ì§€ë²ˆí˜¸ë¥¼ ì‚­ì œí•©ë‹ˆë‹¤
     while (paginationEl.hasChildNodes()) {
         paginationEl.removeChild (paginationEl.lastChild);
     }
@@ -398,8 +398,8 @@ function displayPagination(pagination) {
     paginationEl.appendChild(fragment);
 }
 
-//---------------------------------------------------------- ¸¶Ä¿ Å¬¸¯½Ã Á¤º¸º¸¿©ÁÖ±â ----------------------------------------------------------
-// °Ë»ö°á°ú ¸ñ·Ï ¶Ç´Â ¸¶Ä¿¸¦ Å¬¸¯ÇßÀ» ¶§ È£ÃâµÇ´Â ÇÔ¼ö, ÀÎÆ÷À©µµ¿ì¿¡ Àå¼Ò¸íÀ» Ç¥½Ã
+//---------------------------------------------------------- ë§ˆì»¤ í´ë¦­ì‹œ ì •ë³´ë³´ì—¬ì£¼ê¸° ----------------------------------------------------------
+// ê²€ìƒ‰ê²°ê³¼ ëª©ë¡ ë˜ëŠ” ë§ˆì»¤ë¥¼ í´ë¦­í–ˆì„ ë•Œ í˜¸ì¶œë˜ëŠ” í•¨ìˆ˜, ì¸í¬ìœˆë„ìš°ì— ì¥ì†Œëª…ì„ í‘œì‹œ
 function displayInfowindow(marker, title) {
     var content = '<div style="padding:5px;z-index:1;">' + title + '</div>';
 
@@ -407,13 +407,13 @@ function displayInfowindow(marker, title) {
     infowindow.open(map, marker);
 }
 
-// ÁÖ¼Ò°¡Á®¿À±â
+// ì£¼ì†Œê°€ì ¸ì˜¤ê¸°
 function getAddr(addr) {
 	$('#r_addr').val(addr);
 }
 
-//---------------------------------------------------------- ¸¶Ä¿, °Ë»ö°á°ú Á¦°Å ----------------------------------------------------------
-// Áöµµ À§¿¡ Ç¥½ÃµÇ°í ÀÖ´Â ¸¶Ä¿¸¦ ¸ğµÎ Á¦°Å
+//---------------------------------------------------------- ë§ˆì»¤, ê²€ìƒ‰ê²°ê³¼ ì œê±° ----------------------------------------------------------
+// ì§€ë„ ìœ„ì— í‘œì‹œë˜ê³  ìˆëŠ” ë§ˆì»¤ë¥¼ ëª¨ë‘ ì œê±°
 function removeMarker() {
     for ( var i = 0; i < markers.length; i++ ) {
         markers[i].setMap(null);
@@ -421,7 +421,7 @@ function removeMarker() {
     markers = [];
 }
 
-// °Ë»ö°á°ú ¸ñ·ÏÀÇ ÀÚ½Ä Element¸¦ Á¦°ÅÇÏ´Â ÇÔ¼ö
+// ê²€ìƒ‰ê²°ê³¼ ëª©ë¡ì˜ ìì‹ Elementë¥¼ ì œê±°í•˜ëŠ” í•¨ìˆ˜
 function removeAllChildNods(el) {   
     while (el.hasChildNodes()) {
         el.removeChild (el.lastChild);

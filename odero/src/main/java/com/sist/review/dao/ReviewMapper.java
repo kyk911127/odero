@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectKey;
+import org.apache.ibatis.annotations.Update;
 /*
  * private int r_no;
 	private String m_id;     
@@ -27,7 +28,7 @@ public interface ReviewMapper {
 	public List<ReviewVo> reviewList(Map map);
 	
 	//TotalPage
-	@Select("SELECT COUNT(*) FROM review")
+	@Select("SELECT CEIL(COUNT(*)/9) FROM review")
 	public int reviewTotalList();
 		
 	//Insert
@@ -36,4 +37,9 @@ public interface ReviewMapper {
 	@Insert("INSERT INTO review VALUES(#{r_no},#{m_id},#{r_subject},#{r_pname},#{r_content},0,SYSDATE,"
 		  + "#{r_imgname},#{r_imgcount},#{r_addr})")
 	public void reviewInsert(ReviewVo vo);
+	
+	@Update("UPDATE review SET r_hit=r_hit+1 WHERE r_no=#{r_no}")
+	public void reviewHitIncrement(int no);
+	@Select("SELECT r_no,m_id,r_subject,r_pname,r_addr,r_hit,r_regdate,r_imgname,r_imgcount FROM review WHERE r_no=#{r_no}")
+	public ReviewVo reviewDetail(int no); 
 }

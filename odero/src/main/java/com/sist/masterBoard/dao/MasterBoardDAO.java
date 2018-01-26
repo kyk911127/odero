@@ -30,13 +30,11 @@ public class MasterBoardDAO {
 	
 	
 
-	public NoticeVO MasterBoardUpdate(int no)
-	{
+	public NoticeVO MasterBoardUpdate(int no){
 		return mapper.MasterBoardContent(no);
 	}
 
-	public boolean MasterBoardUpdate_ok(NoticeVO vo)
-	{
+	public boolean MasterBoardUpdate_ok(NoticeVO vo){
 		boolean bCheck=false;
 		String pwd=mapper.boardGetPwd(vo.getNo());
 		
@@ -48,16 +46,13 @@ public class MasterBoardDAO {
 		return bCheck;
 	}
 	
-	public boolean MasterBoardDelete_ok(int no,String pwd)
-	   {
+	public boolean MasterBoardDelete_ok(int no,String pwd)  {
 		   boolean bCheck=false;
 		   String db_pwd=mapper.boardGetPwd(no);
-		   if(db_pwd.equals(pwd))
-		   {
+		   if(db_pwd.equals(pwd))  {
 			   bCheck=true;
 			   mapper.MasterBoardDelete(no);
 		   }
 		   return bCheck;
 	   }
-	
 }

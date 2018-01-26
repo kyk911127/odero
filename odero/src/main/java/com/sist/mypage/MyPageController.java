@@ -9,16 +9,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.sist.mypage.dao.*;
 
 
-//ÄÁÆ®·Ñ·¯
+//ï¿½ï¿½Æ®ï¿½Ñ·ï¿½
 @Controller
 public class MyPageController {
 	@Autowired
 	MyPageDAO dao;
 	@RequestMapping("mypage.do")
-	public String mypage(Model model) {
+	public String mypage(String m_id, Model model) {
+		if (m_id==null)
+			m_id = "01059231010";
 
-	/*	List<MyPagePlaceVO> list = dao.MyPlaceBest5();
-		model.addAttribute("list",list);*/
+		List<MyPagePlaceVO> list = dao.MyPlaceBest5();
+		MyPageInfoVO mvo = dao.MyPageInfoData(m_id);
+		model.addAttribute("list",list);
+		model.addAttribute("mvo",mvo);
 		return "cart/mypage";
 	}
 	@RequestMapping("mypage_list.do")
