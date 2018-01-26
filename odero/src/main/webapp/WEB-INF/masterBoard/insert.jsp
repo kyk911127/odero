@@ -5,8 +5,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="css/masterBoard.css" type="text/css">
-</style>
+<link rel="stylesheet" href="masterBoard/masterBoard.css" type="text/css">
 </head>
 <body>
 	<div class="container">
@@ -14,7 +13,7 @@
 			<center>
 				<h3>공사중</h3>
 				<form method="post" action="MasterBoardInsert_ok.do">
-				<table class="table table-hover" width=600>
+				<table class="table table-hover aa" width=600>
 					<tr>
 						<td width=15% class="text-right">제목</td>
 						<td width=85%><input type=text name=subject size=50></td>

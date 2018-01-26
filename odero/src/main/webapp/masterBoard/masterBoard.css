@@ -2,7 +2,7 @@
 
 body, td, p, input, button, textarea, select {
 	font-family: 돋움;
-	font-size: 9pt;
+	/* font-size: 9pt; */
 	color: #585858;
 	line-height: 130%;
 	margin-left: 0px;
@@ -20,7 +20,8 @@ table td a {
 	color: #666666;
 	line-height: 20px;
 }
-.aa > td{
+.aa td,table  td, table  tr{
+	font-weight: 100;
 	font-family: 'Jeju Gothic';
 	font-size: 15px;
 	color: #666666;

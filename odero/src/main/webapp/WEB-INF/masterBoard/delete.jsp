@@ -5,13 +5,13 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>Insert title here</title>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<style type="text/css">
 		.row {
 			margin: 0 auto;
 			width: 300px;
 		}
 	</style>
+	<link rel="stylesheet" href="masterBoard/masterBoard.css" type="text/css">
 </head>
 <body>
 	<div class="container">
@@ -20,7 +20,7 @@
 				<h3>삭제하기</h3>
 			</center>
 			<form method="post" action="MasterBoardDelete_ok.do">
-			<table class="table table-hover" width="300">
+			<table class="table table-hover aa" width="300">
 				<tr>
 					<td width="30%" class="text-right">비밀번호</td>
 					<td width="70%" class="text-left">

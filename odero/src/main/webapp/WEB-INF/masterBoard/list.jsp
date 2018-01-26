@@ -7,12 +7,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Welcome BoardMaster</title>
-<link rel="stylesheet" href="css/masterBoard.css" type="text/css">
+<link rel="stylesheet" href="masterBoard/masterBoard.css" type="text/css">
 </head>
 <body>
 	<div class="container">
 		<div class="row">
-			<h3>공사중 <img alt="히릿" src="masterBoard_img/Settings.png"/></h3>
+			<h3>공사중 <img alt="히릿" src="masterBoard/img/Settings.png"/></h3>
 			<table class="table table-hover" width="700">
 				<tr>
 					<td class="text-left">
@@ -47,8 +47,8 @@
 	
 	<div class="container text-center">
 		<ul class="pagination">
-       		<li><a href="selectsave.do?page=${curpage<11?curpage:curpage-10}&saveNum=${num}">◀◀</a></li>
-       		<li><a href="selectsave.do?page=${curpage<2?curpage:curpage-1}&saveNum=${num}">◀</a></li>
+       		<li><a href="MasterBoard.do?page=${curpage<11?curpage:curpage-10}">◀◀</a></li>
+       		<li><a href="MasterBoard.do?page=${curpage<2?curpage:curpage-1}">◀</a></li>
        				
        		<fmt:parseNumber var="num1" value="${curpage/10}" integerOnly="true"/>
        		<c:set var="num1" value="${num1<=0?1:num1*10}"/>  
@@ -57,18 +57,18 @@
        				<c:when test="${i > totalpage }"></c:when>
        				<c:when test="${i==curpage}">
 	    				<li class="active">
-	    					<a href="selectsave.do?page=${i}&saveNum=${num}">	${i} </a>
+	    					<a href="MasterBoard.do?page=${i}">	${i} </a>
 	    				</li>
        				</c:when>
        				<c:when test="${i <= totalpage}">
        					<li>
-       						<a href="selectsave.do?page=${i}&saveNum=${num}"> ${i} </a>
+       						<a href="MasterBoard.do?page=${i}"> ${i} </a>
        					</li>
        				</c:when>
        			</c:choose>
        		</c:forEach>
-       		<li><a href="selectsave.do?page=${curpage<totalpage?curpage+1:curpage}&saveNum=${num}">▶</a></li>
-            <li><a href="selectsave.do?page=${curpage<=totalpage-10?curpage+10:curpage}&saveNum=${num}">▶▶</a></li>
+       		<li><a href="MasterBoard.do?page=${curpage<totalpage?curpage+1:curpage}">▶</a></li>
+            <li><a href="MasterBoard.do?page=${curpage<=totalpage-10?curpage+10:curpage}">▶▶</a></li>
 		</ul>
 	</div>
 	<div class="container" style="height:300px;"></div>
