@@ -12,5 +12,9 @@ public class MyPageDAO {
 	{
 		return mapper.MyPlaceBest5();
 	}
-
+	
+	public MyPageInfoVO MyPageInfoData(String m_id)
+	{
+		return mapper.MyPageInfoData(m_id);
+	}
 }
