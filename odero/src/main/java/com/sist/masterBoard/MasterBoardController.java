@@ -73,17 +73,31 @@ public class MasterBoardController {
 	{
 		NoticeVO vo=dao.MasterBoardContent(no);
 		model.addAttribute("vo", vo);
+		model.addAttribute("bCheck",true);
 		return "masterBoard/update";
+	}
+
+
+	@RequestMapping("MasterBoardUpdate_ok.do")
+	public String update_ok(NoticeVO vo,Model model){
+		boolean bCheck=dao.MasterBoardUpdate_ok(vo);
+		model.addAttribute("bCheck",bCheck);
+		return "masterBoard/update_ok";
 	}
 	
 
-
 	@RequestMapping("MasterBoardDelete.do")
-	public String MasterBoardDelete(int no,Model model)
-	{
+	public String MasterBoardDelete(int no,Model model)	{
 		model.addAttribute("no", no);
 		return "masterBoard/delete";
 	}
 
+
+	@RequestMapping("MasterBoardDelete_ok.do")
+	public String board_delete_ok(int no,String pwd,Model model){
+		boolean bCheck=dao.MasterBoardDelete_ok(no, pwd);
+		model.addAttribute("bCheck",bCheck);
+		return "masterBoard/delete_ok";
+	}
 
 }
