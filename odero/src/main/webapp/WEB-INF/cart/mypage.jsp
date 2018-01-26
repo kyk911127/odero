@@ -18,16 +18,29 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <style type="text/css">
-table tr td  {
-	font-size:12px;
+table tr td {
+	font-size: 12px;
 }
+
 table tr th {
-background-color:#002060;
-color:white;
+	background-color: #002060;
+	color: white;
 }
+
 #info_table {
-	width :800px;
+	width: 800px;
 }
+
+.curtab {
+	background-color: #002060;
+	color: white;
+	margin-left: 70%;
+	
+}
+.tab {
+	
+}
+
 </style>
 
 <!-- <script>
@@ -54,6 +67,7 @@ $(document).ready(function(){
 
 			<!-- <span class="tab">내 정보</span> -->
 			<a href="mypage_list.do"><span class="tab">찜 리스트</span></a>
+			<span class="tab curtab">마이 페이지</span>
 		</div>
 
 
@@ -66,39 +80,37 @@ $(document).ready(function(){
 					내 정보 &nbsp;
 					<hr class="soften" />
 				</h3>
-				<br>
-				<br>
+				<br> <br>
 				<center>
-				<table class="table table-hover" id="info_table">
-					<tr>
-						<td class="text-center" rowspan="5"></td>
-					</tr>
-					<tr>
-						<th class="text-center">아이디</th>
-						<td class="text-center">${mvo.m_id }</td>
-					</tr>
-					<tr>
-						<th class="text-center">닉네임</th>
-						<td class="text-center">${mvo.m_name }</td>
-					</tr>
-					
-					<tr>
-						<th class="text-center">비밀번호</th>
-						<td class="text-center">${mvo.m_pwd }</td>
-					</tr>
-					<tr>
-						<td colspan="4" class="text-right"><input type=button
-							value="modify" class="btn btn-sm btn-danger"></td>
-					</tr>
-				</table>
+					<table class="table table-hover" id="info_table">
+						<tr>
+							<td class="text-center" rowspan="5"></td>
+						</tr>
+						<tr>
+							<th class="text-center">아이디</th>
+							<td class="text-center">${mvo.m_id }</td>
+						</tr>
+						<tr>
+							<th class="text-center">닉네임</th>
+							<td class="text-center">${mvo.m_name }</td>
+						</tr>
+
+						<tr>
+							<th class="text-center">비밀번호</th>
+							<td class="text-center">${mvo.m_pwd }</td>
+						</tr>
+						<tr>
+							<td colspan="4" class="text-right"><input type=button
+								value="modify" class="btn btn-sm btn-danger"></td>
+						</tr>
+					</table>
 				</center>
 			</div>
-			<br>
-			<br>
+			<br> <br>
 			<div class="table_wrap">
 				<hr class="soften" />
 				<h3 class="sub_text">
-					추천 가게 리스트 Best5 &nbsp; <a href="mypage_list.do"><button
+					추천 가게 리스트 Best &nbsp; <a href="mypage_list.do"><button
 							class="btn btn-success btn-xs">더보기</button></a>
 					<hr class="soften" />
 				</h3>
@@ -106,26 +118,34 @@ $(document).ready(function(){
 
 				<table class="table table-hover" width=600>
 					<tr>
-						<th width="5%">번호</th>
-						<th width="30%" class="text-center">가게이름</th>
-						<th width="40%" class="text-center">가게경로</th>
-						<th width="15%">추천</th>
+						<th>번호</th>
+						<th>분류</th>
+						<th>상호</th>
+						<th>주소</th>
+						<th>가격대</th>
+						<th>전화번호</th>
+						<th>영업시간</th>
+						<th>조회수</th>
 						<th width="5%">자세히</th>
 						<th width="5%">삭제</th>
 					</tr>
 
-					<c:forEach var="i" begin="1" end="5">
+					<c:forEach var="vo" items="${list }">
 						<tr>
-							<td width="5%">${i}</td>
-							<td width="30%" class="text-center">$코스이름</td>
-							<td width="40%" class="text-center">$코스경로</td>
-							<td width="15%">$추천</td>
+							<td>${vo.p_no }</td>
+							<td>${vo.p_grade }</td>
+							<td>${vo.p_name }</td>
+							<td>${vo.p_addr }</td>
+							<td>${vo.p_price }</td>
+							<td>${vo.p_tel }</td>
+							<td>${vo.p_time }</td>
+							<td>${vo.p_hit }</td>
 							<td width="5%"><button class="btn btn-info btn-xs">보기</button></td>
 							<td width="5%"><button class="btn btn-danger btn-xs">삭제</button></td>
 						</tr>
 					</c:forEach>
 					<tr>
-						<td colspan="6" class="text-right">자세한 목록은 자세히보기를 누르세요</td>
+						<td colspan="10" class="text-right">자세한 목록은 자세히보기를 누르세요</td>
 					</tr>
 				</table>
 
@@ -137,14 +157,13 @@ $(document).ready(function(){
 			</div>
 
 
-			<br>
-			<br>
+			<br> <br>
 			<div class="table_wrap">
 
 
 				<hr class="soften" />
 				<h3 class="sub_text">
-					추천 코스 리스트 Best5 &nbsp; <a href="mypage_list.do"><button
+					추천 코스 리스트 Best &nbsp; <a href="mypage_list.do"><button
 							class="btn btn-success btn-xs">더보기</button></a>
 					<hr class="soften" />
 

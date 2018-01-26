@@ -18,10 +18,10 @@ public interface MyPageMapper {
 	   public void boardInsert(BoardVO vo);
 */
 	
-	// 마이페이지 - 장소 베스트5
+	// 마이페이지 - 장소 베스트
 	@Select("SELECT p_no, p_name, p_addr, p_price, p_keyword, p_img, p_tel, p_grade, p_time, p_hit "
 			+ "FROM place "
-			+ "WHERE p_no < 6")
+			+ "WHERE p_no <12")
 	public List<MyPagePlaceVO> MyPlaceBest5 ();
 
 	// 마이페이지 - 내정보 
