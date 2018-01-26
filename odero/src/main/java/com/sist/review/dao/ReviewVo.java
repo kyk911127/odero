@@ -12,7 +12,7 @@ public class ReviewVo {
 	private String r_pname;
 	private String r_content;
 	private String r_hit;
-	private Date r_reddate;
+	private Date r_regdate;
 	private String r_imgname;
 	private int r_imgcount; 
 	private String r_addr;
@@ -60,11 +60,11 @@ public class ReviewVo {
 	public void setR_hit(String r_hit) {
 		this.r_hit = r_hit;
 	}
-	public Date getR_reddate() {
-		return r_reddate;
+	public Date getR_regdate() {
+		return r_regdate;
 	}
-	public void setR_reddate(Date r_reddate) {
-		this.r_reddate = r_reddate;
+	public void setR_regdate(Date r_regdate) {
+		this.r_regdate = r_regdate;
 	}
 	public String getR_addr() {
 		return r_addr;

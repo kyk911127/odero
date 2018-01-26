@@ -3,6 +3,7 @@ package com.sist.review.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Select;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -24,5 +25,15 @@ public class ReviewDao {
 	//Insert
 	public void reviewInsert(ReviewVo vo) {
 		mapper.reviewInsert(vo);
+	}
+	
+	// HIT++
+	public void reviewHitIncrement(int no){
+		mapper.reviewHitIncrement(no);
+	}
+	
+	// Detail
+	public ReviewVo reviewDetail(int no){
+		return mapper.reviewDetail(no);
 	}
 }
