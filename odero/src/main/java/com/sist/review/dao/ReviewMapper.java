@@ -40,6 +40,6 @@ public interface ReviewMapper {
 	
 	@Update("UPDATE review SET r_hit=r_hit+1 WHERE r_no=#{r_no}")
 	public void reviewHitIncrement(int no);
-	@Select("SELECT r_no,m_id,r_subject,r_pname,r_addr,r_hit,r_regdate,r_imgname,r_imgcount FROM review WHERE r_no=#{r_no}")
+	@Select("SELECT r_no,m_id,r_subject,r_pname,r_content,r_addr,r_hit,r_regdate,r_imgname,r_imgcount FROM review WHERE r_no=#{r_no}")
 	public ReviewVo reviewDetail(int no); 
 }
