@@ -26,4 +26,11 @@ public interface MainMapper {
 			+ "WHERE num BETWEEN 1 and 3")
 	public List<PlaceVO> best_play();
 	
+	//가성비 데이트 코스 
+	@Select("SELECT p_price,p_name,p_addr FROM place "
+			+ "WHERE substr(NVL(p_price,999),1,1)= "
+			+ "(SELECT MIN(substr(NVL(p_price,999),1,1)) FROM place) "
+			+ "AND p_addr LIKE '%#{gu}%' AND p_grade='#{p_grade}' AND p_price LIKE '%이하%'")
+	public List<PlaceVO> best_course(String p_grade, String gu);
+	
 }
