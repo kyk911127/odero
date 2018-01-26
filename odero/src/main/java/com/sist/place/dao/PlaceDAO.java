@@ -12,14 +12,18 @@ public class PlaceDAO {
 	@Autowired
 	private PlaceMapper mapper;
 	
-	public List<PlaceVO> placeListData(Map map)
-	{
+	// list
+	public List<PlaceVO> placeListData(Map map) {
 		return mapper.placeListData(map);
-		
+	}
+	
+	// detail
+	public PlaceVO placeDetailData(int p_no) {
+		return mapper.placeDetailData(p_no);
 	}
 	 
-	//TotalPage
-		public int placeTotalList() {
-			return mapper.placeTotalList();
-		}
+	// TotalPage
+	public int placeTotalList() {
+		return mapper.placeTotalList();
+	}
 }

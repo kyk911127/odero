@@ -12,15 +12,11 @@
 <script type="text/javascript" src="js/bootstrap.min.js"></script> -->
 
 <!-- 1. Link to jQuery (1.8 or later), -->
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 <!-- fotorama.css & fotorama.js. -->
-<link
-	href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css"
-	rel="stylesheet">
-<script
-	src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
+<link href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
+<script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
 <script type="text/javascript">
 	/* window.onload = function(){
 	 var modal = document.getElementById('myModal');
@@ -46,6 +42,8 @@
 			});
 			return true;
 		});
+		
+		$('table').parent().children().find("td:nth-child(2):empty").parent().hide();
 	});
 </script>
 </head>
@@ -105,30 +103,39 @@
 	</div>
 	<div class="container mid_container">
 		<div class="row row_info">
-			<h3>엉망징창키친 홍대점</h3>
+			<h3>${vo.p_name }</h3>
 			<div style="padding: 15px; border-bottom: 1px solid #dbdbdb;">
 				<!-- <span class="glyphicon glyphicon-tent" aria-hidden="true"></span> 이색/체험 -->
-				<span class="cate_span"> 
-					<img class="cate_icon" src="p_image/tent.png">&nbsp; 이색/체험
-				</span> 
-				<span class="cate_span">
-					<img class="cate_icon" src="p_image/restaurant.png">&nbsp; 맛집
-				</span> 
-				<span class="cate_span"> 
-					<img class="cate_icon" src="p_image/coffee.png">&nbsp; 까페
-				</span>
+				<c:if test="${vo.p_grade=='p' }">
+					<span class="cate_span"> 
+						<img class="cate_icon" src="p_image/tent.png">&nbsp; 이색/체험
+					</span> 
+				</c:if>
+				<c:if test="${vo.p_grade=='f' }">
+					<span class="cate_span">
+						<img class="cate_icon" src="p_image/restaurant.png">&nbsp; 맛집
+					</span> 
+				</c:if>
+				<c:if test="${vo.p_grade=='c' }">
+					<span class="cate_span"> 
+						<img class="cate_icon" src="p_image/coffee.png">&nbsp; 까페
+					</span>
+				</c:if>
+
 				<table style="margin: 20px 0;">
 					<tr>
 						<td width="20%">주소</td>
-						<td>서울특별시 마포구 서교동 358-113 5층 노란색문</td>
+						<td>${vo.p_addr }</td>
 					</tr>
-					<tr>
-						<td width="20%">전화번호</td>
-						<td>02-313-9977</td>
-					</tr>
+					<%-- <c:if test="${vo.p_tel==null}"> --%>
+						<tr class="tr_tel">
+							<td width="20%">전화번호</td>
+							<td>${vo.p_tel }</td>
+						</tr>
+					<%-- </c:if> --%>
 					<tr>
 						<td width="20%">가격대</td>
-						<td>2만원 ~ 5만원</td>
+						<td>${vo.p_price }</td>
 					</tr>
 					<tr>
 						<td width="20%">키워드</td>
@@ -148,10 +155,12 @@
 							</ul>
 						</td>
 					</tr>
-					<tr>
-						<td width="20%">영업시간</td>
-						<td>매일 10:00 ~ 21:00</td>
-					</tr>
+					<%-- <c:if test="${vo.p_time==null}"> --%><!-- time, tell 널 -->
+						<tr class="tr_time">
+							<td width="20%">영업시간</td>
+							<td>${vo.p_time }</td>
+						</tr>
+					<%-- </c:if> --%>
 				</table>
 			</div>
 		</div>
@@ -160,38 +169,39 @@
 			<h3>위치</h3>
 			<div id="map" style="width: 100%; height: 450px;"></div>
 		</div>
-			<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=90ca2826f787f6d4fc01f89cb8bcdce3"></script>
-			<script>
-				var mContainer = document.getElementById('map');
-				var mOptions = {
-					center : new daum.maps.LatLng(33.450701, 126.570667),
-					level : 3
-				};
-				
-				// 마커가 표시될 위치입니다 
-				// var markerPosition  = new daum.maps.LatLng(33.450701, 126.570667); 
-				
-				var map = new daum.maps.Map(mContainer, mOptions);	// 지도를 생성합니다
+		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=90ca2826f787f6d4fc01f89cb8bcdce3"></script>
+		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=90ca2826f787f6d4fc01f89cb8bcdce3&libraries=services"></script>
+		<script>
+			var mContainer = document.getElementById('map');
+			var mOptions = {
+				center : new daum.maps.LatLng(33.450701, 126.570667),
+				level : 3
+			};
+			
+			// 마커가 표시될 위치입니다 
+			// var markerPosition  = new daum.maps.LatLng(33.450701, 126.570667); 
+			
+			var map = new daum.maps.Map(mContainer, mOptions);	// 지도를 생성합니다
+			
+			// 마커를 생성합니다
+			var marker = new daum.maps.Marker({
+			    position: mOptions.center
+			});
 
-				// 마커를 생성합니다
-				var marker = new daum.maps.Marker({
-				    position: mOptions.center
-				});
+			// 마커가 지도 위에 표시되도록 설정합니다
+			marker.setMap(map);
+			
+			var iwContent = '<div style="width:150px; text-align:center; padding:6px 0;">${vo.p_name}</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
+			iwPosition = new daum.maps.LatLng(33.450701, 126.570667); //인포윈도우 표시 위치입니다
 
-				// 마커가 지도 위에 표시되도록 설정합니다
-				marker.setMap(map);
-				
-				var iwContent = '<div style="padding:5px; ">상호명!!</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-			    iwPosition = new daum.maps.LatLng(33.450701, 126.570667); //인포윈도우 표시 위치입니다
-
-				// 인포윈도우를 생성합니다
-				var infowindow = new daum.maps.InfoWindow({
-					position : iwPosition, 
-					content : iwContent 
-				});
-			    
-				infowindow.open(map, marker);
-			</script>
+			// 인포윈도우를 생성합니다
+			var infowindow = new daum.maps.InfoWindow({
+				position : iwPosition, 
+				content : iwContent 
+			});
+		    
+			infowindow.open(map, marker);
+		</script>
 
 		<div class="row row_reply">
 			<h3>엉망징창키친의 리뷰(10)</h3>

@@ -15,12 +15,13 @@ public class PlaceController {
 	
 	
 	@RequestMapping("p_detail.do")
-	public String place_detail(Model model) {
+	public String place_detail(int p_no, Model model) {
 		
 		String[] timg={"p_image/top.jpg","p_image/top1.jpg",  "p_image/top2.jpg","p_image/top3.jpg"};
+		PlaceVO vo = dao.placeDetailData(p_no);
 		
 		model.addAttribute("timg",timg);
-		
+		model.addAttribute("vo", vo);
 		return "place/p_detail";
 	}
 	
