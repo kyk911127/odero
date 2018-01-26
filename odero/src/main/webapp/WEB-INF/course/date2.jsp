@@ -198,12 +198,12 @@
 			<div class="tmap_1">
 				<div id="map" style="width: 100%; height: 550px"></div>
 				<script type="text/javascript"
-					src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f71a358ab1852f4a6dd2eee5070f7a02"></script>
+					src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f71a358ab1852f4a6dd2eee5070f7a02&libraries=services"></script>
 				<script>
 					var container = document.getElementById('map');
 					var options = {
 						center : new daum.maps.LatLng(33.450701, 126.570667),
-						level : 3
+						level : 2
 					};
 
 					var map = new daum.maps.Map(container, options);
@@ -231,32 +231,64 @@
 					spriteImageSize = new daum.maps.Size(SPRITE_WIDTH,
 							SPRITE_HEIGHT); // 스프라이트 이미지의 크기
 
-					var positions = [ // 마커의 위치
-					new daum.maps.LatLng(33.44975, 126.56967),
-							new daum.maps.LatLng(33.450579, 126.56956),
-							new daum.maps.LatLng(33.4506468, 126.5707) ], selectedMarker = null; // 클릭한 마커를 담을 변수
+					var p_addr = [ "서울특별시 강남구 역삼동 620-15번지 2층",
+							"서울 강남구 신사동 517-10 2층",
+							"서울특별시 강남구 역삼동 620-9",
+							"서울 강남구 역삼1동 818-14 크리스탈빌딩 B1",
+							"서울 강남구 역삼동 826-37",
+							"서울시 강남구 역삼동 812-5번지",
+							"서울 강남구 신사동 524-36",
+							"서울 강남구 역삼동 809-3",
+							"서울 강남구 역삼동 718-31" ];
+					//마커 위치
+					var positions = []; 
+					var selectedMarker = null; // 클릭한 마커를 담을 변수
+					
+					var geocoder = new daum.maps.services.Geocoder();
+					for(var j = 0; j < 9; j++) {
+						
+						// 주소로 좌표를 검색합니다
+						geocoder.addressSearch(p_addr[j], function(result, status) {
 
-					var mapContainer = document.getElementById('map'), // 지도를 표시할 div
-					mapOption = {
-						center : new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-						level : 3
-					// 지도의 확대 레벨
-					};
+						    // 정상적으로 검색이 완료됐으면 
+						     if (status === daum.maps.services.Status.OK) {
 
-					var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
+						        var coords = new daum.maps.LatLng(result[0].y, result[0].x);
+						        
 
-					// 지도 위에 마커를 표시합니다
-					for (var i = 0, len = positions.length; i < len; i++) {
-						var gapX = (MARKER_WIDTH + SPRITE_GAP), // 스프라이트 이미지에서 마커로 사용할 이미지 X좌표 간격 값
-						originY = (MARKER_HEIGHT + SPRITE_GAP) * i, // 스프라이트 이미지에서 기본, 클릭 마커로 사용할 Y좌표 값
-						overOriginY = (OVER_MARKER_HEIGHT + SPRITE_GAP) * i, // 스프라이트 이미지에서 오버 마커로 사용할 Y좌표 값
-						normalOrigin = new daum.maps.Point(0, originY), // 스프라이트 이미지에서 기본 마커로 사용할 영역의 좌상단 좌표
-						clickOrigin = new daum.maps.Point(gapX, originY), // 스프라이트 이미지에서 마우스오버 마커로 사용할 영역의 좌상단 좌표
-						overOrigin = new daum.maps.Point(gapX * 2, overOriginY); // 스프라이트 이미지에서 클릭 마커로 사용할 영역의 좌상단 좌표
+						        // 결과값으로 받은 위치를 마커로 표시합니다
+						       /* var marker = new daum.maps.Marker({
+						            map: map,
+						            position: coords
+						        }); */
+						        positions.push(new daum.maps.LatLng(result[0].y, result[0].x));
+						        
+						        
+						        
+						     	// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+						        map.setCenter(coords);
+						    } 
+						}); 
+					} 
+					markerPosition();
+					
+					alert("111");
+					
+					function markerPosition() {
+						alert("123123123");
+						// 지도 위에 마커를 표시합니다
+						for (var i = 0, len = positions.length; i < len; i++) {
+							var gapX = (MARKER_WIDTH + SPRITE_GAP), // 스프라이트 이미지에서 마커로 사용할 이미지 X좌표 간격 값
+							originY = (MARKER_HEIGHT + SPRITE_GAP) * i, // 스프라이트 이미지에서 기본, 클릭 마커로 사용할 Y좌표 값
+							overOriginY = (OVER_MARKER_HEIGHT + SPRITE_GAP) * i, // 스프라이트 이미지에서 오버 마커로 사용할 Y좌표 값
+							normalOrigin = new daum.maps.Point(0, originY), // 스프라이트 이미지에서 기본 마커로 사용할 영역의 좌상단 좌표
+							clickOrigin = new daum.maps.Point(gapX, originY), // 스프라이트 이미지에서 마우스오버 마커로 사용할 영역의 좌상단 좌표
+							overOrigin = new daum.maps.Point(gapX * 2, overOriginY); // 스프라이트 이미지에서 클릭 마커로 사용할 영역의 좌상단 좌표
 
-						// 마커를 생성하고 지도위에 표시합니다
-						addMarker(positions[i], normalOrigin, overOrigin,
-								clickOrigin);
+							// 마커를 생성하고 지도위에 표시합니다
+							addMarker(positions[i], normalOrigin, overOrigin,
+									clickOrigin);
+						}
 					}
 
 					// 마커를 생성하고 지도 위에 표시하고, 마커에 mouseover, mouseout, click 이벤트를 등록하는 함수입니다
