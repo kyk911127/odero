@@ -17,10 +17,16 @@ public class PlaceController {
 	@RequestMapping("p_detail.do")
 	public String place_detail(int p_no, Model model) {
 		
-		String[] timg={"p_image/top.jpg","p_image/top1.jpg",  "p_image/top2.jpg","p_image/top3.jpg"};
 		PlaceVO vo = dao.placeDetailData(p_no);
+		// 키워드 split
+		String str_kw = vo.getP_keyword();
+		String[] skeyword = str_kw.split(",");
+		// 이미지 split
+		String str_img = vo.getP_img();
+		String[] simg = str_img.split(",");
 		
-		model.addAttribute("timg",timg);
+		model.addAttribute("skeyword", skeyword);
+		model.addAttribute("simg", simg);
 		model.addAttribute("vo", vo);
 		return "place/p_detail";
 	}

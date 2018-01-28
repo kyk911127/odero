@@ -37,11 +37,20 @@
 		$('.place_img').click(function() {
 			$('.place_img').each(function() {
 				var pp = $(this).attr('src');
+				//alert(pp);
+				$('.fo').append("<img src='" + pp + "'>");
+			});
+			return;
+		});
+		
+		/* $('.place_img').each(function() { 
+			$('.place_img').click(function() {
+				var pp = $(this).attr('src');
 				alert(pp);
 				$('.fo').append("<img src='" + pp + "'>");
 			});
-			return true;
-		});
+			return;
+		}); */
 		
 		$('table').parent().children().find("td:nth-child(2):empty").parent().hide();
 	});
@@ -50,10 +59,11 @@
 <body>
 	<div class="container-fluid top_container">
 		<div class="row imagerow" style="position: relative;">
-			<c:forEach var="i" items="${timg }" varStatus="a">
+			<c:forEach var="i" items="${simg }" end="4" varStatus="im">
 				<div class="detail_img" data-target="#myModal" data-toggle="modal">
 					<div style="border-left: 8px solid #fff;">
-						<img class="place_img" id="pimg${a.index }" src="${i }">
+						<img class="place_img" id="pimg${im.index }" src="${i }">
+						<!--  <img class="place_img" id="pimg${im.index }" src="${i }"> -->
 					</div>
 				</div>
 			</c:forEach>
@@ -76,6 +86,7 @@
 					<span aria-hidden="true">&times;</span>
 				</button>
 				<div id="modal-body">
+					<h3 style="text-align: center; color: #fff">${vo.p_name }</h3>
 					<!--  data-thumbmargin="20px 0"  -->
 					<div class="fotorama fo" data-width="800" data-maxwidth="100%"
 						data-ratio="16/9" data-allowfullscreen="true" data-nav="thumbs" data-thumbfit="cover">
@@ -122,43 +133,41 @@
 					</span>
 				</c:if>
 
-				<table style="margin: 20px 0;">
+				<table style=" width: 550px ; margin: 20px 0;">
 					<tr>
-						<td width="20%">주소</td>
-						<td>${vo.p_addr }</td>
+						<td width="25%">주소</td>
+						<td width="75%">${vo.p_addr }</td>
 					</tr>
 					<%-- <c:if test="${vo.p_tel==null}"> --%>
 						<tr class="tr_tel">
-							<td width="20%">전화번호</td>
+							<td width="25%">전화번호</td>
 							<td>${vo.p_tel }</td>
 						</tr>
 					<%-- </c:if> --%>
 					<tr>
-						<td width="20%">가격대</td>
-						<td>${vo.p_price }</td>
+						<td width="25%">가격대</td>
+						<td width="75%">${vo.p_price }</td>
 					</tr>
 					<tr>
-						<td width="20%">키워드</td>
-						<td>
+						<td width="25%">키워드</td>
+						<td width="75%">
 							<ul class="tags">
+							<c:forEach var="kw" items="${skeyword }" varStatus="k">
 								<li class="li_1">
-									<div class="tag_1">기분내기</div>
-									<div class="tag_1">고백하기좋은</div>
-									<div class="tag_1">기념일</div>
-									<div class="tag_1">진도나가기</div>
-									<div class="tag_1">프로포즈</div> <br>
+									<div class="tag_1">${kw }</div>
 								</li>
-								<li class="li_2">
+							</c:forEach>
+								<!-- <li class="li_2">
 									<div class="tag_2">힐링</div>
 									<div class="tag_2">휴식하기</div> <br>
-								</li>
+								</li> -->
 							</ul>
 						</td>
 					</tr>
 					<%-- <c:if test="${vo.p_time==null}"> --%><!-- time, tell 널 -->
 						<tr class="tr_time">
-							<td width="20%">영업시간</td>
-							<td>${vo.p_time }</td>
+							<td width="25%">영업시간</td>
+							<td width="75%">${vo.p_time }</td>
 						</tr>
 					<%-- </c:if> --%>
 				</table>
@@ -204,7 +213,7 @@
 		</script>
 
 		<div class="row row_reply">
-			<h3>엉망징창키친의 리뷰(10)</h3>
+			<h3>${vo.p_name }의 리뷰(10)</h3>
 			<table class="reply_list">
 				<c:forEach var="i" begin="1" end="3">
 					<tr style="border-bottom: 1px solid #dbdbdb;">
@@ -241,13 +250,13 @@
 				<div class="reply_write">
 					<form method=post action="">
 						<input type="hidden" name=bno value="">
-						<table>
+						<table width="100%">
 							<tr valign="top">
 								<td width="90%">
-									<textarea class="reply_ta" rows="3" cols="80" name="msg"></textarea>
+									<textarea class="reply_ta" rows="3" cols="90" name="msg"></textarea>
 								</td>
 								<td width="10%">
-									<input type="button"	class="btn btn-info btn-sm pull-right" value="등    록" style="width: 75px; height: 100px">
+									<input type="button"	class="btn btn-info btn-sm pull-right" value="등    록" style="width: 80px; height: 100px">
 								</td>
 							</tr>
 						</table>
