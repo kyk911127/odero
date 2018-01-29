@@ -23,6 +23,7 @@ public class ReviewController {
 	public String reviewList(String page, Model model) {
 		if (page == null)
 			page = "1";
+		System.out.println(page);
 		int curpage = Integer.parseInt(page);
 		int rowSize = 9;
 		int start = (rowSize * curpage) - (rowSize - 1);
@@ -60,7 +61,7 @@ public class ReviewController {
 
 	@RequestMapping("review_insert_ok")
 	public String reviewInsert(ReviewVo uploadForm) {
-		String path = "/home/sist/bigdataDev/odero/src/main/webapp/review/review_img";
+		String path = "/home/sist/bigdataDev/bigdataStudy/.metadata/.plugins/org.eclipse.wst.server.core/tmp1/wtpwebapps/odero/review/data";
 		List<MultipartFile> list = uploadForm.getImages();
 		File f = new File(path);
 		if (!f.exists())
@@ -69,16 +70,23 @@ public class ReviewController {
 			String fname = "";
 			for (MultipartFile mf : list) {
 				String name = mf.getOriginalFilename();
-				File file = new File(path+"/"+ name);
-				try {
-					mf.transferTo(file);
-				} catch (Exception e) {
-					System.out.println(e.getMessage());
+				if (!name.equals("")) {
+					File file = new File(path+"/"+ name);
+					try {
+						mf.transferTo(file);
+					} catch (Exception e) {
+						System.out.println(e.getMessage());
+					}
+					fname += name + ",";
 				}
-				fname += name + ",";
 			}
-			uploadForm.setR_imgname(fname.substring(0, fname.lastIndexOf(",")));
-			uploadForm.setR_imgcount(list.size());
+			if (!fname.equals("")) {
+				uploadForm.setR_imgname(fname.substring(0, fname.lastIndexOf(",")));
+				uploadForm.setR_imgcount(list.size());
+			} else {
+				uploadForm.setR_imgname("-");
+				uploadForm.setR_imgcount(0);
+			}
 		} else {
 			uploadForm.setR_imgname("-");
 			uploadForm.setR_imgcount(0);
@@ -94,6 +102,7 @@ public class ReviewController {
 		
 		if (vo.getR_imgcount()>0) {
 			String[] images = vo.getR_imgname().split(",");
+			vo.setR_imgname(images[0]);
 			model.addAttribute("images",images);
 		}
 		model.addAttribute("vo", vo);
