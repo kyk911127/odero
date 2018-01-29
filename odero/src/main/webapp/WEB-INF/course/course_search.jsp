@@ -221,11 +221,13 @@ $(function() {
          </table>
       </div>
       </div>
+      <form action="course_search_ok.do" method="post">
       <div class="search_wrap">
          <center>
          <input type="submit" value=' 검   색 ' class="search_btn">
          </center>
       </div>
+      </form>
    </div>
     <div>
 		<jsp:include page="date2.jsp"></jsp:include>
