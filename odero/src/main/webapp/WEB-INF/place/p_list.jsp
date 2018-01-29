@@ -127,7 +127,7 @@ $(function(){
       arr_sn.push(sn_1);
       var sn_2=$("input[type=radio][name=loc]:checked").val();
       
-      
+       
        
       if(sn_2=="강남")
     	  {
