@@ -12,7 +12,7 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<h3>공사중 <img alt="히릿" src="masterBoard/img/Settings.png"/></h3>
+			<h3>공사중 <img alt="히릿" src="masterBoard/img/board/Settings.png"/></h3>
 			<table class="table table-hover" width="700">
 				<tr>
 					<td class="text-left">
@@ -29,7 +29,7 @@
 					<th class="text-center" width="10%">조회수</th>
 				</tr>
 				<c:forEach var="vo" items="${list}">
-					<tr class="aa">
+					<tr class="aa shake">
 						<td class="text-center" width="10%">${vo.no}</td>
 						<td class="text-center" width="45%">
 							<a href="MasterBoardContent.do?no=${vo.no}">${vo.subject}</a>

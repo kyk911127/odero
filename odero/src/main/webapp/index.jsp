@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <script>
-	location.href="main.do";
+	location.href="MasterBoard.do";
 </script>
 </head>
 <body>
