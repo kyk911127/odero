@@ -8,9 +8,9 @@ import org.springframework.stereotype.Repository;
 public class MyPageDAO {
 	@Autowired
 	MyPageMapper mapper;
-	public List<MyPagePlaceVO> MyPlaceBest5()
+	public List<MyPagePlaceVO> MyPlaceBest5(String m_id)
 	{
-		return mapper.MyPlaceBest5();
+		return mapper.MyPlaceBest5(m_id);
 	}
 	
 	public MyPageInfoVO MyPageInfoData(String m_id)

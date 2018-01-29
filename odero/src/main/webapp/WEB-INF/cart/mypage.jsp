@@ -14,7 +14,7 @@
 <link rel="stylesheet"
 	href="https://cdn.rawgit.com/openhiun/hangul/14c0f6faa2941116bb53001d6a7dcd5e82300c3f/nanumbarungothic.css">
 
-<link href="css/mypage.css" rel="stylesheet" type="text/css">
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <style type="text/css">
@@ -30,19 +30,8 @@ table tr th {
 #info_table {
 	width: 800px;
 }
-
-.curtab {
-	background-color: #002060;
-	color: white;
-	margin-left: 70%;
-	
-}
-.tab {
-	
-}
-
 </style>
-
+<link href="css/mypage.css" rel="stylesheet" type="text/css">
 <!-- <script>
 $(document).ready(function(){
 	$(".cart_div").click(function(){
@@ -62,12 +51,18 @@ $(document).ready(function(){
 </head>
 <body class="body">
 	<div class="container">
+	<div class="title_wrap">마이 페이지 
+	
+		</div>
 		<div class="tab_wrap">
 
-
 			<!-- <span class="tab">내 정보</span> -->
-			<a href="mypage_list.do"><span class="tab">찜 리스트</span></a>
-			<span class="tab curtab">마이 페이지</span>
+			
+			
+		
+			<br>
+			
+			|<a href="mypage_list.do"><span class="tab">찜 리스트</span></a>|
 		</div>
 
 
@@ -114,8 +109,8 @@ $(document).ready(function(){
 							class="btn btn-success btn-xs">더보기</button></a>
 					<hr class="soften" />
 				</h3>
-
-
+				
+			
 				<table class="table table-hover" width=600>
 					<tr>
 						<th>번호</th>
@@ -131,9 +126,18 @@ $(document).ready(function(){
 					</tr>
 
 					<c:forEach var="vo" items="${list }">
+							<c:if test="${vo.p_grade=='c'}">
+							<c:set var="grade" value="카페"/>
+							</c:if>
+							<c:if test="${vo.p_grade=='f'}">
+							<c:set var="grade" value="맛집"/>
+							</c:if>
+							<c:if test="${vo.p_grade=='p'}">
+							<c:set var="grade" value="놀거리"/>
+							</c:if>
 						<tr>
-							<td>${vo.p_no }</td>
-							<td>${vo.p_grade }</td>
+							<td>${vo.jvo.j_no }</td>
+							<td>${grade }</td>
 							<td>${vo.p_name }</td>
 							<td>${vo.p_addr }</td>
 							<td>${vo.p_price }</td>
