@@ -34,14 +34,14 @@
 	 } */
 	$(function() {
 		// alert("dd");
-		$('.place_img').click(function() {
+/* 		$('.place_img').click(function() {
 			$('.place_img').each(function() {
 				var pp = $(this).attr('src');
 				//alert(pp);
 				$('.fo').append("<img src='" + pp + "'>");
 			});
 			return;
-		});
+		}); */
 		
 		/* $('.place_img').each(function() { 
 			$('.place_img').click(function() {
@@ -53,12 +53,13 @@
 		}); */
 		
 		$('table').parent().children().find("td:nth-child(2):empty").parent().hide();
+		
 	});
 </script>
 </head>
 <body>
 	<div class="container-fluid top_container">
-		<div class="row imagerow" style="position: relative;">
+		<div class="row imagerow" style="position: relative; background-image: url(${backimg});">
 			<c:forEach var="i" items="${simg }" end="4" varStatus="im">
 				<div class="detail_img" data-target="#myModal" data-toggle="modal">
 					<div style="border-left: 8px solid #fff;">
@@ -90,25 +91,11 @@
 					<!--  data-thumbmargin="20px 0"  -->
 					<div class="fotorama fo" data-width="800" data-maxwidth="100%"
 						data-ratio="16/9" data-allowfullscreen="true" data-nav="thumbs" data-thumbfit="cover">
-						<%-- <c:forEach var="i" items="${timg }">
+						 <c:forEach var="i" items="${simg }">
                         <img src="${i }">
-                     </c:forEach> --%>
+                     </c:forEach> 
 					</div>
-
-					<!--                <div class="fotorama" data-nav="thumbs">
-                  <a href="p_image/top.jpg"><img src="p_image/top.jpg" width="144" height="96"></a>
-                  <a href="p_image/top.jpg"><img src="p_image/top.jpg" width="64" height="128"></a>
-               </div> -->
 				</div>
-				<%-- <div id="modal-footer" style="height: 90px; margin-top: 40px;">
-               <div class="fotorama_img" style="width: 1000px; padding: 10px;">
-                  <c:forEach var="i" begin="1" end="13">
-                     <div class="small_img" style="float: left; width: 70px; margin-right: 5px;">
-                        <img alt="" src="p_image/top2.jpg" style="width: 100%">
-                     </div>
-                  </c:forEach>
-               </div>
-            </div> --%>
 			</div>
 		</div>
 	</div>
@@ -248,8 +235,8 @@
 					<span class="com_title"><b>리뷰쓰기</b></span>
 				</h4>
 				<div class="reply_write">
-					<form method=post action="">
-						<input type="hidden" name=bno value="">
+					<form method="post" action="p_reply_insert.do">
+						<input type="hidden" name="" value="${vo.p_no }">
 						<table width="100%">
 							<tr valign="top">
 								<td width="90%">
