@@ -314,7 +314,7 @@
 
          // 마커에 click 이벤트를 등록합니다
          daum.maps.event.addListener(marker, 'click', function() {
-       var m_id = $(this).attr("");
+       var m_id = $(this).attr("id", "m_id");
        alert("id : " + m_id);
              // 클릭된 마커가 없고, click 마커가 클릭된 마커가 아니면
              // 마커의 이미지를 클릭 이미지로 변경합니다
