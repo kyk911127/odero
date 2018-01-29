@@ -25,50 +25,97 @@ $(function(){
    $('.gangnam_d').hide();
    $('.gangbuk_d').hide();
    
-  
    
    $('input:radio').click(function(){
       
       var S=$(this).val();    //value
       var N=$(this).attr('name'); //name : 공통값
-      var A = $(this).attr('id');  //id: 고유값
-      
-      var sn=$("input[type=radio][name="+N+"]:checked").val();   //선택된 라디오의 value값
-      //alert(sn);
+ 
+     if(S=="이색/체험" || S=="맛집/카페")
+    	 {
+    	 	
+    	 	if(S=="이색/체험")
+    	 		{
+    	 		$('#l_food').css("background", "rgb(203, 203, 203)");
+        	 	$('#l_play').css("background", "rgb(3, 32, 95)");
+    	 		}
+    	 	else
+    	 		{
+    	 		
+    	 		$('#l_play').css("background", "rgb(203, 203, 203)");
+        	 	$('#l_food').css("background", "rgb(3, 32, 95)");
+    	 		}
+    	 
+    	 }
     
-    
-      
-      
-  
-       //var checkedValue = $("input[type=radio][name=ca]:checked").attr('id');
+
+   if(S=="강남"|| N=="gn")
+	   {
+		   if(S=="강남")
+		   {
+		     
+		     $('#l_gangbuk').css("background", "rgb(203, 203, 203)");
+	  	     $('#l_gangnam').css("background", "rgb(3, 32, 95)");
+	         $('.gangbuk_d').hide();
+	         $('.loc_pick').show();
+	         $('.gangnam_d').show();
+		   }
+	   else
+		   {
+		   		
+		   		$(".gn_ul>.tp_li >label").css("background", "rgb(203, 203, 203)");  //초기화
+		   		
+		   	 	var gn_size=$(".gangnam_d >.tp_ul > li").length;
+		     	var str='';
+			 	for(var i=0; i<gn_size; i++)
+	            {
+	               str=$("input[name=gn]:eq("+i+")").val();
+	              
+	               if(S==str)
+	               {
+	                  $(".gn_ul>.tp_li >label:eq("+i+")").css("background", "rgb(3, 32, 95)");
+	                  return;
+	               }
+	            }
+		   }
+		   
+		
+	   }
 	  
-	  
-       
-      
-   if(S=="강남" || S=="강북")
-      {
-         if(S=="강남")
-         {
-            $('#gangbuk').css("background", "rgb(203, 203, 203)");
-            $(this).css("background", "rgb(3, 32, 95)");
-            $(this).css("color","white");
-            $('.gangbuk_d').hide();
-            $('.loc_pick').show();
-            $('.gangnam_d').show();
-            
-         }
-         else if(S=="강북")
-         {
-            $('#gangnam').css("background", "rgb(203, 203, 203)");
-            $(this).css("background", "rgb(3, 32, 95)");
-            $(this).css("color","white");
-            $('.gangnam_d').hide();
-            $('.loc_pick').show();
-            $('.gangbuk_d').show();
-            
-         }
-      } 
-      
+   if(S=="강북"|| N=="gb")
+	   {
+	   		if(S=="강북")
+	   			{
+			   		
+				     $('#l_gangnam').css("background", "rgb(203, 203, 203)");
+			  	     $('#l_gangbuk').css("background", "rgb(3, 32, 95)");
+			         $('.gangnam_d').hide();
+			         $('.loc_pick').show();
+			         $('.gangbuk_d').show();
+	   			}
+	   		else
+	   			{
+			   		$(".gb_ul>.tp_li >label").css("background", "rgb(203, 203, 203)");  //초기화
+			   		
+			   	 	var gn_size=$(".gangbuk_d >.tp_ul > li").length;
+			     	var str='';
+				 	for(var i=0; i<gn_size; i++)
+		            {
+		               str=$("input[name=gb]:eq("+i+")").val();
+		               if(S==str)
+		               {
+		               
+		                  $(".gb_ul>.tp_li >label:eq("+i+")").css("background", "rgb(3, 32, 95)");
+		                  return;
+		               }
+		            
+		            }
+	   				
+	   			}
+	   		
+	   }
+   
+   
    });
    
   
@@ -92,9 +139,8 @@ $(function(){
     	  var sn_3=$("input[type=radio][name=gb]:checked").val();
     	  }
    
-     arr_sn.push(sn_2);
      arr_sn.push(sn_3); 
-     alert("최종: "+arr_sn);
+     //alert("최종: "+arr_sn);
       
    });
   
@@ -162,11 +208,11 @@ $(function(){
          <ul class="tp_ul">
             <li class="tp_li play_li">
             <input type="radio" name="ca" id="play" value="이색/체험">
-            <label class="btn btn-lg btn-navy" for="play">이색/체험</label>
+            <label class="btn btn-lg btn-navy" for="play" id="l_play">이색/체험</label>
             </li>
             <li class="tp_li">
             <input type="radio" name="ca" id="food" value="맛집/카페">
-            <label class="btn btn-lg btn-navy" for="food">맛집/카페</label>
+            <label class="btn btn-lg btn-navy" for="food" id="l_food">맛집/카페</label>
             </li>
             
          </ul>
@@ -180,11 +226,11 @@ $(function(){
          <ul class="tp_ul">
             <li class="tp_li gangnam_li">
             <input type="radio" name="loc" id="gangnam" value="강남">
-            <label class="btn btn-lg btn-navy" for="gangnam">강남</label>
+            <label class="btn btn-lg btn-navy" for="gangnam" id="l_gangnam">강남</label>
             </li>
             <li class="tp_li">
             <input type="radio" name="loc" id="gangbuk" value="강북">
-            <label class="btn btn-lg btn-navy" for="gangbuk"  >강북</label>
+            <label class="btn btn-lg btn-navy" for="gangbuk" id="l_gangbuk" >강북</label>
             </li>
          </ul>
          
@@ -192,7 +238,7 @@ $(function(){
       <div class="loc_pick">
          <div class="text-center tp_loc gangnam_d">
          <!-- 3. 강남지역 그룹 -->
-            <ul class="tp_ul">
+            <ul class="tp_ul gn_ul">
                   <li class="tp_li"><input type="radio" name="gn" id="gn_1" value="강서구">
                   <label class="btn btn-navy tp_loc_li" for="gn_1">강서구</label></li>
                   <li class="tp_li"><input type="radio" name="gn" id="gn_2" value="구로구">
@@ -221,7 +267,7 @@ $(function(){
          </div>
          <div class="text-center tp_loc gangbuk_d">
          <!-- 4. 강북지역 그룹 -->
-            <ul class="tp_ul">
+            <ul class="tp_ul gb_ul">
                <li class="tp_li"><input type="radio" name="gb" id="gb_1" value="마포구">
                <label class="btn btn-navy tp_loc_li" for="gb_1">마포구</label></li>
                <li class="tp_li"><input type="radio" name="gb" id="gb_2" value="서대문구">
