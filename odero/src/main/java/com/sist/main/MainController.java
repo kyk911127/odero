@@ -16,7 +16,7 @@ public class MainController {
 		//가성비 코스
 		String[] gu = {"강서구", "구로구", "양천구", "금천구", "영등포구", "관악구", "동작구", "서초구", "강남구", "송파구", "강동구", "마포구", "서대문구",
 				"은평구", "용산구", "중구", "종로구", "성동구", "동대문구", "성북구", "광진구", "중랑구", "노원구", "강북구", "도봉구" };
-		int arrRandom[] = {};
+		int arrRandom[] = {33,33,33,33};
 		for(int i =0; i<4; i++){
 			int random = (int)(Math.random()*gu.length);
 			arrRandom[i] = random;
@@ -26,19 +26,34 @@ public class MainController {
 					break;
 				}
 			}
+			System.out.println("random "+i+": "+ arrRandom[i]);
 		}
 		List<List<PlaceVO>> clist = new ArrayList<List<PlaceVO>>();
+		int totallist[]={0,0,0,0};
 		for(int i=0;i<4;i++){
 			List<PlaceVO> c_detail_list = new ArrayList<PlaceVO>();
 			List<List<PlaceVO>> tmplist = new ArrayList<List<PlaceVO>>();
-			tmplist.add(dao.best_course("f", gu[arrRandom[i]]));
-			tmplist.add(dao.best_course("d", gu[arrRandom[i]]));
-			tmplist.add(dao.best_course("p", gu[arrRandom[i]]));
-			
+			System.out.println("gu : "+gu[arrRandom[i]]);
+			Map map = new HashMap();
+			map.put("gu", gu[arrRandom[i]]);
+			map.put("p_grade", "f");
+			tmplist.add(dao.best_course(map));
+			map.put("p_grade", "c");
+			tmplist.add(dao.best_course(map));
+			map.put("p_grade", "p");
+			tmplist.add(dao.best_course(map));
+			int totalprice =0;
 			for(int j=0;j<3;j++){
 				int rd = (int)(Math.random()*tmplist.get(j).size());
-				c_detail_list.add(tmplist.get(j).get(rd));
+				PlaceVO tmpvo = tmplist.get(j).get(rd);
+				String img = tmpvo.getP_img().split(",")[0];
+				tmpvo.setP_img(img);
+				int price = Integer.parseInt(tmpvo.getP_price().substring(0, 1));
+				totalprice+=price;
+				c_detail_list.add(tmpvo);
+				System.out.println(tmplist.get(j).get(rd).getP_name());
 			}
+			totallist[i] =totalprice;
 			clist.add(c_detail_list);
 		}
 		
@@ -68,6 +83,7 @@ public class MainController {
 			}
 		}
 		
+		model.addAttribute("totallist",totallist);//course 각 총가격
 		model.addAttribute("clist", clist);//course 리스트
 		model.addAttribute("flist", flist);//best food
 		model.addAttribute("plist", plist);//best play
