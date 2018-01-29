@@ -322,9 +322,12 @@ $(function(){
                          <span class="glyphicon glyphicon-map-marker"></span>
                                	 ${vo.p_addr }
                          </div>
+                        
                          	<div class="tp_keyword">
                              	#${vo.p_keyword } 
                          	</div>
+                         
+                      
                      </div>
                      <div class="card-footer">
                          <small>${vo.p_price }</small>

@@ -61,18 +61,21 @@ public class PlaceController {
 		
 		int totalpage = dao.placeTotalList();
 		
+		
+		
 		List<PlaceVO> list =dao.placeListData(map);
 		model.addAttribute("list",list);
 		model.addAttribute("curpage",curpage);
 		model.addAttribute("totalpage",totalpage);
+		
+		/*PlaceVO vo=new PlaceVO();
+		// img split
+		String str_img = vo.getP_img();
+		String[] simg = str_img.split(",");
+		model.addAttribute("first_img",simg[0]);*/
+		
 		return "place/p_list";
 	}
 	
-	@RequestMapping("select.do")
-	public String select(SelectVO vo, String play, String food, Model model)
-	{
-		System.out.println(play);
-		System.out.println(food);
-		return"place/select";
-	}
+	
 }
