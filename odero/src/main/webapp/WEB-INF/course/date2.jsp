@@ -1,784 +1,762 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+ pageEncoding="EUC-KR"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
+<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 <title>Insert title here</title>
 
 <style type="text/css">
 /* div{
-	border : 1px solid black;
+ border : 1px solid black;
 } */
 .sc_box {
-	margin-top: 7%;
-	width: 100%;
-	margin: 0px auto;
+ margin-top: 7%;
+ width: 100%;
+ margin: 0px auto;
 }
 
-/*ì†Œì œëª© 1í‹€  */
+/*¼ÒÁ¦¸ñ 1Æ²  */
 .sc_title {
-	width: 60%;
-	margin: 2% auto;
-	border: 1px solid #E6E6E6;
-	padding: 1%;
-	margin-bottom: 30px;
+ width: 60%;
+ margin: 2% auto;
+ border: 1px solid #E6E6E6;
+ padding: 1%;
+ margin-bottom: 30px;
 }
 
 .tag-title {
-	margin-top: 8px;
-	float: left;
+ margin-top: 8px;
+ float: left;
 }
 
 .date {
-	position: relative;
-	/*ê°ì‹¸ëŠ” ë ˆì´ì–´ì— í¬ì§€ì…˜ ì†ì„±ì„ ì¡ì•„ì£¼ëŠ” ê²Œ í•„ìˆ˜!(relative, absolute, fixed ì¤‘ íƒ1*/
-	width: 100%;
-	height: 2000px;
-	text-align: center;
-	line-height: 100px; /* 
-		margin:0 auto;   */
-	color: #000;
-	font-size: 12px;
-	background-color: #E0ECF8;
+ position: relative;
+ /*°¨½Î´Â ·¹ÀÌ¾î¿¡ Æ÷Áö¼Ç ¼Ó¼ºÀ» Àâ¾ÆÁÖ´Â °Ô ÇÊ¼ö!(relative, absolute, fixed Áß ÅÃ1*/
+ width: 100%;
+ height: 2000px;
+ text-align: center;
+ line-height: 100px; /* 
+  margin:0 auto;   */
+ color: #000;
+ font-size: 12px;
+ background-color: #E0ECF8;
 }
 
 .date_rc {
-	position: absolute;
-	width: 70%;
-	height: 1200px;
-	text-align: center;
-	margin: 10%;
+ position: absolute;
+ width: 70%;
+ height: 1200px;
+ text-align: center;
+ margin: 10%;
 }
 
 .box {
-	padding: 0 20px 20px 20px;
+ padding: 0 20px 20px 20px;
 }
 
 .box .box-content:hover {
-	border: 2px solid #525C7A;
+ border: 2px solid #525C7A;
 }
 
 .box .box-content {
-	padding: 16px;
-	border-radius: 0 0 2px 2px;
-	background-clip: padding-box;
-	box-sizing: border-box;
-	background: #fff;
-	transition: all 0.2s ease;
-	border: 2px dashed #DFE2E6;
-	margin-top: 10px;
-	box-sizing: border-box;
-	border-radius: 5px;
-	background-clip: padding-box;
-	padding: 0 20px 20px 20px;
-	min-height: 340px;
+ padding: 16px;
+ border-radius: 0 0 2px 2px;
+ background-clip: padding-box;
+ box-sizing: border-box;
+ background: #fff;
+ transition: all 0.2s ease;
+ border: 2px dashed #DFE2E6;
+ margin-top: 10px;
+ box-sizing: border-box;
+ border-radius: 5px;
+ background-clip: padding-box;
+ padding: 0 20px 20px 20px;
+ min-height: 340px;
 }
 
 .box .box-content p {
-	color: #515c66;
-	text-transform: none;
+ color: #515c66;
+ text-transform: none;
 }
 
 .row {
-	margin: 0px;
-	margin-bottom: 30px;
+ margin: 0px;
+ margin-bottom: 30px;
 }
 
 .rc_box {
-	padding-top: 3%;
+ padding-top: 3%;
 }
 
 .title {
-	margin: 2%;
+ margin: 2%;
 }
 
 .big_title {
-	width: 50%;
-	padding: 2%;
-	background-color: #fff;
-	margin: 0px auto;
+ width: 50%;
+ padding: 2%;
+ background-color: #fff;
+ margin: 0px auto;
 }
 
 #Mymodal {
-	position: fixed;
-	top: 25%;
-	height: 300px;
+ position: fixed;
+ top: 25%;
+ height: 300px;
 }
 
 .tmap_1 {
-	width: 80%;
-	height: 70%;
-	margin: 0px auto;
+ width: 80%;
+ height: 70%;
+ margin: 0px auto;
 }
 
 .tmap_2 {
-	width: 63%;
-	height: 230px;
-	background-color: #FAFAFA;
-	padding: 1%;
+ width: 63%;
+ height: 230px;
+ background-color: #FAFAFA;
+ padding: 1%;
 }
 
 .btn-like {
-	height: 50px;
+ height: 50px;
 }
 
 .like {
-	background-color: #F3ABBA;
-	font-color: #ffffff;
+ background-color: #F3ABBA;
+ font-color: #ffffff;
 }
 
 .tmap_td {
-	border-bottom: 1.5px solid #888;
+ border-bottom: 1.5px solid #888;
 }
 
 .tmap_td_b {
-	border-top: 2px solid #888;
+ border-top: 2px solid #888;
 }
 
 .tmap_table {
-	width: 100%;
-	height: 50px;
+ width: 100%;
+ height: 50px;
 }
 
 .tmap_title {
-	font-size: 18px;
-	float: left;
+ font-size: 18px;
+ float: left;
 }
 
 .tmap_detail {
-	font-size: 12px;
+ font-size: 12px;
 }
 
 .tmap_res {
-	font-size: 13px;
+ font-size: 13px;
 }
 
 .tmap_wrap {
-	padding: 2%;
-	background: #666;
-	color: #fff;
-	width: 100%;
+ padding: 2%;
+ background: #666;
+ color: #fff;
+ width: 100%;
 }
 
 .rc_title {
-	margin: 2%;
+ margin: 2%;
 }
 
 .rc {
-	background-color: #FAFAFA;
-	margin-top: 0%;
+ background-color: #FAFAFA;
+ margin-top: 0%;
 }
 
 .sc_ti {
-	color: #2E2E2E;;
-	height: 30px;
-	font-weight: bold;
+ color: #2E2E2E;;
+ height: 30px;
+ font-weight: bold;
 }
 
 .rc_detail {
-	font-size: 5px;
+ font-size: 5px;
 }
 </style>
 
-
-
 </head>
 <body>
-	<div class="container-fluid sc">
-		<div class="sc_title">
-			<h2 class="sc_ti text-center">ì¶” ì²œ ì½” ìŠ¤</h2>
-			<br>
-			<h4 class="sc_ti text-center">â–¼â–¼â–¼â–¼â–¼</h4>
-		</div>
-		<div class="sc_box">
-			<!--ì§€ë„  -->
-			<div class="tmap_1">
-				<div id="map" style="width: 100%; height: 550px"></div>
-				<script type="text/javascript"
-					src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f71a358ab1852f4a6dd2eee5070f7a02&libraries=services"></script>
-				<script>
-					var container = document.getElementById('map');
-					var options = {
-						center : new daum.maps.LatLng(33.450701, 126.570667),
-						level : 2
-					};
+ <div class="container-fluid sc">
+  <div class="sc_title">
+   <h2 class="sc_ti text-center">Ãß Ãµ ÄÚ ½º</h2>
+   <br>
+   <h4 class="sc_ti text-center">¡å¡å¡å¡å¡å</h4>
+  </div>
+  <div class="sc_box">
+   <!--Áöµµ  -->
+   <div class="tmap_1">
+    <div id="map" style="width: 100%; height: 550px"></div>
 
-					var map = new daum.maps.Map(container, options);
+    <script type="text/javascript"
+     src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f71a358ab1852f4a6dd2eee5070f7a02&libraries=services"></script>
 
-					var MARKER_WIDTH = 33, // ê¸°ë³¸, í´ë¦­ ë§ˆì»¤ì˜ ë„ˆë¹„
-					MARKER_HEIGHT = 36, // ê¸°ë³¸, í´ë¦­ ë§ˆì»¤ì˜ ë†’ì´
-					OFFSET_X = 12, // ê¸°ë³¸, í´ë¦­ ë§ˆì»¤ì˜ ê¸°ì¤€ Xì¢Œí‘œ
-					OFFSET_Y = MARKER_HEIGHT, // ê¸°ë³¸, í´ë¦­ ë§ˆì»¤ì˜ ê¸°ì¤€ Yì¢Œí‘œ
-					OVER_MARKER_WIDTH = 40, // ì˜¤ë²„ ë§ˆì»¤ì˜ ë„ˆë¹„
-					OVER_MARKER_HEIGHT = 42, // ì˜¤ë²„ ë§ˆì»¤ì˜ ë†’ì´
-					OVER_OFFSET_X = 13, // ì˜¤ë²„ ë§ˆì»¤ì˜ ê¸°ì¤€ Xì¢Œí‘œ
-					OVER_OFFSET_Y = OVER_MARKER_HEIGHT, // ì˜¤ë²„ ë§ˆì»¤ì˜ ê¸°ì¤€ Yì¢Œí‘œ
-					SPRITE_MARKER_URL = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/markers_sprites2.png', // ìŠ¤í”„ë¼ì´íŠ¸ ë§ˆì»¤ ì´ë¯¸ì§€ URL
-					SPRITE_WIDTH = 126, // ìŠ¤í”„ë¼ì´íŠ¸ ì´ë¯¸ì§€ ë„ˆë¹„
-					SPRITE_HEIGHT = 146, // ìŠ¤í”„ë¼ì´íŠ¸ ì´ë¯¸ì§€ ë†’ì´
-					SPRITE_GAP = 10; // ìŠ¤í”„ë¼ì´íŠ¸ ì´ë¯¸ì§€ì—ì„œ ë§ˆì»¤ê°„ ê°„ê²©
+    <script>
+     var container = document.getElementById('map');
+     var options = {
+      center : new daum.maps.LatLng(37.55648584608168, 126.91944661906786),
+      level : 3
+     };
+     var p_addr = [];
+     var p_addr2 = "${strPosition}";
+     <c:forEach var="addr" items="${strPosition }">
+       p_addr.push("${addr}");
+     </c:forEach>
+     var map = new daum.maps.Map(container, options);
+     
+     var MARKER_WIDTH = 33, // ±âº», Å¬¸¯ ¸¶Ä¿ÀÇ ³Êºñ
+        MARKER_HEIGHT = 35, // ±âº», Å¬¸¯ ¸¶Ä¿ÀÇ ³ôÀÌ
+        OFFSET_X = 17, // ±âº», Å¬¸¯ ¸¶Ä¿ÀÇ ±âÁØ XÁÂÇ¥
+        OFFSET_Y = MARKER_HEIGHT, // ±âº», Å¬¸¯ ¸¶Ä¿ÀÇ ±âÁØ YÁÂÇ¥
+        OVER_MARKER_WIDTH = 34, // ¿À¹ö ¸¶Ä¿ÀÇ ³Êºñ
+        OVER_MARKER_HEIGHT = 35, // ¿À¹ö ¸¶Ä¿ÀÇ ³ôÀÌ
+        OVER_OFFSET_X = 22, // ¿À¹ö ¸¶Ä¿ÀÇ ±âÁØ XÁÂÇ¥
+        OVER_OFFSET_Y = OVER_MARKER_HEIGHT, // ¿À¹ö ¸¶Ä¿ÀÇ ±âÁØ YÁÂÇ¥
+        SPRITE_MARKER_URL = 'img_1/marker_odero1.png', // ½ºÇÁ¶óÀÌÆ® ¸¶Ä¿ ÀÌ¹ÌÁö URL
+        SPRITE_WIDTH = 120, // ½ºÇÁ¶óÀÌÆ® ÀÌ¹ÌÁö ³Êºñ
+        SPRITE_HEIGHT = 388, // ½ºÇÁ¶óÀÌÆ® ÀÌ¹ÌÁö ³ôÀÌ
+        SPRITE_GAP = 9; // ½ºÇÁ¶óÀÌÆ® ÀÌ¹ÌÁö¿¡¼­ ¸¶Ä¿°£ °£°İ
 
-					var markerSize = new daum.maps.Size(MARKER_WIDTH,
-							MARKER_HEIGHT), // ê¸°ë³¸, í´ë¦­ ë§ˆì»¤ì˜ í¬ê¸°
-					markerOffset = new daum.maps.Point(OFFSET_X, OFFSET_Y), // ê¸°ë³¸, í´ë¦­ ë§ˆì»¤ì˜ ê¸°ì¤€ì¢Œí‘œ
-					overMarkerSize = new daum.maps.Size(OVER_MARKER_WIDTH,
-							OVER_MARKER_HEIGHT), // ì˜¤ë²„ ë§ˆì»¤ì˜ í¬ê¸°
-					overMarkerOffset = new daum.maps.Point(OVER_OFFSET_X,
-							OVER_OFFSET_Y), // ì˜¤ë²„ ë§ˆì»¤ì˜ ê¸°ì¤€ ì¢Œí‘œ
-					spriteImageSize = new daum.maps.Size(SPRITE_WIDTH,
-							SPRITE_HEIGHT); // ìŠ¤í”„ë¼ì´íŠ¸ ì´ë¯¸ì§€ì˜ í¬ê¸°
+    var markerSize = new daum.maps.Size(MARKER_WIDTH, MARKER_HEIGHT), // ±âº», Å¬¸¯ ¸¶Ä¿ÀÇ Å©±â
+        markerOffset = new daum.maps.Point(OFFSET_X, OFFSET_Y), // ±âº», Å¬¸¯ ¸¶Ä¿ÀÇ ±âÁØÁÂÇ¥
+        overMarkerSize = new daum.maps.Size(OVER_MARKER_WIDTH, OVER_MARKER_HEIGHT), // ¿À¹ö ¸¶Ä¿ÀÇ Å©±â
+        overMarkerOffset = new daum.maps.Point(OVER_OFFSET_X, OVER_OFFSET_Y), // ¿À¹ö ¸¶Ä¿ÀÇ ±âÁØ ÁÂÇ¥
+        spriteImageSize = new daum.maps.Size(SPRITE_WIDTH, SPRITE_HEIGHT); // ½ºÇÁ¶óÀÌÆ® ÀÌ¹ÌÁöÀÇ Å©±â
 
-					var p_addr = [ "ì„œìš¸íŠ¹ë³„ì‹œ ê°•ë‚¨êµ¬ ì—­ì‚¼ë™ 620-15ë²ˆì§€ 2ì¸µ",
-							"ì„œìš¸ ê°•ë‚¨êµ¬ ì‹ ì‚¬ë™ 517-10 2ì¸µ",
-							"ì„œìš¸íŠ¹ë³„ì‹œ ê°•ë‚¨êµ¬ ì—­ì‚¼ë™ 620-9",
-							"ì„œìš¸ ê°•ë‚¨êµ¬ ì—­ì‚¼1ë™ 818-14 í¬ë¦¬ìŠ¤íƒˆë¹Œë”© B1",
-							"ì„œìš¸ ê°•ë‚¨êµ¬ ì—­ì‚¼ë™ 826-37",
-							"ì„œìš¸ì‹œ ê°•ë‚¨êµ¬ ì—­ì‚¼ë™ 812-5ë²ˆì§€",
-							"ì„œìš¸ ê°•ë‚¨êµ¬ ì‹ ì‚¬ë™ 524-36",
-							"ì„œìš¸ ê°•ë‚¨êµ¬ ì—­ì‚¼ë™ 809-3",
-							"ì„œìš¸ ê°•ë‚¨êµ¬ ì—­ì‚¼ë™ 718-31" ];
-					//ë§ˆì»¤ ìœ„ì¹˜
-					var positions = []; 
-					var selectedMarker = null; // í´ë¦­í•œ ë§ˆì»¤ë¥¼ ë‹´ì„ ë³€ìˆ˜
-					
-					var geocoder = new daum.maps.services.Geocoder();
-					for(var j = 0; j < 9; j++) {
-						
-						// ì£¼ì†Œë¡œ ì¢Œí‘œë¥¼ ê²€ìƒ‰í•©ë‹ˆë‹¤
-						geocoder.addressSearch(p_addr[j], function(result, status) {
+        
+    //°Ë»ö ¹öÆ° Å¬¸¯ ÈÄ¿¡¸¸ ½ÇÇà
+    if(p_addr.length > 1) {
+     //¸¶Ä¿ÀÇ À§Ä¡
+     /* var strpositions = ${strPosition};
+     strpositions = strpositions.split("_");
+     strpositions[0] = strposition[0].split(","); */
+     
+     /* strpositions = "37.49539984153658, 127.03040567183359";
+     strpositions = strpositions.split(","); */
+     var positions = [ 
+            new daum.maps.LatLng(Number(p_addr[0].split(",")[0]),Number(p_addr[0].split(",")[1].trim())),
+            new daum.maps.LatLng(Number(p_addr[1].split(",")[0]),Number(p_addr[1].split(",")[1].trim())),
+            new daum.maps.LatLng(Number(p_addr[2].split(",")[0]),Number(p_addr[2].split(",")[1].trim())),
+            new daum.maps.LatLng(Number(p_addr[3].split(",")[0]),Number(p_addr[3].split(",")[1].trim())),
+            new daum.maps.LatLng(Number(p_addr[4].split(",")[0]),Number(p_addr[4].split(",")[1].trim())),
+            new daum.maps.LatLng(Number(p_addr[5].split(",")[0]),Number(p_addr[5].split(",")[1].trim())),
+            new daum.maps.LatLng(Number(p_addr[6].split(",")[0]),Number(p_addr[6].split(",")[1].trim())),
+            new daum.maps.LatLng(Number(p_addr[7].split(",")[0]),Number(p_addr[7].split(",")[1].trim())),
+            new daum.maps.LatLng(Number(p_addr[8].split(",")[0]),Number(p_addr[8].split(",")[1].trim()))
+     ];
+     var selectedMarker = null; // Å¬¸¯ÇÑ ¸¶Ä¿¸¦ ´ãÀ» º¯¼ö
+     
+     var mapContainer = document.getElementById('map'), // Áöµµ¸¦ Ç¥½ÃÇÒ div
+         mapOption = { 
+             center: new daum.maps.LatLng(Number(p_addr[0].split(",")[0]),Number(p_addr[0].split(",")[1].trim())), // ÁöµµÀÇ Áß½ÉÁÂÇ¥
+             level: 6 // ÁöµµÀÇ È®´ë ·¹º§
+         };
 
-						    // ì •ìƒì ìœ¼ë¡œ ê²€ìƒ‰ì´ ì™„ë£Œëìœ¼ë©´ 
-						     if (status === daum.maps.services.Status.OK) {
+     var map = new daum.maps.Map(mapContainer, mapOption); // Áöµµ¸¦ »ı¼ºÇÕ´Ï´Ù
 
-						        var coords = new daum.maps.LatLng(result[0].y, result[0].x);
-						        
+     // Áöµµ À§¿¡ ¸¶Ä¿¸¦ Ç¥½ÃÇÕ´Ï´Ù
+     for (var i = 0, len = positions.length; i < len; i++) {
+         var gapX = (MARKER_WIDTH + SPRITE_GAP), // ½ºÇÁ¶óÀÌÆ® ÀÌ¹ÌÁö¿¡¼­ ¸¶Ä¿·Î »ç¿ëÇÒ ÀÌ¹ÌÁö XÁÂÇ¥ °£°İ °ª
+             originY = (MARKER_HEIGHT + SPRITE_GAP) * i, // ½ºÇÁ¶óÀÌÆ® ÀÌ¹ÌÁö¿¡¼­ ±âº», Å¬¸¯ ¸¶Ä¿·Î »ç¿ëÇÒ YÁÂÇ¥ °ª
+             overOriginY = (OVER_MARKER_HEIGHT + SPRITE_GAP) * i, // ½ºÇÁ¶óÀÌÆ® ÀÌ¹ÌÁö¿¡¼­ ¿À¹ö ¸¶Ä¿·Î »ç¿ëÇÒ YÁÂÇ¥ °ª
+             normalOrigin = new daum.maps.Point(0, originY), // ½ºÇÁ¶óÀÌÆ® ÀÌ¹ÌÁö¿¡¼­ ±âº» ¸¶Ä¿·Î »ç¿ëÇÒ ¿µ¿ªÀÇ ÁÂ»ó´Ü ÁÂÇ¥
+             clickOrigin = new daum.maps.Point(gapX, originY), // ½ºÇÁ¶óÀÌÆ® ÀÌ¹ÌÁö¿¡¼­ ¸¶¿ì½º¿À¹ö ¸¶Ä¿·Î »ç¿ëÇÒ ¿µ¿ªÀÇ ÁÂ»ó´Ü ÁÂÇ¥
+             overOrigin = new daum.maps.Point(gapX * 2, overOriginY); // ½ºÇÁ¶óÀÌÆ® ÀÌ¹ÌÁö¿¡¼­ Å¬¸¯ ¸¶Ä¿·Î »ç¿ëÇÒ ¿µ¿ªÀÇ ÁÂ»ó´Ü ÁÂÇ¥
+             
+         // ¸¶Ä¿¸¦ »ı¼ºÇÏ°í ÁöµµÀ§¿¡ Ç¥½ÃÇÕ´Ï´Ù
+         addMarker(positions[i], normalOrigin, overOrigin, clickOrigin);
+     }
 
-						        // ê²°ê³¼ê°’ìœ¼ë¡œ ë°›ì€ ìœ„ì¹˜ë¥¼ ë§ˆì»¤ë¡œ í‘œì‹œí•©ë‹ˆë‹¤
-						       /* var marker = new daum.maps.Marker({
-						            map: map,
-						            position: coords
-						        }); */
-						        positions.push(new daum.maps.LatLng(result[0].y, result[0].x));
-						        
-						        
-						        
-						     	// ì§€ë„ì˜ ì¤‘ì‹¬ì„ ê²°ê³¼ê°’ìœ¼ë¡œ ë°›ì€ ìœ„ì¹˜ë¡œ ì´ë™ì‹œí‚µë‹ˆë‹¤
-						        map.setCenter(coords);
-						    } 
-						}); 
-					} 
-					markerPosition();
-					
-					alert("111");
-					
-					function markerPosition() {
-						alert("123123123");
-						// ì§€ë„ ìœ„ì— ë§ˆì»¤ë¥¼ í‘œì‹œí•©ë‹ˆë‹¤
-						for (var i = 0, len = positions.length; i < len; i++) {
-							var gapX = (MARKER_WIDTH + SPRITE_GAP), // ìŠ¤í”„ë¼ì´íŠ¸ ì´ë¯¸ì§€ì—ì„œ ë§ˆì»¤ë¡œ ì‚¬ìš©í•  ì´ë¯¸ì§€ Xì¢Œí‘œ ê°„ê²© ê°’
-							originY = (MARKER_HEIGHT + SPRITE_GAP) * i, // ìŠ¤í”„ë¼ì´íŠ¸ ì´ë¯¸ì§€ì—ì„œ ê¸°ë³¸, í´ë¦­ ë§ˆì»¤ë¡œ ì‚¬ìš©í•  Yì¢Œí‘œ ê°’
-							overOriginY = (OVER_MARKER_HEIGHT + SPRITE_GAP) * i, // ìŠ¤í”„ë¼ì´íŠ¸ ì´ë¯¸ì§€ì—ì„œ ì˜¤ë²„ ë§ˆì»¤ë¡œ ì‚¬ìš©í•  Yì¢Œí‘œ ê°’
-							normalOrigin = new daum.maps.Point(0, originY), // ìŠ¤í”„ë¼ì´íŠ¸ ì´ë¯¸ì§€ì—ì„œ ê¸°ë³¸ ë§ˆì»¤ë¡œ ì‚¬ìš©í•  ì˜ì—­ì˜ ì¢Œìƒë‹¨ ì¢Œí‘œ
-							clickOrigin = new daum.maps.Point(gapX, originY), // ìŠ¤í”„ë¼ì´íŠ¸ ì´ë¯¸ì§€ì—ì„œ ë§ˆìš°ìŠ¤ì˜¤ë²„ ë§ˆì»¤ë¡œ ì‚¬ìš©í•  ì˜ì—­ì˜ ì¢Œìƒë‹¨ ì¢Œí‘œ
-							overOrigin = new daum.maps.Point(gapX * 2, overOriginY); // ìŠ¤í”„ë¼ì´íŠ¸ ì´ë¯¸ì§€ì—ì„œ í´ë¦­ ë§ˆì»¤ë¡œ ì‚¬ìš©í•  ì˜ì—­ì˜ ì¢Œìƒë‹¨ ì¢Œí‘œ
+     // ¸¶Ä¿¸¦ »ı¼ºÇÏ°í Áöµµ À§¿¡ Ç¥½ÃÇÏ°í, ¸¶Ä¿¿¡ mouseover, mouseout, click ÀÌº¥Æ®¸¦ µî·ÏÇÏ´Â ÇÔ¼öÀÔ´Ï´Ù
+     function addMarker(position, normalOrigin, overOrigin, clickOrigin) {
 
-							// ë§ˆì»¤ë¥¼ ìƒì„±í•˜ê³  ì§€ë„ìœ„ì— í‘œì‹œí•©ë‹ˆë‹¤
-							addMarker(positions[i], normalOrigin, overOrigin,
-									clickOrigin);
-						}
-					}
+         // ±âº» ¸¶Ä¿ÀÌ¹ÌÁö, ¿À¹ö ¸¶Ä¿ÀÌ¹ÌÁö, Å¬¸¯ ¸¶Ä¿ÀÌ¹ÌÁö¸¦ »ı¼ºÇÕ´Ï´Ù
+         var normalImage = createMarkerImage(markerSize, markerOffset, normalOrigin),
+             overImage = createMarkerImage(overMarkerSize, overMarkerOffset, overOrigin),
+             clickImage = createMarkerImage(markerSize, markerOffset, clickOrigin);
+         
+         // ¸¶Ä¿¸¦ »ı¼ºÇÏ°í ÀÌ¹ÌÁö´Â ±âº» ¸¶Ä¿ ÀÌ¹ÌÁö¸¦ »ç¿ëÇÕ´Ï´Ù
+         var marker = new daum.maps.Marker({
+             map: map,
+             position: position,
+             image: normalImage
+         });
 
-					// ë§ˆì»¤ë¥¼ ìƒì„±í•˜ê³  ì§€ë„ ìœ„ì— í‘œì‹œí•˜ê³ , ë§ˆì»¤ì— mouseover, mouseout, click ì´ë²¤íŠ¸ë¥¼ ë“±ë¡í•˜ëŠ” í•¨ìˆ˜ì…ë‹ˆë‹¤
-					function addMarker(position, normalOrigin, overOrigin,
-							clickOrigin) {
+         // ¸¶Ä¿ °´Ã¼¿¡ ¸¶Ä¿¾ÆÀÌµğ¿Í ¸¶Ä¿ÀÇ ±âº» ÀÌ¹ÌÁö¸¦ Ãß°¡ÇÕ´Ï´Ù
+         marker.normalImage = normalImage;
 
-						// ê¸°ë³¸ ë§ˆì»¤ì´ë¯¸ì§€, ì˜¤ë²„ ë§ˆì»¤ì´ë¯¸ì§€, í´ë¦­ ë§ˆì»¤ì´ë¯¸ì§€ë¥¼ ìƒì„±í•©ë‹ˆë‹¤
-						var normalImage = createMarkerImage(markerSize,
-								markerOffset, normalOrigin), overImage = createMarkerImage(
-								overMarkerSize, overMarkerOffset, overOrigin), clickImage = createMarkerImage(
-								markerSize, markerOffset, clickOrigin);
+         // ¸¶Ä¿¿¡ mouseover ÀÌº¥Æ®¸¦ µî·ÏÇÕ´Ï´Ù
+         daum.maps.event.addListener(marker, 'mouseover', function() {
 
-						// ë§ˆì»¤ë¥¼ ìƒì„±í•˜ê³  ì´ë¯¸ì§€ëŠ” ê¸°ë³¸ ë§ˆì»¤ ì´ë¯¸ì§€ë¥¼ ì‚¬ìš©í•©ë‹ˆë‹¤
-						var marker = new daum.maps.Marker({
-							map : map,
-							position : position,
-							image : normalImage
-						});
+             // Å¬¸¯µÈ ¸¶Ä¿°¡ ¾ø°í, mouseoverµÈ ¸¶Ä¿°¡ Å¬¸¯µÈ ¸¶Ä¿°¡ ¾Æ´Ï¸é
+             // ¸¶Ä¿ÀÇ ÀÌ¹ÌÁö¸¦ ¿À¹ö ÀÌ¹ÌÁö·Î º¯°æÇÕ´Ï´Ù
+             if (!selectedMarker || selectedMarker !== marker) {
+                 marker.setImage(overImage);
+             }
+         });
 
-						// ë§ˆì»¤ ê°ì²´ì— ë§ˆì»¤ì•„ì´ë””ì™€ ë§ˆì»¤ì˜ ê¸°ë³¸ ì´ë¯¸ì§€ë¥¼ ì¶”ê°€í•©ë‹ˆë‹¤
-						marker.normalImage = normalImage;
+         // ¸¶Ä¿¿¡ mouseout ÀÌº¥Æ®¸¦ µî·ÏÇÕ´Ï´Ù
+         daum.maps.event.addListener(marker, 'mouseout', function() {
 
-						// ë§ˆì»¤ì— mouseover ì´ë²¤íŠ¸ë¥¼ ë“±ë¡í•©ë‹ˆë‹¤
-						daum.maps.event.addListener(marker, 'mouseover',
-								function() {
+             // Å¬¸¯µÈ ¸¶Ä¿°¡ ¾ø°í, mouseoutµÈ ¸¶Ä¿°¡ Å¬¸¯µÈ ¸¶Ä¿°¡ ¾Æ´Ï¸é
+             // ¸¶Ä¿ÀÇ ÀÌ¹ÌÁö¸¦ ±âº» ÀÌ¹ÌÁö·Î º¯°æÇÕ´Ï´Ù
+             if (!selectedMarker || selectedMarker !== marker) {
+                 marker.setImage(normalImage);
+             }
+         });
 
-									// í´ë¦­ëœ ë§ˆì»¤ê°€ ì—†ê³ , mouseoverëœ ë§ˆì»¤ê°€ í´ë¦­ëœ ë§ˆì»¤ê°€ ì•„ë‹ˆë©´
-									// ë§ˆì»¤ì˜ ì´ë¯¸ì§€ë¥¼ ì˜¤ë²„ ì´ë¯¸ì§€ë¡œ ë³€ê²½í•©ë‹ˆë‹¤
-									if (!selectedMarker
-											|| selectedMarker !== marker) {
-										marker.setImage(overImage);
-									}
-								});
+         // ¸¶Ä¿¿¡ click ÀÌº¥Æ®¸¦ µî·ÏÇÕ´Ï´Ù
+         daum.maps.event.addListener(marker, 'click', function() {
+       var m_id = $(this).attr("id", "m_id");
+       alert("id : " + m_id);
+             // Å¬¸¯µÈ ¸¶Ä¿°¡ ¾ø°í, click ¸¶Ä¿°¡ Å¬¸¯µÈ ¸¶Ä¿°¡ ¾Æ´Ï¸é
+             // ¸¶Ä¿ÀÇ ÀÌ¹ÌÁö¸¦ Å¬¸¯ ÀÌ¹ÌÁö·Î º¯°æÇÕ´Ï´Ù
+             if (!selectedMarker || selectedMarker !== marker) {
 
-						// ë§ˆì»¤ì— mouseout ì´ë²¤íŠ¸ë¥¼ ë“±ë¡í•©ë‹ˆë‹¤
-						daum.maps.event.addListener(marker, 'mouseout',
-								function() {
+                 // Å¬¸¯µÈ ¸¶Ä¿ °´Ã¼°¡ nullÀÌ ¾Æ´Ï¸é
+                 // Å¬¸¯µÈ ¸¶Ä¿ÀÇ ÀÌ¹ÌÁö¸¦ ±âº» ÀÌ¹ÌÁö·Î º¯°æÇÏ°í
+                 !!selectedMarker && selectedMarker.setImage(selectedMarker.normalImage);
 
-									// í´ë¦­ëœ ë§ˆì»¤ê°€ ì—†ê³ , mouseoutëœ ë§ˆì»¤ê°€ í´ë¦­ëœ ë§ˆì»¤ê°€ ì•„ë‹ˆë©´
-									// ë§ˆì»¤ì˜ ì´ë¯¸ì§€ë¥¼ ê¸°ë³¸ ì´ë¯¸ì§€ë¡œ ë³€ê²½í•©ë‹ˆë‹¤
-									if (!selectedMarker
-											|| selectedMarker !== marker) {
-										marker.setImage(normalImage);
-									}
-								});
+                 // ÇöÀç Å¬¸¯µÈ ¸¶Ä¿ÀÇ ÀÌ¹ÌÁö´Â Å¬¸¯ ÀÌ¹ÌÁö·Î º¯°æÇÕ´Ï´Ù
+                 marker.setImage(clickImage);
+             }
 
-						// ë§ˆì»¤ì— click ì´ë²¤íŠ¸ë¥¼ ë“±ë¡í•©ë‹ˆë‹¤
-						daum.maps.event
-								.addListener(
-										marker,
-										'click',
-										function() {
+             // Å¬¸¯µÈ ¸¶Ä¿¸¦ ÇöÀç Å¬¸¯µÈ ¸¶Ä¿ °´Ã¼·Î ¼³Á¤ÇÕ´Ï´Ù
+             selectedMarker = marker;
+         });
+     }
 
-											// í´ë¦­ëœ ë§ˆì»¤ê°€ ì—†ê³ , click ë§ˆì»¤ê°€ í´ë¦­ëœ ë§ˆì»¤ê°€ ì•„ë‹ˆë©´
-											// ë§ˆì»¤ì˜ ì´ë¯¸ì§€ë¥¼ í´ë¦­ ì´ë¯¸ì§€ë¡œ ë³€ê²½í•©ë‹ˆë‹¤
-											if (!selectedMarker
-													|| selectedMarker !== marker) {
+     // MakrerImage °´Ã¼¸¦ »ı¼ºÇÏ¿© ¹İÈ¯ÇÏ´Â ÇÔ¼öÀÔ´Ï´Ù
+     function createMarkerImage(markerSize, offset, spriteOrigin) {
+         var markerImage = new daum.maps.MarkerImage(
+             SPRITE_MARKER_URL, // ½ºÇÁ¶óÀÌÆ® ¸¶Ä¿ ÀÌ¹ÌÁö URL
+             markerSize, // ¸¶Ä¿ÀÇ Å©±â
+             {
+                 offset: offset, // ¸¶Ä¿ ÀÌ¹ÌÁö¿¡¼­ÀÇ ±âÁØ ÁÂÇ¥
+                 spriteOrigin: spriteOrigin, // ½ºÆ®¶óÀÌÇÁ ÀÌ¹ÌÁö Áß »ç¿ëÇÒ ¿µ¿ªÀÇ ÁÂ»ó´Ü ÁÂÇ¥
+                 spriteSize: spriteImageSize // ½ºÇÁ¶óÀÌÆ® ÀÌ¹ÌÁöÀÇ Å©±â
+             }
+         );
+         
+         return markerImage;
+     }
 
-												// í´ë¦­ëœ ë§ˆì»¤ ê°ì²´ê°€ nullì´ ì•„ë‹ˆë©´
-												// í´ë¦­ëœ ë§ˆì»¤ì˜ ì´ë¯¸ì§€ë¥¼ ê¸°ë³¸ ì´ë¯¸ì§€ë¡œ ë³€ê²½í•˜ê³ 
-												!!selectedMarker
-														&& selectedMarker
-																.setImage(selectedMarker.normalImage);
+    }
+    </script>
 
-												// í˜„ì¬ í´ë¦­ëœ ë§ˆì»¤ì˜ ì´ë¯¸ì§€ëŠ” í´ë¦­ ì´ë¯¸ì§€ë¡œ ë³€ê²½í•©ë‹ˆë‹¤
-												marker.setImage(clickImage);
-											}
+   </div>
 
-											// í´ë¦­ëœ ë§ˆì»¤ë¥¼ í˜„ì¬ í´ë¦­ëœ ë§ˆì»¤ ê°ì²´ë¡œ ì„¤ì •í•©ë‹ˆë‹¤
-											selectedMarker = marker;
-										});
-					}
+   <center>
+    <div class="tmap_2">
+     <center>
+      <table class="tmap_table">
+       <tr>
+        <td width=47% class="tmap_td"></td>
+        <td width=6% rowspan="2" class="text-center"><h4>
+          <b>°Å¸®°è»ê</b>
+         </h4></td>
+        <td width=47% class="tmap_td"></td>
+       </tr>
+       <tr>
+        <td class="tmap_td_b"></td>
+        <td class="tmap_td_b"></td>
+       </tr>
+      </table>
+     </center>
+     <table width="95%" height="100px">
+      <tr>
+       <!--1¹ø  -->
+       <td width="24%">
+        <table class="tmap_wrap">
+         <tr>
+          <td style="padding: 3%;">
+           <h4 style="float: left;">
+            <scan class="glyphicon glyphicon-home"
+             style="margin-right:10px;">°¡°ÔÀÌ¸§
+           </h4>
+          </td>
+         </tr>
+         <tr>
+          <td><span class="tmap_detail">&nbsp;ÀÎÃµ½Ã ¿¬¼ö±¸ ¿¬¼ö2µ¿</span></td>
+         </tr>
+         <tr>
+          <td class="text-right"><span
+           class="tmap_detail glyphicon glyphicon-eye-open">Á¶È¸¼ö</span> <span
+           class="tmap_detail glyphicon glyphicon-heart">Âò&nbsp;</span>
+          </td>
+         </tr>
+        </table>
+       </td>
+       <td width="13%">
+        <center>
+         <!-- <span class="glyphicon glyphicon-chevron-right"></span> -->
+         <table style="float: left; margin: 3%;">
+          <tr>
+           <td class="tmap_res"><span>ÀÌµ¿ °Å¸® </span><span>100m</span>
+           </td>
+           <td rowspan="2"><span
+            class="glyphicon glyphicon-chevron-right"></span></td>
+          </tr>
+          <tr>
 
-					// MakrerImage ê°ì²´ë¥¼ ìƒì„±í•˜ì—¬ ë°˜í™˜í•˜ëŠ” í•¨ìˆ˜ì…ë‹ˆë‹¤
-					function createMarkerImage(markerSize, offset, spriteOrigin) {
-						var markerImage = new daum.maps.MarkerImage(
-								SPRITE_MARKER_URL, // ìŠ¤í”„ë¼ì´íŠ¸ ë§ˆì»¤ ì´ë¯¸ì§€ URL
-								markerSize, // ë§ˆì»¤ì˜ í¬ê¸°
-								{
-									offset : offset, // ë§ˆì»¤ ì´ë¯¸ì§€ì—ì„œì˜ ê¸°ì¤€ ì¢Œí‘œ
-									spriteOrigin : spriteOrigin, // ìŠ¤íŠ¸ë¼ì´í”„ ì´ë¯¸ì§€ ì¤‘ ì‚¬ìš©í•  ì˜ì—­ì˜ ì¢Œìƒë‹¨ ì¢Œí‘œ
-									spriteSize : spriteImageSize
-								// ìŠ¤í”„ë¼ì´íŠ¸ ì´ë¯¸ì§€ì˜ í¬ê¸°
-								});
+           <td class="tmap_res"><span>ÀÌµ¿ ½Ã°£ </span><span>3ºĞ</span>
+           </td>
 
-						return markerImage;
-					}
-				</script>
-			</div>
+          </tr>
+         </table>
+        </center>
+       </td>
+       <!--2¹ø  -->
+       <td width="24%">
+        <table class="tmap_wrap">
+         <tr>
+          <td style="padding: 3%;">
+           <h4 style="float: left;">
+            <scan class="glyphicon glyphicon-home"
+             style="margin-right:10px;">°¡°ÔÀÌ¸§
+           </h4>
+          </td>
+         </tr>
+         <tr>
+          <td><span class="tmap_detail">&nbsp;ÀÎÃµ½Ã ¿¬¼ö±¸ ¿¬¼ö2µ¿</span></td>
+         </tr>
+         <tr>
+          <td class="text-right"><span
+           class="tmap_detail glyphicon glyphicon-eye-open">Á¶È¸¼ö</span> <span
+           class="tmap_detail glyphicon glyphicon-heart">Âò&nbsp;</span>
+          </td>
+         </tr>
+        </table>
+       </td>
+       <td width="13%">
+        <center>
 
-			<center>
-				<div class="tmap_2">
-					<center>
-						<table class="tmap_table">
-							<tr>
-								<td width=47% class="tmap_td"></td>
-								<td width=6% rowspan="2" class="text-center"><h4>
-										<b>ê±°ë¦¬ê³„ì‚°</b>
-									</h4></td>
-								<td width=47% class="tmap_td"></td>
-							</tr>
-							<tr>
-								<td class="tmap_td_b"></td>
-								<td class="tmap_td_b"></td>
-							</tr>
-						</table>
-					</center>
-					<table width="95%" height="100px">
-						<tr>
-							<!--1ë²ˆ  -->
-							<td width="24%">
-								<table class="tmap_wrap">
-									<tr>
-										<td style="padding: 3%;">
-											<h4 style="float: left;">
-												<scan class="glyphicon glyphicon-home"
-													style="margin-right:10px;">ê°€ê²Œì´ë¦„ 
-											</h4>
-										</td>
-									</tr>
-									<tr>
-										<td><span class="tmap_detail">&nbsp;ì¸ì²œì‹œ ì—°ìˆ˜êµ¬ ì—°ìˆ˜2ë™</span></td>
-									</tr>
-									<tr>
-										<td class="text-right"><span
-											class="tmap_detail glyphicon glyphicon-eye-open">ì¡°íšŒìˆ˜</span> <span
-											class="tmap_detail glyphicon glyphicon-heart">ì°œ&nbsp;</span>
-										</td>
-									</tr>
-								</table>
-							</td>
-							<td width="13%">
-								<center>
-									<!-- <span class="glyphicon glyphicon-chevron-right"></span> -->
-									<table style="float: left; margin: 3%;">
-										<tr>
-											<td class="tmap_res"><span>ì´ë™ ê±°ë¦¬ </span><span>100m</span>
-											</td>
-											<td rowspan="2"><span
-												class="glyphicon glyphicon-chevron-right"></span></td>
-										</tr>
-										<tr>
+         <table style="float: left; margin: 3%;">
+          <tr>
+           <td class="tmap_res"><span>ÀÌµ¿ °Å¸® </span><span>100m</span>
+           </td>
+           <td rowspan="2"><span
+            class="glyphicon glyphicon-chevron-right"></span>
+           <!-- ÀÌµ¿°Å¸® È­»ìÇ¥ --></td>
+          </tr>
+          <tr>
+           <td class="tmap_res"><span>ÀÌµ¿ ½Ã°£ </span><span>3ºĞ</span>
+           </td>
+          </tr>
+         </table>
+        </center>
+       </td>
+       <!-- 3¹ø -->
+       <td width="24%">
+        <table class="tmap_wrap">
+         <tr>
+          <td style="padding: 3%;">
+           <h4 style="float: left;">
+            <scan class="glyphicon glyphicon-home"
+             style="margin-right:10px;">°¡°ÔÀÌ¸§
+           </h4>
+          </td>
+         </tr>
+         <tr>
+          <td><span class="tmap_detail">&nbsp;ÀÎÃµ½Ã ¿¬¼ö±¸ ¿¬¼ö2µ¿</span></td>
+         </tr>
+         <tr>
+          <td class="text-right"><span
+           class="tmap_detail glyphicon glyphicon-eye-open">Á¶È¸¼ö</span> <span
+           class="tmap_detail glyphicon glyphicon-heart">Âò&nbsp;</span>
+          </td>
+         </tr>
+        </table>
+       </td>
+      </tr>
+     </table>
+     <!--ÄÚ½º Âò ÇÏ±â ¹öÆ°  -->
+     <table>
+      <tr>
+       <td class="btn-like text-center">
+        <button type="button" class="btn like" data-toggle="modal"
+         data-target="#myModal" aria-hidden="true"
+         style="outline: none;">
+         <b>ÄÚ½º ÂòÇÏ±â</b>
+        </button>
+       </td>
+      </tr>
+     </table>
+   </center>
+  </div>
 
-											<td class="tmap_res"><span>ì´ë™ ì‹œê°„ </span><span>3ë¶„</span>
-											</td>
+ </div>
+ <div style="width: 63%; margin: 0px auto;">
+  <hr>
+ </div>
+ </div>
 
-										</tr>
-									</table>
-								</center>
-							</td>
-							<!--2ë²ˆ  -->
-							<td width="24%">
-								<table class="tmap_wrap">
-									<tr>
-										<td style="padding: 3%;">
-											<h4 style="float: left;">
-												<scan class="glyphicon glyphicon-home"
-													style="margin-right:10px;">ê°€ê²Œì´ë¦„ 
-											</h4>
-										</td>
-									</tr>
-									<tr>
-										<td><span class="tmap_detail">&nbsp;ì¸ì²œì‹œ ì—°ìˆ˜êµ¬ ì—°ìˆ˜2ë™</span></td>
-									</tr>
-									<tr>
-										<td class="text-right"><span
-											class="tmap_detail glyphicon glyphicon-eye-open">ì¡°íšŒìˆ˜</span> <span
-											class="tmap_detail glyphicon glyphicon-heart">ì°œ&nbsp;</span>
-										</td>
-									</tr>
-								</table>
-							</td>
-							<td width="13%">
-								<center>
+ <!-- Modal -->
+ <div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+  aria-labelledby="myModalLabel" aria-hidden="true">
+  <center>
+   <div class="modal-dialog">
+    <div class="modal-content" style="width: 400px;">
+     <div class="modal-header">
+      <!-- ¸ğ´Ş ´İ±â -->
+      <button type="button" class="close" data-dismiss="modal"
+       aria-label="Close">
+       <span aria-hidden="true">&times;</span>
+      </button>
+     </div>
+     <!-- ¸ğ´Ş ³»¿ë -->
+     <div class="modal-body">
+      <center>
+       <img src="img_1/date.jpg" width="300px" height="300px"> <br
+        clear=left>
+       <h5 style="margin-top: 2%;">
+        <b>¼±ÅÃÇÏ½Å µ¥ÀÌÆ® ÄÚ½º¸¦ Âò ÇÏ½Ã°Ú½À´Ï±î?</b>
+       </h5>
+      </center>
+     </div>
+     <div class="modal-footer">
+      <center>
+       <button type="button" class="btn btn-default"
+        style="background-color: white; outline: none;">
+        <b>ÄÚ½º Âò</b>
+       </button>
+       <button type="button" class="btn btn-default"
+        style="background-color: white; outline: none;"
+        data-dismiss="modal">
+        <b>Ãë¼Ò</b>
+       </button>
+      </center>
+     </div>
+    </div>
+   </div>
+  </center>
+ </div>
 
-									<table style="float: left; margin: 3%;">
-										<tr>
-											<td class="tmap_res"><span>ì´ë™ ê±°ë¦¬ </span><span>100m</span>
-											</td>
-											<td rowspan="2"><span
-												class="glyphicon glyphicon-chevron-right"></span> <!-- ì´ë™ê±°ë¦¬ í™”ì‚´í‘œ --></td>
-										</tr>
-										<tr>
-											<td class="tmap_res"><span>ì´ë™ ì‹œê°„ </span><span>3ë¶„</span>
-											</td>
-										</tr>
-									</table>
-								</center>
-							</td>
-							<!-- 3ë²ˆ -->
-							<td width="24%">
-								<table class="tmap_wrap">
-									<tr>
-										<td style="padding: 3%;">
-											<h4 style="float: left;">
-												<scan class="glyphicon glyphicon-home"
-													style="margin-right:10px;">ê°€ê²Œì´ë¦„ 
-											</h4>
-										</td>
-									</tr>
-									<tr>
-										<td><span class="tmap_detail">&nbsp;ì¸ì²œì‹œ ì—°ìˆ˜êµ¬ ì—°ìˆ˜2ë™</span></td>
-									</tr>
-									<tr>
-										<td class="text-right"><span
-											class="tmap_detail glyphicon glyphicon-eye-open">ì¡°íšŒìˆ˜</span> <span
-											class="tmap_detail glyphicon glyphicon-heart">ì°œ&nbsp;</span>
-										</td>
-									</tr>
-								</table>
-							</td>
-						</tr>
-					</table>
-					<!--ì½”ìŠ¤ ì°œ í•˜ê¸° ë²„íŠ¼  -->
-					<table>
-						<tr>
-							<td class="btn-like text-center">
-								<button type="button" class="btn like" data-toggle="modal"
-									data-target="#myModal" aria-hidden="true"
-									style="outline: none;">
-									<b>ì½”ìŠ¤ ì°œí•˜ê¸°</b>
-								</button>
-							</td>
-						</tr>
-					</table>
-			</center>
-		</div>
+ <div class="container rc">
+  <div class="rc_box">
+   <!--¸ÀÁı ¸®½ºÆ®  -->
+   <div class="row">
+    <div style="width: 100%; height: 25px;">
+     <h4 style="margin: 0px; float: left">
+      <b>¢º ÃßÃµ</b><b style="color: #DF0101;">¸ÀÁı</b>
+     </h4>
+    </div>
+    <c:forEach begin="1" end="3">
+     <div class="col-md-4 text-center">
+      <div class="box">
+       <div class="box-content">
+        <!--¸ÀÁı ÀÌ¸§  -->
+        <a href="#" style="color: black; text-decoration: none;">
+         <h4>
+          <span class="glyphicon glyphicon-cutlery"
+           style="float: left; margin: 2%"></span>
+         </h4>
+         <h4 class="tag-title text-left">°¡°ÔÀÌ¸§</h4>
+         <br>
+        </a>
+        <hr style="margin: 2%;">
+        <!-- ¸ÀÁı ÀÌ¹ÌÁö -->
+        <div class=rc_img>
+         <img src="img_1/food3.jpg" style="width: 100%; height: 250px;">
+         <br>
+         <hr style="margin: 3px;">
+        </div>
+        <!-- ¸ÀÁıÁ¤º¸ -->
+        <div class="rc_detail">
+         <table width=100%>
+          <tr>
+           <td class="text-left">
+            <h5>
+             <span class="glyphicon glyphicon-map-marker"><b>
+               Áö¿ª±¸</b></span>
+            </h5>
+           </td>
+          </tr>
+          <tr>
+           <td class="text-left">
+            <h5>
+             <span class="glyphicon glyphicon-usd"><b> °¡°İ</b></span>
+            </h5>
+           </td>
+          </tr>
+          <tr>
+           <td class="text-left">
+            <h5>
+             <span class="glyphicon glyphicon-time"><b> ÆòÀÏ
+               11:00~20:00</b></span>
+            </h5>
+           </td>
+          </tr>
+          <tr>
+           <td class="text-right">
+            <h5>
+             <span class="glyphicon glyphicon-eye-open"
+              style="margin: 2px;">88</span>
+             <!--Á¶È¸¼ö  -->
+             <span class="glyphicon glyphicon-heart"
+              style="margin: 2px;">4</span>
+             <!--Âò ¼ö   -->
+            </h5>
+           </td>
+          </tr>
+         </table>
+        </div>
+       </div>
+      </div>
+     </div>
+    </c:forEach>
+   </div>
 
-	</div>
-	<div style="width: 63%; margin: 0px auto;">
-		<hr>
-	</div>
-	</div>
-
-	<!-- Modal -->
-	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
-		aria-labelledby="myModalLabel" aria-hidden="true">
-		<center>
-			<div class="modal-dialog">
-				<div class="modal-content" style="width: 400px;">
-					<div class="modal-header">
-						<!-- ëª¨ë‹¬ ë‹«ê¸° -->
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<!-- ëª¨ë‹¬ ë‚´ìš© -->
-					<div class="modal-body">
-						<center>
-							<img src="img_1/date.jpg" width="300px" height="300px"> <br
-								clear=left>
-							<h5 style="margin-top: 2%;">
-								<b>ì„ íƒí•˜ì‹  ë°ì´íŠ¸ ì½”ìŠ¤ë¥¼ ì°œ í•˜ì‹œê² ìŠµë‹ˆê¹Œ?</b>
-							</h5>
-						</center>
-					</div>
-					<div class="modal-footer">
-						<center>
-							<button type="button" class="btn btn-default"
-								style="background-color: white; outline: none;">
-								<b>ì½”ìŠ¤ ì°œ</b>
-							</button>
-							<button type="button" class="btn btn-default"
-								style="background-color: white; outline: none;"
-								data-dismiss="modal">
-								<b>ì·¨ì†Œ</b>
-							</button>
-						</center>
-					</div>
-				</div>
-			</div>
-		</center>
-	</div>
-
-	<div class="container rc">
-		<div class="rc_box">
-			<!--ë§›ì§‘ ë¦¬ìŠ¤íŠ¸  -->
-			<div class="row">
-				<div style="width: 100%; height: 25px;">
-					<h4 style="margin: 0px; float: left">
-						<b>â–¶ ì¶”ì²œ</b><b style="color: #DF0101;">ë§›ì§‘</b>
-					</h4>
-				</div>
-				<c:forEach begin="1" end="3">
-					<div class="col-md-4 text-center">
-						<div class="box">
-							<div class="box-content">
-								<!--ë§›ì§‘ ì´ë¦„  -->
-								<a href="#" style="color: black; text-decoration: none;">
-									<h4>
-										<span class="glyphicon glyphicon-cutlery"
-											style="float: left; margin: 2%"></span>
-									</h4>
-									<h4 class="tag-title text-left">ê°€ê²Œì´ë¦„</h4> <br>
-								</a>
-								<hr style="margin: 2%;">
-								<!-- ë§›ì§‘ ì´ë¯¸ì§€ -->
-								<div class=rc_img>
-									<img src="img_1/food3.jpg" style="width: 100%; height: 250px;">
-									<br>
-									<hr style="margin: 3px;">
-								</div>
-								<!-- ë§›ì§‘ì •ë³´ -->
-								<div class="rc_detail">
-									<table width=100%>
-										<tr>
-											<td class="text-left">
-												<h5>
-													<span class="glyphicon glyphicon-map-marker"><b>
-															ì§€ì—­êµ¬</b></span>
-												</h5>
-											</td>
-										</tr>
-										<tr>
-											<td class="text-left">
-												<h5>
-													<span class="glyphicon glyphicon-usd"><b> ê°€ê²©</b></span>
-												</h5>
-											</td>
-										</tr>
-										<tr>
-											<td class="text-left">
-												<h5>
-													<span class="glyphicon glyphicon-time"><b> í‰ì¼
-															11:00~20:00</b></span>
-												</h5>
-											</td>
-										</tr>
-										<tr>
-											<td class="text-right">
-												<h5>
-													<span class="glyphicon glyphicon-eye-open"
-														style="margin: 2px;">88</span>
-													<!--ì¡°íšŒìˆ˜  -->
-													<span class="glyphicon glyphicon-heart"
-														style="margin: 2px;">4</span>
-													<!--ì°œ ìˆ˜   -->
-												</h5>
-											</td>
-										</tr>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
-				</c:forEach>
-			</div>
+ 
 
 
+   <!--³î°Å¸® ¸®½ºÆ®  -->
+   <div class="row">
+    <div style="width: 100%; height: 25px;">
+     <h4 style="margin: 0px; float: left">
+      <b>¢º ÃßÃµ</b><b style="color: #DF0101;">³î°Å¸®</b>
+     </h4>
+    </div>
+    <c:forEach begin="1" end="3">
+     <div class="col-md-4 text-center">
+      <div class="box">
+       <div class="box-content">
+        <a href="#" style="color: black; text-decoration: none;">
+         <h4>
+          <span class="glyphicon glyphicon-map-marker"
+           style="float: left; margin: 2%"></span>
+         </h4>
+         <h4 class="tag-title text-left">°¡°ÔÀÌ¸§</h4>
+         <br>
+        </a>
+        <hr style="margin: 2%;">
+        <img src="img_1/play1.jpg" style="width: 100%; height: 250px;">
+        <br>
+        <hr style="margin: 3px;">
+        <!-- °¡°ÔÁ¤º¸ -->
+        <div class="rc_detail">
+         <table class="" width=100%>
+          <tr>
+           <td class="text-left">
+            <h5>
+             <span class="glyphicon glyphicon-map-marker"><b>
+               Áö¿ª±¸</b></span>
+            </h5>
+           </td>
+          </tr>
+          <tr>
+           <td class="text-left">
+            <h5>
+             <span class="glyphicon glyphicon-usd"><b> °¡°İ</b></span>
+            </h5>
+           </td>
+          </tr>
+          <tr>
+           <td class="text-left">
+            <h5>
+             <span class="glyphicon glyphicon-time"><b> ÆòÀÏ
+               11:00~20:00</b></span>
+            </h5>
+           </td>
+          </tr>
+          <tr>
+           <td class="text-right">
+            <h5>
+             <span class="glyphicon glyphicon-eye-open"
+              style="margin: 2px;">88</span>
+             <!--Á¶È¸¼ö  -->
+             <span class="glyphicon glyphicon-heart"
+              style="margin: 2px;">4</span>
+             <!--Âò ¼ö   -->
+            </h5>
+           </td>
+          </tr>
+         </table>
+        </div>
+       </div>
+      </div>
+     </div>
+    </c:forEach>
+   </div>
 
-
-			<!--ë†€ê±°ë¦¬ ë¦¬ìŠ¤íŠ¸  -->
-			<div class="row">
-				<div style="width: 100%; height: 25px;">
-					<h4 style="margin: 0px; float: left">
-						<b>â–¶ ì¶”ì²œ</b><b style="color: #DF0101;">ë†€ê±°ë¦¬</b>
-					</h4>
-				</div>
-				<c:forEach begin="1" end="3">
-					<div class="col-md-4 text-center">
-						<div class="box">
-							<div class="box-content">
-								<a href="#" style="color: black; text-decoration: none;">
-									<h4>
-										<span class="glyphicon glyphicon-map-marker"
-											style="float: left; margin: 2%"></span>
-									</h4>
-									<h4 class="tag-title text-left">ê°€ê²Œì´ë¦„</h4> <br>
-								</a>
-								<hr style="margin: 2%;">
-								<img src="img_1/play1.jpg" style="width: 100%; height: 250px;">
-								<br>
-								<hr style="margin: 3px;">
-								<!-- ê°€ê²Œì •ë³´ -->
-								<div class="rc_detail">
-									<table class="" width=100%>
-										<tr>
-											<td class="text-left">
-												<h5>
-													<span class="glyphicon glyphicon-map-marker"><b>
-															ì§€ì—­êµ¬</b></span>
-												</h5>
-											</td>
-										</tr>
-										<tr>
-											<td class="text-left">
-												<h5>
-													<span class="glyphicon glyphicon-usd"><b> ê°€ê²©</b></span>
-												</h5>
-											</td>
-										</tr>
-										<tr>
-											<td class="text-left">
-												<h5>
-													<span class="glyphicon glyphicon-time"><b> í‰ì¼
-															11:00~20:00</b></span>
-												</h5>
-											</td>
-										</tr>
-										<tr>
-											<td class="text-right">
-												<h5>
-													<span class="glyphicon glyphicon-eye-open"
-														style="margin: 2px;">88</span>
-													<!--ì¡°íšŒìˆ˜  -->
-													<span class="glyphicon glyphicon-heart"
-														style="margin: 2px;">4</span>
-													<!--ì°œ ìˆ˜   -->
-												</h5>
-											</td>
-										</tr>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
-				</c:forEach>
-			</div>
-
-			<!--  -->
-			<!-- ì¹´í˜ ë¦¬ìŠ¤íŠ¸ -->
-			<div class="row">
-				<div style="width: 100%; height: 25px;">
-					<h4 style="margin: 0px; float: left">
-						<b>â–¶ ì¶”ì²œ</b><b style="color: #DF0101;">ì¹´í˜</b>
-					</h4>
-				</div>
-				<c:forEach begin="1" end="3">
-					<div class="col-md-4 text-center">
-						<div class="box">
-							<div class="box-content">
-								<a href="#" style="color: black; text-decoration: none;">
-									<h4>
-										<span class="glyphicon glyphicon-glass"
-											style="float: left; margin: 2%"></span>
-									</h4>
-									<h4 class="tag-title text-left">ê°€ê²Œì´ë¦„</h4> <br>
-								</a>
-								<hr style="margin: 2%;">
-								<img src="img_1/cafe1.png" style="width: 100%; height: 250px;">
-								<br>
-								<hr style="margin: 3px;">
-								<!-- ê°€ê²Œì •ë³´ -->
-								<div class="rc_detail">
-									<table width=100%>
-										<tr>
-											<td class="text-left">
-												<h5>
-													<span class="glyphicon glyphicon-map-marker"><b>
-															ì§€ì—­êµ¬</b></span>
-												</h5>
-											</td>
-										</tr>
-										<tr>
-											<td class="text-left">
-												<h5>
-													<span class="glyphicon glyphicon-usd"><b> ê°€ê²©</b></span>
-												</h5>
-											</td>
-										</tr>
-										<tr>
-											<td class="text-left">
-												<h5>
-													<span class="glyphicon glyphicon-time"><b> í‰ì¼
-															11:00~20:00</b></span>
-												</h5>
-											</td>
-										</tr>
-										<tr>
-											<td class="text-right">
-												<h5>
-													<span class="glyphicon glyphicon-eye-open"
-														style="margin: 2px;">88</span>
-													<!--ì¡°íšŒìˆ˜  -->
-													<span class="glyphicon glyphicon-heart"
-														style="margin: 2px;">4</span>
-													<!--ì°œ ìˆ˜   -->
-												</h5>
-											</td>
-										</tr>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
-				</c:forEach>
-			</div>
-		</div>
-	</div>
+   <!--  -->
+   <!-- Ä«Æä ¸®½ºÆ® -->
+   <div class="row">
+    <div style="width: 100%; height: 25px;">
+     <h4 style="margin: 0px; float: left">
+      <b>¢º ÃßÃµ</b><b style="color: #DF0101;">Ä«Æä</b>
+     </h4>
+    </div>
+    <c:forEach begin="1" end="3">
+     <div class="col-md-4 text-center">
+      <div class="box">
+       <div class="box-content">
+        <a href="#" style="color: black; text-decoration: none;">
+         <h4>
+          <span class="glyphicon glyphicon-glass"
+           style="float: left; margin: 2%"></span>
+         </h4>
+         <h4 class="tag-title text-left">°¡°ÔÀÌ¸§</h4>
+         <br>
+        </a>
+        <hr style="margin: 2%;">
+        <img src="img_1/cafe1.png" style="width: 100%; height: 250px;">
+        <br>
+        <hr style="margin: 3px;">
+        <!-- °¡°ÔÁ¤º¸ -->
+        <div class="rc_detail">
+         <table width=100%>
+          <tr>
+           <td class="text-left">
+            <h5>
+             <span class="glyphicon glyphicon-map-marker"><b>
+               Áö¿ª±¸</b></span>
+            </h5>
+           </td>
+          </tr>
+          <tr>
+           <td class="text-left">
+            <h5>
+             <span class="glyphicon glyphicon-usd"><b> °¡°İ</b></span>
+            </h5>
+           </td>
+          </tr>
+          <tr>
+           <td class="text-left">
+            <h5>
+             <span class="glyphicon glyphicon-time"><b> ÆòÀÏ
+               11:00~20:00</b></span>
+            </h5>
+           </td>
+          </tr>
+          <tr>
+           <td class="text-right">
+            <h5>
+             <span class="glyphicon glyphicon-eye-open"
+              style="margin: 2px;">88</span>
+             <!--Á¶È¸¼ö  -->
+             <span class="glyphicon glyphicon-heart"
+              style="margin: 2px;">4</span>
+             <!--Âò ¼ö   -->
+            </h5>
+           </td>
+          </tr>
+         </table>
+        </div>
+       </div>
+      </div>
+     </div>
+    </c:forEach>
+   </div>
+  </div>
+ </div>
 
 </body>
-</html>
+</html> 

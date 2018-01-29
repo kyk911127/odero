@@ -74,7 +74,7 @@
 						<div class="course_modal" style="overflow: scroll">
 							<div class="modal_map_wrap">
 								<div id="modal_map${s.index }" style="width: 100%; height: 350px;"></div>
-								<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f71a358ab1852f4a6dd2eee5070f7a02&libraries=services,clusterer,drawing"></script>
+								<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=f71a358ab1852f4a6dd2eee5070f7a02&libraries=services"></script>
 								<script>
 									var mapContainer = document.getElementById('modal_map${s.index}'), // 지도를 표시할 div 
 									mapOption = {
@@ -82,8 +82,10 @@
 										level : 4
 									// 지도의 확대 레벨
 									};
-									$("#courseModal${s.index}").on('shown.bs.modal',function() {
-										alter("ggg");
+									
+									$(".modal").on('shown.bs.modal',function() {
+										var modal = $(this).attr("id");
+										alert(modal);
 										// 지도를 표시할 div와  지도 옵션으로  지도를 생성합니다
 										var map = new daum.maps.Map(mapContainer,mapOption);
 										// 주소-좌표 변환 객체를 생성합니다
@@ -91,8 +93,7 @@
 
 										//마커 이미지
 										var imageSrc = 'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png', // 마커이미지의 주소입니다    
-										imageSize = new daum.maps.Size(
-												64, 69), // 마커이미지의 크기입니다
+										imageSize = new daum.maps.Size(64, 69), // 마커이미지의 크기입니다
 										imageOption = {
 											offset : new daum.maps.Point(27, 69)
 										}; // 마커이미지의 옵션입니다. 마커의 좌표와 일치시킬 이미지 안에서의 좌표를 설정합니다.

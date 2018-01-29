@@ -18,16 +18,25 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
+<style>
+.title_wrap {
 
+	margin-bottom: 25px;
+}
+
+</style>
+	
 </head>
 <body class="body">
 	<div class="container">
+		<div class="title_wrap"> 코스 자세히 보기
+		</div>
 		<div class="tab_wrap">
 
 
-			<a href="#"><span class="tab" id="delBtn"
-				onclick="delete_confirm()">찜 삭제</span></a> | <a href="mypage_list.do"><span
-				class="tab">목록</span></a>
+			|<a href="mypage_list.do"><span class="tab">목록</span></a>|
+			<a href="#"><span class="seltab" id="delBtn"
+				onclick="delete_confirm()">찜 삭제</span></a>
 
 		</div>
 

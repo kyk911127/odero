@@ -19,6 +19,10 @@
 </script> 
 </head>
 <style>
+.title_wrap {
+	padding:30px;
+	margin-bottom: 30px;
+}
 
 </style>
 <body>
@@ -30,8 +34,10 @@
 	
 	
 	<div class="container">
+	
+		
 		<div class="wrap main">
-
+	<div class="title_wrap">찜 리스트</div>
 			<!-- //gnb -->
 			<div id="_root" style="overflow: hidden; width: 100%; height: 100%;">
 				<div id="_container" style="position: relative;">
@@ -45,13 +51,12 @@
 		
 		
 	<div class="tab_wrap">
-	<a href="mypage.do"><span class="tab">마이페이지</span></a>
+	|<a href="mypage.do"><span class="tab">마이페이지</span></a>|
 	<!-- <a href="javascript:history.back()"><span class="tab">뒤로</span> -->
+
 	&nbsp;
-	|
-	&nbsp;
-	<a href="mypage.do"><span class="tab">코스 찜</span></a>
-	<a href="mypage.do"><span class="tab">가게 찜</span></a>
+	<a href="mypage.do"><span class="seltab">코스 찜</span></a>
+	<a href="mypage.do"><span class="seltab">가게 찜</span></a>
 	</div>
 							<!-- 	<div class="recomm_wrap">
 									<h2>추천 키워드</h2>
