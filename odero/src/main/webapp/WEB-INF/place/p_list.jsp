@@ -11,8 +11,13 @@
 <!-- 이미지슬라이드  -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> <!-- 충돌 -->
-
-
+ 
+<style>
+input[type=radio]
+{
+	display: none;
+}
+</style>
 <script type="text/javascript">
 $(function(){
    
@@ -20,29 +25,27 @@ $(function(){
    $('.gangnam_d').hide();
    $('.gangbuk_d').hide();
    
-   $('.btn-navy').click(function(){
+  
+   
+   $('input:radio').click(function(){
       
-      var S=$(this).attr("value"); 
+      var S=$(this).val();    //value
+      var N=$(this).attr('name'); //name : 공통값
+      var A = $(this).attr('id');  //id: 고유값
       
-      if(S=="이색/체험" || S=="맛집/카페")
-      {
-         if(S=="이색/체험")
-         {
-            $('#food').css("background", "rgb(203, 203, 203)");
-            $(this).css("background", "rgb(3, 32, 95)");
-            $(this).css("color","white");
-            
-         }
-         else if(S=="맛집/카페")
-         {
-            $('#play').css("background", "rgb(203, 203, 203)");
-            $(this).css("background", "rgb(3, 32, 95)");
-            $(this).css("color","white");
-            
-         }
-      }
+      var sn=$("input[type=radio][name="+N+"]:checked").val();   //선택된 라디오의 value값
+      //alert(sn);
+    
+    
       
-      else if(S=="강남" || S=="강북")
+      
+  
+       //var checkedValue = $("input[type=radio][name=ca]:checked").attr('id');
+	  
+	  
+       
+      
+   if(S=="강남" || S=="강북")
       {
          if(S=="강남")
          {
@@ -64,42 +67,37 @@ $(function(){
             $('.gangbuk_d').show();
             
          }
-      }
-      else
-      {
-        var gn_size=$(".gangnam_d >.tp_ul > li").length;
-        var gb_size=$(".gangbuk_d>.tp_ul > li").length;
-        var str='';
-        
-        for(var i=0; i<gn_size; i++)
-        {
-           str=$("input[id=gn]:eq("+i+")").val();
-           if(S==str)
-           {
-              $("input[id=gn]").css("background", "rgb(203, 203, 203)");
-              $(this).css("background", "rgb(3, 32, 95)");
-              $(this).css("color","white");
-             
-           }
-        }
-         for(var i=0; i<gb_size; i++)
-         {
-           str=$("input[id=gb]:eq("+i+")").val();
-           if(S==str)
-            {
-              $("input[id=gb]").css("background", "rgb(203, 203, 203)");
-              $(this).css("background", "rgb(3, 32, 95)");
-              $(this).css("color","white");
-            }  
-         } 
-      }
+      } 
+      
    });
    
-   
+  
    
    $('#Sbtn').click(function(){
       $('.btn-navy').css("background", "rgb(203, 203, 203)");
+      var arr_sn=[];
+      var sn_1=$("input[type=radio][name=ca]:checked").val();
+      arr_sn.push(sn_1);
+      var sn_2=$("input[type=radio][name=loc]:checked").val();
+      
+      
+       
+      if(sn_2=="강남")
+    	  {
+    	  var sn_3=$("input[type=radio][name=gn]:checked").val();    	 
+    	  }
+      
+      else if(sn_2=="강북")
+    	  {
+    	  var sn_3=$("input[type=radio][name=gb]:checked").val();
+    	  }
+   
+     arr_sn.push(sn_2);
+     arr_sn.push(sn_3); 
+     alert("최종: "+arr_sn);
+      
    });
+  
    
    
    $('.jjimbtn').click(function(){
@@ -160,9 +158,16 @@ $(function(){
        <p>
           <label>&nbsp;&nbsp;카테고리</label>
        </p>
+       	 <!-- 1. 카테고리 라디오 그룹 -->
          <ul class="tp_ul">
-            <li class="tp_li play_li"><input type="button" class="btn btn-lg btn-navy" id="play" value="이색/체험"></li>
-            <li class="tp_li"><input type="button" class="btn btn-lg btn-navy" id="food" value="맛집/카페"></li>
+            <li class="tp_li play_li">
+            <input type="radio" name="ca" id="play" value="이색/체험">
+            <label class="btn btn-lg btn-navy" for="play">이색/체험</label>
+            </li>
+            <li class="tp_li">
+            <input type="radio" name="ca" id="food" value="맛집/카페">
+            <label class="btn btn-lg btn-navy" for="food">맛집/카페</label>
+            </li>
             
          </ul>
       </div>
@@ -171,47 +176,81 @@ $(function(){
        <p>
           <label>&nbsp;&nbsp;지역</label>
        </p>
+        <!-- 2. 지역 그룹 -->
          <ul class="tp_ul">
-            <li class="tp_li gangnam_li"><input type="button" class="btn btn-lg btn-navy" id="gangnam" value="강남"></li>
-            <li class="tp_li"><input type="button" class="btn btn-lg btn-navy" id="gangbuk" value="강북"></li>
+            <li class="tp_li gangnam_li">
+            <input type="radio" name="loc" id="gangnam" value="강남">
+            <label class="btn btn-lg btn-navy" for="gangnam">강남</label>
+            </li>
+            <li class="tp_li">
+            <input type="radio" name="loc" id="gangbuk" value="강북">
+            <label class="btn btn-lg btn-navy" for="gangbuk"  >강북</label>
+            </li>
          </ul>
+         
       </div>
       <div class="loc_pick">
          <div class="text-center tp_loc gangnam_d">
+         <!-- 3. 강남지역 그룹 -->
             <ul class="tp_ul">
-               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gn" value="강서구"></li>
-                  <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gn" value="구로구"></li>
-                  <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gn" value="양천구"></li>
-                  <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gn" value="금천구"></li>
-                  <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gn" value="영등포구"></li>
-                  <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gn" value="관악구"></li>
+                  <li class="tp_li"><input type="radio" name="gn" id="gn_1" value="강서구">
+                  <label class="btn btn-navy tp_loc_li" for="gn_1">강서구</label></li>
+                  <li class="tp_li"><input type="radio" name="gn" id="gn_2" value="구로구">
+                  <label class="btn btn-navy tp_loc_li" for="gn_2">구로구</label></li>
+                  <li class="tp_li"><input type="radio" name="gn" id="gn_3" value="양천구">
+                  <label class="btn btn-navy tp_loc_li" for="gn_3">양천구</label></li>
+                  <li class="tp_li"><input type="radio" name="gn" id="gn_4" value="금천구">
+                  <label class="btn btn-navy tp_loc_li" for="gn_4">금천구</label></li>
+                  <li class="tp_li"><input type="radio" name="gn" id="gn_5" value="영등포구">
+                  <label class="btn btn-navy tp_loc_li" for="gn_5">영등포구</label></li>
+                  <li class="tp_li"><input type="radio" name="gn" id="gn_6" value="관악구">
+                  <label class="btn btn-navy tp_loc_li" for="gn_6">관악구</label></li>
                   <br>
-                  <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gn" value="동작구"></li>
-                  <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gn" value="서초구"></li>
-                  <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gn" value="강남구"></li>
-                  <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gn" value="송파구"></li>
-                  <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gn" value="강동구"></li>
-               
+                  <li class="tp_li"><input type="radio" name="gn" id="gn_7" value="동작구">
+                  <label class="btn btn-navy tp_loc_li" for="gn_7">동작구</label></li>
+                  <li class="tp_li"><input type="radio" name="gn" id="gn_8" value="서초구">
+                  <label class="btn btn-navy tp_loc_li" for="gn_8">서초구</label></li>
+                  <li class="tp_li"><input type="radio" name="gn" id="gn_9" value="강남구">
+                  <label class="btn btn-navy tp_loc_li" for="gn_9">강남구</label></li>
+                  <li class="tp_li"><input type="radio" name="gn" id="gn_10" value="송파구">
+                  <label class="btn btn-navy tp_loc_li" for="gn_10">송파구</label></li>
+                  <li class="tp_li"><input type="radio" name="gn" id="gn_11" value="강동구">
+                  <label class="btn btn-navy tp_loc_li" for="gn_11">강동구</label></li>
             </ul>
+            
          </div>
          <div class="text-center tp_loc gangbuk_d">
+         <!-- 4. 강북지역 그룹 -->
             <ul class="tp_ul">
-               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="마포구"></li>
-               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="서대문구"></li>
-               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="은평구"></li>
-               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="용산구"></li>
-               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="중구"></li>
-               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="종로구"></li>
-               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="성동구"></li>
+               <li class="tp_li"><input type="radio" name="gb" id="gb_1" value="마포구">
+               <label class="btn btn-navy tp_loc_li" for="gb_1">마포구</label></li>
+               <li class="tp_li"><input type="radio" name="gb" id="gb_2" value="서대문구">
+               <label class="btn btn-navy tp_loc_li" for="gb_2">서대문구</label></li>
+               <li class="tp_li"><input type="radio" name="gb" id="gb_3" value="은평구">
+               <label class="btn btn-navy tp_loc_li" for="gb_3">은평구</label></li>
+               <li class="tp_li"><input type="radio" name="gb" id="gb_4" value="용산구">
+               <label class="btn btn-navy tp_loc_li" for="gb_4">용산구</label></li>
+               <li class="tp_li"><input type="radio" name="gb" id="gb_5" value="중구">
+               <label class="btn btn-navy tp_loc_li" for="gb_5">중구</label></li>
+               <li class="tp_li"><input type="radio" name="gb" id="gb_6" value="종로구">
+               <label class="btn btn-navy tp_loc_li" for="gb_6">종로구</label></li>
+               <li class="tp_li"><input type="radio" name="gb" id="gb_7" value="성동구">
+               <label class="btn btn-navy tp_loc_li" for="gb_7">성동구</label></li>
                
-               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="동대문구"></li>
-               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="성북구"></li>
-               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="광진구"></li>
-               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="중랑구"></li>
-               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="노원구"></li>
-               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="강북구"></li>
-               <li class="tp_li"><input type="button" class="btn btn-navy tp_loc_li" id="gb" value="도봉구"></li>
-            
+               <li class="tp_li"><input type="radio" name="gb" id="gb_8" value="동대문구">
+               <label class="btn btn-navy tp_loc_li" for="gb_8">동대문구</label></li>
+               <li class="tp_li"><input type="radio" name="gb" id="gb_9" value="성북구">
+               <label class="btn btn-navy tp_loc_li" for="gb_9">성북구</label></li>
+               <li class="tp_li"><input type="radio" name="gb" id="gb_10" value="광진구">
+               <label class="btn btn-navy tp_loc_li" for="gb_10">광진구</label></li>
+               <li class="tp_li"><input type="radio" name="gb" id="gb_11" value="중랑구">
+               <label class="btn btn-navy tp_loc_li" for="gb_11">중랑구</label></li>
+               <li class="tp_li"><input type="radio" name="gb" id="gb_12" value="노원구">
+               <label class="btn btn-navy tp_loc_li" for="gb_12">노원구</label></li>
+               <li class="tp_li"><input type="radio" name="gb" id="gb_13" value="강북구">
+               <label class="btn btn-navy tp_loc_li" for="gb_13">강북구</label></li>
+               <li class="tp_li"><input type="radio" name="gb" id="gb_14" value="도봉구">
+               <label class="btn btn-navy tp_loc_li" for="gb_14">도봉구</label></li>
             </ul>
            </div>  
        </div>
