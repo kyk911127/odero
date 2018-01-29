@@ -11,7 +11,14 @@ public class MyPagePlaceVO {
 	private String p_grade;
 	private String p_time;
 	private String p_hit;
+	private MyPageJJimVO jvo;
 	
+	public MyPageJJimVO getJvo() {
+		return jvo;
+	}
+	public void setJvo(MyPageJJimVO jvo) {
+		this.jvo = jvo;
+	}
 	public int getP_no() {
 		return p_no;
 	}
