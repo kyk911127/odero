@@ -18,10 +18,10 @@ public class PlaceController {
 	public String place_detail(int p_no, Model model) {
 		
 		PlaceVO vo = dao.placeDetailData(p_no);
-		// Å°¿öµå split
+		// Å°ï¿½ï¿½ï¿½ï¿½ split
 		String str_kw = vo.getP_keyword();
 		String[] skeyword = str_kw.split(",");
-		// ÀÌ¹ÌÁö split
+		// ï¿½Ì¹ï¿½ï¿½ï¿½ split
 		String str_img = vo.getP_img();
 		String[] simg = str_img.split(",");
 		
