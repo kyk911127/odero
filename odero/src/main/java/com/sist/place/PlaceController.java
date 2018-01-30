@@ -46,6 +46,7 @@ public class PlaceController {
 		return "redirect:p_detail.do";
 	}
 	 */
+	
 	@RequestMapping("p_list.do")
 	public String placeListData(String page, Model model) {
 		
@@ -76,6 +77,17 @@ public class PlaceController {
 		model.addAttribute("first_img",simg[0]);*/
 		
 		return "place/p_list";
+	}
+	
+	@RequestMapping("s_list.do")
+	public String placeSelectData(String sn_1,String sn_3,String page, Model model){
+		
+		
+		
+		System.out.println("sn_1: "+sn_1);
+		System.out.println("sn_3: "+sn_3);
+		System.out.println("page: "+page);
+		return "place/s_list";
 	}
 	
 	
