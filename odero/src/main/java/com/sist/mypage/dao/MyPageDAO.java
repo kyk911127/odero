@@ -17,4 +17,16 @@ public class MyPageDAO {
 	{
 		return mapper.MyPageInfoData(m_id);
 	}
+	public List<MyPageCosVO> MyCosBestFood(String m_id)
+	{
+		return mapper.MyCosBestFood(m_id);
+	}
+	public List<MyPageCosVO> MyCosBestCafe (String m_id)
+	{
+		return mapper.MyCosBestCafe(m_id);
+	}
+	public List<MyPageCosVO> MyCosBestPlay (String m_id)
+	{
+		return mapper.MyCosBestPlay(m_id);
+	}
 }

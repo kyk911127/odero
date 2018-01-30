@@ -35,6 +35,49 @@ public interface MyPageMapper {
 	@Select("SELECT j.j_no, p.p_name, p.p_addr, p.p_price, p.p_keyword, p.p_img, p.p_tel, p.p_grade, p.p_time, p.p_hit "
 			+ "FROM JJIM j, PLACE p WHERE j.p_no = p.p_no and m_id=#{m_id} ORDER BY j.j_no DESC")
 	public List<MyPagePlaceVO> MyPlaceBest5 (String m_id);
+	
+	// 마이페이지 - 코스 베스트 (food)
+		@Results( value = {
+				  @Result(property = "c_no", column = "c_no", id = true),
+				  @Result(property = "pvo.p_name", column = "p_name"),
+				  @Result(property = "pvo.p_no", column = "p_no"),
+				  @Result(property = "pvo.p_addr", column = "p_addr"),
+				  @Result(property = "pvo.p_keyword", column = "p_keyword"),
+				  @Result(property = "pvo.p_img", column = "p_img"),
+				  @Result(property = "pvo.p_price", column = "p_price"),
+				  @Result(property = "pvo.p_hit", column = "p_hit")
+				})
+		@Select("SELECT c.c_no, p.p_name, p.p_no, p.p_addr, p.p_keyword, p.p_img, p.p_price, p.p_hit "
+				+ "FROM COURSE c, PLACE p WHERE c.c_food = p.p_no AND m_id=#{m_id} ORDER BY p.p_no DESC")
+		public List<MyPageCosVO> MyCosBestFood (String m_id);
+		// 마이페이지 - 코스 베스트 (cafe)
+		@Results( value = {
+				  @Result(property = "c_no", column = "c_no", id = true),
+				  @Result(property = "pvo.p_name", column = "p_name"),
+				  @Result(property = "pvo.p_no", column = "p_no"),
+				  @Result(property = "pvo.p_addr", column = "p_addr"),
+				  @Result(property = "pvo.p_keyword", column = "p_keyword"),
+				  @Result(property = "pvo.p_img", column = "p_img"),
+				  @Result(property = "pvo.p_price", column = "p_price"),
+				  @Result(property = "pvo.p_hit", column = "p_hit")
+				})
+		@Select("SELECT c.c_no, p.p_name, p.p_no, p.p_addr, p.p_keyword, p.p_img, p.p_price, p.p_hit "
+				+ "FROM COURSE c, PLACE p WHERE c.c_cafe = p.p_no AND m_id=#{m_id} ORDER BY p.p_no DESC")
+		public List<MyPageCosVO> MyCosBestCafe (String m_id);		
+		// 마이페이지 - 코스 베스트 (play)
+		@Results( value = {
+				  @Result(property = "c_no", column = "c_no", id = true),
+				  @Result(property = "pvo.p_name", column = "p_name"),
+				  @Result(property = "pvo.p_no", column = "p_no"),
+				  @Result(property = "pvo.p_addr", column = "p_addr"),
+				  @Result(property = "pvo.p_keyword", column = "p_keyword"),
+				  @Result(property = "pvo.p_img", column = "p_img"),
+				  @Result(property = "pvo.p_price", column = "p_price"),
+				  @Result(property = "pvo.p_hit", column = "p_hit")
+				})
+		@Select("SELECT c.c_no, p.p_name, p.p_no, p.p_addr, p.p_keyword, p.p_img, p.p_price, p.p_hit "
+				+ "FROM COURSE c, PLACE p WHERE c.c_play = p.p_no AND m_id=#{m_id} ORDER BY p.p_no DESC")
+		public List<MyPageCosVO> MyCosBestPlay (String m_id);		
 
 
 	// 마이페이지 - 내정보 
@@ -42,7 +85,7 @@ public interface MyPageMapper {
 			+ "FROM member "
 			+ "WHERE m_id=#{m_id}")
 	public MyPageInfoVO MyPageInfoData(String m_id);
-		
+	
 	
 	
 }

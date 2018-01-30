@@ -5,7 +5,15 @@ public class MyPageCosVO {
 	private int c_food;
 	private int c_play;
 	private int c_cafe;
+	private MyPagePlaceVO pvo;
 	private String m_id;
+	
+	public MyPagePlaceVO getPvo() {
+		return pvo;
+	}
+	public void setPvo(MyPagePlaceVO pvo) {
+		this.pvo = pvo;
+	}
 	public int getC_no() {
 		return c_no;
 	}

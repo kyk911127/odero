@@ -44,27 +44,16 @@ $(document).ready(function(){
 	});
 }); 
 
-
 </script> -->
-
-
 </head>
 <body class="body">
 	<div class="container">
-	<div class="title_wrap">마이 페이지 
-	
-		</div>
+		<div class="title_wrap">마이 페이지</div>
 		<div class="tab_wrap">
-
 			<!-- <span class="tab">내 정보</span> -->
-			
-			
-		
-			<br>
-			
-			|<a href="mypage_list.do"><span class="tab">찜 리스트</span></a>|
+			<br> |<a href="mypage_list.do"><span class="tab">찜
+					리스트</span></a>|
 		</div>
-
 
 		<%-- c:forEach var="i" begin="1" end="3"> --%>
 		<div class="row cart">
@@ -109,8 +98,8 @@ $(document).ready(function(){
 							class="btn btn-success btn-xs">더보기</button></a>
 					<hr class="soften" />
 				</h3>
-				
-			
+
+
 				<table class="table table-hover" width=600>
 					<tr>
 						<th>번호</th>
@@ -125,25 +114,25 @@ $(document).ready(function(){
 						<th width="5%">삭제</th>
 					</tr>
 
-					<c:forEach var="vo" items="${list }">
-							<c:if test="${vo.p_grade=='c'}">
-							<c:set var="grade" value="카페"/>
-							</c:if>
-							<c:if test="${vo.p_grade=='f'}">
-							<c:set var="grade" value="맛집"/>
-							</c:if>
-							<c:if test="${vo.p_grade=='p'}">
-							<c:set var="grade" value="놀거리"/>
-							</c:if>
+					<c:forEach var="je" begin="0" end="6">
+						<c:if test="${list[je].p_grade=='c'}">
+							<c:set var="grade" value="카페" />
+						</c:if>
+						<c:if test="${list[je].p_grade=='f'}">
+							<c:set var="grade" value="맛집" />
+						</c:if>
+						<c:if test="${list[je].p_grade=='p'}">
+							<c:set var="grade" value="놀거리" />
+						</c:if>
 						<tr>
-							<td>${vo.jvo.j_no }</td>
+							<td>${list[je].jvo.j_no }</td>
 							<td>${grade }</td>
-							<td>${vo.p_name }</td>
-							<td>${vo.p_addr }</td>
-							<td>${vo.p_price }</td>
-							<td>${vo.p_tel }</td>
-							<td>${vo.p_time }</td>
-							<td>${vo.p_hit }</td>
+							<td>${list[je].p_name }</td>
+							<td>${list[je].p_addr }</td>
+							<td>${list[je].p_price }</td>
+							<td>${list[je].p_tel }</td>
+							<td>${list[je].p_time }</td>
+							<td>${list[je].p_hit }</td>
 							<td width="5%"><button class="btn btn-info btn-xs">보기</button></td>
 							<td width="5%"><button class="btn btn-danger btn-xs">삭제</button></td>
 						</tr>
@@ -152,14 +141,8 @@ $(document).ready(function(){
 						<td colspan="10" class="text-right">자세한 목록은 자세히보기를 누르세요</td>
 					</tr>
 				</table>
-
 				<!--   <hr class="hr" /> -->
-
-
-
-
 			</div>
-
 
 			<br> <br>
 			<div class="table_wrap">
@@ -172,26 +155,23 @@ $(document).ready(function(){
 					<hr class="soften" />
 
 				</h3>
-
-
-
 				<table class="table table-hover" id="table_content" width=600>
 					<tr>
-						<th width="5%">번호</th>
-						<th width="30%" class="text-center">코스이름</th>
-						<th width="40%" class="text-center">코스경로</th>
-						<th width="15%">추천</th>
-						<th width="5%">자세히</th>
-						<th width="5%">삭제</th>
+						<th>번호</th>
+						<th>맛집</th>
+						<th>놀거리</th>
+						<th>카페</th>
+						<th>자세히</th>
+						<th>삭제</th>
 					</tr>
-					<c:forEach var="i" begin="1" end="5">
+					<c:forEach var="kk" begin="0" end="6">
 						<tr>
-							<td width="5%">${i}</td>
-							<td width="30%" class="text-center">$코스이름</td>
-							<td width="40%" class="text-center">$코스경로</td>
-							<td width="15%">$추천</td>
-							<td width="5%"><button class="btn btn-info btn-xs">보기</button></td>
-							<td width="5%"><button class="btn btn-danger btn-xs">삭제</button></td>
+							<td>${flist[kk].c_no }</td>
+							<td>${flist[kk].pvo.p_name }</td>
+							<td>${plist[kk].pvo.p_name}</td>
+							<td>${clist[kk].pvo.p_name}</td>
+							<td><button class="btn btn-info btn-xs">보기</button></td>
+							<td><button class="btn btn-danger btn-xs">삭제</button></td>
 						</tr>
 					</c:forEach>
 
@@ -199,9 +179,6 @@ $(document).ready(function(){
 						<td colspan="6" class="text-right">자세한 목록은 자세히보기를 누르세요</td>
 					</tr>
 				</table>
-
-
-
 
 			</div>
 		</div>
