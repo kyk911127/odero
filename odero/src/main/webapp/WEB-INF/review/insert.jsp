@@ -14,16 +14,30 @@
 	margin: 0px auto;
 	width: 100%;
 }
-#btn,#okbtn{
+#okbtn,#btn{
 	border-radius:10%;
 	border:#002060;
 	width:55px;
 	height:35px;	
+}
+#okbtn{
 	background-color:#002060; 
-	color:#DEEBF7;
+	color:white
+}
+#btn{
+	background-color:#F3ABBA; 
+	color:white;
 }
 #file{
 	font-size: 13px;
+}
+#add{
+	background-color:#002060; 
+	color:white
+}
+#cancel{
+	background-color:#F3ABBA; 
+	color:white;
 }
 </style>
 <script type="text/javascript">
@@ -114,25 +128,25 @@ $(function(){
 		<form:form method="post" action="review_insert_ok.do" id="frm" enctype="multipart/form-data" modelAttribute="uploadForm">
 		<table class="table table-hover" style="width: 70%; margin: 0px auto;" >
 			<tr>
-				<td width="20%" class="text-center">제목</td>
+				<td width="20%" class="text-center warning">제목</td>
 				<td width="80%" class="text-left">
 					<input type="text" name="r_subject" id="r_subject" size="50">
 				</td>
 			</tr>
 			<tr>
-				<td width="20%" class="text-center">가게명</td>
+				<td width="20%" class="text-center warning">가게명</td>
 				<td width="80%" class="text-left">
-					<input type="text" name="r_pname" id="r_pname" size="30">
+					<input type="text" name="r_pname" id="r_pname" size="50">
 				</td>
 			</tr>
 			<tr>
-				<td width="20%" class="text-center">작성자</td>
+				<td width="20%" class="text-center warning">작성자</td>
 				<td width="80%" class="text-left">
-					<input type="text" name="m_id" size="15" readonly="readonly" value="1">
+					<input type="text" name="m_id" size="20" readonly="readonly" value="1">
 				</td>
 			</tr>
 			<tr>
-				<td width="20%" class="text-center">주소</td>
+				<td width="20%" class="text-center warning">주소</td>
 				<td width="80%" class="text-left">
 					<input type="text" name="r_addr" id="r_addr" size="50" readonly placeholder="주소를 검색 후 선택해주세요!">
 				</td>
@@ -158,13 +172,13 @@ $(function(){
 				</td>
 			</tr>
 			<tr>
-				<td width="20%" class="text-center">첨부파일</td>
+				<td width="20%" class="text-center" ><br>첨부파일</td>
 				<td width="80%" class="text-left">
 					<table class="table table-hover">
 						<tr>
 							<td class="text-right">
-								<input type="button" class="btn btn-xs btn-info" id="add" value="추가">
-								<input type="button" class="btn btn-xs btn-danger" id="cancel" value="취소">
+								<input type="button" class="btn btn-xs" id="add" value="추가">
+								<input type="button" class="btn btn-xs" id="cancel" value="취소">
 							</td>
 						</tr>
 					</table>
@@ -203,12 +217,8 @@ var mapContainer = document.getElementById('map'), 	// 지도 표시할 div
 
 // 지도를 표시할 div와  지도 옵션으로  지도 생성
 var map = new daum.maps.Map(mapContainer, mapOption); 
-
-
-//------------------------------------------------------------ 마커 ------------------------------------------------------------
 //마커를 담을 배열
 var markers = [];
-
 
 //------------------------------------------------------------ 검색 ------------------------------------------------------------
 //장소 검색 객체 생성
@@ -300,11 +310,11 @@ function displayPlaces(places) {
             };
             // 클릭시 주소 가져오기
             daum.maps.event.addListener(marker, 'click', function() {
-                getAddr(addr);
+                getAddr(addr,title);
             });
             
             itemEl.onclick =  function () {
-                getAddr(addr);
+                getAddr(addr,title);
             };
         })(marker, places[i].place_name,places[i].address_name); //데이터 넘기기
 
@@ -408,8 +418,9 @@ function displayInfowindow(marker, title) {
 }
 
 // 주소가져오기
-function getAddr(addr) {
+function getAddr(addr,title) {
 	$('#r_addr').val(addr);
+	$('#r_pname').val(title);
 }
 
 //---------------------------------------------------------- 마커, 검색결과 제거 ----------------------------------------------------------
