@@ -32,7 +32,7 @@ public interface PlaceMapper {
 	//Totalpage
 	@Select("SELECT CEIL(COUNT(*)/8) FROM place")
 	public int placeTotalList();
-	
+	 
 	// 댓글
 	@Select("SELECT p_no, pr_no, m_id, pr_msg, pr_regdate FROM p_reply "
 			+ "WHERE p_no=#{pr_no} "
