@@ -18,20 +18,25 @@
 <link href="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
 <script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
 <script type="text/javascript">
-	/* window.onload = function(){
-	 var modal = document.getElementById('myModal');
-	 var img = document.getElementById('myImg');
-	 var modalImg = document.getElementById("img01");
+$(function() {
+	var u = 0;
+	$('.modifyBtn').click(function() {
+		var no = $(this).attr("value");
+		var type = $(this).text();
+		if (type == '수정') {
+			$('#up' + no).show();
+			$(this).text("취소");
+		} else {
+			$('#up' + no).hide();
+			$(this).text("수정");
+		}
+	});
+	
+	$('#replyBtn').click(function(){
+		$('#pReply').submit();
+	});
+});
 
-	 img.onclick = function() {
-	 alert(modal);
-	 alert(img);
-	 alert(modalImg);
-	 modal.style.display = "none";
-	 modalImg.src = this.src;
-	 captionText.innerHTML = this.alt;
-	 } 
-	 } */
 	$(function() {
 		// alert("dd");
 /* 		$('.place_img').click(function() {
@@ -59,10 +64,11 @@
 </head>
 <body>
 	<div class="container-fluid top_container">
-		<div class="row imagerow" style="position: relative; background-image: url(${backimg});">
+		<div class="row imagerow" style="background-image : url(${backimg})" >
+			<div style="width: 100%; height: 100%; background-color: black; position: absolute; opacity:0.4"></div>		
 			<c:forEach var="i" items="${simg }" end="4" varStatus="im">
 				<div class="detail_img" data-target="#myModal" data-toggle="modal">
-					<div style="border-left: 8px solid #fff;">
+					<div>
 						<img class="place_img" id="pimg${im.index }" src="${i }">
 						<!--  <img class="place_img" id="pimg${im.index }" src="${i }"> -->
 					</div>
@@ -100,7 +106,7 @@
 		</div>
 	</div>
 	<div class="container mid_container">
-		<div class="row row_info">
+		<div class="row1 row_info">
 			<h3>${vo.p_name }</h3>
 			<div style="padding: 15px; border-bottom: 1px solid #dbdbdb;">
 				<!-- <span class="glyphicon glyphicon-tent" aria-hidden="true"></span> 이색/체험 -->
@@ -161,67 +167,63 @@
 			</div>
 		</div>
 
-		<div class="row row_map">
+		<div class="row1 row_map">
 			<h3>위치</h3>
 			<div id="map" style="width: 100%; height: 450px;"></div>
 		</div>
-		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=90ca2826f787f6d4fc01f89cb8bcdce3"></script>
 		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=90ca2826f787f6d4fc01f89cb8bcdce3&libraries=services"></script>
 		<script>
-			var mContainer = document.getElementById('map');
-			var mOptions = {
-				center : new daum.maps.LatLng(33.450701, 126.570667),
-				level : 3
-			};
-			
-			// 마커가 표시될 위치입니다 
-			// var markerPosition  = new daum.maps.LatLng(33.450701, 126.570667); 
-			
-			var map = new daum.maps.Map(mContainer, mOptions);	// 지도를 생성합니다
-			
-			// 마커를 생성합니다
-			var marker = new daum.maps.Marker({
-			    position: mOptions.center
-			});
+			var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+	   			mapOption = {
+	        		center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+	        		level: 3 // 지도의 확대 레벨
+	  			};  
 
-			// 마커가 지도 위에 표시되도록 설정합니다
-			marker.setMap(map);
-			
-			var iwContent = '<div style="width:150px; text-align:center; padding:6px 0;">${vo.p_name}</div>', // 인포윈도우에 표출될 내용으로 HTML 문자열이나 document element가 가능합니다
-			iwPosition = new daum.maps.LatLng(33.450701, 126.570667); //인포윈도우 표시 위치입니다
+			// 지도를 생성합니다    
+			var map = new daum.maps.Map(mapContainer, mapOption); 
 
-			// 인포윈도우를 생성합니다
-			var infowindow = new daum.maps.InfoWindow({
-				position : iwPosition, 
-				content : iwContent 
-			});
-		    
-			infowindow.open(map, marker);
+			// 주소-좌표 변환 객체를 생성합니다
+			var geocoder = new daum.maps.services.Geocoder();
+
+			// 주소로 좌표를 검색합니다
+			geocoder.addressSearch("${p_addr}", function(result, status) {
+		    	// 정상적으로 검색이 완료됐으면 
+				if (status === daum.maps.services.Status.OK) {
+		        	var coords = new daum.maps.LatLng(result[0].y, result[0].x);
+		        	// 결과값으로 받은 위치를 마커로 표시합니다
+		        	var marker = new daum.maps.Marker({
+		            	map: map,
+		            	position: coords
+		        	});
+		        	// 인포윈도우로 장소에 대한 설명을 표시합니다
+		        	var infowindow = new daum.maps.InfoWindow({
+		            	content: '<div style="width:150px; text-align:center; padding:6px 0;">${vo.p_name}</div>'
+		        	});
+		        	infowindow.open(map, marker);
+	
+		        	// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+		       	map.setCenter(coords);
+		    	} 
+			});    
 		</script>
 
-		<div class="row row_reply">
-			<h3>${vo.p_name }의 리뷰(10)</h3>
+		<div class="row1 row_reply">
+			<h3>${vo.p_name }의 댓글(4)</h3>
 			<table class="reply_list">
-				<c:forEach var="i" begin="1" end="3">
+				<c:forEach var="i" begin="1" end="2">
 					<tr style="border-bottom: 1px solid #dbdbdb;">
 						<td width="13%">
 							<div class="user_info">
 								<div class="user_img">
-									<img src="p_image/user.png" class="im">
+									<img src="p_image/user.png" class="im" width="55px">
 								</div>
-								<div class="user_name" style="margin-top: 10px">달해</div>
+								<div class="user_name" style="margin-top: 10px">who</div>
 							</div>
 						</td>
 						<td width="87%" style="padding: 20px 0">
 							<div class="reply_info">
-								<p class="reply_content">외국에 온 것 같은 느낌이 드는 카페. 천장도 높고 문도
-									크으고. 벽면의 그림들도 큼직큼직. 시원시원해서 좋아요! 테이블 사이 간격도 넓습니다. 핸드 드립 커피도 마실 수
-									있고요 아침에는 모닝 빵 뷔페도 해요! 음료 가격 + 9,000원(?) 정도 내면 그날 갓 구운 빵과 샐러드,
-									햄, 스크램블 등을 드실 수 있습니다. 저는 페퍼민트 티와 티라미수를 주문했어요. 페퍼민트티는 질 안 좋은 거
-									마시면 되게 역한데.. 여기는 향과 맛이 훌륭했어요! 브루잉 도구도 같이 줘서 좋구요. 티라미수는 마스카포네의
-									깊은 맛이 잘 느껴져요. 밑의 시트는 에스프레소에 흥건히 적셔져 있습니다. 퀄리티있는 커피라 맛은 있지만 조금 덜
-									적셔주면 더 좋을 것 같아요.</p>
-								<span class="reply_date">2018-01-02</span>
+								<p class="reply_content">댓글 내용</p>
+								<span class="reply_date">2018-01-30</span>
 							</div>
 						</td>
 					</tr>
@@ -229,21 +231,21 @@
 			</table>
 		</div>
 
-		<div class="row row_reply">
+		<div class="row1 row_reply">
 			<div class="col-md-12" style="padding: 0px 20px">
-				<h4>
-					<span class="com_title"><b>리뷰쓰기</b></span>
+				<h4 style="text-align: left; margin-left: 10px">
+					<span class="com_title"><b>댓글남기기</b></span>
 				</h4>
 				<div class="reply_write">
-					<form method="post" action="p_reply_insert.do">
-						<input type="hidden" name="" value="${vo.p_no }">
+					<form method="post" action="p_reply_insert.do" id="pReply">
+						<input type="hidden" name="p_no" value="${vo.p_no }">
 						<table width="100%">
 							<tr valign="top">
-								<td width="90%">
-									<textarea class="reply_ta" rows="3" cols="90" name="msg"></textarea>
+								<td width="85%">
+									<textarea class="reply_ta" rows="3" cols="75" name="msg"></textarea>
 								</td>
 								<td width="10%">
-									<input type="button"	class="btn btn-info btn-sm pull-right" value="등    록" style="width: 80px; height: 100px">
+									<input id="replyBtn" type="button"	class="btn btn-info btn-sm pull-right" value="등    록" style="width: 80px; height: 100px">
 								</td>
 							</tr>
 						</table>

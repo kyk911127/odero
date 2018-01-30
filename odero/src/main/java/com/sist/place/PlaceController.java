@@ -22,11 +22,12 @@ public class PlaceController {
 		// keyword split
 		String str_kw = vo.getP_keyword();
 		String[] skeyword = str_kw.split(",");
-
 		// img split
 		String str_img = vo.getP_img();
 		String[] simg = str_img.split(",");
+		String p_addr = vo.getP_addr();
 		
+		model.addAttribute("p_addr", p_addr);
 		model.addAttribute("backimg", simg[0]);
 		model.addAttribute("r_list", r_list);
 		model.addAttribute("skeyword", skeyword);
@@ -36,7 +37,7 @@ public class PlaceController {
 	}
 	
 	// 댓글
-	@RequestMapping("p_reply_insert.do")
+	/*@RequestMapping("p_reply_insert.do")
 	public String p_replyInsert() {
 		return "place/p_reply";
 	}
@@ -44,7 +45,7 @@ public class PlaceController {
 	public String p_replyInsert_ok() {
 		return "redirect:p_detail.do";
 	}
-	 
+	 */
 	@RequestMapping("p_list.do")
 	public String placeListData(String page, Model model) {
 		
