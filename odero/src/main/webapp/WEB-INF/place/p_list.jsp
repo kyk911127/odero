@@ -141,7 +141,17 @@ $(function(){
    
      arr_sn.push(sn_3); 
      alert("최종: "+arr_sn);
-      
+     
+     
+     $.ajax({
+         type:"POST",
+         url:"s_list.do",
+         data : {"sn_1":sn_1,"sn_3":sn_3},
+         success: function(response){
+             alert("값보냈다!!"+ arr_sn);
+         }
+     });
+
    });
   
    
@@ -309,35 +319,36 @@ $(function(){
    </div>
    <div class="row tp_list">
       <div class="tp_dlist_1">
+      
          <c:forEach  var="vo"  items="${list }" varStatus="s">
-         <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
-                 <div class="card">
-                     <a href="#">
-                    		<img class="card-img-top tp_dimg" src="${vo.p_img }">
-                     </a>
-                     <div class="card-block">
-                         
-                         <h4 class="tp_tname">${vo.p_name }</h4>
-                         <div class="tp_locname">
-                         <span class="glyphicon glyphicon-map-marker"></span>
-                               	 ${vo.p_addr }
-                         </div>
-                        
-                         	<div class="tp_keyword">
-                             	#${vo.p_keyword } 
-                         	</div>
-                         
-                      
-                     </div>
-                     <div class="card-footer">
-                         <small>${vo.p_price }</small>
-                         <button class="btn btn-secondary float-right btn-sm jjimbtn"><i class="icon-heart">♥찜하기</i></button>
-                         <!-- <button class="btn btn-sm jjimbtn"><span class="glyphicon glyphicon-heart">12</span></button> -->
-                     </div>
-                 </div>
-             </div>
+         	
+	         		 <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
+	                 <div class="card">
+	                     <a href="#">
+	                    		<img class="card-img-top tp_dimg" src="${vo.p_img }">
+	                     </a>
+	                     <div class="card-block">
+	                         
+	                         <h4 class="tp_tname">${vo.p_name },${s.count }</h4>
+	                         <div class="tp_locname">
+	                         <span class="glyphicon glyphicon-map-marker"></span>
+	                               	 ${vo.p_addr }
+	                         </div>
+	                        
+	                         	<div class="tp_keyword">
+	                             	#${vo.p_keyword } 
+	                         	</div>
+	                     </div>
+	                     <div class="card-footer">
+	                         <small>${vo.p_price }</small>
+	                         <button class="btn btn-secondary float-right btn-sm jjimbtn"><i class="icon-heart">♥찜하기</i></button>
+	                         <!-- <button class="btn btn-sm jjimbtn"><span class="glyphicon glyphicon-heart">12</span></button> -->
+	                     </div>
+	                 </div>
+	             </div>
+	              
             </c:forEach>
-         
+        
       </div>
          
      <%--  <div class="tp_dlist_2">

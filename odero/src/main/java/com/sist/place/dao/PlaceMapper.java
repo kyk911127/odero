@@ -22,8 +22,8 @@ public interface PlaceMapper {
 	public PlaceVO placeDetailData(int p_no);
 	
 	//맛집,놀거리 list
-	@Select("SELECT p_no,p_name,p_addr,p_price,p_keyword,p_img,num "
-			+"FROM ( SELECT p_no,p_name,p_addr,p_price,p_keyword,p_img,rownum AS num "
+	@Select("SELECT p_no,p_name,p_addr,p_price,p_keyword,SUBSTR(p_img,0,INSTR(p_img,'/',1,6)) as p_img,num "
+			+"FROM (SELECT p_no,p_name,p_addr,p_price,p_keyword,p_img,rownum AS num "
 			+"FROM (SELECT p_no,p_name,p_addr,p_price,p_keyword,p_img "
 			+"FROM place ORDER BY p_no ASC)) "
 			+"WHERE num BETWEEN #{start} AND #{end}")
