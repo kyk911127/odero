@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:if test="${bCheck==true}">
 	<script>
-		location.href = "MasterBoardUpdate.do?no=${no}";
+		location.href = "MasterBoardContent.do?no=${no}";
 	</script>
 </c:if>
 <c:if test="${bCheck==false}">
