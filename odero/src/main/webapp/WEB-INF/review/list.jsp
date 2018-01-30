@@ -24,13 +24,13 @@ function insert(){
 <body>
 	<div class="container" style="margin-top: 30px">
 		<div class="row">
-			<center><h3><b>후기 게시판</b></h3><br></center>
+			<center><h3><b>후기 게시판d</b></h3></center><br>
 			<div style="height: 50px;">
 				<div class="text-left col-xs-2" style="display: inline;">
 					<input type="button" value="새글" id="insert" onclick="javascript:insert()">
 				</div>
 				<div class="text-right col-xs-10" style="display: inline;">
-					<select style="height: 25px">
+					<select style="height: 35px">
 						<option>전체</option>
 						<option>제목</option>
 						<option>내용</option>
@@ -45,7 +45,7 @@ function insert(){
 				<figure class="snip1432 col-sm-4">
 					<div>
 						<a href="review_detail.do">
-						<img src="review/${vo.r_imgname }" alt="${vo.r_imgname }" style=" width: 100%; height:350px;">
+						<img src="review/data/${vo.r_imgname }" alt="${vo.r_imgname }" style=" width: 100%; height:350px;">
 						</a>
 					</div>
 					<figcaption>
@@ -61,16 +61,16 @@ function insert(){
 				</figure>
 				</c:forEach>
 				<div class="text-center col-sm-12" style="height: 100px;">
-					<a href="#">&lt;</a>&emsp;
-						<c:forEach var="i" begin="1" end="${totalpage<1?1:totalpage }">&nbsp;
-							<a href="review_list.do?page=${curpage }">
+					<a href="review_list.do?page=${curpage>1?curpage-1:curpage }">&lt;</a>&emsp;&nbsp;
+						<c:forEach var="i" begin="1" end="${totalpage<1?1:totalpage }">
+							<a href="review_list.do?page=${i }">
 								<c:choose>
 									<c:when test="${i==curpage }"><font size="4pt">${i }</font></c:when>
 									<c:otherwise><font color="black">${i }</font></c:otherwise>
 								</c:choose>
 							</a>
 						</c:forEach>&emsp;
-					<a href="#">&gt;</a>
+					<a href="review_list.do?page=${curpage<totalpage?curpage+1:totalpage }">&gt;</a>
 				</div>
 			</div>
 		</div>

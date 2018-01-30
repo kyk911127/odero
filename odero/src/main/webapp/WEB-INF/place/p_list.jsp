@@ -25,50 +25,97 @@ $(function(){
    $('.gangnam_d').hide();
    $('.gangbuk_d').hide();
    
-  
    
    $('input:radio').click(function(){
       
       var S=$(this).val();    //value
       var N=$(this).attr('name'); //name : 공통값
-      var A = $(this).attr('id');  //id: 고유값
-      
-      var sn=$("input[type=radio][name="+N+"]:checked").val();   //선택된 라디오의 value값
-      //alert(sn);
+ 
+     if(S=="이색/체험" || S=="맛집/카페")
+    	 {
+    	 	
+    	 	if(S=="이색/체험")
+    	 		{
+    	 		$('#l_food').css("background", "rgb(203, 203, 203)");
+        	 	$('#l_play').css("background", "rgb(3, 32, 95)");
+    	 		}
+    	 	else
+    	 		{
+    	 		
+    	 		$('#l_play').css("background", "rgb(203, 203, 203)");
+        	 	$('#l_food').css("background", "rgb(3, 32, 95)");
+    	 		}
+    	 
+    	 }
     
-    
-      
-      
-  
-       //var checkedValue = $("input[type=radio][name=ca]:checked").attr('id');
+
+   if(S=="강남"|| N=="gn")
+	   {
+		   if(S=="강남")
+		   {
+		     
+		     $('#l_gangbuk').css("background", "rgb(203, 203, 203)");
+	  	     $('#l_gangnam').css("background", "rgb(3, 32, 95)");
+	         $('.gangbuk_d').hide();
+	         $('.loc_pick').show();
+	         $('.gangnam_d').show();
+		   }
+	   else
+		   {
+		   		
+		   		$(".gn_ul>.tp_li >label").css("background", "rgb(203, 203, 203)");  //초기화
+		   		
+		   	 	var gn_size=$(".gangnam_d >.tp_ul > li").length;
+		     	var str='';
+			 	for(var i=0; i<gn_size; i++)
+	            {
+	               str=$("input[name=gn]:eq("+i+")").val();
+	              
+	               if(S==str)
+	               {
+	                  $(".gn_ul>.tp_li >label:eq("+i+")").css("background", "rgb(3, 32, 95)");
+	                  return;
+	               }
+	            }
+		   }
+		   
+		
+	   }
 	  
-	  
-       
-      
-   if(S=="강남" || S=="강북")
-      {
-         if(S=="강남")
-         {
-            $('#gangbuk').css("background", "rgb(203, 203, 203)");
-            $(this).css("background", "rgb(3, 32, 95)");
-            $(this).css("color","white");
-            $('.gangbuk_d').hide();
-            $('.loc_pick').show();
-            $('.gangnam_d').show();
-            
-         }
-         else if(S=="강북")
-         {
-            $('#gangnam').css("background", "rgb(203, 203, 203)");
-            $(this).css("background", "rgb(3, 32, 95)");
-            $(this).css("color","white");
-            $('.gangnam_d').hide();
-            $('.loc_pick').show();
-            $('.gangbuk_d').show();
-            
-         }
-      } 
-      
+   if(S=="강북"|| N=="gb")
+	   {
+	   		if(S=="강북")
+	   			{
+			   		
+				     $('#l_gangnam').css("background", "rgb(203, 203, 203)");
+			  	     $('#l_gangbuk').css("background", "rgb(3, 32, 95)");
+			         $('.gangnam_d').hide();
+			         $('.loc_pick').show();
+			         $('.gangbuk_d').show();
+	   			}
+	   		else
+	   			{
+			   		$(".gb_ul>.tp_li >label").css("background", "rgb(203, 203, 203)");  //초기화
+			   		
+			   	 	var gn_size=$(".gangbuk_d >.tp_ul > li").length;
+			     	var str='';
+				 	for(var i=0; i<gn_size; i++)
+		            {
+		               str=$("input[name=gb]:eq("+i+")").val();
+		               if(S==str)
+		               {
+		               
+		                  $(".gb_ul>.tp_li >label:eq("+i+")").css("background", "rgb(3, 32, 95)");
+		                  return;
+		               }
+		            
+		            }
+	   				
+	   			}
+	   		
+	   }
+   
+   
    });
    
   
@@ -80,7 +127,7 @@ $(function(){
       arr_sn.push(sn_1);
       var sn_2=$("input[type=radio][name=loc]:checked").val();
       
-      
+       
        
       if(sn_2=="강남")
     	  {
@@ -92,7 +139,6 @@ $(function(){
     	  var sn_3=$("input[type=radio][name=gb]:checked").val();
     	  }
    
-     arr_sn.push(sn_2);
      arr_sn.push(sn_3); 
      alert("최종: "+arr_sn);
       
@@ -162,11 +208,11 @@ $(function(){
          <ul class="tp_ul">
             <li class="tp_li play_li">
             <input type="radio" name="ca" id="play" value="이색/체험">
-            <label class="btn btn-lg btn-navy" for="play">이색/체험</label>
+            <label class="btn btn-lg btn-navy" for="play" id="l_play">이색/체험</label>
             </li>
             <li class="tp_li">
             <input type="radio" name="ca" id="food" value="맛집/카페">
-            <label class="btn btn-lg btn-navy" for="food">맛집/카페</label>
+            <label class="btn btn-lg btn-navy" for="food" id="l_food">맛집/카페</label>
             </li>
             
          </ul>
@@ -180,11 +226,11 @@ $(function(){
          <ul class="tp_ul">
             <li class="tp_li gangnam_li">
             <input type="radio" name="loc" id="gangnam" value="강남">
-            <label class="btn btn-lg btn-navy" for="gangnam">강남</label>
+            <label class="btn btn-lg btn-navy" for="gangnam" id="l_gangnam">강남</label>
             </li>
             <li class="tp_li">
             <input type="radio" name="loc" id="gangbuk" value="강북">
-            <label class="btn btn-lg btn-navy" for="gangbuk"  >강북</label>
+            <label class="btn btn-lg btn-navy" for="gangbuk" id="l_gangbuk" >강북</label>
             </li>
          </ul>
          
@@ -192,7 +238,7 @@ $(function(){
       <div class="loc_pick">
          <div class="text-center tp_loc gangnam_d">
          <!-- 3. 강남지역 그룹 -->
-            <ul class="tp_ul">
+            <ul class="tp_ul gn_ul">
                   <li class="tp_li"><input type="radio" name="gn" id="gn_1" value="강서구">
                   <label class="btn btn-navy tp_loc_li" for="gn_1">강서구</label></li>
                   <li class="tp_li"><input type="radio" name="gn" id="gn_2" value="구로구">
@@ -221,7 +267,7 @@ $(function(){
          </div>
          <div class="text-center tp_loc gangbuk_d">
          <!-- 4. 강북지역 그룹 -->
-            <ul class="tp_ul">
+            <ul class="tp_ul gb_ul">
                <li class="tp_li"><input type="radio" name="gb" id="gb_1" value="마포구">
                <label class="btn btn-navy tp_loc_li" for="gb_1">마포구</label></li>
                <li class="tp_li"><input type="radio" name="gb" id="gb_2" value="서대문구">
@@ -263,25 +309,28 @@ $(function(){
    </div>
    <div class="row tp_list">
       <div class="tp_dlist_1">
-         <c:forEach begin="1" end="4">
+         <c:forEach  var="vo"  items="${list }" varStatus="s">
          <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
                  <div class="card">
-                     <a href="#"><img class="card-img-top tp_dimg" src="https://d2jx8pbs1t0zq8.cloudfront.net/v2/czM6Ly9iZXR3ZWVuZGF0ZS1qcC8zajdxQVRfNGdqNWY4X3Jfby5qcGVn/r:775:581/">
+                     <a href="#">
+                    		<img class="card-img-top tp_dimg" src="${vo.p_img }">
                      </a>
                      <div class="card-block">
                          
-                         <h4 class="tp_tname">쭈꾸쭈꾸쭈꾸미</h4>
+                         <h4 class="tp_tname">${vo.p_name }</h4>
                          <div class="tp_locname">
                          <span class="glyphicon glyphicon-map-marker"></span>
-                               	 서울시 강동구 천호동
+                               	 ${vo.p_addr }
                          </div>
-                         <div class="tp_keyword">
-                             #기분내기 #힐링 #친절한  
-                         </div>
+                        
+                         	<div class="tp_keyword">
+                             	#${vo.p_keyword } 
+                         	</div>
+                         
                       
                      </div>
                      <div class="card-footer">
-                         <small>1만원 ~ 2만원</small>
+                         <small>${vo.p_price }</small>
                          <button class="btn btn-secondary float-right btn-sm jjimbtn"><i class="icon-heart">♥찜하기</i></button>
                          <!-- <button class="btn btn-sm jjimbtn"><span class="glyphicon glyphicon-heart">12</span></button> -->
                      </div>
@@ -291,7 +340,7 @@ $(function(){
          
       </div>
          
-      <div class="tp_dlist_2">
+     <%--  <div class="tp_dlist_2">
          <c:forEach begin="1" end="4">
          <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
                  <div class="card">
@@ -317,14 +366,14 @@ $(function(){
                  </div>
              </div>
             </c:forEach>
-      </div>
+      </div> --%>
       <div class="text-center">
          <ul class="pagination">
-         	<li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">이전</span></a></li>
+         	<li><a href="p_list.do?page=${curpage>=0?curpage-1:curpage }" aria-label="Previous"><span aria-hidden="true">이전</span></a></li>
          	<c:forEach var="i" begin="1" end="10">
-             <li class=""><a href="#">${i } <span class="sr-only">(current)</span></a></li>
+             <li class=""><a href="p_list.do?page=${i }">${i } <span class="sr-only">(current)</span></a></li>
              </c:forEach>
-              <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">다음</span></a></li>
+              <li><a href="p_list.do?page=${curpage<totalpage?curpage+1:curpage }" aria-label="Previous"><span aria-hidden="true">다음</span></a></li>
            </ul>
       </div>
    </div>

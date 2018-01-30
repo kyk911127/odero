@@ -36,11 +36,15 @@ ul, li {
    font-size: 16px;
 }
 
+.imagerow {
+	background-color: rgba(20, 20, 20, 0.7); 
+}
 /* top image */
 .detail_img {
-   width: 20%;
-   float: left;
-   position: relative
+	width: 20%;
+	float: left;
+	position: relative;
+	height: 300px;
 }
 
 .place_img {

@@ -19,7 +19,7 @@ public class MyPageController {
 		if (m_id==null)
 			m_id = "01059231010";
 
-		List<MyPagePlaceVO> list = dao.MyPlaceBest5();
+		List<MyPagePlaceVO> list = dao.MyPlaceBest5(m_id);
 		MyPageInfoVO mvo = dao.MyPageInfoData(m_id);
 		model.addAttribute("list",list);
 		model.addAttribute("mvo",mvo);
