@@ -24,7 +24,7 @@ function insert(){
 <body>
 	<div class="container" style="margin-top: 30px">
 		<div class="row">
-			<center><h3><b>후기 게시판d</b></h3></center><br>
+			<center><h3><b>후기 게시판</b></h3></center><br>
 			<div style="height: 50px;">
 				<div class="text-left col-xs-2" style="display: inline;">
 					<input type="button" value="새글" id="insert" onclick="javascript:insert()">
@@ -57,7 +57,7 @@ function insert(){
 					    	<h2>${vo.r_subject }</h2>
 			    		</div>
 					</figcaption>
-					<a href="review_detail.do?r_no=${vo.r_no }"></a>
+					<a href="review_detail.do?no=${vo.r_no }"></a>
 				</figure>
 				</c:forEach>
 				<div class="text-center col-sm-12" style="height: 100px;">

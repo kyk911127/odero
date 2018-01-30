@@ -17,6 +17,8 @@ public class MainController {
 				String[] gu = {"강서구", "구로구", "양천구", "금천구", "영등포구", "관악구", "동작구", "서초구", "강남구", "송파구", "강동구", "마포구", "서대문구",
 						"은평구", "용산구", "중구", "종로구", "성동구", "동대문구", "성북구", "광진구", "중랑구", "노원구", "강북구", "도봉구" };
 				int arrRandom[] = {33,33,33,33};
+				List<String> gulist = new ArrayList<String>();
+				List<String> guimg = new ArrayList<String>();
 				for(int i =0; i<4; i++){
 					int random = (int)(Math.random()*gu.length);
 					arrRandom[i] = random;
@@ -29,11 +31,11 @@ public class MainController {
 					System.out.println("random "+i+": "+ arrRandom[i]);
 				}
 				List<List<PlaceVO>> clist = new ArrayList<List<PlaceVO>>();
-				int totallist[]={0,0,0,0};
+				List<Integer> totallist = new ArrayList<Integer>();
 				for(int i=0;i<4;i++){
 					List<PlaceVO> c_detail_list = new ArrayList<PlaceVO>();
 					List<List<PlaceVO>> tmplist = new ArrayList<List<PlaceVO>>();
-					System.out.println("gu : "+gu[arrRandom[i]]);
+					gulist.add(gu[arrRandom[i]]);
 					Map map = new HashMap();
 					map.put("gu", gu[arrRandom[i]]);
 					map.put("p_grade", "f");
@@ -47,13 +49,18 @@ public class MainController {
 						int rd = (int)(Math.random()*tmplist.get(j).size());
 						PlaceVO tmpvo = tmplist.get(j).get(rd);
 						String img = tmpvo.getP_img().split(",")[0];
-						tmpvo.setP_img(img);
+						if(img.equals("-")){
+							continue;
+						}else{
+							tmpvo.setP_img(img);
+						}
 						int price = Integer.parseInt(tmpvo.getP_price().substring(0, 1));
 						totalprice+=price;
 						c_detail_list.add(tmpvo);
 						System.out.println(tmplist.get(j).get(rd).getP_name());
 					}
-					totallist[i] =totalprice;
+					guimg.add(c_detail_list.get(1).getP_img());
+					totallist.add(totalprice);
 					clist.add(c_detail_list);
 				}
 				
@@ -83,6 +90,8 @@ public class MainController {
 					}
 				}
 				
+				model.addAttribute("guimg", guimg); //course 각 이미지
+				model.addAttribute("gulist", gulist); //course 각 구
 				model.addAttribute("totallist",totallist);//course 각 총가격
 				model.addAttribute("clist", clist);//course 리스트
 				model.addAttribute("flist", flist);//best food

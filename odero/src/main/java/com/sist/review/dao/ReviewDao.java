@@ -36,4 +36,17 @@ public class ReviewDao {
 	public ReviewVo reviewDetail(int no){
 		return mapper.reviewDetail(no);
 	}
+	
+	// Update
+	public void reviewUpdateData(int no){
+		mapper.reviewUpdateData(no);
+	}
+	
+	// Delete
+	public ReviewVo reviewDeleteData(int no) {
+		return mapper.reviewDeleteData(no);
+	}
+	public void reviewDelete(int no){
+		mapper.reviewDelete(no);
+	}
 }

@@ -52,6 +52,10 @@
 		p:sqlSessionFactory-ref="ssf"
 		p:mapperInterface="com.sist.mypage.dao.MyPageMapper"
 	/>
+	<bean id="courseMapper" class="org.mybatis.spring.mapper.MapperFactoryBean"
+		p:sqlSessionFactory-ref="ssf"
+		p:mapperInterface="com.sist.course.dao.CourseMapper"
+	/>
 	
 	<!-- 멀티파일 업로드 -->
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"

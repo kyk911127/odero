@@ -52,4 +52,8 @@ public interface PlaceMapper {
 	// 댓글 삭제
 	@Delete("DELETE FROM p_reply WHERE pr_no=#{pr_no}")
 	public void p_replyDelete(int pr_no);
+	
+	// 댓글 수
+	@Select("SELECT COUNT(*) FROM p_reply WHERE p_no=#{p_no}")
+	public int p_replyCount(int p_no);
 }

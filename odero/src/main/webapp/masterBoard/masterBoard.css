@@ -14,7 +14,6 @@ body, td, p, input, button, textarea, select {
 }
 table td a {
 	font-weight: 100;
- 	
  	font-family: 'Jeju Gothic';
 	font-size: 15px;
 	color: #666666;
@@ -37,25 +36,6 @@ body, textarea {
 	scrollbar-shadow-color: #595959;
 	scrollbar-darkshadow-color: #ffffff;
 }
-
-.row {
-	margin: 0 auto;
-	width: 750px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /* shake */
 

@@ -81,6 +81,7 @@ public class MasterBoardController {
 	@RequestMapping("MasterBoardUpdate_ok.do")
 	public String update_ok(NoticeVO vo,Model model){
 		boolean bCheck=dao.MasterBoardUpdate_ok(vo);
+		model.addAttribute("no",vo.getNo());
 		model.addAttribute("bCheck",bCheck);
 		return "masterBoard/update_ok";
 	}

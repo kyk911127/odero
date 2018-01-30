@@ -19,7 +19,7 @@
 		<div class="row">
 			<center>
 				<h3>공사중</h3>
-				<table class="table table-hover" width="600">
+				<table class="table" width="600">
 					<tr class="aa">
 						<td width="20%" class="text-center success">번호</td>
 						<td width="30%" class="text-center">${vo.no}</td>
@@ -39,7 +39,10 @@
 						<td colspan="3" class="text-center">${vo.subject}</td>
 					</tr>
 					<tr class="aa">
-						<td colspan="4" height="150" class="text-left" valign="top" width="600"><pre style="width:750px;background-color:white;">${vo.content}</pre></td>
+						<td colspan="4" style="border:solid 1px #e7ebf5">
+						<pre style="border:none;background-color:white;">${vo.content}</pre>
+						<!-- <textarea class="form-control" rows="5" id="comment"></textarea> -->
+						</td>
 					</tr>
 					<tr class="aa">
 						<td colspan="4" class="text-right">

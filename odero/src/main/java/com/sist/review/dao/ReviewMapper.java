@@ -3,6 +3,7 @@ package com.sist.review.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectKey;
@@ -42,4 +43,13 @@ public interface ReviewMapper {
 	public void reviewHitIncrement(int no);
 	@Select("SELECT r_no,m_id,r_subject,r_pname,r_content,r_addr,r_hit,r_regdate,r_imgname,r_imgcount FROM review WHERE r_no=#{r_no}")
 	public ReviewVo reviewDetail(int no); 
+	
+	@Select("SELECT m_id,r_imgname,r_imgcount FROM review WHERE r_no=#{r_no}")
+	public ReviewVo reviewDeleteData(int no);
+	
+	@Update("UPDATE review SET r_subject=#{r_subject},r_pname=#{r_pname},r_content=#{r_content},r_addr=#{r_addr} WHERE r_no=#{r_no}")
+	public void reviewUpdateData(int no);
+	
+	@Delete("DELETE FROM review WHERE r_no=#{r_no}")
+	public void reviewDelete(int no);
 }

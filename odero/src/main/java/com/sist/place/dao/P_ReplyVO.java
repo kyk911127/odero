@@ -8,6 +8,7 @@ public class P_ReplyVO {
 	private String pr_msg;
 	private Date pr_regdate;
 	private int p_no;
+	private int count;
 	
 	public int getPr_no() {
 		return pr_no;
@@ -39,5 +40,12 @@ public class P_ReplyVO {
 	public void setP_no(int p_no) {
 		this.p_no = p_no;
 	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
+	
 	
 }
