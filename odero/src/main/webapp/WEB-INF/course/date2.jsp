@@ -205,10 +205,13 @@
       level : 3
      };
      var p_addr = [];
-     var p_addr2 = "${strPosition}";
+     var p_nos = [];
      <c:forEach var="addr" items="${strPosition }">
        p_addr.push("${addr}");
      </c:forEach>
+     <c:forEach var="no" items="${strPnos}">
+     	p_nos.push("${no}");
+   	 </c:forEach>
      var map = new daum.maps.Map(container, options);
      
      var MARKER_WIDTH = 33, // 기본, 클릭 마커의 너비
@@ -271,11 +274,11 @@
              overOrigin = new daum.maps.Point(gapX * 2, overOriginY); // 스프라이트 이미지에서 클릭 마커로 사용할 영역의 좌상단 좌표
              
          // 마커를 생성하고 지도위에 표시합니다
-         addMarker(positions[i], normalOrigin, overOrigin, clickOrigin);
+         addMarker(positions[i], normalOrigin, overOrigin, clickOrigin,p_nos[i]);
      }
 
      // 마커를 생성하고 지도 위에 표시하고, 마커에 mouseover, mouseout, click 이벤트를 등록하는 함수입니다
-     function addMarker(position, normalOrigin, overOrigin, clickOrigin) {
+     function addMarker(position, normalOrigin, overOrigin, clickOrigin, title_id) {
 
          // 기본 마커이미지, 오버 마커이미지, 클릭 마커이미지를 생성합니다
          var normalImage = createMarkerImage(markerSize, markerOffset, normalOrigin),
@@ -286,7 +289,8 @@
          var marker = new daum.maps.Marker({
              map: map,
              position: position,
-             image: normalImage
+             image: normalImage,
+             title: "m_"+title_id
          });
 
          // 마커 객체에 마커아이디와 마커의 기본 이미지를 추가합니다
@@ -314,8 +318,7 @@
 
          // 마커에 click 이벤트를 등록합니다
          daum.maps.event.addListener(marker, 'click', function() {
-       var m_id = $(this).attr("id", "m_id");
-       alert("id : " + m_id);
+       	  alert("id : " + marker.getTitle());
              // 클릭된 마커가 없고, click 마커가 클릭된 마커가 아니면
              // 마커의 이미지를 클릭 이미지로 변경합니다
              if (!selectedMarker || selectedMarker !== marker) {
