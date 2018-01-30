@@ -140,7 +140,7 @@ $(function(){
     	  }
    
      arr_sn.push(sn_3); 
-     //alert("최종: "+arr_sn);
+     alert("최종: "+arr_sn);
       
    });
   
@@ -309,25 +309,28 @@ $(function(){
    </div>
    <div class="row tp_list">
       <div class="tp_dlist_1">
-         <c:forEach begin="1" end="4">
+         <c:forEach  var="vo"  items="${list }" varStatus="s">
          <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
                  <div class="card">
-                     <a href="#"><img class="card-img-top tp_dimg" src="https://d2jx8pbs1t0zq8.cloudfront.net/v2/czM6Ly9iZXR3ZWVuZGF0ZS1qcC8zajdxQVRfNGdqNWY4X3Jfby5qcGVn/r:775:581/">
+                     <a href="#">
+                    		<img class="card-img-top tp_dimg" src="${vo.p_img }">
                      </a>
                      <div class="card-block">
                          
-                         <h4 class="tp_tname">쭈꾸쭈꾸쭈꾸미</h4>
+                         <h4 class="tp_tname">${vo.p_name }</h4>
                          <div class="tp_locname">
                          <span class="glyphicon glyphicon-map-marker"></span>
-                               	 서울시 강동구 천호동
+                               	 ${vo.p_addr }
                          </div>
-                         <div class="tp_keyword">
-                             #기분내기 #힐링 #친절한  
-                         </div>
+                        
+                         	<div class="tp_keyword">
+                             	#${vo.p_keyword } 
+                         	</div>
+                         
                       
                      </div>
                      <div class="card-footer">
-                         <small>1만원 ~ 2만원</small>
+                         <small>${vo.p_price }</small>
                          <button class="btn btn-secondary float-right btn-sm jjimbtn"><i class="icon-heart">♥찜하기</i></button>
                          <!-- <button class="btn btn-sm jjimbtn"><span class="glyphicon glyphicon-heart">12</span></button> -->
                      </div>
@@ -337,7 +340,7 @@ $(function(){
          
       </div>
          
-      <div class="tp_dlist_2">
+     <%--  <div class="tp_dlist_2">
          <c:forEach begin="1" end="4">
          <div class="col-sm-6 col-md-4 col-lg-3 mt-4">
                  <div class="card">
@@ -363,14 +366,14 @@ $(function(){
                  </div>
              </div>
             </c:forEach>
-      </div>
+      </div> --%>
       <div class="text-center">
          <ul class="pagination">
-         	<li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">이전</span></a></li>
+         	<li><a href="p_list.do?page=${curpage>=0?curpage-1:curpage }" aria-label="Previous"><span aria-hidden="true">이전</span></a></li>
          	<c:forEach var="i" begin="1" end="10">
-             <li class=""><a href="#">${i } <span class="sr-only">(current)</span></a></li>
+             <li class=""><a href="p_list.do?page=${i }">${i } <span class="sr-only">(current)</span></a></li>
              </c:forEach>
-              <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">다음</span></a></li>
+              <li><a href="p_list.do?page=${curpage<totalpage?curpage+1:curpage }" aria-label="Previous"><span aria-hidden="true">다음</span></a></li>
            </ul>
       </div>
    </div>

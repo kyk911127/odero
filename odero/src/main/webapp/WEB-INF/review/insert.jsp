@@ -35,7 +35,7 @@ $(function(){
 			'<tr id="f'+(fileIndex)+'">'+
 				'<td width="20%" id="file">사진'+(fileIndex+1)+'</td>'+
 				'<td width="80%" align="left">'+
-					'<input type="file" name="images['+fileIndex+']" size="15" id="images'+(fileIndex)+'">'+
+					'<input type="file" name="images['+fileIndex+']" size="15" id="images'+(fileIndex)+'" accept="image/gif,image/jpeg,image/png">'+
 				'</td>'+
 			'</tr>');
 		/* $('#images'+(fileIndex)).on('change', function() {
