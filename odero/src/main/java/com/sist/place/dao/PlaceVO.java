@@ -22,9 +22,15 @@ public class PlaceVO {
 	private String p_tel;
 	private String p_grade;
 	private String p_time;
+	private String p_coords;
 	private int p_hit;
-	
 
+	public String getP_coords() {
+		return p_coords;
+	}
+	public void setP_coords(String p_coords) {
+		this.p_coords = p_coords;
+	}
 	public int getP_no() {
 		return p_no;
 	}

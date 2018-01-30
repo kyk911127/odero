@@ -16,9 +16,9 @@
 	<div class="main_wrap">
 		<!-- 헤더 -->
 		<tiles:insertAttribute name="header" />
-
-		<div style="height: 170px"></div>
-		<div class="include_wrap">
+		
+		<div style="height: 170px" id="space"></div>
+		<div class="include_wrap" id="content">
 			<tiles:insertAttribute name="content" />
 		</div>
 		<div id="footer" class="text-center">

@@ -9,4 +9,11 @@
 	<definition name="*/*" extends="main">
 		<put-attribute name="content" value="/WEB-INF/{1}/{2}.jsp"></put-attribute>
 	</definition>
+	
+	<definition name="course" template="/WEB-INF/course/course_template.jsp">
+		<put-attribute name="place" value="/WEB-INF/course/place_view/default.jsp"></put-attribute>
+	</definition>
+	<definition name="*/*/*" extends="course">
+		<put-attribute name="place" value="/WEB-INF/{1}/{2}/{3}.jsp"></put-attribute>
+	</definition>
 </tiles-definitions>

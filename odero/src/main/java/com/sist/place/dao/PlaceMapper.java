@@ -21,6 +21,7 @@ public interface PlaceMapper {
 			+ "WHERE p_no=#{p_no}")
 	public PlaceVO placeDetailData(int p_no);
 	
+	//맛집,놀거리 list
 	@Select("SELECT p_no,p_name,p_addr,p_price,p_keyword,p_img,num "
 			+"FROM ( SELECT p_no,p_name,p_addr,p_price,p_keyword,p_img,rownum AS num "
 			+"FROM (SELECT p_no,p_name,p_addr,p_price,p_keyword,p_img "
@@ -28,7 +29,8 @@ public interface PlaceMapper {
 			+"WHERE num BETWEEN #{start} AND #{end}")
 	public List<PlaceVO> placeListData(Map map);
 	
-	@Select("SELECT COUNT(*) FROM place")
+	//Totalpage
+	@Select("SELECT CEIL(COUNT(*)/8) FROM place")
 	public int placeTotalList();
 	
 	// 댓글
