@@ -1,6 +1,9 @@
 package com.sist.mypage;
 
 import java.util.*;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -37,9 +40,36 @@ public class MyPageController {
 		return "cart/mypage";
 	}
 	@RequestMapping("mypage_list.do")
-	public String mypage_list(String m_id, Model model) {
+	public String mypage_list(/*HttpSession session,*/ String m_id, String sort,  Model model) {
+		/*String id   = (String)session.getAttribute(m_id);*/
+		
+		String jsort="";
 		if (m_id==null)
 			m_id = "01059231010"; // 임시로 지정
+		if (sort==null)
+			jsort = "cos";
+		
+		
+		List<MyPagePlaceVO> list = dao.MyPlaceBest5(m_id);
+		List<MyPageCosVO> plist = dao.MyCosBestPlay(m_id);
+		
+		
+		if (jsort.equals("cos")) {
+			model.addAttribute("list",list);
+			
+		}
+		if (jsort.equals("place")) {
+			model.addAttribute("list",plist);
+		}
+		
+		List<MyPageCosVO> clist = dao.MyCosBestCafe(m_id);
+		List<MyPageCosVO> flist = dao.MyCosBestFood(m_id);
+		System.out.println(list.get(0).getP_img());
+		
+		model.addAttribute("jsort",jsort);
+		model.addAttribute("clist",clist);
+		model.addAttribute("flist",flist);
+		model.addAttribute("list",list);
 		return "cart/mypage_list";
 	}
 	@RequestMapping("mypage_cos.do")

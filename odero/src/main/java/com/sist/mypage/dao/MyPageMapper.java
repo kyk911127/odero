@@ -32,7 +32,7 @@ public interface MyPageMapper {
 			  @Result(property = "p_keyword", column = "p_keyword"),
 			  @Result(property = "p_img", column = "p_img")
 			})
-	@Select("SELECT j.j_no, p.p_name, p.p_addr, p.p_price, p.p_keyword, p.p_img, p.p_tel, p.p_grade, p.p_time, p.p_hit "
+	@Select("SELECT j.j_no, p.p_name, p.p_addr, p.p_price, p.p_keyword, NVL(SUBSTR(p.p_img,1,INSTR(p.p_img,',',1,1)-1),p.p_img) AS p_img, p.p_tel, p.p_grade, p.p_time, p.p_hit "
 			+ "FROM JJIM j, PLACE p WHERE j.p_no = p.p_no and m_id=#{m_id} ORDER BY j.j_no DESC")
 	public List<MyPagePlaceVO> MyPlaceBest5 (String m_id);
 	
@@ -75,7 +75,7 @@ public interface MyPageMapper {
 				  @Result(property = "pvo.p_price", column = "p_price"),
 				  @Result(property = "pvo.p_hit", column = "p_hit")
 				})
-		@Select("SELECT c.c_no, p.p_name, p.p_no, p.p_addr, p.p_keyword, p.p_img, p.p_price, p.p_hit "
+		@Select("SELECT c.c_no, p.p_name, p.p_no, p.p_addr, p.p_keyword, NVL(SUBSTR(p.p_img,1,INSTR(p.p_img,',',1,1)-1),p.p_img) AS p_img, p.p_price, p.p_hit "
 				+ "FROM COURSE c, PLACE p WHERE c.c_play = p.p_no AND m_id=#{m_id} ORDER BY p.p_no DESC")
 		public List<MyPageCosVO> MyCosBestPlay (String m_id);		
 

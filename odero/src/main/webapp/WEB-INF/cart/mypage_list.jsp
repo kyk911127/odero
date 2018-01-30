@@ -16,14 +16,13 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
 <script type="text/javascript">
 	_headerRef = 'www.google.co.kr';
-</script> 
+</script>
 </head>
 <style>
 .title_wrap {
-	padding:30px;
+	padding: 30px;
 	margin-bottom: 30px;
 }
-
 </style>
 <body>
 <body class="pc">
@@ -31,13 +30,13 @@
 	<script
 		src="https://ssl.pstatic.net/spacecloud/static/web/js/deploy/20180112051220/min/jquery.min.js"
 		type="text/javascript"></script>
-	
-	
+
+
 	<div class="container">
-	
-		
+
+
 		<div class="wrap main">
-	<div class="title_wrap">찜 리스트</div>
+			<div class="title_wrap">찜 리스트</div>
 			<!-- //gnb -->
 			<div id="_root" style="overflow: hidden; width: 100%; height: 100%;">
 				<div id="_container" style="position: relative;">
@@ -48,17 +47,16 @@
 								<!-- <div class="head_wrap">
 			<h2><strong>헤드 스판</strong>들어가는부분</h2>
 		</div>  -->
-		
-		
-	<div class="tab_wrap">
-	|<a href="mypage.do"><span class="tab">마이페이지</span></a>|
-	<!-- <a href="javascript:history.back()"><span class="tab">뒤로</span> -->
 
-	&nbsp;
-	<a href="mypage.do"><span class="seltab">코스 찜</span></a>
-	<a href="mypage.do"><span class="seltab">가게 찜</span></a>
-	</div>
-							<!-- 	<div class="recomm_wrap">
+
+								<div class="tab_wrap">
+									|<a href="mypage.do"><span class="tab">마이페이지</span></a>|
+									<!-- <a href="javascript:history.back()"><span class="tab">뒤로</span> -->
+
+									&nbsp; <a href="mypage.do"><span class="seltab">코스 찜</span></a>
+									<a href="mypage.do"><span class="seltab">가게 찜</span></a>
+								</div>
+								<!-- 	<div class="recomm_wrap">
 									<h2>추천 키워드</h2>
 									<ul class="recomm_list">
 										<li class="recomm_item"><a href="javascript:void(0);">태그1</a></li>
@@ -66,7 +64,6 @@
 										<li class="recomm_item"><a href="javascript:void(0);">태그3</a></li>
 										<li class="recomm_item"><a href="javascript:void(0);">태그4</a></li>
 										<li class="recomm_item"><a href="javascript:void(0);">태그5</a></li>
-
 									</ul>
 								</div> -->
 							</section>
@@ -75,24 +72,23 @@
 									<div id="_spaceListScrollWrap" class="space_list swiper_list"
 										data-sly-wrap-mobile>
 										<div class="flex_wrap column3 fluid" id="_spaceScroller">
-
-											<c:forEach var="i" begin="1" end="3">
-										 <!-- 코스찜  -->
+											<c:if test="${jsort=='cos' }">
+											<c:forEach var="vo" items="${list }">
+												<!-- 코스찜  -->
 												<article class="box box_space _space" data-sly-item>
 													<div class="inner">
 														<a href="mypage_cos.do" class="_innerLink nclk">
 															<div class="img_box">
-																<span style="background-image: url(c_image/date1.jpg);"
-																	class="img lazy"></span>
+																<span style="background-image: url(${vo.p_img});" class="img lazy"></span>
 
 															</div> <span class="btns_reserv"><span
-																class="btn_reserv_confirm">추천<br>코스</span>
-														</span>
+																class="btn_reserv_confirm">추천<br>코스
+															</span> </span>
 
 
 
 															<div class="info_area">
-																<h3 class="tit_space">${i }.추천 데이트 코스 : 제목</h3>
+																<h3 class="tit_space">${i }.추천데이트 코스 : 제목</h3>
 																<div class="tags">
 																	<span class='tag_area_name'>지역시 지역구</span>
 																	<c:forEach var="i" begin="1" end="5">
@@ -115,22 +111,27 @@
 														</a>
 													</div>
 												</article>
-											<!-- 가게 찜  -->
+												</c:forEach>
+												</c:if>
+												
+												<c:if test="${jsort=='place' }">
+												<c:forEach var="vo" items="${list }">
+												<!-- 가게 찜  -->
 												<article class="box box_space _space" data-sly-item>
 													<div class="inner">
 														<a href="mypage_place.do" class="_innerLink nclk">
 															<div class="img_box">
-																<span style="background-image: url(c_image/date1.jpg);"
+																<span style="background-image: url(${vo.p_img});"
 																	class="img lazy"></span>
 
 															</div> <span class="btns_reserv"><span
-																class="btn_reserv_confirm btn_store">추천<br>가게</span>
-														</span>
+																class="btn_reserv_confirm btn_store">추천<br>가게
+															</span> </span>
 
 
 
 															<div class="info_area">
-																<h3 class="tit_space">${i }.추천 데이트 코스 : 제목</h3>
+																<h3 class="tit_space">${i }.추천데이트 코스 : 제목</h3>
 																<div class="tags">
 																	<span class='tag_area_name'>지역시 지역구</span>
 																	<c:forEach var="i" begin="1" end="5">
@@ -154,6 +155,7 @@
 													</div>
 												</article>
 											</c:forEach>
+											</c:if>
 
 										</div>
 										<div class="pagination_div text-center">
