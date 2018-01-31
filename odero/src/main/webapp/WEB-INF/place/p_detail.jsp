@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -19,7 +20,6 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
 <script type="text/javascript">
 $(function() {
-	var u = 0;
 	$('.modifyBtn').click(function() {
 		var no = $(this).attr("value");
 		var type = $(this).text();
@@ -30,36 +30,19 @@ $(function() {
 			$('#up' + no).hide();
 			$(this).text("수정");
 		}
-	});
-	
-	$('#replyBtn').click(function(){
-		$('#pReply').submit();
-	});
-});
+	}); 
 
-	$(function() {
-		// alert("dd");
-/* 		$('.place_img').click(function() {
-			$('.place_img').each(function() {
-				var pp = $(this).attr('src');
-				//alert(pp);
-				$('.fo').append("<img src='" + pp + "'>");
-			});
-			return;
-		}); */
-		
-		/* $('.place_img').each(function() { 
-			$('.place_img').click(function() {
-				var pp = $(this).attr('src');
-				alert(pp);
-				$('.fo').append("<img src='" + pp + "'>");
-			});
-			return;
-		}); */
-		
-		$('table').parent().children().find("td:nth-child(2):empty").parent().hide();
-		
+	$('#replyBtn').click(function(){
+		var check = ${sessionScope.m_id != null}
+		if(check) {
+			$('#pReply').submit();
+		} else {
+			alert("로그인이 필요합니다.")
+			location.href = "main.do";
+		}
 	});
+	$('table').parent().children().find("td:nth-child(2):empty").parent().hide();
+});
 </script>
 </head>
 <body>
@@ -208,22 +191,38 @@ $(function() {
 		</script>
 
 		<div class="row1 row_reply">
-			<h3>${vo.p_name }의 댓글(4)</h3>
+			<h3>${vo.p_name }의 댓글(${vo.count })</h3>
 			<table class="reply_list">
-				<c:forEach var="i" begin="1" end="2">
+				<c:forEach var="rvo" items="${r_list }">
 					<tr style="border-bottom: 1px solid #dbdbdb;">
 						<td width="13%">
 							<div class="user_info">
 								<div class="user_img">
-									<img src="p_image/user.png" class="im" width="55px">
+									<img src="p_image/user.png" class="im" width="45px">
 								</div>
-								<div class="user_name" style="margin-top: 10px">who</div>
+								<div class="user_name" style="margin-top: 5px" name="m_id">${rvo.m_id }</div>
 							</div>
 						</td>
 						<td width="87%" style="padding: 20px 0">
 							<div class="reply_info">
-								<p class="reply_content">댓글 내용</p>
-								<span class="reply_date">2018-01-30</span>
+								<span class="reply_date">
+									<fmt:formatDate value="${rvo.pr_regdate}" pattern="yyyy-MM-dd HH:mm:ss" />
+								</span>
+								<button class="btn btn-xs btn-default modifyBtn" value="${rvo.pr_no }">수정</button>
+								<form method=post action="p_reply_delete.do" style="display: inline-block;">
+									<input type="hidden" name=p_no value="${rvo.p_no }"> 
+									<input type="hidden" name=pr_no value="${rvo.pr_no }">
+									<button class="btn btn-xs btn-default" id="deleteBtn">삭제</button>
+								</form>
+								<p class="reply_content">${rvo.pr_msg }</p>	
+								<div id="up${rvo.pr_no }" style="display: none">
+									<form method=post action="p_reply_update.do">
+										<input type="hidden" name=pr_no value="${rvo.pr_no }">
+										<textarea rows="3" class="com_2 form-control text-left" style="float: left" name="pr_msg">${rvo.pr_msg }</textarea>
+										<br> &nbsp; 
+										<input class="btn btn-default btn-xs pull-right" type=submit style="margin-top: 5px" value="수정하기">
+									</form>
+								</div>
 							</div>
 						</td>
 					</tr>
@@ -231,7 +230,7 @@ $(function() {
 			</table>
 		</div>
 
-		<div class="row1 row_reply">
+		<div class="row1 row_reply" style="margin-bottom: 10px">
 			<div class="col-md-12" style="padding: 0px 20px">
 				<h4 style="text-align: left; margin-left: 10px">
 					<span class="com_title"><b>댓글남기기</b></span>
@@ -242,16 +241,21 @@ $(function() {
 						<table width="100%">
 							<tr valign="top">
 								<td width="85%">
-									<textarea class="reply_ta" rows="3" cols="75" name="msg"></textarea>
+									<textarea class="reply_ta" rows="3" cols="76" name="pr_msg" id="msgg" ></textarea>
 								</td>
 								<td width="10%">
-									<input id="replyBtn" type="button"	class="btn btn-info btn-sm pull-right" value="등    록" style="width: 80px; height: 100px">
+									<input id="replyBtn" type="button"	class="btn btn-sm pull-right" value="등    록" style="width: 80px; height: 100px">
 								</td>
 							</tr>
 						</table>
 					</form>
 				</div>
 			</div>
+		</div>
+		<div class="text-right">
+			<a href="p_list.do">
+				<input type="button" class="btn btn-md" id="backBtn" value="이전으로">
+			</a>
 		</div>
 	</div>
 </body>

@@ -155,3 +155,10 @@ ul, li {
 .tags {
 	padding: 0;
 }
+
+#backBtn, #replyBtn {
+	background-color: #002060;
+	color: #FFF;
+	border-radius: 10%;
+	border: medium none #002060;
+}
