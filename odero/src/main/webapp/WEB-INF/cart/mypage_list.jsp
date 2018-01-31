@@ -148,9 +148,9 @@
 																	<!-- 	<i class="sp_icon ico_npay">네이버페이 사용가능</i> -->
 																</div>
 																<div class="info_number_love">
-																	<span class="txt_number_review"> <i
+																	<!-- <span class="txt_number_review"> <i
 																		class="sp_icon ico_review">리뷰수</i><em>3</em>
-																	</span> <span class="txt_number_love"> <i
+																	</span> --> <span class="txt_number_love"> <i
 																		class="sp_icon ico_love">좋아요</i> <em>${vo.p_hit }</em>
 																	</span>
 																</div>
