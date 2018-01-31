@@ -2,6 +2,7 @@ package com.sist.course;
 
 import java.util.*;
 
+import org.apache.ibatis.annotations.Insert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -56,9 +57,12 @@ public class CourseController {
 	// 검색버튼 눌렀을 때
 
 	@RequestMapping("course_search_ok.do")
-	public String course_search_ok(Model model) {
-		// guList : 선택된 구 리스트 , keyList : 선택된 키워드 리스트
-		// keyList[0] : food, [1] : play, [2] : cafe
+	public String course_search_ok(String gulist, String keylist_f, String keylist_c, String keylist_p, Model model) {
+		// gulist : 선택된 구 리스트 , keylist_ : 선택된 키워드 리스트
+		System.out.println("gulist : " + gulist);
+		System.out.println("keylist_f : " + keylist_f);
+		System.out.println("keylist_c : " + keylist_c);
+		System.out.println("keylist_p : " + keylist_p);
 		// 임의의 데이터 9개
 		int[] no_list = { 4307, 4299, 4320, 4483, 4515, 4599, 4553, 4577, 4610 };
 
@@ -83,7 +87,7 @@ public class CourseController {
 		return "course/course_search_ok";
 
 	}
-	
+
 	@RequestMapping("placetoplace.do")
 	public String place_to_place(int p_no, int cnt, Model model) {
 		PlaceVO vo = dao.course_place_data(p_no);
@@ -93,72 +97,47 @@ public class CourseController {
 		model.addAttribute("vo", vo);
 		return "course/place_view/place_" + cnt;
 	}
-	
-	
-	
-	
-/*	@RequestMapping("course_search.do")
-    public String course_search(Model model){
-        
-        
-        String[] gu={"은평구","마포구","서대문","종로구","용산구",
-                "중구","성동구","동대문구","광진구","중랑구",
-                "성북구","노원구","도봉구","중구","강서구",
-                "양천구","영등포구","구로구","동작구","금천구",
-                "관악구","서초구","강남구","송파구","강동구"};
-        
-        List<PlaceVO> gu_list= new ArrayList<PlaceVO>();
-        for(int i=0; i<gu.length; i++){
-            gu_list.add(gu[i]);
-        }
-        
-        
-        //키워드 split하기
-        List<PlaceVO> fk_list=dao.course_pkeyword();
-        for(PlaceVO vo:fk_list){
-            String fk=vo.getP_keyword();
-            String[] arrPkey=fk.split("[,]");
-            if(fk.equals(" ")){
-                
-            }else{
-                String[] arrPkey=fk.split("[,]");
-                //여기서 splay테이블로 자른 키워드를 insert하냐~~~~~?
-            }
-        }
-        
-        List<PlaceVO> pk_list=dao.course_pkeyword();
-        for(PlaceVO vo:pk_list){
-            String pk=vo.getP_keyword();
-            String[] arrPkey=pk.split("[,]");
-            if(pk.equals(" ")){
-                
-            }else{
-                String[] arrPkey=pk.split("[,]");
-                //여기서 splay테이블로 자른 키워드를 insert하냐~~~~~?
-            }
-        }
-        
-        
-        List<PlaceVO> ck_list=dao.course_pkeyword();
-        for(PlaceVO vo:ck_list){
-            String ck=vo.getP_keyword();
-            String[] sp_key=ck.split("[,]");
-            //여기서 splay테이블로 자른 키워드를 insert하냐~~~~~?
-            if(ck.equals(" ")){
-                
-            }else{
-                String[] arrPkey=ck.split("[,]");
-                //여기서 splay테이블로 자른 키워드를 insert하냐~~~~~?
-            }
-        }
-        
-        
-        model.addAttribute("fk_list",pk_list);
-        model.addAttribute("pk_list",pk_list);
-        model.addAttribute("ck_list",pk_list);
-        
-        return "course/course_search";
-    }
-*/
+
+	@RequestMapping("getkeyword.do")
+	public String get_keyword(String gulist, String key, Model model) {
+		System.out.println("gulist : " + gulist);
+		// 서대문구|마포구
+		/*
+		 * //맛집테이블에 키워드 넣기
+		 * 
+		 * @Insert("INSERT INTO sfood VALUSE(#{sf_key}, #{sf_grade})") public
+		 * void sfood_insert(String sf_key, String sf_grade);
+		 */
+		// 키워드 테이블 비우기
+		dao.sfood_delete();
+
+		Map map = new HashMap();
+
+		// 키워드 split하기
+		map.put("p_grade", key);
+		map.put("gulist", gulist);
+		List<String> fk_list = dao.course_fkeyword(map);
+
+		for (String s : fk_list) {
+			if (s != null && !(s.equals(""))) {
+				String[] arrfkey = s.split("[,]");
+				for (int i = 0; i < arrfkey.length; i++) {
+					if (arrfkey[i] != null && !(arrfkey[i].equals(""))) {
+						Map in_map = new HashMap();
+						System.out.println(arrfkey[i]);
+						in_map.put("sf_key", arrfkey[i]);
+						in_map.put("sf_grade", key);
+						dao.sfood_insert(in_map);
+					}
+				}
+			}
+		}
+		List<String> key_list = dao.sfood_distinct(key);
+
+		model.addAttribute("key_list", key_list);
+		model.addAttribute("key", key);
+
+		return "course/place_view/keyword";
+	}
 
 }

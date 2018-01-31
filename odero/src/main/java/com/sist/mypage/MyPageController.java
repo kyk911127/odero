@@ -18,10 +18,11 @@ public class MyPageController {
 	@Autowired
 	MyPageDAO dao;
 	@RequestMapping("mypage.do")
-	public String mypage(String m_id, Model model) {
-		if (m_id==null)
+	public String mypage(HttpSession session, Model model) {
+		String m_id = (String)session.getAttribute("m_id");
+		/*if (m_id==null)
 			m_id = "01059231010"; // 임시로 지정
-
+		 */
 		List<MyPagePlaceVO> list = dao.MyPlaceBest5(m_id);
 		MyPageInfoVO mvo = dao.MyPageInfoData(m_id);
 		
@@ -29,8 +30,13 @@ public class MyPageController {
 		List<MyPageCosVO> plist = dao.MyCosBestPlay(m_id);
 		List<MyPageCosVO> flist = dao.MyCosBestFood(m_id);
 		int count =clist.size();
+		int psize = plist.size();
+		int size = list.size();
+		System.out.println("psize:"+psize);
+		System.out.println("size:"+size);
 		
-		
+		model.addAttribute("psize",psize);
+		model.addAttribute("size",size);
 		model.addAttribute("clist",clist);
 		model.addAttribute("plist",plist);
 		model.addAttribute("flist",flist);
@@ -40,12 +46,10 @@ public class MyPageController {
 		return "cart/mypage";
 	}
 	@RequestMapping("mypage_list.do")
-	public String mypage_list(/*HttpSession session,*/ String m_id, String sort,  Model model) {
-		/*String id   = (String)session.getAttribute(m_id);*/
+	public String mypage_list(HttpSession session, String sort,  Model model) {
+		String m_id = (String)session.getAttribute("m_id");
 		
-		String jsort="";
-		if (m_id==null)
-			m_id = "01059231010"; // 임시로 지정
+		String jsort=sort;
 		if (sort==null)
 			jsort = "cos";
 		
@@ -55,21 +59,21 @@ public class MyPageController {
 		
 		
 		if (jsort.equals("cos")) {
-			model.addAttribute("list",list);
+			model.addAttribute("list",plist);
 			
 		}
 		if (jsort.equals("place")) {
-			model.addAttribute("list",plist);
+			model.addAttribute("list",list);
 		}
-		
+
 		List<MyPageCosVO> clist = dao.MyCosBestCafe(m_id);
 		List<MyPageCosVO> flist = dao.MyCosBestFood(m_id);
-		System.out.println(list.get(0).getP_img());
-		
+	
+
 		model.addAttribute("jsort",jsort);
 		model.addAttribute("clist",clist);
 		model.addAttribute("flist",flist);
-		model.addAttribute("list",list);
+/*		model.addAttribute("list",list);*/
 		return "cart/mypage_list";
 	}
 	@RequestMapping("mypage_cos.do")
