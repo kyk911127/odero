@@ -563,7 +563,7 @@
 						<b>▶ 추천</b><b style="color: #DF0101;">맛집</b>
 					</h4>
 				</div>
-				<c:forEach begin="1" end="3">
+				<c:forEach var="fvo" items="${pf_list }">
 					<div class="col-md-4 text-center">
 						<div class="box">
 							<div class="box-content">
@@ -573,12 +573,12 @@
 										<span class="glyphicon glyphicon-cutlery"
 											style="float: left; margin: 2%"></span>
 									</h4>
-									<h4 class="tag-title text-left">가게이름</h4> <br>
+									<h4 class="tag-title text-left">${fvo.p_name }</h4> <br>
 								</a>
 								<hr style="margin: 2%;">
 								<!-- 맛집 이미지 -->
 								<div class=rc_img>
-									<img src="img_1/food3.jpg" style="width: 100%; height: 250px;">
+									<img src="${fvo.p_img }" style="width: 100%; height: 250px;">
 									<br>
 									<hr style="margin: 3px;">
 								</div>
@@ -589,22 +589,21 @@
 											<td class="text-left">
 												<h5>
 													<span class="glyphicon glyphicon-map-marker"><b>
-															지역구</b></span>
+															${fvo.p_addr }</b></span>
 												</h5>
 											</td>
 										</tr>
 										<tr>
 											<td class="text-left">
 												<h5>
-													<span class="glyphicon glyphicon-usd"><b> 가격</b></span>
+													<span class="glyphicon glyphicon-usd"><b> ${fvo.p_price }</b></span>
 												</h5>
 											</td>
 										</tr>
 										<tr>
 											<td class="text-left">
 												<h5>
-													<span class="glyphicon glyphicon-time"><b> 평일
-															11:00~20:00</b></span>
+													<span class="glyphicon glyphicon-time"><b> ${fvo.p_time }</b></span>
 												</h5>
 											</td>
 										</tr>
@@ -612,7 +611,7 @@
 											<td class="text-right">
 												<h5>
 													<span class="glyphicon glyphicon-eye-open"
-														style="margin: 2px;">88</span>
+														style="margin: 2px;">${fvo.p_hit }</span>
 													<!--조회수  -->
 													<span class="glyphicon glyphicon-heart"
 														style="margin: 2px;">4</span>
@@ -638,7 +637,7 @@
 						<b>▶ 추천</b><b style="color: #DF0101;">놀거리</b>
 					</h4>
 				</div>
-				<c:forEach begin="1" end="3">
+				<c:forEach var="cvo" items="${ppc_list }">
 					<div class="col-md-4 text-center">
 						<div class="box">
 							<div class="box-content">
@@ -647,10 +646,10 @@
 										<span class="glyphicon glyphicon-map-marker"
 											style="float: left; margin: 2%"></span>
 									</h4>
-									<h4 class="tag-title text-left">가게이름</h4> <br>
+									<h4 class="tag-title text-left">${cvo.p_name }</h4> <br>
 								</a>
 								<hr style="margin: 2%;">
-								<img src="img_1/play1.jpg" style="width: 100%; height: 250px;">
+								<img src="${cvo.p_img }" style="width: 100%; height: 250px;">
 								<br>
 								<hr style="margin: 3px;">
 								<!-- 가게정보 -->
@@ -660,22 +659,21 @@
 											<td class="text-left">
 												<h5>
 													<span class="glyphicon glyphicon-map-marker"><b>
-															지역구</b></span>
+															${cvo.p_addr }</b></span>
 												</h5>
 											</td>
 										</tr>
 										<tr>
 											<td class="text-left">
 												<h5>
-													<span class="glyphicon glyphicon-usd"><b> 가격</b></span>
+													<span class="glyphicon glyphicon-usd"><b> ${cvo.p_price }</b></span>
 												</h5>
 											</td>
 										</tr>
 										<tr>
 											<td class="text-left">
 												<h5>
-													<span class="glyphicon glyphicon-time"><b> 평일
-															11:00~20:00</b></span>
+													<span class="glyphicon glyphicon-time"><b> ${cvo.p_time }</b></span>
 												</h5>
 											</td>
 										</tr>
@@ -683,7 +681,7 @@
 											<td class="text-right">
 												<h5>
 													<span class="glyphicon glyphicon-eye-open"
-														style="margin: 2px;">88</span>
+														style="margin: 2px;">${cvo.p_hit }</span>
 													<!--조회수  -->
 													<span class="glyphicon glyphicon-heart"
 														style="margin: 2px;">4</span>
@@ -707,44 +705,43 @@
 						<b>▶ 추천</b><b style="color: #DF0101;">카페</b>
 					</h4>
 				</div>
-				<c:forEach begin="1" end="3">
+				<c:forEach var="pvo" items="${pp_list }">
 					<div class="col-md-4 text-center">
 						<div class="box">
 							<div class="box-content">
 								<a href="#" style="color: black; text-decoration: none;">
 									<h4>
-										<span class="glyphicon glyphicon-glass"
+										<span class="glyphicon glyphicon-map-marker"
 											style="float: left; margin: 2%"></span>
 									</h4>
-									<h4 class="tag-title text-left">가게이름</h4> <br>
+									<h4 class="tag-title text-left">${pvo.p_name }</h4> <br>
 								</a>
 								<hr style="margin: 2%;">
-								<img src="img_1/cafe1.png" style="width: 100%; height: 250px;">
+								<img src="${pvo.p_img }" style="width: 100%; height: 250px;">
 								<br>
 								<hr style="margin: 3px;">
 								<!-- 가게정보 -->
 								<div class="rc_detail">
-									<table width=100%>
+									<table class="" width=100%>
 										<tr>
 											<td class="text-left">
 												<h5>
 													<span class="glyphicon glyphicon-map-marker"><b>
-															지역구</b></span>
+															${pvo.p_addr }</b></span>
 												</h5>
 											</td>
 										</tr>
 										<tr>
 											<td class="text-left">
 												<h5>
-													<span class="glyphicon glyphicon-usd"><b> 가격</b></span>
+													<span class="glyphicon glyphicon-usd"><b> ${pvo.p_price }</b></span>
 												</h5>
 											</td>
 										</tr>
 										<tr>
 											<td class="text-left">
 												<h5>
-													<span class="glyphicon glyphicon-time"><b> 평일
-															11:00~20:00</b></span>
+													<span class="glyphicon glyphicon-time"><b> ${pvo.p_time }</b></span>
 												</h5>
 											</td>
 										</tr>
@@ -752,7 +749,7 @@
 											<td class="text-right">
 												<h5>
 													<span class="glyphicon glyphicon-eye-open"
-														style="margin: 2px;">88</span>
+														style="margin: 2px;">${pvo.p_hit }</span>
 													<!--조회수  -->
 													<span class="glyphicon glyphicon-heart"
 														style="margin: 2px;">4</span>

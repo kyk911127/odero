@@ -19,7 +19,16 @@ public class CourseController {
 	@RequestMapping("course_search.do")
 	public String main_page(String strPosition, String strPno, Model model) {
 		String[] strPositions = new String[9];
+		String[] f_Positions = new String[9];
+		String[] c_Positions = new String[9];
+		String[] p_Positions = new String[9];
 		String[] strPnos = new String[9];
+		String[] f_Pnos = new String[9];
+		String[] c_Pnos = new String[9];
+		String[] p_Pnos = new String[9];
+		List<PlaceVO> pf_list = new ArrayList<PlaceVO>();
+		List<PlaceVO> ppc_list = new ArrayList<PlaceVO>();
+		List<PlaceVO> pp_list = new ArrayList<PlaceVO>();
 		List<PlaceVO> p_list = new ArrayList<PlaceVO>();
 		System.out.println("strPosition(controller) : " + strPosition);
 		System.out.println("strPno(controller) : " + strPno);
@@ -42,12 +51,41 @@ public class CourseController {
 			// pno_list에 있는 가게번호로 가게 정보 넘기기
 			for (String no : pno_list) {
 				PlaceVO vo = dao.course_place_data(Integer.parseInt(no));
+				String img = vo.getP_img().split(",")[0];
+				if(img.equals("-")){
+					continue;
+				}else{
+					vo.setP_img(img);
+				}
 				p_list.add(vo);
+				String time = vo.getP_time();
+				if(time == null) {
+					vo.setP_time("시간 정보 없음");
+				}
+			}
+			int f = 0;
+			int c = 0;
+			int p = 0;
+			for(int i=0; i<9; i++) {
+				if(p_list.get(i).getP_grade().equals("f")) {
+					pf_list.add(p_list.get(i));
+					/*f_Positions[f] = strPositions[i];
+					f++;*/
+				} else if(p_list.get(i).getP_grade().equals("c")) {
+					ppc_list.add(p_list.get(i));
+					/*c_Positions[c] = strPositions[i];*/
+				} else {
+					pp_list.add(p_list.get(i));
+					/*p_Positions[c] = strPositions[i];*/
+				}
 			}
 
 			System.out.println("strPosition2(controller) : " + strPosition);
 		}
 
+		model.addAttribute("pf_list", pf_list);
+		model.addAttribute("ppc_list", ppc_list);
+		model.addAttribute("pp_list", pp_list);
 		model.addAttribute("p_list", p_list);
 		model.addAttribute("strPosition", strPositions);
 		model.addAttribute("strPnos", strPnos);
@@ -71,7 +109,9 @@ public class CourseController {
 		map.put("p_grade", "f");
 		map.put("gulist", gulist);
 		map.put("keylist", keylist_f);
+		System.out.println("11111111111111");
 		List<PlaceVO> fvo_list = dao.getPlaceInfo(map);
+		System.out.println("2222222222222222222");
 			//cafe
 		map.put("p_grade", "c");
 		map.put("keylist", keylist_c);
@@ -147,6 +187,7 @@ public class CourseController {
 			System.out.println("가게유형 : " + vo.getP_grade());
 			System.out.println("가게주소 : " + vo.getP_addr());
 			System.out.println("조회수 : " + vo.getP_hit());
+			System.out.println("time : " + vo.getP_time());
 			System.out.println("======================");
 			p_list.add(vo);
 		}
@@ -159,9 +200,9 @@ public class CourseController {
 	@RequestMapping("placetoplace.do")
 	public String place_to_place(int p_no, int cnt, Model model) {
 		PlaceVO vo = dao.course_place_data(p_no);
-		System.out.println("p_no : " + p_no);
+		/*System.out.println("p_no : " + p_no);
 		System.out.println("cnt : " + cnt);
-		System.out.println("vo.getP_name() : " + vo.getP_name());
+		System.out.println("vo.getP_name() : " + vo.getP_name());*/
 		model.addAttribute("vo", vo);
 		return "course/place_view/place_" + cnt;
 	}
@@ -192,7 +233,7 @@ public class CourseController {
 				for (int i = 0; i < arrfkey.length; i++) {
 					if (arrfkey[i] != null && !(arrfkey[i].equals(""))) {
 						Map in_map = new HashMap();
-						System.out.println(arrfkey[i]);
+						/*System.out.println(arrfkey[i]);*/
 						in_map.put("sf_key", arrfkey[i]);
 						in_map.put("sf_grade", key);
 						dao.sfood_insert(in_map);
