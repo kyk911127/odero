@@ -27,7 +27,7 @@ public class PlaceController {
 	public String place_detail(String p_no, Model model) {
 		if(p_no==null)
 			p_no = "2";
-		 
+		  
 		PlaceVO vo = dao.placeDetailData(Integer.parseInt(p_no));
 		vo.setCount(p_dao.p_replyCount(Integer.parseInt(p_no)));
 		List<P_ReplyVO> r_list = p_dao.p_replyListData(Integer.parseInt(p_no));
@@ -100,17 +100,12 @@ public class PlaceController {
 		model.addAttribute("curpage",curpage);
 		model.addAttribute("totalpage",totalpage);
 		
-		/*PlaceVO vo=new PlaceVO();
-		// img split
-		String str_img = vo.getP_img();
-		String[] simg = str_img.split(",");
-		model.addAttribute("first_img",simg[0]);*/
 		
 		return "place/p_list";
 	}
 	
 	
-	@RequestMapping("s_list.do")
+	/*@RequestMapping("s_list.do")
 	public String placeSelectData(String sn_1,String sn_3,String page, Model model){
 		
 		if(page==null)
@@ -155,6 +150,6 @@ public class PlaceController {
 
 		return "place/list_view/s_list";
 	}
-	
+	*/
 	
 }

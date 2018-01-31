@@ -17,7 +17,7 @@ $(".hover").mouseleave(
 	}
 );
 function insert(){
-	location.href="review_insert.do"
+	location.href="review_insert.do"	
 }
 </script>
 </head>
@@ -26,9 +26,17 @@ function insert(){
 		<div class="row">
 			<center><h3><b>후기 게시판</b></h3></center><br>
 			<div style="height: 50px;">
-				<div class="text-left col-xs-2" style="display: inline;">
-					<input type="button" value="새글" id="insert" onclick="javascript:insert()">
-				</div>
+				<c:choose>
+					<c:when test="${sessionScope.m_id!=null }">
+						<div class="text-left col-xs-2" style="display: inline;">
+							<input type="button" value="새글" id="insert" onclick="javascript:insert()">
+						</div>
+					</c:when>
+					<c:otherwise>
+						<div class="text-left col-xs-2" style="display: inline;">
+						</div>
+					</c:otherwise>
+				</c:choose>
 				<div class="text-right col-xs-10" style="display: inline;">
 					<select style="height: 35px">
 						<option>전체</option>

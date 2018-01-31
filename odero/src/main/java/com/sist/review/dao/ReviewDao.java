@@ -38,8 +38,8 @@ public class ReviewDao {
 	}
 	
 	// Update
-	public void reviewUpdateData(int no){
-		mapper.reviewUpdateData(no);
+	public void reviewUpdateData(ReviewVo vo){
+		mapper.reviewUpdateData(vo);
 	}
 	
 	// Delete
@@ -48,5 +48,20 @@ public class ReviewDao {
 	}
 	public void reviewDelete(int no){
 		mapper.reviewDelete(no);
+	}
+	
+	// Reply_Insert
+	public void replyInsert(Review_ReplyVo vo){
+		mapper.replyInsert(vo);
+	}
+	
+	// Reply_List
+	public List<Review_ReplyVo> replyList(Map map){
+		return mapper.replyList(map);
+	}
+	
+	// Reply_totalPage
+	public int replyTotalList(){
+		return mapper.replyTotalList();
 	}
 }

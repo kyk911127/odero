@@ -97,4 +97,20 @@ public class MainController {
 				model.addAttribute("plist", plist);//best play
 				return "main";
 	}
+	
+	@RequestMapping("path.do")
+	public String path(int min, String pathtype, int distance,String lastEndStation, String firstStartStation, String startID, String endID, String payment,String subname,Model model){
+		PathVO vo = new PathVO();
+		vo.setMin(min);
+		vo.setPathtype(pathtype);
+		vo.setDistance(distance);
+		vo.setLastEndStation(lastEndStation);
+		vo.setFirstStartStation(firstStartStation);
+		vo.setStartID(startID);
+		vo.setEndID(endID);
+		vo.setPayment(payment);
+		vo.setSubname(subname);
+		model.addAttribute("vo", vo);
+		return "member/member_check/path";
+	}
 }
