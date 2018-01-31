@@ -40,7 +40,7 @@ $(function() {
 			alert("로그인이 필요합니다.")
 			location.href = "main.do";
 		}
-	});
+	}); 
 	$('table').parent().children().find("td:nth-child(2):empty").parent().hide();
 });
 </script>
@@ -90,7 +90,7 @@ $(function() {
 	</div>
 	<div class="container mid_container">
 		<div class="row1 row_info">
-			<h3>${vo.p_name }</h3>
+			<h3 class="p_h">${vo.p_name }</h3>
 			<div style="padding: 15px; border-bottom: 1px solid #dbdbdb;">
 				<!-- <span class="glyphicon glyphicon-tent" aria-hidden="true"></span> 이색/체험 -->
 				<c:if test="${vo.p_grade=='p' }">
@@ -151,7 +151,7 @@ $(function() {
 		</div>
 
 		<div class="row1 row_map">
-			<h3>위치</h3>
+			<h3 class="p_h">위치</h3>
 			<div id="map" style="width: 100%; height: 450px;"></div>
 		</div>
 		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=90ca2826f787f6d4fc01f89cb8bcdce3&libraries=services"></script>
@@ -191,8 +191,8 @@ $(function() {
 		</script>
 
 		<div class="row1 row_reply">
-			<h3>${vo.p_name }의 댓글(${vo.count })</h3>
-			<table class="reply_list">
+			<h3 class="p_h">${vo.p_name }의 댓글(${vo.count })</h3>
+			<table class="reply_list" style="font-size: ">
 				<c:forEach var="rvo" items="${r_list }">
 					<tr style="border-bottom: 1px solid #dbdbdb;">
 						<td width="13%">
@@ -208,19 +208,19 @@ $(function() {
 								<span class="reply_date">
 									<fmt:formatDate value="${rvo.pr_regdate}" pattern="yyyy-MM-dd HH:mm:ss" />
 								</span>
-								<button class="btn btn-xs btn-default modifyBtn" value="${rvo.pr_no }">수정</button>
-								<form method=post action="p_reply_delete.do" style="display: inline-block;">
+								<form method=post action="p_reply_delete.do" style="display: inline-block; float: right; margin-left: 5px">
 									<input type="hidden" name=p_no value="${rvo.p_no }"> 
 									<input type="hidden" name=pr_no value="${rvo.pr_no }">
-									<button class="btn btn-xs btn-default" id="deleteBtn">삭제</button>
+									<button class="btn btn-sm btn-default" id="deleteBtn">삭제</button>
 								</form>
+								<button class="btn btn-sm btn-default modifyBtn" value="${rvo.pr_no }" style="float: right;">수정</button>
 								<p class="reply_content">${rvo.pr_msg }</p>	
 								<div id="up${rvo.pr_no }" style="display: none">
 									<form method=post action="p_reply_update.do">
 										<input type="hidden" name=pr_no value="${rvo.pr_no }">
 										<textarea rows="3" class="com_2 form-control text-left" style="float: left" name="pr_msg">${rvo.pr_msg }</textarea>
 										<br> &nbsp; 
-										<input class="btn btn-default btn-xs pull-right" type=submit style="margin-top: 5px" value="수정하기">
+										<input class="btn btn-default btn-sm pull-right" type=submit style="margin-top: 5px" value="수정하기">
 									</form>
 								</div>
 							</div>

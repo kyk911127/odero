@@ -25,4 +25,8 @@ public class P_ReplyDAO {
 	public void p_replyDelete(int pr_no) {
 		mapper.p_replyDelete(pr_no);
 	}
+	
+	public int p_replyCount(int p_no) {
+		return mapper.p_replyCount(p_no);
+	}
 }
