@@ -75,27 +75,27 @@ public interface CourseMapper {
     
     //각각의 카테고리 테이블 데이터 삭제
     @Delete("DELETE sf_key FROM sfood")
-    public void sfood_delete();
+    public void sfood_delete(String sf_key);
     
     @Delete("DELETE sp_key FROM splay")
-    public void splay_delete();
+    public void splay_delete(String sp_key);
     
     @Delete("DELETE sc_key FROM scafe")
-    public void scafe_delete();
+    public void scafe_delete(String sc_key);
     
     
     
     //맛집테이블에 키워드 넣기
     @Insert("INSERT INTO sfood VALUSE(#{sf_key})")
-    public List<SFoodVO> sfood_insert();
+    public void sfood_insert(String sf_key);
     
     //놀거리테이블에 키워드 넣기
     @Insert("INSERT INTO splay VALUSE(#{sp_key})")
-    public List<SPlayVO> splay_insert();
+    public void splay_insert(String sp_key);
         
     //카페테이블에 키워드 넣기
     @Insert("INSERT INTO scafe VALUSE(#{sc_key})")
-    public List<SCafeVO> scafe_insert();
+    public void scafe_insert(String sc_key);
     
     
     
