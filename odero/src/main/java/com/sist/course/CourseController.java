@@ -19,13 +19,13 @@ public class CourseController {
 	@RequestMapping("course_search.do")
 	public String main_page(String strPosition, String strPno, Model model) {
 		String[] strPositions = new String[9];
-		String[] f_Positions = new String[9];
-		String[] c_Positions = new String[9];
-		String[] p_Positions = new String[9];
+		String[] f_Positions = new String[3];
+		String[] c_Positions = new String[3];
+		String[] p_Positions = new String[3];
 		String[] strPnos = new String[9];
-		String[] f_Pnos = new String[9];
-		String[] c_Pnos = new String[9];
-		String[] p_Pnos = new String[9];
+		String[] f_Pnos = new String[3];
+		String[] c_Pnos = new String[3];
+		String[] p_Pnos = new String[3];
 		List<PlaceVO> pf_list = new ArrayList<PlaceVO>();
 		List<PlaceVO> ppc_list = new ArrayList<PlaceVO>();
 		List<PlaceVO> pp_list = new ArrayList<PlaceVO>();
@@ -69,14 +69,19 @@ public class CourseController {
 			for(int i=0; i<9; i++) {
 				if(p_list.get(i).getP_grade().equals("f")) {
 					pf_list.add(p_list.get(i));
-					/*f_Positions[f] = strPositions[i];
-					f++;*/
+					f_Positions[f] = strPositions[i];
+					f_Pnos[f] = strPnos[i];
+					f++;
 				} else if(p_list.get(i).getP_grade().equals("c")) {
 					ppc_list.add(p_list.get(i));
-					/*c_Positions[c] = strPositions[i];*/
+					c_Positions[c] = strPositions[i];
+					c_Pnos[c] = strPnos[i];
+					c++;
 				} else {
 					pp_list.add(p_list.get(i));
-					/*p_Positions[c] = strPositions[i];*/
+					p_Positions[p] = strPositions[i];
+					p_Pnos[p] = strPnos[i];
+					p++;
 				}
 			}
 
@@ -88,6 +93,12 @@ public class CourseController {
 		model.addAttribute("pp_list", pp_list);
 		model.addAttribute("p_list", p_list);
 		model.addAttribute("strPosition", strPositions);
+		model.addAttribute("f_Positions", f_Positions);
+		model.addAttribute("c_Positions", c_Positions);
+		model.addAttribute("p_Positions", p_Positions);
+		model.addAttribute("f_Pnos", f_Pnos);
+		model.addAttribute("c_Pnos", c_Pnos);
+		model.addAttribute("p_Pnos", p_Pnos);
 		model.addAttribute("strPnos", strPnos);
 		return "course/course_search";
 	}

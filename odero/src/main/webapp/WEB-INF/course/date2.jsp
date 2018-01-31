@@ -206,12 +206,30 @@
      };
      var p_addr = [];
      var p_nos = [];
-     <c:forEach var="addr" items="${strPosition }">
+     /* <c:forEach var="addr" items="${strPosition }">
        p_addr.push("${addr}");
      </c:forEach>
      <c:forEach var="no" items="${strPnos}">
      	p_nos.push("${no}");
-   	 </c:forEach>
+   	 </c:forEach> */
+     <c:forEach var="addr" items="${f_Positions }">
+     p_addr.push("${addr}");
+   </c:forEach>
+   <c:forEach var="no" items="${f_Pnos}">
+   	p_nos.push("${no}");
+ 	 </c:forEach>
+     <c:forEach var="addr" items="${c_Positions }">
+     p_addr.push("${addr}");
+   </c:forEach>
+   <c:forEach var="no" items="${c_Pnos}">
+   	p_nos.push("${no}");
+ 	 </c:forEach>
+     <c:forEach var="addr" items="${p_Positions }">
+     p_addr.push("${addr}");
+   </c:forEach>
+   <c:forEach var="no" items="${p_Pnos}">
+   	p_nos.push("${no}");
+ 	 </c:forEach>
      var map = new daum.maps.Map(container, options);
      
      var MARKER_WIDTH = 33, // 기본, 클릭 마커의 너비
@@ -557,21 +575,24 @@
 	<div class="container rc">
 		<div class="rc_box">
 			<!--맛집 리스트  -->
+			
 			<div class="row">
 				<div style="width: 100%; height: 25px;">
 					<h4 style="margin: 0px; float: left">
 						<b>▶ 추천</b><b style="color: #DF0101;">맛집</b>
 					</h4>
 				</div>
-				<c:forEach var="fvo" items="${pf_list }">
-					<div class="col-md-4 text-center">
+				<c:forEach var="fvo" items="${pf_list }" varStatus="i">
+					<div class="col-md-4 text-center" onclick="location.href='p_detail.do?p_no=${fvo.p_no}'" style="cursor: pointer;">
 						<div class="box">
 							<div class="box-content">
 								<!--맛집 이름  -->
 								<a href="#" style="color: black; text-decoration: none;">
 									<h4>
-										<span class="glyphicon glyphicon-cutlery"
-											style="float: left; margin: 2%"></span>
+										<span
+											style="float: left; margin: 2%;">
+											<img width="30px" src="img_1/m_${i.index+1 }.png">	
+										</span>
 									</h4>
 									<h4 class="tag-title text-left">${fvo.p_name }</h4> <br>
 								</a>
@@ -613,8 +634,8 @@
 													<span class="glyphicon glyphicon-eye-open"
 														style="margin: 2px;">${fvo.p_hit }</span>
 													<!--조회수  -->
-													<span class="glyphicon glyphicon-heart"
-														style="margin: 2px;">4</span>
+													<!-- <span class="glyphicon glyphicon-heart"
+														style="margin: 2px;">4</span> -->
 													<!--찜 수   -->
 												</h5>
 											</td>
@@ -627,24 +648,25 @@
 				</c:forEach>
 			</div>
 
-
-
-
-			<!--놀거리 리스트  -->
+			<!-- 카페 리스트 -->
 			<div class="row">
 				<div style="width: 100%; height: 25px;">
 					<h4 style="margin: 0px; float: left">
-						<b>▶ 추천</b><b style="color: #DF0101;">놀거리</b>
+						<b>▶ 추천</b><b style="color: #DF0101;">카페</b>
 					</h4>
 				</div>
-				<c:forEach var="cvo" items="${ppc_list }">
-					<div class="col-md-4 text-center">
+				<c:forEach var="cvo" items="${ppc_list }" varStatus="i">
+					<div class="col-md-4 text-center" onclick="location.href='p_detail.do?p_no=${cvo.p_no}'" style="cursor: pointer;">
 						<div class="box">
 							<div class="box-content">
 								<a href="#" style="color: black; text-decoration: none;">
 									<h4>
-										<span class="glyphicon glyphicon-map-marker"
-											style="float: left; margin: 2%"></span>
+										<!-- <span class="glyphicon glyphicon-map-marker"
+											style="float: left; margin: 2%"></span> -->
+										<span
+											style="float: left; margin: 2%;">
+											<img width="30px" src="img_1/m_${i.index+7 }.png">	
+										</span>
 									</h4>
 									<h4 class="tag-title text-left">${cvo.p_name }</h4> <br>
 								</a>
@@ -683,8 +705,8 @@
 													<span class="glyphicon glyphicon-eye-open"
 														style="margin: 2px;">${cvo.p_hit }</span>
 													<!--조회수  -->
-													<span class="glyphicon glyphicon-heart"
-														style="margin: 2px;">4</span>
+													<!-- <span class="glyphicon glyphicon-heart"
+														style="margin: 2px;">4</span> -->
 													<!--찜 수   -->
 												</h5>
 											</td>
@@ -697,22 +719,25 @@
 				</c:forEach>
 			</div>
 
-			<!--  -->
-			<!-- 카페 리스트 -->
+
+			<!--놀거리 리스트  -->
 			<div class="row">
 				<div style="width: 100%; height: 25px;">
 					<h4 style="margin: 0px; float: left">
-						<b>▶ 추천</b><b style="color: #DF0101;">카페</b>
+						<b>▶ 추천</b><b style="color: #DF0101;">놀거리</b>
 					</h4>
 				</div>
-				<c:forEach var="pvo" items="${pp_list }">
-					<div class="col-md-4 text-center">
+
+				<c:forEach var="pvo" items="${pp_list }" varStatus="i">
+					<div class="col-md-4 text-center" onclick="location.href='p_detail.do?p_no=${pvo.p_no}'" style="cursor: pointer;">
 						<div class="box">
 							<div class="box-content">
 								<a href="#" style="color: black; text-decoration: none;">
 									<h4>
-										<span class="glyphicon glyphicon-map-marker"
-											style="float: left; margin: 2%"></span>
+										<span
+											style="float: left; margin: 2%;">
+											<img width="30px" src="img_1/m_${i.index+4 }.png">	
+										</span>
 									</h4>
 									<h4 class="tag-title text-left">${pvo.p_name }</h4> <br>
 								</a>
@@ -751,8 +776,8 @@
 													<span class="glyphicon glyphicon-eye-open"
 														style="margin: 2px;">${pvo.p_hit }</span>
 													<!--조회수  -->
-													<span class="glyphicon glyphicon-heart"
-														style="margin: 2px;">4</span>
+													<!-- <span class="glyphicon glyphicon-heart"
+														style="margin: 2px;">4</span> -->
 													<!--찜 수   -->
 												</h5>
 											</td>
@@ -764,6 +789,9 @@
 					</div>
 				</c:forEach>
 			</div>
+
+			<!--  -->
+			
 		</div>
 	</div>
 
