@@ -27,7 +27,7 @@ public class PlaceController {
 	public String place_detail(String p_no, Model model) {
 		if(p_no==null)
 			p_no = "2";
-		  
+		   
 		PlaceVO vo = dao.placeDetailData(Integer.parseInt(p_no));
 		vo.setCount(p_dao.p_replyCount(Integer.parseInt(p_no)));
 		List<P_ReplyVO> r_list = p_dao.p_replyListData(Integer.parseInt(p_no));
