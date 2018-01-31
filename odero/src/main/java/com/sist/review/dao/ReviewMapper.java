@@ -48,8 +48,35 @@ public interface ReviewMapper {
 	public ReviewVo reviewDeleteData(int no);
 	
 	@Update("UPDATE review SET r_subject=#{r_subject},r_pname=#{r_pname},r_content=#{r_content},r_addr=#{r_addr} WHERE r_no=#{r_no}")
-	public void reviewUpdateData(int no);
+	public void reviewUpdateData(ReviewVo vo);
 	
 	@Delete("DELETE FROM review WHERE r_no=#{r_no}")
 	public void reviewDelete(int no);
+	/*
+	 * rr_no
+r_no
+rr_msg
+rr_regdate
+rr_gid
+rr_gstep
+rr_gtab
+rr_depth
+rr_root
+m_id
+	 */
+	@SelectKey(keyProperty="rr_no", resultType=int.class, before=true, 
+			statement="SELECT NVL(MAX(rr_no)+1,1) AS no FROM review_reply")
+	@Insert("INSERT INTO review_reply(rr_no,r_no,m_id,rr_msg,rr_gid) "
+			+ "VALUES(#{rr_no},#{r_no},#{m_id},#{rr_msg},(SELECT NVL(MAX(rr_gid)+1,1) FROM review_reply))")
+	public void replyInsert(Review_ReplyVo vo);
+	
+	@Select("SELECT rr_no,m_id,rr_msg,rr_regdate,rr_gid,rr_gstep,rr_gtab,rr_depth,rr_root,num "
+			+ "FROM (SELECT rr_no,m_id,rr_msg,rr_regdate,rr_gid,rr_gstep,rr_gtab,rr_depth,rr_root,rownum AS num "
+			+ "FROM (SELECT rr_no,m_id,rr_msg,rr_regdate,rr_gid,rr_gstep,rr_gtab,rr_depth,rr_root "
+			+ "FROM review_reply ORDER BY rr_no DESC)) "
+			+ "WHERE num BETWEEN #{start} AND #{end}")
+	public List<Review_ReplyVo> replyList(Map map);
+	
+	@Select("SELECT CEIL(COUNT(*)/10) FROM review_reply")
+	public int replyTotalList();
 }

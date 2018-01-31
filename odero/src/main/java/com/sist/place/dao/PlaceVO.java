@@ -24,6 +24,7 @@ public class PlaceVO {
 	private String p_time;
 	private String p_coords;
 	private int p_hit;
+	private int count;
 
 	public String getP_coords() {
 		return p_coords;
@@ -91,5 +92,12 @@ public class PlaceVO {
 	public void setP_hit(int p_hit) {
 		this.p_hit = p_hit;
 	}
+	public int getCount() {
+		return count;
+	}
+	public void setCount(int count) {
+		this.count = count;
+	}
+	
 	
 }

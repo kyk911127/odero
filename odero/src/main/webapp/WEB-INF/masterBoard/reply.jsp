@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTR-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,16 +18,16 @@
 		<div class="row">
 			<center>
 				<h3>공사중</h3>
-				<form method="post" action="MasterBoardInsert_ok.do">
+				<form method="post" action="MasterBoardReply_ok.do">
 				<table class="table aa">
 					<tr>
 						<td width=15% class="text-right">제목</td>
-						<td width=85%><input type=text name=subject size=50></td>
+						<td width=85%><input type="text" name="subject" size="50"/></td>
 					</tr>
 					<tr>
 						<td width=15% class="text-right">이름</td>
 						<td width=85%>
-							<input type=text name="name" size=50>
+							<input type=text name="name" size="50"/>
 						</td>
 					</tr>
 					<tr>
@@ -40,7 +40,9 @@
 					<tr>
 						<td width=15% class="text-right">비밀번호</td>
 						<td width=85%>
-							<input type="password" name="pwd" size="10" />
+							<input type="password" name="pwd" size="10">
+							<input type="hidden" name="page" value="${page}" />
+							<input type="hidden" name="no" value="${no}" />
 						</td>
 					</tr>
 					<tr>
