@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -28,9 +29,21 @@
 				<li class="nav_main"><strong><a href="review_list.do">후기게시판</a></strong></li>
 			</ul>
 			<ul class="navbar-right nav navbar-nav mynav" id="nav-right">
-				<li class="nav_main" id="loginBtn"><strong><a
-						href="#loginModal" data-toggle="modal">로그인</a></strong></li>
-				<li class="nav_main"><strong><a href="mypage.do">마이페이지</a></strong></li>
+				<c:if test="${sessionScope.m_id==null }">
+					<!-- 미로그인시 -->
+					<li class="nav_main" id="loginBtn"><strong><a
+							href="#loginModal" data-toggle="modal">로그인</a></strong></li>
+				</c:if>
+				<c:if test="${sessionScope.m_id!=null }">
+					<!-- 로그인시 -->
+					<li class="nav_main"><strong><a href="mypage.do">
+								<font style="font-weight: bold">"${sessionScope.m_name }"님
+							</font> 마이페이지
+						</a></strong></li>
+					<li class="nav_main"><strong><a href="logout.do"
+							id="logout"><font style="font-size: 14px">로그아웃</font></a></strong></li>
+				</c:if>
+
 			</ul>
 		</div>
 	</div>

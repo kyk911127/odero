@@ -152,7 +152,6 @@
 																				c=c+1;
 																				arr_coords[c] = result[0].y;
 																				c=c+1;
-																				alert(arr_coords[0]);
 																				// 결과값으로 받은 위치를 마커로 표시합니다
 																				var marker = new daum.maps.Marker(
 																						{
@@ -180,17 +179,18 @@
 														function searchPubTransPathAJAX() {
 															var xhr = new XMLHttpRequest();
 															//ODsay apiKey 입력
-															
-															var url = "https://api.odsay.com/v1/api/searchPubTransPath?SX="+arr_coords[0]+"&SY="+arr_coords[1]+"&EX="+arr_coords[2]+"&EY="+arr_coords[3]+"&apiKey=Vtl1rXEESth1IRgaEkIJ+A";
+															alert("gg");
+															var url = "https://api.odsay.com/v1/api/searchPubTransPath?SX=127.06267410402882&SY=37.65648131884798&EX=127.07963376555469&EY=37.66635665481798&apiKey=Vtl1rXEESth1IRgaEkIJ+A";
 															xhr.open("GET", url, true);
 															xhr.send();
 															xhr.onreadystatechange = function() {
+																
 																if (xhr.readyState == 4 && xhr.status == 200) {
 																	var resultObj = JSON.parse(xhr.responseText);
-																	console.log(resultObj.result);
-																	var resultArr = resultObj["result"]["lane"];
 																	
-
+																	//console.log(resultObj.result);
+																	var resultArr = resultObj["result"]["lane"];
+																	alert("zz");
 																	var str = "";
 																	for (var i = 0; i < resultArr.length; i++) {
 																		str += "<div class='box'>";
@@ -200,6 +200,7 @@
 																		str += "<p>출발점 / 도착점 : " + resultArr[i].busStartPoint + " - "
 																			+ resultArr[i].busEndPoint + "</p>";
 																		str += "</div>";
+																		alert(str);
 																	}
 																	document.getElementById(".root").innerHTML = str;
 																}
