@@ -43,11 +43,12 @@ public class MyPageController {
 	public String mypage_list(/*HttpSession session,*/ String m_id, String sort,  Model model) {
 		/*String id   = (String)session.getAttribute(m_id);*/
 		
-		String jsort="";
+		String jsort=sort;
 		if (m_id==null)
 			m_id = "01059231010"; // 임시로 지정
 		if (sort==null)
 			jsort = "cos";
+		
 		
 		
 		List<MyPagePlaceVO> list = dao.MyPlaceBest5(m_id);
@@ -55,11 +56,11 @@ public class MyPageController {
 		
 		
 		if (jsort.equals("cos")) {
-			model.addAttribute("list",list);
+			model.addAttribute("list",plist);
 			
 		}
 		if (jsort.equals("place")) {
-			model.addAttribute("list",plist);
+			model.addAttribute("list",list);
 		}
 		
 		List<MyPageCosVO> clist = dao.MyCosBestCafe(m_id);
@@ -69,7 +70,7 @@ public class MyPageController {
 		model.addAttribute("jsort",jsort);
 		model.addAttribute("clist",clist);
 		model.addAttribute("flist",flist);
-		model.addAttribute("list",list);
+/*		model.addAttribute("list",list);*/
 		return "cart/mypage_list";
 	}
 	@RequestMapping("mypage_cos.do")
