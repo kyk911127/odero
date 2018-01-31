@@ -5,12 +5,13 @@ public class Review_ReplyVo {
 	private int rr_no;
 	private int r_no;
 	private String rr_msg;
-	private Date regdate;
+	private Date rr_regdate;
 	private int rr_gid;
 	private int rr_gstep;
 	private int rr_gtab;
 	private int rr_depth;
 	private int rr_root;
+	private String m_id;
 	
 	public int getRr_no() {
 		return rr_no;
@@ -30,11 +31,11 @@ public class Review_ReplyVo {
 	public void setRr_msg(String rr_msg) {
 		this.rr_msg = rr_msg;
 	}
-	public Date getRegdate() {
-		return regdate;
+	public Date getRr_regdate() {
+		return rr_regdate;
 	}
-	public void setRegdate(Date regdate) {
-		this.regdate = regdate;
+	public void setRr_regdate(Date rr_regdate) {
+		this.rr_regdate = rr_regdate;
 	}
 	public int getRr_gid() {
 		return rr_gid;
@@ -65,6 +66,12 @@ public class Review_ReplyVo {
 	}
 	public void setRr_root(int rr_root) {
 		this.rr_root = rr_root;
+	}
+	public String getM_id() {
+		return m_id;
+	}
+	public void setM_id(String m_id) {
+		this.m_id = m_id;
 	}
 	
 	

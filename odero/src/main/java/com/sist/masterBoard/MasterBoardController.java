@@ -1,8 +1,6 @@
 package com.sist.masterBoard;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -27,7 +25,7 @@ public class MasterBoardController {
 		int rowSize = 10;
 		int start = (rowSize*curpage)-(rowSize-1);
 		int end = rowSize*curpage;
-
+		
 		Map map = new HashMap();
 
 		map.put("start", start);
@@ -35,12 +33,15 @@ public class MasterBoardController {
 
 		List<NoticeVO> list = dao.MasterBoardList(map);
 		int totalpage = dao.MasterBoardToltalPage();
+		int count = dao.MasterBoardRowCount();
+		count = count-((curpage*10)-10);
 
 		
 		model.addAttribute("list",list);
 		model.addAttribute("curpage",curpage);
 		model.addAttribute("totalpage",totalpage);
-
+		model.addAttribute("count",count);
+		
 		return "masterBoard/list";
 	}
 	
@@ -55,13 +56,26 @@ public class MasterBoardController {
 		return "redirect:MasterBoard.do";
 	}
 	
+	@RequestMapping("MasterBoardReply.do")
+	public String MasterBoardReply(int page,int no,Model model){
+		model.addAttribute("page",page);
+		model.addAttribute("no",no);
+		return "masterBoard/reply";
+	}
+	
+	@RequestMapping("MasterBoardReply_ok.do")
+	public String MasterBoardReply_ok(NoticeVO vo,int page){
+		dao.MasterBoardReplyInsert(vo);
+		return "redirect:MasterBoard.do?page="+page;
+	}
+	
 	
 	@RequestMapping("MasterBoardContent.do")
-	public String MasterBoardContent(int no,Model model){
+	public String MasterBoardContent(int no,int page,Model model){
 		NoticeVO vo = dao.MasterBoardContent(no);
 		
-		
 		model.addAttribute("vo",vo);
+		model.addAttribute("page",page);
 		
 		return "masterBoard/content";
 	}

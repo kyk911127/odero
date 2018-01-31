@@ -28,8 +28,8 @@ public interface PlaceMapper {
 	public List<P_ReplyVO> p_replyListData(int p_no);
 	
 	// 댓글 추가
-	@SelectKey(keyProperty="p_no", resultType=int.class, before=true, 
-				statement="SELECT NVL(MAX(p_no)+1, 1) as p_no FROM p_reply")
+	@SelectKey(keyProperty="pr_no", resultType=int.class, before=true, 
+				statement="SELECT NVL(MAX(pr_no)+1, 1) as pr_no FROM p_reply")
 	@Insert("INSERT INTO p_reply VALUES(#{pr_no}, #{m_id}, #{pr_msg}, SYSDATE, #{p_no})")
 	public void p_replyInsert(P_ReplyVO vo);
 	

@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,6 +15,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.sist.review.dao.ReviewDao;
 import com.sist.review.dao.ReviewVo;
+import com.sist.review.dao.Review_ReplyVo;
 
 @Controller
 public class ReviewController {
@@ -97,9 +100,22 @@ public class ReviewController {
 	}
 	
 	@RequestMapping("review_detail.do")
-	public String reviewDetail(int no,Model model) {
+	public String reviewDetail(int no,Model model,String page) {
 		dao.reviewHitIncrement(no);
 		ReviewVo vo = dao.reviewDetail(no);
+		if (page == null)
+			page="1";
+		
+		int curpage = Integer.parseInt(page);
+		int rowSize = 10;
+		int start = (rowSize * curpage) - (rowSize - 1);
+		int end = rowSize * curpage;		
+		
+		Map map = new HashMap();
+		map.put("start", start);
+		map.put("end", end);
+		
+		List<Review_ReplyVo> list = dao.replyList(map);
 		
 		if (vo.getR_imgcount()>0) {
 			String[] images = vo.getR_imgname().split(",");
@@ -107,6 +123,11 @@ public class ReviewController {
 			model.addAttribute("images",images);
 		}
 		model.addAttribute("vo", vo);
+		model.addAttribute("list", list);
+		
+		int totalpage = dao.replyTotalList();
+		model.addAttribute("curpage", curpage);
+		model.addAttribute("totalpage", totalpage);
 		return "review/detail";
 	}
 	
@@ -118,14 +139,14 @@ public class ReviewController {
 	}
 	
 	@RequestMapping("review_update_ok.do")
-	public String reviewUpdateData(int no) {
-		dao.reviewUpdateData(no);
-		return "redirect:review_detail.do?no="+no;
+	public String reviewUpdateData(ReviewVo uploadForm) {
+		dao.reviewUpdateData(uploadForm);
+		return "redirect:review_detail.do?no="+uploadForm.getR_no();
 	}
 	@RequestMapping("review_delete.do")
-	public String reviewDelete(int no) {
+	public String reviewDelete(int no, HttpSession session) {
 		ReviewVo vo = dao.reviewDeleteData(no);
-		String id="1";		
+		String id = (String)session.getAttribute("m_id");		
 		if (id.equals(vo.getM_id())) {
 			if (vo.getR_imgcount()>0) {
 				String[] img = vo.getR_imgname().split(",");
@@ -137,5 +158,12 @@ public class ReviewController {
 			dao.reviewDelete(no);
 		}
 		return "redirect:review_list.do";
+	}
+	
+	@RequestMapping("re_reply_insert.do")
+	public String replyInsert(Review_ReplyVo vo){
+		System.out.println(vo.getM_id()+" "+vo.getR_no()+" "+vo.getRr_msg());
+		dao.replyInsert(vo);
+		return "redirect:review_detail.do?no="+vo.getR_no();
 	}
 }

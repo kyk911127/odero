@@ -41,11 +41,11 @@
 					<tr class="aa">
 						<td colspan="4" style="border:solid 1px #e7ebf5">
 						<pre style="border:none;background-color:white;">${vo.content}</pre>
-						<!-- <textarea class="form-control" rows="5" id="comment"></textarea> -->
 						</td>
 					</tr>
 					<tr class="aa">
 						<td colspan="4" class="text-right">
+							<a href="MasterBoardReply.do?no=${vo.no}&page=${page}" class="btn btn-sm btn-success">답변</a>
 							<a href="MasterBoardUpdate.do?no=${vo.no}" class="btn btn-sm btn-success">수정</a>
 							<a href="MasterBoardDelete.do?no=${vo.no}" class="btn btn-sm btn-primary">삭제</a>
 							<a href="MasterBoard.do" class="btn btn-sm btn-info">목록</a>

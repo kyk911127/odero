@@ -57,7 +57,6 @@ public class MainController {
 						int price = Integer.parseInt(tmpvo.getP_price().substring(0, 1));
 						totalprice+=price;
 						c_detail_list.add(tmpvo);
-						System.out.println(tmplist.get(j).get(rd).getP_name());
 					}
 					guimg.add(c_detail_list.get(1).getP_img());
 					totallist.add(totalprice);
