@@ -86,14 +86,7 @@
 </style>
 <script type="text/javascript">
 $(function() {
-		/* var reg_wrap="";
-	   var f_grade="";
-	   var p_grade="";
-	   var c_grade="";
-	   
-	   showlist(reg_wrap, f_grade, p_grade, c_grade);
-	    */
-	   
+	
 
 	
    //select바뀔 때 설정
@@ -101,7 +94,7 @@ $(function() {
               ["동대문구", "광진구", "중랑구", "성북구", "노원구", "도봉구", "강북구"]]
    for(var i=0; i<2; i++) {
       for(var j=0; j<reg[i].length; j++){
-         $("#reg_wrap_" + i +"_" + j).html("<input type='submit' value='" + reg[i][j]  + "' class='reg_btn sel_btn' name='reg_" + i +"_" + j + "'>");
+         $("#reg_wrap_" + i +"_" + j).html("<input type='submit' value='" + reg[i][j]  + "' class='reg_btn sel_btn' name='reg_" + i +"_" + j + "' id='reg_" + i +"_" + j + "'>");
       }
    }
    $("#sel").change(function() {
@@ -117,31 +110,71 @@ $(function() {
          
          for(var j=0; j<14; j++){
             if(j < reg[i].length) {
-               $("#reg_wrap_" + i +"_" + j).html("<input type='submit' value='" + reg[i][j]  + "' class='reg_btn sel_btn' name='reg_" + i +"_" + j + "'>");
+               $("#reg_wrap_" + i +"_" + j).html("<input type='submit' value='" + reg[i][j]  + "' class='reg_btn sel_btn' name='reg_" + i +"_" + j + "' id='reg_" + i +"_" + j + "'>");
             } else {
                $("#reg_wrap_" + i +"_" + j).html("");
             }
          }
       }
    });
-   
-   
-
-   //선택할 때 선택해제할 때 모양 바꾸기 => 동적으로 추가된 태그에는 일반적인 이벤트는 동작하지 않음
-    $(document).on("click",".sel_btn",function(){
-      var btn_bc = $(this).css("background-color");
-      if(btn_bc == "rgb(0, 0, 0)") {   // 선택 해제 => 선택
-         $(this).css("background", "rgb(243, 171, 186)");
-         $(this).css("opacity", "1");
-      } else {                     // 선택 => 선택 해제
-         $(this).css("background", "rgb(0, 0, 0)");
-         $(this).css("opacity", "0.3");
-      }
-   }); 
-   
 
   
-
+   
+   //구 클릭시 키워드 바꾸기
+   var gulist = "";
+   $(document).on("click",".reg_btn",function(){
+	   gulist = "";
+	   var btn_bc = $(this).css("background-color");
+	   if(btn_bc == "rgb(0, 0, 0)") {
+	       $(this).css("background", "rgb(243, 171, 186)");
+	       $(this).css("opacity", "1");
+		   gulist = $(this).attr("value");
+		   
+		   for(var i=0; i<2; i++) {
+			   for(var j=0; j<reg[i].length; j++) {
+				   var btn_id = $("#reg_" + i + "_" + j);
+				   if($(this).attr("id") != btn_id.attr("id")){
+					   if(btn_id.css("background-color") == "rgb(243, 171, 186)") {   // 선택 해제 => 선택
+						   gulist = gulist  + "|" + btn_id.attr("value");
+					   }
+				   }
+			   }
+		   }
+		   $("#gu_hidden").html("<input type='hidden' name='gulist' value='"+ gulist +"'>");
+	   } else {
+	       $(this).css("background", "rgb(0, 0, 0)");
+	       $(this).css("opacity", "0.3");
+		   for(var i=0; i<2; i++) {
+			   for(var j=0; j<reg[i].length; j++) {
+				   var btn_id = $("#reg_" + i + "_" + j);
+				   if($(this).attr("id") != btn_id.attr("id")){
+					   if(btn_id.css("background-color") == "rgb(243, 171, 186)") {   // 선택 해제 => 선택
+						   gulist = gulist + btn_id.attr("value")  + "|";
+					   }
+				   }
+			   }
+		   }
+		   $("#gu_hidden").html("<input type='hidden' name='gulist' value='"+ gulist +"'>");
+	   }
+	   showkey(gulist, "f");
+	   showkey(gulist, "c");
+	   showkey(gulist, "p");
+   });
+   
+   var showkey = function showkey(gulist, key) {
+		$.ajax({
+			type : "POST",
+			url : "getkeyword.do",
+			data : {
+				"gulist" : gulist,
+				"key" : key
+			},
+			success : function(res) {
+				$("#keyword_" + key).html(res);
+			}
+		});
+	}
+   
 });
 
 
@@ -180,65 +213,39 @@ $(function() {
       
       <div id="check_word">
          <table width="100%">
-            <tr>
-               <td width=33%>
+         	<tr>
+         		<td width=33%>
                   <h2 class="title">맛집</h2>
-                  <div id="keyword_1" class="keyword">
-                     <table>
-                        <c:forEach var="i" begin="1" end="2">
-                              <tr>
-                              <c:forEach var="j" begin="1" end="4">
-                                 <td>
-                                    <input type="submit" value="친절한" class="key_btn sel_btn" name="k1_${i }_${j }">
-                                 </td>
-                              </c:forEach>
-                           </tr>
-                        </c:forEach>
-                     </table>
-                  </div>
-               </td>
-               <td width=33%>
+         		</td>
+         		<td width=33%>
                   <h2 class="title">카페</h2>
-                  <div id="keyword_2" class="keyword">
-                     <table>
-                        <c:forEach var="i" begin="1" end="2">
-                           <tr>
-                           <c:forEach var="j" begin="1" end="4">
-                              <td>
-                                 <input type="submit" value="휴식하기" class="key_btn sel_btn" name="k2_${i }_${j }">
-                              </td>
-                           </c:forEach>
-                           </tr>
-                        </c:forEach>
-                     </table>
-                  </div>
-               </td>
-               <td width=33%>
+         		</td>
+         		<td width=33%>
                   <h2 class="title">놀거리</h2>
-                  <div id="keyword_3" class="keyword">
-                     <table>
-                        <c:forEach var="i" begin="1" end="2">
-                           <tr>
-                           <c:forEach var="j" begin="1" end="4">
-                              <td>
-                                 <input type="submit" value="기분전환" class="key_btn sel_btn" name="k3_${i }_${j }">
-                              </td>
-                           </c:forEach>
-                           </tr>
-                        </c:forEach>
-                     </table>
-                  </div>
+         		</td>
+         	</tr>
+            <tr>
+               <td width=33% valign="top">
+                  <div id="keyword_f" class="keyword"></div>
+               </td>
+               <td width=33% valign="top">
+                  <div id="keyword_c" class="keyword"></div>
+               </td>
+               <td width=33% valign="top">
+                  <div id="keyword_p" class="keyword"></div>
                </td>
             </tr>
          </table>
       </div>
       </div>
       <form action="course_search_ok.do" method="post">
-      <div class="search_wrap">
-         <center>
-         <input type="submit" value=' 검   색 ' id="search_btn" class="search_btn">
-         </center>
-      </div>
+	      <div class="search_wrap">
+	      	  <div id="gu_hidden"></div>
+	      	  <div id="key_hidden"></div>
+	         <center>
+	         <input type="submit" value=' 검   색 ' class="search_btn">
+	         </center>
+	      </div>
       </form>
    </div>
     <div>

@@ -2,6 +2,7 @@ package com.sist.course;
 
 import java.util.*;
 
+import org.apache.ibatis.annotations.Insert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -56,9 +57,12 @@ public class CourseController {
 	// 검색버튼 눌렀을 때
 
 	@RequestMapping("course_search_ok.do")
-	public String course_search_ok(Model model) {
-		// guList : 선택된 구 리스트 , keyList : 선택된 키워드 리스트
-		// keyList[0] : food, [1] : play, [2] : cafe
+	public String course_search_ok(String gulist, String keylist_f, String keylist_c, String keylist_p, Model model) {
+		// gulist : 선택된 구 리스트 , keylist_ : 선택된 키워드 리스트
+		System.out.println("gulist : " + gulist);
+		System.out.println("keylist_f : " + keylist_f);
+		System.out.println("keylist_c : " + keylist_c);
+		System.out.println("keylist_p : " + keylist_p);
 		// 임의의 데이터 9개
 		int[] no_list = { 4307, 4299, 4320, 4483, 4515, 4599, 4553, 4577, 4610 };
 
@@ -83,7 +87,7 @@ public class CourseController {
 		return "course/course_search_ok";
 
 	}
-	
+
 	@RequestMapping("placetoplace.do")
 	public String place_to_place(int p_no, int cnt, Model model) {
 		PlaceVO vo = dao.course_place_data(p_no);
@@ -92,6 +96,48 @@ public class CourseController {
 		System.out.println("vo.getP_name() : " + vo.getP_name());
 		model.addAttribute("vo", vo);
 		return "course/place_view/place_" + cnt;
+	}
+
+	@RequestMapping("getkeyword.do")
+	public String get_keyword(String gulist, String key, Model model) {
+		System.out.println("gulist : " + gulist);
+		// 서대문구|마포구
+		/*
+		 * //맛집테이블에 키워드 넣기
+		 * 
+		 * @Insert("INSERT INTO sfood VALUSE(#{sf_key}, #{sf_grade})") public
+		 * void sfood_insert(String sf_key, String sf_grade);
+		 */
+		// 키워드 테이블 비우기
+		dao.sfood_delete();
+
+		Map map = new HashMap();
+
+		// 키워드 split하기
+		map.put("p_grade", key);
+		map.put("gulist", gulist);
+		List<String> fk_list = dao.course_fkeyword(map);
+
+		for (String s : fk_list) {
+			if (s != null && !(s.equals(""))) {
+				String[] arrfkey = s.split("[,]");
+				for (int i = 0; i < arrfkey.length; i++) {
+					if (arrfkey[i] != null && !(arrfkey[i].equals(""))) {
+						Map in_map = new HashMap();
+						System.out.println(arrfkey[i]);
+						in_map.put("sf_key", arrfkey[i]);
+						in_map.put("sf_grade", key);
+						dao.sfood_insert(in_map);
+					}
+				}
+			}
+		}
+		List<String> key_list = dao.sfood_distinct(key);
+
+		model.addAttribute("key_list", key_list);
+		model.addAttribute("key", key);
+
+		return "course/place_view/keyword";
 	}
 
 }
