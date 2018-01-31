@@ -137,7 +137,7 @@ public class CourseController {
 		model.addAttribute("key_list", key_list);
 		model.addAttribute("key", key);
 
-		return "course/place_view/keyword";
+		return "course/place_view/keyword_" + key;
 	}
 
 }
