@@ -97,7 +97,7 @@ public class CourseController {
 	
 	
 	
-	@RequestMapping("course_search.do")
+/*	@RequestMapping("course_search.do")
     public String course_search(Model model){
         
         
@@ -108,9 +108,9 @@ public class CourseController {
                 "관악구","서초구","강남구","송파구","강동구"};
         
         List<PlaceVO> gu_list= new ArrayList<PlaceVO>();
-        /*for(int i=0; i<gu.length; i++){
+        for(int i=0; i<gu.length; i++){
             gu_list.add(gu[i]);
-        }*/
+        }
         
         
         //키워드 split하기
@@ -118,24 +118,24 @@ public class CourseController {
         for(PlaceVO vo:fk_list){
             String fk=vo.getP_keyword();
             String[] arrPkey=fk.split("[,]");
-            /*if(fk.equals(" ")){
+            if(fk.equals(" ")){
                 
             }else{
                 String[] arrPkey=fk.split("[,]");
                 //여기서 splay테이블로 자른 키워드를 insert하냐~~~~~?
-            }*/
+            }
         }
         
         List<PlaceVO> pk_list=dao.course_pkeyword();
         for(PlaceVO vo:pk_list){
             String pk=vo.getP_keyword();
             String[] arrPkey=pk.split("[,]");
-            /*if(pk.equals(" ")){
+            if(pk.equals(" ")){
                 
             }else{
                 String[] arrPkey=pk.split("[,]");
                 //여기서 splay테이블로 자른 키워드를 insert하냐~~~~~?
-            }*/
+            }
         }
         
         
@@ -144,12 +144,12 @@ public class CourseController {
             String ck=vo.getP_keyword();
             String[] sp_key=ck.split("[,]");
             //여기서 splay테이블로 자른 키워드를 insert하냐~~~~~?
-            /*if(ck.equals(" ")){
+            if(ck.equals(" ")){
                 
             }else{
                 String[] arrPkey=ck.split("[,]");
                 //여기서 splay테이블로 자른 키워드를 insert하냐~~~~~?
-            }*/
+            }
         }
         
         
@@ -159,6 +159,6 @@ public class CourseController {
         
         return "course/course_search";
     }
-
+*/
 
 }
