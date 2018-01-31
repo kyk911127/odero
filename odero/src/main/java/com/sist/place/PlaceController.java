@@ -70,17 +70,12 @@ public class PlaceController {
 		model.addAttribute("curpage",curpage);
 		model.addAttribute("totalpage",totalpage);
 		
-		/*PlaceVO vo=new PlaceVO();
-		// img split
-		String str_img = vo.getP_img();
-		String[] simg = str_img.split(",");
-		model.addAttribute("first_img",simg[0]);*/
 		
 		return "place/p_list";
 	}
 	
 	
-	@RequestMapping("s_list.do")
+	/*@RequestMapping("s_list.do")
 	public String placeSelectData(String sn_1,String sn_3,String page, Model model){
 		
 		if(page==null)
@@ -125,6 +120,6 @@ public class PlaceController {
 
 		return "place/list_view/s_list";
 	}
-	
+	*/
 	
 }
