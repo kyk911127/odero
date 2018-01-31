@@ -86,7 +86,14 @@
 </style>
 <script type="text/javascript">
 $(function() {
-	
+		/* var reg_wrap="";
+	   var f_grade="";
+	   var p_grade="";
+	   var c_grade="";
+	   
+	   showlist(reg_wrap, f_grade, p_grade, c_grade);
+	    */
+	   
 
 	
    //select바뀔 때 설정
@@ -117,9 +124,11 @@ $(function() {
          }
       }
    });
+   
+   
 
    //선택할 때 선택해제할 때 모양 바꾸기 => 동적으로 추가된 태그에는 일반적인 이벤트는 동작하지 않음
-   $(document).on("click",".sel_btn",function(){
+    $(document).on("click",".sel_btn",function(){
       var btn_bc = $(this).css("background-color");
       if(btn_bc == "rgb(0, 0, 0)") {   // 선택 해제 => 선택
          $(this).css("background", "rgb(243, 171, 186)");
@@ -128,16 +137,11 @@ $(function() {
          $(this).css("background", "rgb(0, 0, 0)");
          $(this).css("opacity", "0.3");
       }
-   });
+   }); 
    
-   $("#search_btn").click(function(){
-	  //var result = 
-		 /*  $.ajax({
-			 url :  
-		  }); */
-   });
-   
-   
+
+  
+
 });
 
 
@@ -197,7 +201,7 @@ $(function() {
                   <h2 class="title">카페</h2>
                   <div id="keyword_2" class="keyword">
                      <table>
-                        <c:forEach var="i" begin="1" end="1">
+                        <c:forEach var="i" begin="1" end="2">
                            <tr>
                            <c:forEach var="j" begin="1" end="4">
                               <td>

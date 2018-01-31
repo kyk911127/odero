@@ -46,32 +46,32 @@ public class CourseDAO {
     
     
     //컬럼의 행 삭제
-    public void sfood_delete(){
-        mapper.sfood_delete();
+    public void sfood_delete(String sf_key){
+        mapper.sfood_delete(sf_key);
     }
     
-    public void splay_delete(){
-        mapper.splay_delete();
+    public void splay_delete(String sp_key){
+        mapper.splay_delete(sp_key);
     }
     
-    public void scafe_delete(){
-        mapper.scafe_delete();
+    public void scafe_delete(String sc_key){
+        mapper.scafe_delete(sc_key);
     }
     
     
     
     
     //카테고리테이블에 각각 키워드 넣기
-    public List<SFoodVO> sfood_insert(){
-        return mapper.sfood_insert();
+    public void sfood_insert(String sf_key){
+        mapper.sfood_insert(sf_key);
     }
     
-    public List<SPlayVO> splay_insert(){
-        return mapper.splay_insert();
+    public void splay_insert(String sp_key){
+    	 mapper.sfood_insert(sp_key);
     }
     
-    public List<SCafeVO> scafe_insert(){
-        return mapper.scafe_insert();
+    public void scafe_insert(String sc_key){
+    	 mapper.sfood_insert(sc_key);
     }
     
     
@@ -90,7 +90,8 @@ public class CourseDAO {
     }
     
 
-    //
+    //검색
+    
 
 }
 

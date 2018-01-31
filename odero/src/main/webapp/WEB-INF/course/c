@@ -1,0 +1,108 @@
+	
+	//키워드 삭제 
+	@RequestMapping("fkey_delete.do")
+	public String fKey_delete(String sf_key){
+		dao.scafe_delete(sf_key);
+		
+		return "course/course_search";
+	}
+	
+	@RequestMapping("fkey_delete.do")
+	public String pKey_delete(String sp_key){
+		dao.scafe_delete(sp_key);
+		
+		return "course/course_search";
+	}
+	
+	@RequestMapping("fkey_delete.do")
+	public String cKey_delete(String sc_key){
+		dao.scafe_delete(sc_key);
+		
+		return "course/course_search";
+	}
+	
+	
+	
+	@RequestMapping("course_search.do")
+    public String course_search(Model model){
+        
+        
+        String[] gu={"은평구","마포구","서대문","종로구","용산구",
+                "중구","성동구","동대문구","광진구","중랑구",
+                "성북구","노원구","도봉구","중구","강서구",
+                "양천구","영등포구","구로구","동작구","금천구",
+                "관악구","서초구","강남구","송파구","강동구"};
+        
+        List<PlaceVO> gu_list= new ArrayList<PlaceVO>();
+        for(int i=0; i<gu.length; i++){
+           /* gu_list.add(gu[i]);*/
+        }
+        
+        
+        
+        
+        
+        
+        //키워드 split하기
+        List<PlaceVO> fk_list=dao.course_pkeyword();
+        for(PlaceVO vo:fk_list){
+            String fk=vo.getP_keyword();
+            if(fk.equals(" ")){
+                
+            }else{
+                String[] arrfkey=fk.split("[,]");
+                for(int i=0; i<arrfkey.length; i++) {
+                	dao.sfood_insert(arrfkey[i]);
+                	System.out.println(arrfkey[i]);
+                }
+            }
+        }
+        
+        List<PlaceVO> pk_list=dao.course_pkeyword();
+        for(PlaceVO vo:pk_list){
+            String pk=vo.getP_keyword();
+            if(pk.equals(" ")){
+                
+            }else{
+               String[] arrpkey=pk.split("[,]");
+               	for(int i=0; i<arrpkey.length; i++){
+               		dao.splay_insert(arrpkey[i]);
+               		System.out.println(arrpkey[i]);
+               	}
+                
+            }
+        }
+        
+        
+        List<PlaceVO> ck_list=dao.course_pkeyword();
+        for(PlaceVO vo:ck_list){
+            String ck=vo.getP_keyword();
+            if(ck.equals(" ")){
+                
+            }else{
+                String[] arrckey=ck.split("[,]");
+                	for(int i=0; i<arrckey.length; i++){
+                		dao.scafe_insert(arrckey[i]);
+                		System.out.println(arrckey[i]);
+                	}
+            }
+        }
+        
+        
+        model.addAttribute("fk_list",pk_list);
+        model.addAttribute("pk_list",pk_list);
+        model.addAttribute("ck_list",pk_list);
+        
+        return "course/course_search";
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
