@@ -130,6 +130,14 @@ $(function() {
       }
    });
    
+   $("#search_btn").click(function(){
+	  //var result = 
+		 /*  $.ajax({
+			 url :  
+		  }); */
+   });
+   
+   
 });
 
 
@@ -224,7 +232,7 @@ $(function() {
       <form action="course_search_ok.do" method="post">
       <div class="search_wrap">
          <center>
-         <input type="submit" value=' 검   색 ' class="search_btn">
+         <input type="submit" value=' 검   색 ' id="search_btn" class="search_btn">
          </center>
       </div>
       </form>
