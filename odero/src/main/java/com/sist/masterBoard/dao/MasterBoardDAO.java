@@ -18,8 +18,24 @@ public class MasterBoardDAO {
 	public int MasterBoardToltalPage(){
 		return mapper.MasterBoardToltalPage();
 	}
+	public int MasterBoardRowCount(){
+		return mapper.MasterBoardRowCount();
+	}
+	
+	
 	public void MasterBoardInsert(NoticeVO vo){
 		mapper.MasterBoardInsert(vo);
+	}
+	
+	public void MasterBoardReplyInsert(NoticeVO vo){
+		vo.setGroup_id(mapper.group_id(vo.getNo())); 
+		vo.setGroup_step(mapper.group_step(vo.getNo())); 
+		vo.setGroup_tab(mapper.group_tab(vo.getNo()));
+		vo.setPno(vo.getNo());
+		
+		mapper.groupUpdate(vo);
+		mapper.MasterBoardReplyInsert(vo);
+		mapper.depthUpdate(vo.getNo());
 	}
 	
 	
