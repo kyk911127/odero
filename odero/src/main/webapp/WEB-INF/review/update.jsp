@@ -112,7 +112,7 @@ $(function(){
 <div class="container" style="margin-top: 50px">
 	<div class="row">
 		<center><h3><b>수정</b></h3><br></center>
-		<form:form method="post" action="review_insert_ok.do" id="frm" enctype="multipart/form-data" modelAttribute="uploadForm">
+		<form:form method="post" action="review_update_ok.do" id="frm" enctype="multipart/form-data" modelAttribute="uploadForm">
 		<table class="table table-hover" style="width: 70%; margin: 0px auto;" >
 			<tr>
 				<td width="20%" class="text-center warning">제목</td>

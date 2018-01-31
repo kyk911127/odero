@@ -24,6 +24,18 @@
 <!-- 16 KB -->
 
 <script type="text/javascript">
+$(function(){
+	$('#re_btn').click(function(){
+		var msg = $('#rr_msg').val();
+		if(msg.trim()==""){
+			alert('댓글을 입력하세요');
+			return;
+		} else {
+			$('#re_fmt').submit();	
+		}
+	});
+});
+
 	var slideIndex = 0;
 	showSlides();
 
@@ -54,10 +66,13 @@
 		} else {
 			return;
 		}		
-	}
-	
+	}	
 </script>
 <style type="text/css">
+a:link { text-decoration: none;}
+a:visited { text-decoration: none;}
+a:hover { text-decoration: none;}
+
 .back {
 	width: 100%;
 	height: 450px;
@@ -73,6 +88,15 @@
 .btn{
 	background-color:#002060; 
 	color:#DEEBF7;
+}
+.btn-re{
+	width: 150px; 
+	height: 80px; 
+	vertical-align: middle;
+}
+#cancel{
+	background-color:#F3ABBA; 
+	color:white;
 }
 </style>
 </head>
@@ -103,7 +127,7 @@
 		<div class="row">
 			<!-- 지도 -->
 			<div id="map" style="width:100%;height:350px; margin-bottom: 50px;"></div>
-			<table class="table table-hover">
+			<table class="table">
 				<tr>
 					<td class="text-center info" width="20%">번호</td>
 					<td class="text-center" width="30%">${vo.r_no }</td>
@@ -129,11 +153,58 @@
 				</tr>
 				<tr>
 					<td class="text-right" colspan="4">
-						<c:if test="${vo.m_id=='1' }">
+						<c:if test="${vo.m_id==sessionScope.m_id }">
 							<a href="review_update.do?no=${vo.r_no }" class="btn btn-md">수정</a> 
-							<a class="btn btn-md" onclick="javascript:deleteDetail()">삭제</a> 
+							<a href="javascript:deleteDetail()" class="btn btn-md" id="cancel" >삭제</a> 
 						</c:if>
 						<a href="review_list.do" class="btn btn-md">목록</a>
+					</td>
+				</tr>
+			</table>
+			<!-- --------------------------------------------- 댓글 -------------------------------------------- -->
+			<h3 class="text-left">댓글</h3>
+			<table style="margin-top: 50px" id="table_content" width="100%">
+				<form action="re_reply_insert.do" method="post" id="re_fmt">
+				<c:if test="${sessionScope.m_id != null }">
+				<tr>
+					<td width="80%">
+						<textarea rows="4" cols="110" id="rr_msg" name="rr_msg"></textarea>
+						<input type="hidden" value="${vo.r_no }" name="r_no">
+						<input type="hidden" value="${sessionScope.m_id }" name="m_id">
+					</td>
+					<td width="20%" class="text-right">
+						<input type="button" value="등록" class="btn btn-re" id="re_btn">
+					</td>
+				</tr>
+				</c:if>
+				</form>
+				<hr>
+				<tr>
+					<td colspan="2">
+						<table  width="100%" style="margin-top: 50px">
+							<c:forEach var="rvo" items="${list }">
+							<div style="height: 20px"></div>
+							<tr>
+								<td class="text-left" width="80%" style="vertical-align: bottom;">
+									<font size="2">
+										${rvo.m_id } / <fmt:formatDate value="${rvo.rr_regdate }" pattern="yyyy.MM.dd"/>
+									</font>
+									<sup><font color="red">new</font></sup>
+								</td>
+								<td class="text-right" width="20%">
+									<c:if test="${rvo.m_id == sessionScope.m_id }">
+									<a href="#" class="btn btn-sm">수정</a> 
+									<a class="btn btn-sm" id="cancel">삭제</a> 
+									</c:if>
+								</td>
+							</tr>	
+							<tr>
+								<td class="text-left" colspan="2">
+									${rvo.rr_msg }
+								</td>
+							</tr>
+							</c:forEach>
+						</table>
 					</td>
 				</tr>
 			</table>
