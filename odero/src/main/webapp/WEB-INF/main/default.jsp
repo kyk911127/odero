@@ -78,10 +78,10 @@
 		</div>
 		<div class="course_wrap">
 			<div id="course_main">
-				<div id="back" style="background-color: black; opacity: 0.3; position: absolute; width: 100%; height: 250px; z-index: 1"></div>
 				<c:forEach var="list" items="${clist }" varStatus="s">
 					<div class="course"
 						style="background-image: url(${guimg[s.index]});">
+						<div style="background-color: black; opacity: 0.3; position: absolute; width: 100%; height: 250px;"></div>
 						<h2>"${gulist[s.index]}" 데이트 코스</h2>
 						<a href="#courseModal${s.index }" data-toggle="modal"></a>
 						<div class="modal fade" id="courseModal${s.index }" tabindex="-1"
@@ -111,7 +111,7 @@
 														var mapContainer = document.getElementById('modal_map${s.index}'), // 지도를 표시할 div 
 														mapOption = {
 															center : new daum.maps.LatLng(33.450701,126.570667), // 지도의 중심좌표
-															level : 4
+															level : 5
 														// 지도의 확대 레벨
 														};
 														var modal = $(this).attr("id");
@@ -152,6 +152,7 @@
 																				c=c+1;
 																				arr_coords[c] = result[0].y;
 																				c=c+1;
+
 																				// 결과값으로 받은 위치를 마커로 표시합니다
 																				var marker = new daum.maps.Marker(
 																						{
@@ -171,40 +172,71 @@
 																				map.setCenter(coords);
 																			}
 																			k=k+1;
-																			
 														});
+														
 														}
 														
 														//대중교통 API
 														function searchPubTransPathAJAX() {
 															var xhr = new XMLHttpRequest();
 															//ODsay apiKey 입력
-															alert("gg");
-															var url = "https://api.odsay.com/v1/api/searchPubTransPath?SX=127.06267410402882&SY=37.65648131884798&EX=127.07963376555469&EY=37.66635665481798&apiKey=Vtl1rXEESth1IRgaEkIJ+A";
+															var url = "https://api.odsay.com/v1/api/searchPubTransPath?SX=127.06267410402882&SY=37.65648131884798&EX=127.07963376555469&EY=37.66635665481798&apiKey=3WQCZWdtyISEN4ysLtCRc5B%2Bb%2BJon13C/jTTtfA8jwc";
 															xhr.open("GET", url, true);
 															xhr.send();
+															var strhtml = "";
 															xhr.onreadystatechange = function() {
-																
 																if (xhr.readyState == 4 && xhr.status == 200) {
 																	var resultObj = JSON.parse(xhr.responseText);
-																	
 																	//console.log(resultObj.result);
-																	var resultArr = resultObj["result"]["lane"];
-																	alert("zz");
-																	var str = "";
+																	var resultArr = resultObj["result"]["path"];
+																	//alert("resultArr.length: "+resultArr.length);
+																	var iindex=0;
+																	var jindex=0;
+																	var min = 99999999999;
+																	var pathtype="";
 																	for (var i = 0; i < resultArr.length; i++) {
-																		str += "<div class='box'>";
-																		str += "<p>지역이름 : " + resultArr[i].busCityName + "</p>";
-																		str += "<p>버스회사 : " + resultArr[i].busCompanyNameKor + "</p>";
-																		str += "<p>버스번호 : " + resultArr[i].busNo + "</p>";
-																		str += "<p>출발점 / 도착점 : " + resultArr[i].busStartPoint + " - "
-																			+ resultArr[i].busEndPoint + "</p>";
-																		str += "</div>";
-																		alert(str);
+																		var totalTime = resultArr[i].info.totalTime;
+																		//1-지하철, 2-버스, 3-도보
+																		if(totalTime<min){
+																			min = totalTime;
+																			iindex=i;
+																		}
 																	}
-																	document.getElementById(".root").innerHTML = str;
+																	if(resultArr[iindex].pathType==1){
+																		pathtype="지하철";
+																	}else if(resultArr[iindex].pathType==2){
+																		pathtype="버스";
+																	}else if(resultArr[iindex].pathType==3){
+																		pathtype="지하철+버스";
+																	}
+																	var distance = resultArr[iindex].info.totalDistance;
+																	var lastEndStation = resultArr[iindex].info.lastEndStation;
+																	var firstStartStation = resultArr[iindex].info.firstStartStation;
+																	var startID = resultArr[iindex].subPath[0].startID;
+																	var endID = resultArr[iindex].endID;
+																	var payment = resultArr[iindex].info.payment;
+																	var subname="";
+																	alert(startID);
+																	if(pathtype=="지하철"){
+																		subname=resultArr[iindex].subPath[0].lane.name;
+																	}else if(pathtype=="버스"){
+																		
+																	}else if(pathtype=="지하철+버스"){
+																		
+																	}
+																	
+																   $.ajax({
+																	    type : "post",
+																	    url : "path.do",
+																	    data : {"min" : min, "pathtype":pathtype, "distance":distance, "lastEndStation":lastEndStation, "subname":subname,
+																	    			"firstStartStation":firstStartStation	, "startID":startID,"endID":endID,"payment":payment
+																	    },
+																	    success : function(res) {
+																	     	$('#path${s.index }').html(res);
+																	     }
+																	    
+																	});
 																}
-																
 															}
 														}
 														
@@ -254,8 +286,10 @@
 												<span style="float: right; margin-right: 10px">예상 데이트
 													비용: 약 ${totallist[s.index] } 만원 </span>
 											</div>
-											<div style="height: 30px; float: left" class="root">
+											<div style="width:100%;float: left">
 												<p>대중교통 이용</p>
+													<div style="width: 100%" id="path${s.index }">
+												</div>
 											</div>
 										</div>
 									</div>
