@@ -437,25 +437,7 @@
 							<td width="24%">
 								<!-- //1번째 장소 div -->
 								<div id="place_1">
-									<!-- <table class="tmap_wrap">
-										<tr>
-											<td style="padding: 3%;">
-												<h4 style="float: left;">
-													<scan class="glyphicon glyphicon-home"
-														style="margin-right:10px;">가게이름 
-												</h4>
-											</td>
-										</tr>
-										<tr>
-											<td><span class="tmap_detail">&nbsp;인천시 연수구 연수2동</span></td>
-										</tr>
-										<tr>
-											<td class="text-right"><span
-												class="tmap_detail glyphicon glyphicon-eye-open">조회수</span> <span
-												class="tmap_detail glyphicon glyphicon-heart">찜&nbsp;</span>
-											</td>
-										</tr>
-									</table> -->
+									
 								</div>
 								<!-- //1번째 장소 div끝 -->
 							</td>
@@ -482,25 +464,7 @@
 							<!--2번  -->
 							<td width="24%">
 								<div id="place_2">
-									<!-- <table class="tmap_wrap">
-										<tr>
-											<td style="padding: 3%;">
-												<h4 style="float: left;">
-													<scan class="glyphicon glyphicon-home"
-														style="margin-right:10px;">가게이름 
-												</h4>
-											</td>
-										</tr>
-										<tr>
-											<td><span class="tmap_detail">&nbsp;인천시 연수구 연수2동</span></td>
-										</tr>
-										<tr>
-											<td class="text-right"><span
-												class="tmap_detail glyphicon glyphicon-eye-open">조회수</span> <span
-												class="tmap_detail glyphicon glyphicon-heart">찜&nbsp;</span>
-											</td>
-										</tr>
-									</table> -->
+									
 								</div>
 							</td>
 							<td width="13%">
@@ -523,25 +487,7 @@
 							<!-- 3번 -->
 							<td width="24%">
 								<div id="place_3">
-									<!-- <table class="tmap_wrap">
-										<tr>
-											<td style="padding: 3%;">
-												<h4 style="float: left;">
-													<scan class="glyphicon glyphicon-home"
-														style="margin-right:10px;">가게이름 
-												</h4>
-											</td>
-										</tr>
-										<tr>
-											<td><span class="tmap_detail">&nbsp;인천시 연수구 연수2동</span></td>
-										</tr>
-										<tr>
-											<td class="text-right"><span
-												class="tmap_detail glyphicon glyphicon-eye-open">조회수</span> <span
-												class="tmap_detail glyphicon glyphicon-heart">찜&nbsp;</span>
-											</td>
-										</tr>
-									</table> -->
+									
 								</div>
 							</td>
 						</tr>

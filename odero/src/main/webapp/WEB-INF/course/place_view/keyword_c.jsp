@@ -21,7 +21,6 @@ $(document).on("click", ".c_btn", function() {
 	
 	var btn_bc = $(this).css("background-color");
 	if (btn_bc == "rgb(0, 0, 0)") { // 선택 해제 => 선택
-		alert("$(this).attr('value') : " + $(this).attr("value"));
 		
 		keylist_c = $(this).attr("value");
 		$(this).css("background", "rgb(243, 171, 186)");
@@ -31,7 +30,6 @@ $(document).on("click", ".c_btn", function() {
 			   if($(this).attr("id") != key_id.attr("id")){
 				   if(key_id.css("background-color") == "rgb(243, 171, 186)") {   // 선택 해제 => 선택
 					   keylist_c = keylist_c + "|" + key_id.attr("value");
-				   	   alert("keylist_c : " + keylist_c);
 				   }
 			   }
 		}
@@ -48,7 +46,7 @@ $(document).on("click", ".c_btn", function() {
 			   }
 		}
 	}
-	$("#key_hidden").append("<input type='hidden' name='keylist_c' value='"+ keylist_c +"'>");
+	$("#c_hidden").html("<input type='hidden' name='keylist_c' value='"+ keylist_c +"'>");
 });
 </script>
 </head>

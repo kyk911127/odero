@@ -35,7 +35,14 @@ public interface CourseMapper {
     @Select("SELECT DISTINCT sf_key FROM sfood WHERE sf_grade = #{sf_grade}")
     public List<String> sfood_distinct(String sf_grade);
     
-    
+    //장소 리스트 가져오기(사용자가 선택한)
+    @Select("SELECT p_no, p_name, p_addr, p_img, p_tel, "
+    		+ "p_grade, p_time, p_hit "
+    		+ "FROM place "
+    		+ "WHERE p_grade=#{p_grade} "
+    		+ "AND REGEXP_LIKE(p_addr,#{gulist}) "
+    		+ "AND REGEXP_LIKE(p_keyword,#{keylist})")
+    public List<PlaceVO> getPlaceInfo(Map map);
     
     
     

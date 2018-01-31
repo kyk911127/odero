@@ -63,8 +63,80 @@ public class CourseController {
 		System.out.println("keylist_f : " + keylist_f);
 		System.out.println("keylist_c : " + keylist_c);
 		System.out.println("keylist_p : " + keylist_p);
+		
+		//랜덤으로 가게 번호 뽑기
+		// 1. 가게 리스트 가져오기
+		Map map = new HashMap();
+			//food
+		map.put("p_grade", "f");
+		map.put("gulist", gulist);
+		map.put("keylist", keylist_f);
+		List<PlaceVO> fvo_list = dao.getPlaceInfo(map);
+			//cafe
+		map.put("p_grade", "c");
+		map.put("keylist", keylist_c);
+		List<PlaceVO> cvo_list = dao.getPlaceInfo(map);
+			//play
+		map.put("p_grade", "p");
+		map.put("keylist", keylist_p);
+		List<PlaceVO> pvo_list = dao.getPlaceInfo(map);
+		// 2. 유형별 리스트에서 랜덤으로 3개 고르기(중복제거)
+		int[] fno_list = new int[3];
+		int[] cno_list = new int[3];
+		int[] pno_list = new int[3];
+		int j = 0;
+		while(j<3) {
+			boolean ck = false;
+			int rand = (int)(Math.random()*fvo_list.size());
+			for(int i=0; i<3; i++) {
+				if(fno_list[i] == rand)
+					ck = true;
+			}
+			if(ck==false) {
+				fno_list[j] = rand;
+				j++;
+			}
+		}
+		j = 0;
+		while(j<3) {
+			boolean ck = false;
+			int rand = (int)(Math.random()*cvo_list.size());
+			for(int i=0; i<3; i++) {
+				if(cno_list[i] == rand)
+					ck = true;
+			}
+			if(ck==false) {
+				cno_list[j] = rand;
+				j++;
+			}
+		}
+		j = 0;
+		while(j<3) {
+			boolean ck = false;
+			int rand = (int)(Math.random()*pvo_list.size());
+			for(int i=0; i<3; i++) {
+				if(pno_list[i] == rand)
+					ck = true;
+			}
+			if(ck==false) {
+				pno_list[j] = rand;
+				j++;
+			}
+		}
+		System.out.println(fno_list[0] + " / " + fno_list[1] + " / " + fno_list[2]);
+		System.out.println(cno_list[0] + " / " + cno_list[1] + " / " + cno_list[2]);
+		System.out.println(pno_list[0] + " / " + pno_list[1] + " / " + pno_list[2]);
+		
 		// 임의의 데이터 9개
-		int[] no_list = { 4307, 4299, 4320, 4483, 4515, 4599, 4553, 4577, 4610 };
+		int[] no_list = { fvo_list.get(fno_list[0]).getP_no(), 
+				fvo_list.get(fno_list[1]).getP_no(), 
+				fvo_list.get(fno_list[2]).getP_no(), 
+				cvo_list.get(cno_list[0]).getP_no(), 
+				cvo_list.get(cno_list[1]).getP_no(), 
+				cvo_list.get(cno_list[2]).getP_no(), 
+				pvo_list.get(pno_list[0]).getP_no(), 
+				pvo_list.get(pno_list[1]).getP_no(), 
+				pvo_list.get(pno_list[2]).getP_no() };
 
 		List<PlaceVO> p_list = new ArrayList<PlaceVO>();
 		for (int i = 0; i < 9; i++) {
@@ -78,10 +150,6 @@ public class CourseController {
 			System.out.println("======================");
 			p_list.add(vo);
 		}
-		// 랜덤으로 맛집 3, 놀거리 3, 카페 3 뽑기
-
-		// 랜덤으로 뽑힌 가게 번호 리스트
-		// List<Integer> p_noList = new ArrayList<Integer>();
 
 		model.addAttribute("p_list", p_list);
 		return "course/course_search_ok";
