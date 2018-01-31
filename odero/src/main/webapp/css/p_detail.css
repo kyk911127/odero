@@ -9,14 +9,21 @@
 
 .p_h {
 	border-bottom: 1px solid #dbdbdb;
-	padding: 0 0 20px 15px;
-	margin-bottom: 15px;
+	padding: 0 0 15px 15px;
+	margin-bottom: 20px;
 	font-weight: bold;
 }
 
-td {
+.p_h3 {
+	border-bottom: 1px solid #dbdbdb;
+	padding: 0 0 20px 15px;
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+
+.p_td {
    padding: 5px;
-   font-size: 15px;
+   font-size: 18px;
 }
 
 ul, li {
@@ -24,7 +31,7 @@ ul, li {
 }
 
 .li_1, .li_2 {
-   /*padding: 5px 0;*/ 
+   	font-size: 16px 
 }
 
 .tag_1, .tag_2 {
@@ -34,24 +41,44 @@ ul, li {
    border-radius: 20px;
    color: #002060;
    margin-right: 10px;
-   font-size: 16px;
+   margin-bottom: 10px
 }
 
 /* top image */
+.top_container {
+	padding: 0;
+	margin: 0;
+	/* width: 100%; */
+	width: 1860px;
+	height: 100%;
+}
+
 .imagerow {
 	height: 100%;
-	/* padding: 15px 20px 20px 20px; */
+	width: 100%;
 	position: relative;
 	background-size: cover;
 	background-position: center;
+	display: table;
+}
+
+.inner {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
 }
 
 .detail_img {
-	width: 19%;
+	/* width: 19%;
 	float: left;
 	position: relative;
 	height: 100%;
-	margin: 15px 0px 15px 15px
+	margin: 15px 0px 15px 15px */
+	position: relative;
+	display: inline-block;
+	width: 19%;
+	height: 100%;
+	margin: 15px 0px 15px 15px;
 }
 
 .place_img {
@@ -125,18 +152,27 @@ ul, li {
 .user_info {
    float: left;
    text-align: center;
-   margin: 10px auto;
+   margin: 10px;
    width: 140px; 
 }
 
 .reply_info {
    width: 97%;
+   margin-right: 10px
 }
 
 /* 댓글 남기기 */
+.user_info {
+	padding: 5px
+}
+.reply_date {
+	color : #999a9b;
+	font-size: 15px
+}
 .reply_ta {
    /* margin-bottom: 10px;  */
-   float: left
+	float: left;
+	width: 100%
 }
 
 .im {
@@ -161,4 +197,8 @@ ul, li {
 	color: #FFF;
 	border-radius: 10%;
 	border: medium none #002060;
+}
+
+#backBtn {
+	margin-right: 48px
 }

@@ -61,8 +61,6 @@ public class PlaceController {
 	@RequestMapping("p_reply_update.do")
 	public String p_replyUpdate(P_ReplyVO vo) {
 		int p_no = vo.getP_no();
-		
-		System.out.println(vo.getPr_msg());
 		p_dao.p_replyUpdate(vo);
 		return "redirect:p_detail.do?=" + p_no;
 	 }
