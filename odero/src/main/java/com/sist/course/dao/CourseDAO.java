@@ -76,6 +76,7 @@ public class CourseDAO {
     
     
     
+    
     public  List<SFoodVO> sfood_distinct(){
         return mapper.sfood_distinct();
     }
@@ -89,7 +90,7 @@ public class CourseDAO {
     }
     
 
-    
+    //
 
 }
 
