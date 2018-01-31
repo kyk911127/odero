@@ -45,14 +45,40 @@ $(document).ready(function(){
 }); 
 
 </script> -->
+<script>
+$(document).ready(function(){
+	$("#jBtn").click(function(){
+    	alert("찜 내역이 없습니다!!!");
+    	return;
+	});
+}); 
+$(document).ready(function(){
+	$("#mBtn").click(function(){
+		var old_pwd = $("#old_pwd").val();
+		var session_pwd = <%=session.getAttribute("m_pwd")%>;
+    	if( old_pwd == session_pwd ) {
+    		alert("비밀번호 일치");
+    	}else {
+    		alert("비밀번호 틀림");
+    	}
+	});
+}); 
+
+</script>
 </head>
 <body class="body">
 	<div class="container">
 		<div class="title_wrap">마이 페이지</div>
 		<div class="tab_wrap">
 			<!-- <span class="tab">내 정보</span> -->
-			<br> |<a href="mypage_list.do"><span class="tab">찜
-					리스트</span></a>|
+			<br> |
+			<c:if test="${size!=0 && psize!=0 }">
+			<a href="mypage_list.do"><span class="tab">찜 리스트</span></a>
+			</c:if>
+			<c:if test="${size==0 || psize==0 }">
+			<span class="tab" id="jBtn" style="cursor: pointer;">찜 리스트</span>
+			</c:if>
+			|
 		</div>
 
 		<%-- c:forEach var="i" begin="1" end="3"> --%>
@@ -68,7 +94,7 @@ $(document).ready(function(){
 				<center>
 					<table class="table table-hover" id="info_table">
 						<tr>
-							<td class="text-center" rowspan="5"></td>
+							<td class="text-center" rowspan="6"></td>
 						</tr>
 						<tr>
 							<th class="text-center">아이디</th>
@@ -76,16 +102,24 @@ $(document).ready(function(){
 						</tr>
 						<tr>
 							<th class="text-center">닉네임</th>
-							<td class="text-center">${mvo.m_name }</td>
+							<td class="text-center"><input type="text" class="text-center" value="${mvo.m_name }"></td>
 						</tr>
 
 						<tr>
-							<th class="text-center">비밀번호</th>
-							<td class="text-center">${mvo.m_pwd }</td>
+							<th class="text-center">기존 비밀번호</th>
+							<td class="text-center"><input type="password" name="old_pwd" class="text-center" id="old_pwd" style="color:black !important;"></td>
+						</tr>
+						<tr>
+							<th class="text-center">새 비밀번호</th>
+							<td class="text-center"><input type="password" name="pwd" class="text-center" id="pwd" style="color:black;"></td>
+						</tr>
+						<tr>
+							<th class="text-center">새 비밀번호 확인</th>
+							<td class="text-center"><input type="password" name="pwd_check" class="text-center" id="pwd_check" style="color:black;"></td>
 						</tr>
 						<tr>
 							<td colspan="4" class="text-right"><input type=button
-								value="modify" class="btn btn-sm btn-danger"></td>
+								value="modify" class="btn btn-sm btn-danger" id="mBtn"></td>
 						</tr>
 					</table>
 				</center>
@@ -94,8 +128,7 @@ $(document).ready(function(){
 			<div class="table_wrap">
 				<hr class="soften" />
 				<h3 class="sub_text">
-					추천 가게 리스트 Best &nbsp; <a href="mypage_list.do"><button
-							class="btn btn-success btn-xs">더보기</button></a>
+					추천 가게 리스트 Best &nbsp;
 					<hr class="soften" />
 				</h3>
 
@@ -113,7 +146,7 @@ $(document).ready(function(){
 						<th width="5%">자세히</th>
 						<th width="5%">삭제</th>
 					</tr>
-
+					<c:if test="${size!=0 }">
 					<c:forEach var="je" begin="0" end="6">
 						<c:if test="${list[je].p_grade=='c'}">
 							<c:set var="grade" value="카페" />
@@ -133,13 +166,21 @@ $(document).ready(function(){
 							<td>${list[je].p_tel }</td>
 							<td>${list[je].p_time }</td>
 							<td>${list[je].p_hit }</td>
-							<td width="5%"><button class="btn btn-info btn-xs">보기</button></td>
+							
+							<td width="5%"><a href="p_detail.do?p_no=${list[je].p_no }"><button class="btn btn-info btn-xs">보기</button></a></td>
 							<td width="5%"><button class="btn btn-danger btn-xs">삭제</button></td>
 						</tr>
 					</c:forEach>
 					<tr>
-						<td colspan="10" class="text-right">자세한 목록은 자세히보기를 누르세요</td>
+						<td colspan="10" class="text-right">자세한 목록은 <a href="mypage_list.do?sort=place"><button
+							class="btn btn-success btn-xs">더보기</button></a>를 누르세요</td>
 					</tr>
+					</c:if>
+					<c:if test="${size==0 }">
+					<tr>
+						<td class="text-center" colspan=10><strong>찜 내역이 없습니다.</strong>  </td>
+					</tr>
+					</c:if>
 				</table>
 				<!--   <hr class="hr" /> -->
 			</div>
@@ -150,8 +191,7 @@ $(document).ready(function(){
 
 				<hr class="soften" />
 				<h3 class="sub_text">
-					추천 코스 리스트 Best &nbsp; <a href="mypage_list.do"><button
-							class="btn btn-success btn-xs">더보기</button></a>
+					추천 코스 리스트 Best &nbsp; 
 					<hr class="soften" />
 
 				</h3>
@@ -164,20 +204,28 @@ $(document).ready(function(){
 						<th>자세히</th>
 						<th>삭제</th>
 					</tr>
+					<c:if test="${psize!=0 }">
 					<c:forEach var="kk" begin="0" end="6">
 						<tr>
 							<td>${flist[kk].c_no }</td>
 							<td>${flist[kk].pvo.p_name }</td>
 							<td>${plist[kk].pvo.p_name}</td>
 							<td>${clist[kk].pvo.p_name}</td>
-							<td><button class="btn btn-info btn-xs">보기</button></td>
+							<td><a href="mypage_cos.do?no=${flist[kk].c_no }"><button class="btn btn-info btn-xs">보기</button></a></td>
 							<td><button class="btn btn-danger btn-xs">삭제</button></td>
 						</tr>
 					</c:forEach>
-
+				
 					<tr>
-						<td colspan="6" class="text-right">자세한 목록은 자세히보기를 누르세요</td>
+						<td colspan="6" class="text-right">자세한 목록은 <a href="mypage_list.do?sort=cos"><button
+							class="btn btn-success btn-xs">더보기</button></a>를 누르세요</td>
 					</tr>
+					</c:if>
+					<c:if test="${psize==0 }">
+					<tr>
+						<td class="text-center" colspan=6> <strong>코스 찜 내역이 없습니다.</strong> </td>
+					</tr>
+					</c:if>
 				</table>
 
 			</div>
