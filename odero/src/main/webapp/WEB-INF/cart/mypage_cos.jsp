@@ -26,6 +26,7 @@
 .infoTable tr th, .infoTable tr td {
 	font-size:15px;
 	vertical-align: center;
+	padding : 5px;	
 }
 
 </style>
@@ -38,7 +39,7 @@
 
 
 			|<a href="mypage_list.do"><span class="tab">목록</span></a>| 
-			<a href="cos_delete.do?no=${cvo.c_no }">"><span class="seltab" id="delBtn">찜 삭제</span></a>
+			<a href="cos_delete.do?no=${cvo.c_no }"><span class="seltab" id="delBtn">찜 삭제</span></a>
 
 		</div>
 
@@ -147,7 +148,7 @@
 			<table class="info" id="table_content">
 
 				<tr>
-						<table id="table_content">
+						<table class="table_content">
 							<tr>
 								<td width=30% align=center rowspan="5"><img src="${fvo.pvo.p_img }"
 									width=300></td>
@@ -170,6 +171,74 @@
 								해시 태그 : ${fvo.pvo.p_keyword }	<br>
 								전화 번호 : ${fvo.pvo.p_tel } <br>
 								가격 대 : ${fvo.pvo.p_price } <br>
+								</td>
+							</tr>
+						</table>
+
+						<br>
+						<br>
+						<hr class="hr" />
+						<br>
+						<br>
+				</tr>
+				<tr>
+						<table class="table_content">
+							<tr>
+								<td width=30% align=center rowspan="5"><img src="${pvo.pvo.p_img }"
+									width=300></td>
+							</tr>
+							<tr>
+								<td width=20% align=center><h4>코스 개별정보 </h4></td>
+								<td width=50% align=left class="explain">놀거리</td>
+							</tr>
+							<tr>
+								<td width=20% align=center><h4>장소 이름</h4></td>
+								<td width=50% align=left class="explain"> ${pvo.pvo.p_name }</td>
+							</tr>
+							<tr>
+								<td width=20% align=center><h4>지역 설명</h4></td>
+								<td width=50% align=left class="explain">${pvo.pvo.p_addr }</td>
+							</tr>
+							<tr>
+								<td width=20% align=center><h4>장소 설명</h4></td>
+								<td width=50% align=left class="explain">
+								해시 태그 : ${pvo.pvo.p_keyword }	<br>
+								전화 번호 : ${pvo.pvo.p_tel } <br>
+								가격 대 : ${pvo.pvo.p_price } <br>
+								</td>
+							</tr>
+						</table>
+
+						<br>
+						<br>
+						<hr class="hr" />
+						<br>
+						<br>
+				</tr>
+				<tr>
+						<table class="table_content">
+							<tr>
+								<td width=30% align=center rowspan="5"><img src="${cvo.pvo.p_img }"
+									width=300></td>
+							</tr>
+							<tr>
+								<td width=20% align=center><h4>코스 개별정보 </h4></td>
+								<td width=50% align=left class="explain">카페</td>
+							</tr>
+							<tr>
+								<td width=20% align=center><h4>장소 이름</h4></td>
+								<td width=50% align=left class="explain"> ${cvo.pvo.p_name }</td>
+							</tr>
+							<tr>
+								<td width=20% align=center><h4>지역 설명</h4></td>
+								<td width=50% align=left class="explain">${cvo.pvo.p_addr }</td>
+							</tr>
+							<tr>
+								<td width=20% align=center><h4>장소 설명</h4></td>
+								<td width=50% align=left class="explain">
+								해시 태그 : ${cvo.pvo.p_keyword }	<br>
+								전화 번호 : ${cvo.pvo.p_tel } <br>
+								가격 대 : ${cvo.pvo.p_price } <br>
 								</td>
 							</tr>
 						</table>
