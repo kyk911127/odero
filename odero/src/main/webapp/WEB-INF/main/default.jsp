@@ -182,11 +182,23 @@
               //대중교통 API
               function searchPubTransPathAJAX() {
                var xhr = new XMLHttpRequest();
+               
                //ODsay apiKey 입력
                var url = "https://api.odsay.com/v1/api/searchPubTransPath?SX=127.06267410402882&SY=37.65648131884798&EX=127.07963376555469&EY=37.66635665481798&apiKey=3WQCZWdtyISEN4ysLtCRc5B%2Bb%2BJon13C/jTTtfA8jwc";
+               
                xhr.open("GET", url, true);
+              
                xhr.send();
-               var strhtml = "";
+               var distance = "";
+               var lastEndStation = "";
+               var firstStartStation = "";
+               var startID = "";
+               var endID = "";
+               var payment = "";
+               var subname="";
+               var min = 99999999999;
+               var pathtype="";
+               var totalTime = "";
                xhr.onreadystatechange = function() {
                 if (xhr.readyState == 4 && xhr.status == 200) {
                  var resultObj = JSON.parse(xhr.responseText);
@@ -195,10 +207,8 @@
                  //alert("resultArr.length: "+resultArr.length);
                  var iindex=0;
                  var jindex=0;
-                 var min = 99999999999;
-                 var pathtype="";
                  for (var i = 0; i < resultArr.length; i++) {
-                  var totalTime = resultArr[i].info.totalTime;
+                  totalTime = resultArr[i].info.totalTime;
                   //1-지하철, 2-버스, 3-도보
                   if(totalTime<min){
                    min = totalTime;
@@ -212,14 +222,13 @@
                  }else if(resultArr[iindex].pathType==3){
                   pathtype="지하철+버스";
                  }
-                 var distance = resultArr[iindex].info.totalDistance;
-                 var lastEndStation = resultArr[iindex].info.lastEndStation;
-                 var firstStartStation = resultArr[iindex].info.firstStartStation;
-                 var startID = resultArr[iindex].subPath[0].startID;
-                 var endID = resultArr[iindex].endID;
-                 var payment = resultArr[iindex].info.payment;
-                 var subname="";
-                 alert(startID);
+                 distance = resultArr[iindex].info.totalDistance;
+                 lastEndStation = resultArr[iindex].info.lastEndStation;
+                 firstStartStation = resultArr[iindex].info.firstStartStation;
+                 //startID = resultArr[iindex].subPath[0].startID;
+                 //endID = resultArr[iindex].endID;
+                 payment = resultArr[iindex].info.payment;
+                 subname="";
                  if(pathtype=="지하철"){
                   subname=resultArr[iindex].subPath[0].lane.name;
                  }else if(pathtype=="버스"){
@@ -228,19 +237,68 @@
                   
                  }
                  
-                   $.ajax({
-                     type : "post",
-                     url : "path.do",
-                     data : {"min" : min, "pathtype":pathtype, "distance":distance, "lastEndStation":lastEndStation, "subname":subname,
-                        "firstStartStation":firstStartStation, "startID":startID,"endID":endID,"payment":payment
-                     },
-                     success : function(res) {
-                       $('#path${s.index }').html(res);
-                      }
-                    
-                 });
                 }
                }
+               var xhr2 = new XMLHttpRequest();//2
+               var url2 = "https://api.odsay.com/v1/api/searchPubTransPath?SX=127.06267410402882&SY=37.65648131884798&EX=127.07963376555469&EY=37.66635665481798&apiKey=3WQCZWdtyISEN4ysLtCRc5B%2Bb%2BJon13C/jTTtfA8jwc";
+               xhr2.open("GET", url2, true);
+               xhr2.send();
+               xhr2.onreadystatechange = function() {
+                   if (xhr2.readyState == 4 && xhr2.status == 200) {
+                    var resultObj2 = JSON.parse(xhr2.responseText);
+                    //console.log(resultObj.result);
+                    var resultArr2 = resultObj2["result"]["path"];
+                    //alert("resultArr.length: "+resultArr.length);
+                    var iindex2=0;
+                    var jindex2=0;
+                    var min2 = 99999999999;
+                    var pathtype2="";
+                    for (var i = 0; i < resultArr2.length; i++) {
+                     var totalTime2 = resultArr2[i].info.totalTime;
+                     //1-지하철, 2-버스, 3-도보
+                     if(totalTime2<min2){
+                      min2 = totalTime2;
+                      iindex2=i;
+                     }
+                    }
+                    if(resultArr2[iindex2].pathType==1){
+                     pathtype2="지하철";
+                    }else if(resultArr2[iindex2].pathType==2){
+                     pathtype2="버스";
+                    }else if(resultArr2[iindex2].pathType==3){
+                     pathtype2="지하철+버스";
+                    }
+                    var distance2 = resultArr2[iindex2].info.totalDistance;
+                    var lastEndStation2 = resultArr2[iindex2].info.lastEndStation;
+                    var firstStartStation2 = resultArr2[iindex2].info.firstStartStation;
+                    //var startID2 = resultArr2[iindex2].subPath[0].stations[0].passStopList.startID;
+                    //var endID2 = resultArr2[iindex2].endID;
+                    var payment2 = resultArr2[iindex2].info.payment;
+                    var subname2="";
+                    if(pathtype2=="지하철"){
+                     subname2=resultArr2[iindex2].subPath[0].lane[0].name;
+                    }else if(pathtype2=="버스"){
+                     
+                    }else if(pathtype2=="지하철+버스"){
+                     
+                    }
+                    $.ajax({
+                        type : "post",
+                        url : "path.do",
+                        data : {"min" : min, "pathtype":pathtype, "distance":distance, "lastEndStation":lastEndStation, "subname":subname,
+                            "firstStartStation":firstStartStation, "payment":payment,
+                           "min2" : min2, "pathtype2":pathtype2, "distance2":distance2, "lastEndStation2":lastEndStation2, "subname2":subname2,
+                           "firstStartStation2":firstStartStation2, "payment2":payment2
+                        },
+                        success : function(res) {
+                          $('#path${s.index }').html(res);
+                         }
+                       
+                    });
+                   }
+                  }
+
+              
               }
               
               //길찾기 API 호출

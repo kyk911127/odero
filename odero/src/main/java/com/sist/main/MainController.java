@@ -60,8 +60,10 @@ public class MainController {
     int price = Integer.parseInt(tmpvo.getP_price().substring(0, 1));
     totalprice+=price;
     c_detail_list.add(tmpvo);
+    if(j==2){
+    	guimg.add(tmpvo.getP_img());
+    }
    }
-   guimg.add(c_detail_list.get(1).getP_img());
    totallist.add(totalprice);
    clist.add(c_detail_list);
   }
@@ -114,18 +116,30 @@ public class MainController {
   return "main";
  }
  @RequestMapping("path.do")
- public String path(int min, String pathtype, int distance,String lastEndStation, String firstStartStation, String startID, String endID, String payment,String subname,Model model){
+ public String path(int min, String pathtype, int distance,String lastEndStation, String firstStartStation, String payment,String subname,int min2, String pathtype2, int distance2,String lastEndStation2, String firstStartStation2,  String payment2,String subname2,Model model){
   PathVO vo = new PathVO();
   vo.setMin(min);
   vo.setPathtype(pathtype);
   vo.setDistance(distance);
   vo.setLastEndStation(lastEndStation);
   vo.setFirstStartStation(firstStartStation);
-  vo.setStartID(startID);
-  vo.setEndID(endID);
+  //vo.setStartID(startID);
+  //vo.setEndID(endID);
   vo.setPayment(payment);
   vo.setSubname(subname);
   model.addAttribute("vo", vo);
+  PathVO vo2 = new PathVO();
+  vo2.setMin(min2);
+  vo2.setPathtype(pathtype2);
+  vo2.setDistance(distance2);
+  vo2.setLastEndStation(lastEndStation2);
+  vo2.setFirstStartStation(firstStartStation2);
+  //vo2.setStartID(startID2);
+  //vo2.setEndID(endID2);
+  vo2.setPayment(payment2);
+  vo2.setSubname(subname2);
+  model.addAttribute("vo2", vo2);
+  System.out.println("min"+min2);
   return "member/member_check/path";
  }
 }

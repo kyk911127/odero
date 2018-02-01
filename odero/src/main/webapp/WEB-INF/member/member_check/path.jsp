@@ -49,29 +49,40 @@
 		<tr>
 			<td width="20%" class="text-center">
 				${vo.firstStartStation }<br>
-				<c:if test="${vo.pathtype=='버스' }">
+				<%-- <c:if test="${vo.pathtype=='버스' }">
 					정류장번호: ${vo.startID }
-				</c:if>
+				</c:if> --%>
 				<c:if test="${vo.pathtype=='지하철' }">
 					${vo.subname }
 				</c:if>
 			<td width="20%" class="text-center">
 				이동수단: ${vo.pathtype }<br>
 				이동시간: ${vo.min }분<br>
-				이동거리: ${vo.distance }<br>
-				교통비: ${vo.payment }
+				이동거리: ${vo.distance }m<br>
+				교통비: ${vo.payment }원
 			</td>
 			<td width="20%" class="text-center">
-				${vo.lastEndStation }<br>
-				<c:if test="${vo.pathtype=='버스' }">
+				도착: ${vo.lastEndStation }<br>
+				<%-- <c:if test="${vo.pathtype=='버스' }">
 					정류장번호: ${vo.endID }
+				</c:if> --%>
+				<br>
+				출발: ${vo2.firstStartStation }
+			</td>
+			<td width="20%" class="text-center">
+				이동수단: ${vo2.pathtype }<br>
+				이동시간: ${vo2.min }분<br>
+				이동거리: ${vo2.distance }m<br>
+				교통비: ${vo2.payment }원
+			</td>
+			<td width="20%" class="text-center">
+				도착: ${vo2.lastEndStation }<br>
+				<%-- <c:if test="${vo2.pathtype=='버스' }">
+					정류장번호: ${vo2.endID }
+				</c:if> --%>
+				<c:if test="${vo.pathtype=='지하철' }">
+					${vo.subname }
 				</c:if>
-			</td>
-			<td width="20%" class="text-center">
-				
-			</td>
-			<td width="20%" class="text-center">
-				
 			</td>
 		</tr>
 	</table>
