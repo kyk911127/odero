@@ -209,11 +209,12 @@ public class CourseController {
 	}
 
 	@RequestMapping("placetoplace.do")
-	public String place_to_place(int p_no, int cnt, Model model) {
+	public String place_to_place(int p_no, int cnt, boolean placeCheck, Model model) {
 		PlaceVO vo = dao.course_place_data(p_no);
 		/*System.out.println("p_no : " + p_no);
 		System.out.println("cnt : " + cnt);
 		System.out.println("vo.getP_name() : " + vo.getP_name());*/
+		model.addAttribute("placeCheck", placeCheck);
 		model.addAttribute("vo", vo);
 		return "course/place_view/place_" + cnt;
 	}

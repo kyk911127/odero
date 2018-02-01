@@ -23,7 +23,6 @@
 		<tr>
 			<td class="text-right">
 			<span class="tmap_detail glyphicon glyphicon-eye-open">${vo.p_hit }</span>
-			<span class="tmap_detail glyphicon glyphicon-heart">찜&nbsp;</span></td>
 		</tr>
 	</table>
 </body>

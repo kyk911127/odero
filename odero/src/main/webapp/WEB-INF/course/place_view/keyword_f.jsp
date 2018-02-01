@@ -13,38 +13,7 @@
 	</script>
 </c:forEach>
 <script type="text/javascript">
-	//선택할 때 선택해제할 때 모양 바꾸기 => 동적으로 추가된 태그에는 일반적인 이벤트는 동작하지 않음
-	$(document).on("click", ".f_btn", function() {
-		
-		var btn_bc = $(this).css("background-color");
-		if (btn_bc == "rgb(0, 0, 0)") { // 선택 해제 => 선택
-			
-			keylist_f = $(this).attr("value");
-			$(this).css("background", "rgb(243, 171, 186)");
-			$(this).css("opacity", "1");
-			for (var i = 0; i < cnt; i++) {
-				var key_id = $("#f_" + i);
-				   if($(this).attr("id") != key_id.attr("id")){
-					   if(key_id.css("background-color") == "rgb(243, 171, 186)") {   // 선택 해제 => 선택
-						   keylist_f = keylist_f + "|" + key_id.attr("value");
-					   }
-				   }
-			}
-		} else { // 선택 => 선택 해제
-			keylist = "";
-			$(this).css("background", "rgb(0, 0, 0)");
-			$(this).css("opacity", "0.3");
-			for (var i = 0; i < cnt; i++) {
-				var key_id = $("#f_" + i);
-				 if($(this).attr("id") != key_id.attr("id")){
-					   if(key_id.css("background-color") == "rgb(243, 171, 186)") {   // 선택 해제 => 선택
-						   keylist_f = keylist_f + key_id.attr("value") + "|";
-					   }
-				   }
-			}
-		}
-		$("#f_hidden").html("<input type='hidden' name='keylist_f' value='"+ keylist_f +"'>");
-	});
+	
 		
 		/* if($(this).hasClass("f_btn")) {
 			alert("class : " + $(this).attr("class"));

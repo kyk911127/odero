@@ -180,7 +180,16 @@
 .rc_detail {
 	font-size: 5px;
 }
+.reset_btn:hover {
+	background-color: #fff;
+}
 </style>
+<!-- <script>
+$(function() {
+	
+	
+});
+</script> -->
 
 </head>
 <body>
@@ -282,7 +291,7 @@
 
      var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
      
-     //클릭 갯수 count할 변수
+  	  //클릭 갯수 count할 변수
      var cnt = 0;
 
      // 지도 위에 마커를 표시합니다
@@ -366,7 +375,7 @@
        	    	    cnt = cnt - 1;
        	    	 }
        	     } */
-       	     cnt = cnt + 1;
+     		 
 	       	  var bCheck = false;
 	          for (var j=0; j<selectedMarker.length; j++) {
 	         	 if(selectedMarker[j] == marker.getTitle()) {
@@ -374,6 +383,7 @@
 	         	 }
 	           }
 	          if(bCheck == false) {
+	        	  cnt = cnt + 1;
 	        	  if(cnt <= 3) { //세 개까지
 	        	    	 selectedMarker.push(marker.getTitle());
 	               	 marker.setImage(clickImage);
@@ -383,7 +393,8 @@
 		        			url : "placetoplace.do",
 		        			data : {
 		        				"p_no" :  p_no,
-		        				"cnt" : cnt
+		        				"cnt" : cnt,
+		        				"placeCheck" : true
 		        			},
 		        			success : function(res) {
 		        				$("#place_" + cnt).html(res);
@@ -393,6 +404,62 @@
 	        	    	 alert("이미 세개의 장소를 선택했습니다! 초기화 해주세요!");
 	        	     }
 	          }
+	          
+	          $(".reset_btn").click(function() {
+	      			cnt = 0;
+	      			$.ajax({
+	        			type : "POST",
+	        			url : "placetoplace.do",
+	        			data : {
+	        				"p_no" :  0,
+	        				"cnt" : 1,
+	        				"placeCheck" : false
+	        			},
+	        			success : function(res) {
+	        				$("#place_" + cnt).html(res);
+	        			}
+	        		});
+	      			$.ajax({
+	        			type : "POST",
+	        			url : "placetoplace.do",
+	        			data : {
+	        				"p_no" :  0,
+	        				"cnt" : 2,
+	        				"placeCheck" : false
+	        			},
+	        			success : function(res) {
+	        				$("#place_" + cnt).html(res);
+	        			}
+	        		});
+	      			$.ajax({
+	        			type : "POST",
+	        			url : "placetoplace.do",
+	        			data : {
+	        				"p_no" :  0,
+	        				"cnt" : 3,
+	        				"placeCheck" : false
+	        			},
+	        			success : function(res) {
+	        				$("#place_" + cnt).html(res);
+	        			}
+	        		});
+	      			for(var i=0; i<3; i++) {
+	      				selectedMarker[i] = "";
+	      			}
+	      			addMarker(null, normalOrigin, overOrigin, clickOrigin,0);
+	      			for (var i = 0, len = positions.length; i < len; i++) {
+	      		         var gapX = (MARKER_WIDTH + SPRITE_GAP), // 스프라이트 이미지에서 마커로 사용할 이미지 X좌표 간격 값
+	      		             originY = (MARKER_HEIGHT + SPRITE_GAP) * i, // 스프라이트 이미지에서 기본, 클릭 마커로 사용할 Y좌표 값
+	      		             overOriginY = (OVER_MARKER_HEIGHT + SPRITE_GAP) * i, // 스프라이트 이미지에서 오버 마커로 사용할 Y좌표 값
+	      		             normalOrigin = new daum.maps.Point(0, originY), // 스프라이트 이미지에서 기본 마커로 사용할 영역의 좌상단 좌표
+	      		             clickOrigin = new daum.maps.Point(gapX, originY), // 스프라이트 이미지에서 마우스오버 마커로 사용할 영역의 좌상단 좌표
+	      		             overOrigin = new daum.maps.Point(gapX * 2, overOriginY); // 스프라이트 이미지에서 클릭 마커로 사용할 영역의 좌상단 좌표
+	      		             
+	      		         // 마커를 생성하고 지도위에 표시합니다
+	      		         addMarker(positions[i], normalOrigin, overOrigin, clickOrigin,p_nos[i]);
+	      		     }
+	      			
+	      	   });
        	     
        	     
              // 클릭된 마커가 없고, click 마커가 클릭된 마커가 아니면
@@ -514,6 +581,7 @@
 					<table>
 						<tr>
 							<td class="btn-like text-center">
+								<input type="button" class="reset_btn btn btn-default" value="초기화" >
 								<button type="button" class="btn like" data-toggle="modal"
 									data-target="#myModal" aria-hidden="true"
 									style="outline: none;">
@@ -556,10 +624,8 @@
 					</div>
 					<div class="modal-footer">
 						<center>
-							<button type="button" class="btn btn-default"
-								style="background-color: white; outline: none;">
-								<b>코스 찜</b>
-							</button>
+							<input type="button" class="btn btn-default"
+								style="background-color: white; outline: none; font-weight: bold" value="코스 찜">
 							<button type="button" class="btn btn-default"
 								style="background-color: white; outline: none;"
 								data-dismiss="modal">

@@ -20,7 +20,8 @@ public interface CourseMapper {
     //맛집키워드
     @Select("SELECT p_keyword FROM place "
     		+ "WHERE p_grade=#{p_grade} "
-    		+ "AND REGEXP_LIKE(p_addr,#{gulist})")
+    		+ "AND REGEXP_LIKE(p_addr,#{gulist}) "
+    		+ "AND rownum <= 30")
     public List<String> course_fkeyword(Map map);
     
     //각각의 카테고리 테이블 데이터 삭제
