@@ -124,7 +124,7 @@ $(function(){
 <body>
 <div class="container" style="margin-top: 50px">
 	<div class="row">
-		<center><h3><b>후기 작성</b></h3><br></center>
+		<center><h3><b>게시물 작성</b></h3><br></center>
 		<form:form method="post" action="review_insert_ok.do" id="frm" enctype="multipart/form-data" modelAttribute="uploadForm">
 		<table class="table table-hover" style="width: 70%; margin: 0px auto;" >
 			<tr>
@@ -142,7 +142,7 @@ $(function(){
 			<tr>
 				<td width="20%" class="text-center warning">작성자</td>
 				<td width="80%" class="text-left">
-					<input type="text" name="m_id" size="20" readonly="readonly" value="1">
+					<input type="text" name="m_id" size="20" readonly="readonly" value="${sessionScope.m_id }">
 				</td>
 			</tr>
 			<tr>
