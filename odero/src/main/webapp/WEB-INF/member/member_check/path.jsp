@@ -32,6 +32,11 @@
 <div>
 	<table width="100%">
 		<tr>
+			<td class="text-center" colspan="5">
+            	<span style="color:black; font-size:28px; border: none;">대중교통 이용</span><br><br><br>
+           </td>
+		</tr>
+		<tr>
 			<td width="20%" class="text-center">
 				<div class="pathmarker"><img alt="" src="img_1/m_1.png"height="100px"></div></td>
 			<td width="20%" class="text-center">

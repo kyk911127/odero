@@ -224,7 +224,7 @@
                  }
                  distance = resultArr[iindex].info.totalDistance;
                  lastEndStation = resultArr[iindex].info.lastEndStation;
-                 firstStartStation = resultArr[iindex].info.firstStartStation;
+                 firstStartStation = resultArr[iindex].info.firstStarmin14tStation;
                  //startID = resultArr[iindex].subPath[0].startID;
                  //endID = resultArr[iindex].endID;
                  payment = resultArr[iindex].info.payment;
@@ -348,7 +348,6 @@
              비용: 약 ${totallist[s.index] } 만원 </span>
            </div>
            <div style="width:100%;float: left">
-            <p>대중교통 이용</p>
              <div style="width: 100%" id="path${s.index }">
             </div>
            </div>
