@@ -142,7 +142,7 @@ $(function(){
 			<tr>
 				<td width="20%" class="text-center warning">작성자</td>
 				<td width="80%" class="text-left">
-					<input type="text" name="m_id" size="20" readonly="readonly" value="1">
+					<input type="text" name="m_id" size="20" readonly="readonly" value="${sessionScope.m_id }">
 				</td>
 			</tr>
 			<tr>

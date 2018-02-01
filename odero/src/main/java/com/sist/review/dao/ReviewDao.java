@@ -3,7 +3,10 @@ package com.sist.review.dao;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.SelectKey;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -61,7 +64,20 @@ public class ReviewDao {
 	}
 	
 	// Reply_totalPage
-	public int replyTotalList(){
-		return mapper.replyTotalList();
+	public int replyTotalList(int no){
+		return mapper.replyTotalList(no);
+	}
+	
+	
+	// Re_ReplyInser
+	public Review_ReplyVo re_replyParent(int no){
+		return mapper.re_replyParent(no);
+	}
+	public void re_replySort(Review_ReplyVo vo){
+		mapper.re_replySort(vo);
+	}
+	
+	public void re_replyInsert(Review_ReplyVo vo){
+		mapper.re_replyInsert(vo);
 	}
 }

@@ -4,6 +4,7 @@ import java.util.Date;
 public class Review_ReplyVo {
 	private int rr_no;
 	private int r_no;
+	private String m_id;
 	private String rr_msg;
 	private Date rr_regdate;
 	private int rr_gid;
@@ -11,7 +12,7 @@ public class Review_ReplyVo {
 	private int rr_gtab;
 	private int rr_depth;
 	private int rr_root;
-	private String m_id;
+	private String dbday;
 	
 	public int getRr_no() {
 		return rr_no;
@@ -24,6 +25,12 @@ public class Review_ReplyVo {
 	}
 	public void setR_no(int r_no) {
 		this.r_no = r_no;
+	}
+	public String getM_id() {
+		return m_id;
+	}
+	public void setM_id(String m_id) {
+		this.m_id = m_id;
 	}
 	public String getRr_msg() {
 		return rr_msg;
@@ -67,11 +74,11 @@ public class Review_ReplyVo {
 	public void setRr_root(int rr_root) {
 		this.rr_root = rr_root;
 	}
-	public String getM_id() {
-		return m_id;
+	public String getDbday() {
+		return dbday;
 	}
-	public void setM_id(String m_id) {
-		this.m_id = m_id;
+	public void setDbday(String dbday) {
+		this.dbday = dbday;
 	}
 	
 	

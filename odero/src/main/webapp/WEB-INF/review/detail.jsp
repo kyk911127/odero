@@ -34,6 +34,30 @@ $(function(){
 			$('#re_fmt').submit();	
 		}
 	});
+	
+	$('#re_re_btn').click(function(){
+		var msg = $('#rr_rr_msg').val();
+		if(msg.trim()==""){
+			alert('댓글을 입력하세요');
+			return;
+		} else {
+			$('#re_re_fmt').submit();	
+		}
+	});
+	
+	var index=0;
+	$('.rebtn').click(function(){
+		var btn_id = $(this).attr('id');
+		if (index==0) {
+			$('#input_'+btn_id).show(300);
+			index = 1;
+			$('#r_'+btn_id).text("┕답글취소");
+		} else if (index==1) {
+			$('#input_'+btn_id).hide(300);
+			index = 0;
+			$('#r_'+btn_id).text("┕답글");
+		}
+	});	
 });
 
 	var slideIndex = 0;
@@ -164,45 +188,77 @@ a:hover { text-decoration: none;}
 			<!-- --------------------------------------------- 댓글 -------------------------------------------- -->
 			<h3 class="text-left">댓글</h3>
 			<table style="margin-top: 50px" id="table_content" width="100%">
-				<form action="re_reply_insert.do" method="post" id="re_fmt">
-				<c:if test="${sessionScope.m_id != null }">
+				<form action="reply_insert.do" method="post" id="re_fmt">
 				<tr>
+				<c:if test="${sessionScope.m_id != null }">
 					<td width="80%">
-						<textarea rows="4" cols="110" id="rr_msg" name="rr_msg"></textarea>
+						<textarea rows="3" cols="110" id="rr_msg" name="rr_msg"></textarea>
 						<input type="hidden" value="${vo.r_no }" name="r_no">
 						<input type="hidden" value="${sessionScope.m_id }" name="m_id">
 					</td>
 					<td width="20%" class="text-right">
 						<input type="button" value="등록" class="btn btn-re" id="re_btn">
 					</td>
-				</tr>
 				</c:if>
+				</tr>
 				</form>
 				<hr>
 				<tr>
 					<td colspan="2">
-						<table  width="100%" style="margin-top: 50px">
-							<c:forEach var="rvo" items="${list }">
-							<div style="height: 20px"></div>
+						<table  width="100%" style="margin-top: 30px">
+							<c:if test="${fn:length(list) <= 0 }">
+							<h3>등록된 댓글이 없습니다.</h3>
+							</c:if>
+							<c:forEach var="rvo" items="${list }" varStatus="i">
 							<tr>
-								<td class="text-left" width="80%" style="vertical-align: bottom;">
+								<td class="text-left" width="1010px" height="35px" style="vertical-align: bottom;">
+									<c:if test="${rvo.rr_gtab > 0}">
+										<c:forEach var="i" begin="0" end="${rvo.rr_gtab }">
+											&emsp;
+										</c:forEach>
+										<img src="review/img/re.png" width="20px">
+									</c:if>
 									<font size="2">
 										${rvo.m_id } / <fmt:formatDate value="${rvo.rr_regdate }" pattern="yyyy.MM.dd"/>
 									</font>
-									<sup><font color="red">new</font></sup>
+									<c:if test="${rvo.dbday == today }">
+										<sup><font color="red">new</font></sup>
+									</c:if>
+									<c:if test="${sessionScope.m_id != null }">
+										<a style="cursor: pointer;" id="r${i.index }" class="rebtn"><sub><font color="blue" id="r_r${i.index }">┕답글</font></sub></a>
+									</c:if>
 								</td>
-								<td class="text-right" width="20%">
+								<td class="text-right" width="160px" height="30px">
 									<c:if test="${rvo.m_id == sessionScope.m_id }">
 									<a href="#" class="btn btn-sm">수정</a> 
-									<a class="btn btn-sm" id="cancel">삭제</a> 
+									<a href="#" class="btn btn-sm" id="cancel">삭제</a> 
 									</c:if>
 								</td>
 							</tr>	
 							<tr>
 								<td class="text-left" colspan="2">
+									<c:if test="${rvo.rr_gtab > 0}">
+										<c:forEach var="i" begin="0" end="${rvo.rr_gtab }">
+											&emsp;&nbsp;&nbsp;
+										</c:forEach>
+									</c:if>
 									${rvo.rr_msg }
 								</td>
 							</tr>
+							<tr><td height="20px"></td></tr>
+							<form action="re_reply_insert.do" method="post" id="re_re_fmt">
+							<tr id="input_r${i.index }" style="display: none;">
+								<td width="1010px" class="text-right">
+									<textarea rows="3" cols="90" id="rr_rr_msg" name="rr_msg"></textarea>
+									<input type="hidden" value="${vo.r_no }" name="r_no">
+									<input type="hidden" value="${rvo.rr_no }" name="rr_no">
+									<input type="hidden" value="${sessionScope.m_id }" name="m_id">
+								</td>
+								<td width="160px" class="text-right">
+									<input type="button" value="등록" class="btn btn-re" id="re_re_btn">
+								</td>
+							</tr>
+							</form>
 							</c:forEach>
 						</table>
 					</td>

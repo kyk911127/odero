@@ -53,17 +53,19 @@ public interface ReviewMapper {
 	@Delete("DELETE FROM review WHERE r_no=#{r_no}")
 	public void reviewDelete(int no);
 	/*
-	 * rr_no
-r_no
-rr_msg
-rr_regdate
-rr_gid
-rr_gstep
-rr_gtab
-rr_depth
-rr_root
-m_id
+		rr_no
+		r_no
+		m_id
+		rr_msg
+		rr_regdate
+		rr_gid
+		rr_gstep
+		rr_gtab
+		rr_depth
+		rr_root
 	 */
+	
+	// reply
 	@SelectKey(keyProperty="rr_no", resultType=int.class, before=true, 
 			statement="SELECT NVL(MAX(rr_no)+1,1) AS no FROM review_reply")
 	@Insert("INSERT INTO review_reply(rr_no,r_no,m_id,rr_msg,rr_gid) "
@@ -73,10 +75,29 @@ m_id
 	@Select("SELECT rr_no,m_id,rr_msg,rr_regdate,rr_gid,rr_gstep,rr_gtab,rr_depth,rr_root,num "
 			+ "FROM (SELECT rr_no,m_id,rr_msg,rr_regdate,rr_gid,rr_gstep,rr_gtab,rr_depth,rr_root,rownum AS num "
 			+ "FROM (SELECT rr_no,m_id,rr_msg,rr_regdate,rr_gid,rr_gstep,rr_gtab,rr_depth,rr_root "
-			+ "FROM review_reply ORDER BY rr_no DESC)) "
+			+ "FROM review_reply WHERE r_no=(SELECT r_no FROM review WHERE r_no=#{no}) "
+			+ "ORDER BY rr_gid DESC, rr_gstep ASC)) "
 			+ "WHERE num BETWEEN #{start} AND #{end}")
 	public List<Review_ReplyVo> replyList(Map map);
 	
-	@Select("SELECT CEIL(COUNT(*)/10) FROM review_reply")
-	public int replyTotalList();
+	@Select("SELECT CEIL(COUNT(*)/10) FROM review_reply WHERE r_no=#{r_no} AND rr_root=0")
+	public int replyTotalList(int no);
+	
+	@Delete("DELETE FROM review_reply WHERE rr_no=#{rr_no}")
+	public void replyDelete(int no);
+	
+	//  대댓글
+	// insert
+	@Select("SELECT rr_gid,rr_gstep,rr_gtab FROM review_reply WHERE rr_no=#{rr_no}")
+	public Review_ReplyVo re_replyParent(int no);
+	@Update("UPDATE review_reply SET rr_gstep = rr_gstep+1 WHERE rr_gid=#{rr_gid} AND rr_gstep > #{rr_gstep}")
+	public void re_replySort(Review_ReplyVo vo);
+	
+	@SelectKey(keyProperty="rr_no", resultType=int.class, before=true, 
+			statement="SELECT NVL(MAX(rr_no)+1,1) AS no FROM review_reply")
+	@Insert("INSERT INTO review_reply "
+			+ "VALUES(#{rr_no},#{r_no},#{m_id},#{rr_msg},SYSDATE,#{rr_gid},#{rr_gstep},#{rr_gtab},#{rr_no},0)")
+	public void re_replyInsert(Review_ReplyVo vo);
+	
+	
 }
