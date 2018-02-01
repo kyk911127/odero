@@ -25,8 +25,8 @@ public class PlaceController {
 	
 	@RequestMapping("p_detail.do")
 	public String place_detail(String p_no, Model model) {
-		if(p_no==null)
-			p_no = "2";
+/*		if(p_no==null)
+			p_no = "2";*/
 		   
 		PlaceVO vo = dao.placeDetailData(Integer.parseInt(p_no));
 		vo.setCount(p_dao.p_replyCount(Integer.parseInt(p_no)));
@@ -52,9 +52,11 @@ public class PlaceController {
 	@RequestMapping("p_reply_insert.do")
 	public String p_replyInsert(HttpSession session, P_ReplyVO vo) {
 		vo.setM_id((String)session.getAttribute("m_id"));
+		
 		int p_no = vo.getP_no();
+		System.out.println(vo.getP_no());
 		p_dao.p_replyInsert(vo);
-		return "redirect:p_detail.do?=" + p_no;
+		return "redirect:p_detail.do?p_no=" + p_no;
 	}
 	
 	// reply_update
@@ -62,7 +64,7 @@ public class PlaceController {
 	public String p_replyUpdate(P_ReplyVO vo) {
 		int p_no = vo.getP_no();
 		p_dao.p_replyUpdate(vo);
-		return "redirect:p_detail.do?=" + p_no;
+		return "redirect:p_detail.do?p_no=" + p_no;
 	 }
 	
 	// reply_delete
@@ -72,7 +74,7 @@ public class PlaceController {
 		vo.setPr_no(pr_no);
 		p_dao.p_replyDelete(pr_no);
 		model.addAttribute("vo", vo);
-		return "redirect:p_detail.do?=" + p_no;
+		return "redirect:p_detail.do?p_no=" + p_no;
 	}
 	
 	@RequestMapping("p_list.do")
