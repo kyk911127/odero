@@ -407,7 +407,7 @@
     <h4> 추천 & 생생한 후기</h4>
     <c:forEach var="rvo" items="${rlist }">
      <div class="review snip1273">
-      <img src="review/img/${rvo.r_imgname }">
+      <img src="review/data/${rvo.r_imgname }">
       <figcaption>
       <h3>${rvo.r_pname }</h3>
       <p>${rvo.r_subject }</p>
