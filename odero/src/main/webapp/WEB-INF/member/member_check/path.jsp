@@ -11,9 +11,7 @@
 .pathmarker{
 	width: 100px;
 	height: 100px;
-	border-radius : 50%;
-	background-color: black;
-	margin-right: 0px;
+	margin-left: 25%;
 	float: left;
 }
 .linebox{
@@ -24,6 +22,7 @@
 }
 .line{
  	width:100%;
+ 	margin-top:25%;
 	border-bottom: 3px solid black;
 	line-height: 100px;
 }
@@ -34,17 +33,17 @@
 	<table width="100%">
 		<tr>
 			<td width="20%" class="text-center">
-				<div class="pathmarker"></div></td>
+				<div class="pathmarker"><img alt="" src="img_1/m_1.png"height="100px"></div></td>
 			<td width="20%" class="text-center">
 				<div class="linebox"><p class="line"></p></div></td>
 			<td width="20%" class="text-center">
-				<div class="pathmarker"></div>
+				<div class="pathmarker"><img alt="" src="img_1/m_2.png"height="100px"></div>
 			</td>
 			<td width="20%" class="text-center">
 				<div class="linebox"><p class="line"></p></div>
 			</td>
 			<td width="20%" class="text-center">
-				<div class="pathmarker"></div>
+				<div class="pathmarker"><img alt="" src="img_1/m_3.png"height="100px"></div>
 			</td>
 		</tr>
 		<tr>
