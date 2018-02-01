@@ -51,4 +51,8 @@ public class MyPageDAO {
 	{
 		mapper.cosDeleteNo(no);
 	}
+	public List<MyPagePlaceVO>MyPlacePage(Map map)
+	{
+		return mapper.MyPlacePage(map);
+	}
 }

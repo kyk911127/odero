@@ -19,11 +19,6 @@ public interface MyPageMapper {
 	         + "FROM springBoard ORDER BY no DESC)) "
 	         + "WHERE num BETWEEN #{start} AND #{end}")
 	   public List<BoardVO> boardListData(Map map);
-	   
-	   //
-	   @SelectKey(keyProperty="no", resultType=int.class, before=true, statement="SELECT NVL(MAX(no)+1,1) as no FROM springBoard")
-	   @Insert("INSERT INTO springBoard VALUES(#{no},#{name},#{subject},#{content},#{pwd},SYSDATE,0)")
-	   public void boardInsert(BoardVO vo);
 */
 	
 	// 마이페이지 - 장소 베스트
@@ -39,6 +34,36 @@ public interface MyPageMapper {
 	@Select("SELECT j.j_no, p.p_no, p.p_name, p.p_addr, p.p_price, p.p_keyword, NVL(SUBSTR(p.p_img,1,INSTR(p.p_img,',',1,1)-1),p.p_img) AS p_img, p.p_tel, p.p_grade, p.p_time, p.p_hit "
 			+ "FROM JJIM j, PLACE p WHERE j.p_no = p.p_no and m_id=#{m_id} ORDER BY j.j_no DESC")
 	public List<MyPagePlaceVO> MyPlaceBest5 (String m_id);
+	
+	
+	
+	
+	/*SELECT
+	event_no,event_category,event_image,event_title,event_day,event_place,event_id,event_hit,num
+	FROM (SELECT
+	event_no,event_category,event_image,event_title,event_day,event_place,event_id,event_hit,rownum
+	as num
+	FROM (SELECT
+	event_no,event_category,event_image,event_title,event_day,event_place,event_id,event_hit
+	FROM gggl_event ORDER BY event_no DESC))
+	WHERE num BETWEEN #{start} AND*/
+	
+	// 마이페이지 - 장소 베스트
+		@Results( value = {
+				  @Result(property = "jvo.j_no", column = "j_no", id = true),
+				  @Result(property = "p_no", column = "p_no"),
+				  @Result(property = "p_name", column = "p_name"),
+				  @Result(property = "p_addr", column = "p_addr"),
+				  @Result(property = "p_price", column = "p_price"),
+				  @Result(property = "p_keyword", column = "p_keyword"),
+				  @Result(property = "p_img", column = "p_img")
+				})
+		@Select("SELECT j.j_no, p.p_no, p.p_name, p.p_addr, p.p_price, p.p_keyword, p_img, p.p_tel, p.p_grade, p.p_time, p.p_hit, num "
+				+ "FROM (SELECT j.j_no, p.p_no, p.p_name, p.p_addr, p.p_price, p.p_keyword, p_img AS p_img, p.p_tel, p.p_grade, p.p_time, p.p_hit, rownum as num "
+				+ "FROM (SELECT j.j_no, p.p_no, p.p_name, p.p_addr, p.p_price, p.p_keyword, NVL(SUBSTR(p.p_img,1,INSTR(p.p_img,',',1,1)-1),p.p_img) AS p_img, p.p_tel, p.p_grade, p.p_time, p.p_hit " 
+				+ "FROM JJIM j, PLACE p ORDER BY j.j_no DESC)) "
+				+ "WHERE j.p_no = p.p_no and m_id=#{m_id} AND num BETWEEN #{start} AND #{end}")
+		public List<MyPagePlaceVO>MyPlacePage(Map map);
 	
 	// 마이페이지 - 코스 베스트 (food)
 		@Results( value = {

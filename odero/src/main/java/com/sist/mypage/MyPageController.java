@@ -46,18 +46,26 @@ public class MyPageController {
 		return "cart/mypage";
 	}
 	@RequestMapping("mypage_list.do")
-	public String mypage_list(HttpSession session, String sort,  Model model) {
+	public String mypage_list(HttpSession session, String sort,  Model model, String page) {
 		String m_id = (String)session.getAttribute("m_id");
-		
+		if(page==null)
+			page="1";
+		int curpage = Integer.parseInt(page);
+		int rowSize=10;
+		int start = (rowSize*curpage)-(rowSize-1);
+		int end = rowSize*curpage;
+		Map map = new HashMap();
+		map.put("start", start);
+		map.put("end", end);
+		map.put("m_id",m_id);
 		String jsort=sort;
 		if (sort==null)
 			jsort = "cos";
 		
-		
 		List<MyPagePlaceVO> list = dao.MyPlaceBest5(m_id);
 		List<MyPageCosVO> plist = dao.MyCosBestPlay(m_id);
-		
-		
+/*		List<MyPagePlaceVO> list = dao.MyPlacePage(map);
+		List<MyPageCosVO> plist = dao.MyCosBestPlay(m_id);*/
 		if (jsort.equals("cos")) {
 			model.addAttribute("list",plist);
 			
@@ -78,6 +86,7 @@ public class MyPageController {
 	}
 	@RequestMapping("mypage_cos.do")
 	public String mypage_cos() {
+		
 		return "cart/mypage_cos";
 	}
 	@RequestMapping("mypage_place.do")

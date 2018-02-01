@@ -163,7 +163,7 @@ $(document).ready(function(){
 						<th width="5%">삭제</th>
 					</tr>
 					<c:if test="${size!=0 }">
-					<c:forEach var="je" begin="0" end="6">
+					<c:forEach var="je" begin="0" end="${size>6?6:size-1 }">
 						<c:if test="${list[je].p_grade=='c'}">
 							<c:set var="grade" value="카페" />
 						</c:if>
@@ -222,7 +222,7 @@ $(document).ready(function(){
 						<th>삭제</th>
 					</tr>
 					<c:if test="${psize!=0 }">
-					<c:forEach var="kk" begin="0" end="6">
+					<c:forEach var="kk" begin="0" end="${psize>6?6:psize-1 }">
 						<tr>
 							<td>${flist[kk].c_no }</td>
 							<td>${flist[kk].pvo.p_name }</td>
