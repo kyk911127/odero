@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.SelectKey;
 
 import com.sist.place.dao.PlaceVO;
 
@@ -45,8 +46,11 @@ public interface CourseMapper {
     		+ "AND REGEXP_LIKE(p_keyword,#{keylist})")
     public List<PlaceVO> getPlaceInfo(Map map);
     
-    
-    
+    //장소 찜하기
+    @SelectKey(keyProperty="c_no", resultType=int.class,
+    		before=true, statement="SELECT NVL(MAX(c_no)+1,1) as c_no FROM course")
+    @Insert("INSERT INTO course VALUES(#{c_no}, #{course1}, #{course2}, #{course3}, #{m_id})")
+    public void insertJjim(Map map);
     
     
     

@@ -88,7 +88,7 @@
    overflow:hidden;
     height:auto;
     width:auto;
-   border:1px solid black;
+  /*  border:1px solid black; */
 }
 
 .tp_dlist_2{
@@ -150,6 +150,7 @@
     color: rgba(0, 0, 0, .4);
     /* padding-left:12%; */
     padding:5%;
+    height: 20px;
 }
 .tp_price{
    font-size: 0.9em;

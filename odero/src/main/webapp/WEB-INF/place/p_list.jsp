@@ -20,19 +20,33 @@ input[type=radio]
 }
 </style>
 <script type="text/javascript">
+var curpage=1;
+var totalpage=0;
+
+var s_curpage=1;
+var s_totalpage=0;
+
+
 $(function(){
    
 	
    $('.loc_pick').hide();
    $('.gangnam_d').hide();
    $('.gangbuk_d').hide();
-   
+   $('#pg').html(
+		   '<ul class="pagination">'
+			+'<li><span aria-hidden="true" class="btn btn-sm btn-info" id="prev">이전</span></li>'
+			+'<li><span aria-hidden="true" class="btn btn-sm btn-info" id="next">다음</span></li>'
+		   +'</ul>'	   
+   );
    $.ajax({
        type:"POST",
        url:"s_list_start.do",
        dataType:'json',
        success: function(response){
       	   var data="";
+      	   curpage=response[0].p_curpage;
+      	   totalpage=response[0].p_totalpage;
       	   for(i=0;i<response.length;i++)
       		{
       		   data+='<div class="col-sm-6 col-md-4 col-lg-3 mt-4">'
@@ -56,11 +70,135 @@ $(function(){
 		             +'</div>'
 		             +'</div>'
 		             +'</div>'
-      			}
+		             
+      			} 
       	   
           $('#tp').html(data);
+          $('.jjimbtn').click(function(){
+              var Jbtn=$(this).css("color");
+              if(Jbtn=="rgb(51, 51, 51)")
+                 {
+                  $(this).css("color", "#F3ABBA"); //rgb(243, 171, 186)
+                    $(this).css("font-weight","bold");
+                 }
+              else{
+                 $(this).css("color","rgb(51, 51, 51)")
+                 } 
+           });
        }
    });
+   
+   $('#prev').click(function(){
+	   
+	   curpage=(curpage>1?curpage-1:curpage);
+	   
+	   $.ajax({
+	       type:"POST",
+	       url:"s_list_start.do",
+	       data:{"page":curpage},
+	       dataType:'json',
+	       success: function(response){
+	      	   var data="";
+	      	   var page="";
+	      	   curpage=response[0].p_curpage;
+	      	   totalpage=response[0].p_totalpage;
+	      	   for(i=0;i<response.length;i++)
+	      		{
+	      		   data+='<div class="col-sm-6 col-md-4 col-lg-3 mt-4">'
+	                    +'<div class="card">'
+	                    +'<a href="p_detail.do?p_no='+response[i].p_no+'">'
+	                    +'<img class="card-img-top tp_dimg" src="'+response[i].p_img+'">'
+	                    +'</a>'
+	                    +'<div class="card-block">'
+	                    +'<h4 class="tp_tname">'+response[i].p_name +'</h4>'
+	                    +'<div class="tp_locname">'
+	                    +'<span class="glyphicon glyphicon-map-marker"></span>'
+			               +response[i].p_addr
+			             +'</div>'
+			             +'<div class="tp_keyword">'
+			                 +response[i].p_keyword
+			             +'</div>'
+			             +'</div>'
+			             +'<div class="card-footer">'
+			             +'<small>'+response[i].p_price+'</small>'
+			             +'<button class="btn btn-secondary float-right btn-sm jjimbtn"><i class="icon-heart">♥찜하기</i></button>'
+			             +'</div>'
+			             +'</div>'
+			             +'</div>'
+			             
+	      			}
+	      	
+	      	   
+	          $('#tp').html(data);
+	          $('.jjimbtn').click(function(){
+	              var Jbtn=$(this).css("color");
+	              if(Jbtn=="rgb(51, 51, 51)")
+	                 {
+	                  $(this).css("color", "#F3ABBA"); //rgb(243, 171, 186)
+	                    $(this).css("font-weight","bold");
+	                 }
+	              else{
+	                 $(this).css("color","rgb(51, 51, 51)")
+	                 } 
+	           });
+	       }
+   });
+   });
+   
+   $('#next').click(function(){
+	   curpage=(curpage<totalpage?curpage+1:curpage);
+	  
+	   $.ajax({
+	       type:"POST",
+	       url:"s_list_start.do",
+	       data:{"page":curpage},
+	       dataType:'json',
+	       success: function(response){
+	      	   var data="";
+	      	 
+	      	   curpage=response[0].p_curpage;
+	      	   totalpage=response[0].p_totalpage;
+	      	   for(i=0;i<response.length;i++)
+	      		{
+	      		   data+='<div class="col-sm-6 col-md-4 col-lg-3 mt-4">'
+	                    +'<div class="card">'
+	                    +'<a href="p_detail.do?p_no='+response[i].p_no+'">'
+	                    +'<img class="card-img-top tp_dimg" src="'+response[i].p_img+'">'
+	                    +'</a>'
+	                    +'<div class="card-block">'
+	                    +'<h4 class="tp_tname">'+response[i].p_name +'</h4>'
+	                    +'<div class="tp_locname">'
+	                    +'<span class="glyphicon glyphicon-map-marker"></span>'
+			               +response[i].p_addr
+			             +'</div>'
+			             +'<div class="tp_keyword">'
+			                 +response[i].p_keyword
+			             +'</div>'
+			             +'</div>'
+			             +'<div class="card-footer">'
+			             +'<small>'+response[i].p_price+'</small>'
+			             +'<button class="btn btn-secondary float-right btn-sm jjimbtn"><i class="icon-heart">♥찜하기</i></button>'
+			             +'</div>'
+			             +'</div>'
+			             +'</div>'
+			             
+	      			}
+	          $('#tp').html(data);
+	          $('.jjimbtn').click(function(){
+	              var Jbtn=$(this).css("color");
+	              if(Jbtn=="rgb(51, 51, 51)")
+	                 {
+	                  $(this).css("color", "#F3ABBA"); //rgb(243, 171, 186)
+	                    $(this).css("font-weight","bold");
+	                 }
+	              else{
+	                 $(this).css("color","rgb(51, 51, 51)")
+	                 } 
+	           });
+	       }
+   });
+   });
+   
    
    $('input:radio').click(function(){
       
@@ -153,8 +291,15 @@ $(function(){
    });
    
   
-  
+ //////////검색
    $('#Sbtn').click(function(){
+	   
+	   $('#pg').html(
+			   '<ul class="pagination">'
+				+'<li><span aria-hidden="true" class="btn btn-sm btn-info" onclick="prev_click()">이전</span></li>'
+				+'<li><span aria-hidden="true" class="btn btn-sm btn-info" onclick="next_click()">다음</span></li>'
+			   +'</ul>'	   
+	   );
      
       var arr_sn=[];
       var sn_1=$("input[type=radio][name=ca]:checked").val();
@@ -207,9 +352,11 @@ $(function(){
 		             dataType:'json',
 		             success: function(response){
 		            	   var data="";
+		            	   s_curpage=response[0].p_curpage;
+		                 s_totalpage=response[0].p_totalpage;
 		            	   for(i=0;i<response.length;i++)
 		            		{
-		            		    data+='<div class="col-sm-6 col-md-4 col-lg-3 mt-4">'
+		            		    data+='<div class="col-lg-3">'
 		                          +'<div class="card">'
 		                          +'<a href="p_detail.do?p_no='+response[i].p_no+'">'
 		                          +'<img class="card-img-top tp_dimg" src="'+response[i].p_img+'">'
@@ -236,35 +383,153 @@ $(function(){
 		             }
 		             });
     	  }
-      
-      //버튼 초기화
-      $('.btn-navy').css("background", "rgb(203, 203, 203)");
+    
+     /*  //버튼 초기화
+     $('.btn-navy').css("background", "rgb(203, 203, 203)");
       $("input:radio").prop("checked",false);
       $('.loc_pick').hide();
       $('.gangnam_d').hide();
-      $('.gangbuk_d').hide();
+      $('.gangbuk_d').hide(); */
       
    });
   
-   
-   
-   $('.jjimbtn').click(function(){
-      var Jbtn=$(this).css("color");
-      if(Jbtn=="rgb(51, 51, 51)")
-         {
-          $(this).css("color", "#F3ABBA"); //rgb(243, 171, 186)
-            $(this).css("font-weight","bold");
-         }
-      else{
-         $(this).css("color","rgb(51, 51, 51)")
-         } 
-   });
-   
-   
 });
 
 
+function prev_click()
+{
+		var sn_1=$("input[type=radio][name=ca]:checked").val();
+		var sn_2=$("input[type=radio][name=loc]:checked").val();
+		var sn_3="";
+		if(sn_2=="강남")
+			{
+				sn_3=$("input[type=radio][name=gn]:checked").val();
+			}
+		else
+			{
+				sn_3=$("input[type=radio][name=gb]:checked").val();
+			}
+	
+	   s_curpage=(s_curpage>1?s_curpage-1:s_curpage);
+	   
+	   $.ajax({
+	       type:"POST",
+	       url:"s_list.do",
+	       data:{"sn_1":sn_1,"sn_3":sn_3,"page":s_curpage},
+	       dataType:'json',
+	       success: function(response){
+	      	   var data="";
+	      	   
+	      	   s_curpage=response[0].p_curpage;
+	      	   s_totalpage=response[0].p_totalpage;
+	      	   for(i=0;i<response.length;i++)
+	      		{
+	      		   data+='<div class="col-sm-6 col-md-4 col-lg-3 mt-4">'
+	                    +'<div class="card">'
+	                    +'<a href="p_detail.do?p_no='+response[i].p_no+'">'
+	                    +'<img class="card-img-top tp_dimg" src="'+response[i].p_img+'">'
+	                    +'</a>'
+	                    +'<div class="card-block">'
+	                    +'<h4 class="tp_tname">'+response[i].p_name +'</h4>'
+	                    +'<div class="tp_locname">'
+	                    +'<span class="glyphicon glyphicon-map-marker"></span>'
+			               +response[i].p_addr
+			             +'</div>'
+			             +'<div class="tp_keyword">'
+			                 +response[i].p_keyword
+			             +'</div>'
+			             +'</div>'
+			             +'<div class="card-footer">'
+			             +'<small>'+response[i].p_price+'</small>'
+			             +'<button class="btn btn-secondary float-right btn-sm jjimbtn"><i class="icon-heart">♥찜하기</i></button>'
+			             +'</div>'
+			             +'</div>'
+			             +'</div>'
+			             
+	      			}
+	      	
+	      	   
+	          $('#tp').html(data);
+	          $('.jjimbtn').click(function(){
+	              var Jbtn=$(this).css("color");
+	              if(Jbtn=="rgb(51, 51, 51)")
+	                 {
+	                  $(this).css("color", "#F3ABBA"); //rgb(243, 171, 186)
+	                    $(this).css("font-weight","bold");
+	                 }
+	              else{
+	                 $(this).css("color","rgb(51, 51, 51)")
+	                 } 
+	           });
+	       }
+   });
+}
+function next_click()
+{
+		var sn_1=$("input[type=radio][name=ca]:checked").val();
+		var sn_2=$("input[type=radio][name=loc]:checked").val();
+		var sn_3="";
+		if(sn_2=="강남")
+			{
+				sn_3=$("input[type=radio][name=gn]:checked").val();
+			}
+		else
+			{
+				sn_3=$("input[type=radio][name=gb]:checked").val();
+			}
 
+	   s_curpage=(s_curpage<s_totalpage?s_curpage+1:s_curpage);
+	
+		$.ajax({
+	       type:"POST",
+	       url:"s_list.do",
+	       data:{"sn_1":sn_1,"sn_3":sn_3,"page":s_curpage},
+	       dataType:'json',
+	       success: function(response){
+	      	   var data="";
+	      	   s_curpage=response[0].p_curpage;
+	      	   s_totalpage=response[0].p_totalpage;
+	      	   
+	      	   for(i=0;i<response.length;i++)
+	      		{
+	      		   data+='<div class="col-sm-6 col-md-4 col-lg-3 mt-4">'
+	                    +'<div class="card">'
+	                    +'<a href="p_detail.do?p_no='+response[i].p_no+'">'
+	                    +'<img class="card-img-top tp_dimg" src="'+response[i].p_img+'">'
+	                    +'</a>'
+	                    +'<div class="card-block">'
+	                    +'<h4 class="tp_tname">'+response[i].p_name +'</h4>'
+	                    +'<div class="tp_locname">'
+	                    +'<span class="glyphicon glyphicon-map-marker"></span>'
+			               +response[i].p_addr
+			             +'</div>'
+			             +'<div class="tp_keyword">'
+			                 +response[i].p_keyword
+			             +'</div>'
+			             +'</div>'
+			             +'<div class="card-footer">'
+			             +'<small>'+response[i].p_price+'</small>'
+			             +'<button class="btn btn-secondary float-right btn-sm jjimbtn"><i class="icon-heart">♥찜하기</i></button>'
+			             +'</div>'
+			             +'</div>'
+			             +'</div>'
+			             
+	      			}
+	          $('#tp').html(data);
+	          $('.jjimbtn').click(function(){
+	              var Jbtn=$(this).css("color");
+	              if(Jbtn=="rgb(51, 51, 51)")
+	                 {
+	                  $(this).css("color", "#F3ABBA"); //rgb(243, 171, 186)
+	                    $(this).css("font-weight","bold");
+	                 }
+	              else{
+	                 $(this).css("color","rgb(51, 51, 51)")
+	                 } 
+	           });
+	       }
+   });
+}
 
 </script>
 </head>
@@ -413,6 +678,12 @@ $(function(){
    </div>
    <div class="row tp_list">
       <div class="tp_dlist_1" id="tp"></div>
+      <div class="text-center" id="pg">
+	     <!--  <ul class="pagination">
+				<li><span aria-hidden="true" class="btn btn-sm btn-info" id="prev">이전</span></li>
+				<li><span aria-hidden="true" class="btn btn-sm btn-info" id="next">다음</span></li>
+			</ul> -->
+      </div>
    </div>
 
 

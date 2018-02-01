@@ -184,12 +184,15 @@
 	background-color: #fff;
 }
 </style>
-<!-- <script>
+<script>
 $(function() {
-	
-	
+	if(${mapCk}=="1"){
+		$('html, body').animate({
+			scrollTop: $('.review_wrap').offset().top
+			}, 300);
+	}
 });
-</script> -->
+</script>
 
 </head>
 <body>
@@ -293,6 +296,18 @@ $(function() {
      
   	  //클릭 갯수 count할 변수
      var cnt = 0;
+     // 지도에 표시된 마커 객체를 가지고 있을 배열입니다
+     var markers = [];
+     //코스 리스트 찜 목록
+     
+     var course_list  = "";
+     $(document).on("click", "#cjjim_btn", function() {
+    	 if(cnt < 3) {
+    		 alert("데이트 장소 3곳을 선택하세요!");
+    	 } else {
+    		 location.href='course_jjim_insert.do?course_list='+course_list;
+    	 }
+     });
 
      // 지도 위에 마커를 표시합니다
      for (var i = 0, len = positions.length; i < len; i++) {
@@ -304,11 +319,11 @@ $(function() {
              overOrigin = new daum.maps.Point(gapX * 2, overOriginY); // 스프라이트 이미지에서 클릭 마커로 사용할 영역의 좌상단 좌표
              
          // 마커를 생성하고 지도위에 표시합니다
-         addMarker(positions[i], normalOrigin, overOrigin, clickOrigin,p_nos[i]);
+         addMarker(positions[i], normalOrigin, overOrigin, clickOrigin,p_nos[i], map);
      }
 
      // 마커를 생성하고 지도 위에 표시하고, 마커에 mouseover, mouseout, click 이벤트를 등록하는 함수입니다
-     function addMarker(position, normalOrigin, overOrigin, clickOrigin, title_id) {
+     function addMarker(position, normalOrigin, overOrigin, clickOrigin, title_id, m_map) {
 
          // 기본 마커이미지, 오버 마커이미지, 클릭 마커이미지를 생성합니다
          var normalImage = createMarkerImage(markerSize, markerOffset, normalOrigin),
@@ -317,11 +332,17 @@ $(function() {
          
          // 마커를 생성하고 이미지는 기본 마커 이미지를 사용합니다
          var marker = new daum.maps.Marker({
-             map: map,
              position: position,
              image: normalImage,
              title: "m_"+title_id
          });
+         
+         // 마커가 지도 위에 표시되도록 설정합니다
+         marker.setMap(m_map);
+         
+         // 생성된 마커를 배열에 추가합니다
+         markers.push(marker);
+         
 
          // 마커 객체에 마커아이디와 마커의 기본 이미지를 추가합니다
          marker.normalImage = normalImage;
@@ -345,6 +366,24 @@ $(function() {
               }
              
          });
+         
+         // 배열에 추가된 마커들을 지도에 표시하거나 삭제하는 함수입니다
+         function setMarkers(map) {
+             for (var i = 0; i < markers.length; i++) {
+                 markers[i].setMap(map);
+             }            
+         }
+
+         // "마커 보이기" 버튼을 클릭하면 호출되어 배열에 추가된 마커를 지도에 표시하는 함수입니다
+         function showMarkers() {
+             setMarkers(map)    
+         }
+
+         // "마커 감추기" 버튼을 클릭하면 호출되어 배열에 추가된 마커를 지도에서 삭제하는 함수입니다
+         function hideMarkers() {
+             setMarkers(null);    
+         }
+         
          // 마커에 mouseout 이벤트를 등록합니다
          daum.maps.event.addListener(marker, 'mouseout', function() {
 
@@ -375,7 +414,6 @@ $(function() {
        	    	    cnt = cnt - 1;
        	    	 }
        	     } */
-     		 
 	       	  var bCheck = false;
 	          for (var j=0; j<selectedMarker.length; j++) {
 	         	 if(selectedMarker[j] == marker.getTitle()) {
@@ -388,6 +426,7 @@ $(function() {
 	        	    	 selectedMarker.push(marker.getTitle());
 	               	 marker.setImage(clickImage);
 	               	 var p_no = marker.getTitle().split("_")[1];
+	          			 course_list = course_list + p_no + "_";
 	               	$.ajax({
 		        			type : "POST",
 		        			url : "placetoplace.do",
@@ -407,6 +446,7 @@ $(function() {
 	          
 	          $(".reset_btn").click(function() {
 	      			cnt = 0;
+	      			course_list = "";
 	      			$.ajax({
 	        			type : "POST",
 	        			url : "placetoplace.do",
@@ -419,34 +459,10 @@ $(function() {
 	        				$("#place_" + cnt).html(res);
 	        			}
 	        		});
-	      			$.ajax({
-	        			type : "POST",
-	        			url : "placetoplace.do",
-	        			data : {
-	        				"p_no" :  0,
-	        				"cnt" : 2,
-	        				"placeCheck" : false
-	        			},
-	        			success : function(res) {
-	        				$("#place_" + cnt).html(res);
-	        			}
-	        		});
-	      			$.ajax({
-	        			type : "POST",
-	        			url : "placetoplace.do",
-	        			data : {
-	        				"p_no" :  0,
-	        				"cnt" : 3,
-	        				"placeCheck" : false
-	        			},
-	        			success : function(res) {
-	        				$("#place_" + cnt).html(res);
-	        			}
-	        		});
 	      			for(var i=0; i<3; i++) {
 	      				selectedMarker[i] = "";
 	      			}
-	      			addMarker(null, normalOrigin, overOrigin, clickOrigin,0);
+	      			hideMarkers();
 	      			for (var i = 0, len = positions.length; i < len; i++) {
 	      		         var gapX = (MARKER_WIDTH + SPRITE_GAP), // 스프라이트 이미지에서 마커로 사용할 이미지 X좌표 간격 값
 	      		             originY = (MARKER_HEIGHT + SPRITE_GAP) * i, // 스프라이트 이미지에서 기본, 클릭 마커로 사용할 Y좌표 값
@@ -456,7 +472,7 @@ $(function() {
 	      		             overOrigin = new daum.maps.Point(gapX * 2, overOriginY); // 스프라이트 이미지에서 클릭 마커로 사용할 영역의 좌상단 좌표
 	      		             
 	      		         // 마커를 생성하고 지도위에 표시합니다
-	      		         addMarker(positions[i], normalOrigin, overOrigin, clickOrigin,p_nos[i]);
+	      		         addMarker(positions[i], normalOrigin, overOrigin, clickOrigin,p_nos[i], map);
 	      		     }
 	      			
 	      	   });
@@ -625,7 +641,8 @@ $(function() {
 					<div class="modal-footer">
 						<center>
 							<input type="button" class="btn btn-default"
-								style="background-color: white; outline: none; font-weight: bold" value="코스 찜">
+								style="background-color: white; outline: none; font-weight: bold" value="코스 찜" 
+								id="cjjim_btn" onclick="location.href='course_jjim_insert.do?course_list=${course_list}'">
 							<button type="button" class="btn btn-default"
 								style="background-color: white; outline: none;"
 								data-dismiss="modal">
