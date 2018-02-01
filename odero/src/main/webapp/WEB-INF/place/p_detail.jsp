@@ -80,12 +80,13 @@ $(function() {
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-lg bora">
 			<div class="modal-content mo_content">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
+				<div class="modal-header">
+     				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      					<span aria-hidden="true" style="color: white;">X</span><span class="sr-only">Close</span>
+    				 </button>
+     				<h3 style="text-align: center; color: #fff">${vo.p_name }</h3>
+     			</div>
 				<div id="modal-body">
-					<h3 style="text-align: center; color: #fff">${vo.p_name }</h3>
-					<!--  data-thumbmargin="20px 0"  -->
 					<div class="fotorama fo" data-width="800" data-maxwidth="100%"
 						data-ratio="16/9" data-allowfullscreen="true" data-nav="thumbs" data-thumbfit="cover">
 						 <c:forEach var="i" items="${simg }">
