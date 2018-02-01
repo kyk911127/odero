@@ -100,7 +100,7 @@ public class MainController {
    String img = vo.getR_imgname();
    
    if(img.equals("-")){
-    vo.setR_imgname("review/data/no_image.jpg");
+    vo.setR_imgname("no_image.jpg");
    }else{
     String[] arrImg = img.split(",");
     vo.setR_imgname(arrImg[0]);
