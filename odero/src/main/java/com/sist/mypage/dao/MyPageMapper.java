@@ -129,4 +129,51 @@ public interface MyPageMapper {
 	public void placeDeleteNo(int no);
 	@Delete("DELETE FROM course WHERE c_no=#{no}")
 	public void	cosDeleteNo(int no);
+	
+	
+	// 코스보기 - 놀거리
+	@Results( value = {
+			  @Result(property = "c_no", column = "c_no", id = true),
+			  @Result(property = "pvo.p_name", column = "p_name"),
+			  @Result(property = "pvo.p_no", column = "p_no"),
+			  @Result(property = "pvo.p_addr", column = "p_addr"),
+			  @Result(property = "pvo.p_keyword", column = "p_keyword"),
+			  @Result(property = "pvo.p_img", column = "p_img"),
+			  @Result(property = "pvo.p_price", column = "p_price"),
+			  @Result(property = "pvo.p_hit", column = "p_hit")
+			})
+	@Select("SELECT c.c_no, p.p_name, p.p_no, p.p_addr, p.p_keyword, NVL(SUBSTR(p.p_img,1,INSTR(p.p_img,',',1,1)-1),p.p_img) AS p_img, p.p_price, p.p_hit "
+			+ "FROM COURSE c, PLACE p WHERE c.c_play = p.p_no AND c.c_no=#{no} ")
+	public MyPageCosVO CosDetailPlay (int no);		
+	
+	// 코스보기 - 카페
+	@Results( value = {
+			  @Result(property = "c_no", column = "c_no", id = true),
+			  @Result(property = "pvo.p_name", column = "p_name"),
+			  @Result(property = "pvo.p_no", column = "p_no"),
+			  @Result(property = "pvo.p_addr", column = "p_addr"),
+			  @Result(property = "pvo.p_keyword", column = "p_keyword"),
+			  @Result(property = "pvo.p_img", column = "p_img"),
+			  @Result(property = "pvo.p_price", column = "p_price"),
+			  @Result(property = "pvo.p_hit", column = "p_hit")
+			})
+	@Select("SELECT c.c_no, p.p_name, p.p_no, p.p_addr, p.p_keyword, NVL(SUBSTR(p.p_img,1,INSTR(p.p_img,',',1,1)-1),p.p_img) AS p_img, p.p_price, p.p_hit "
+			+ "FROM COURSE c, PLACE p WHERE c.c_cafe = p.p_no AND c.c_no=#{no} ")
+	public MyPageCosVO CosDetailCafe (int no);		
+	
+	// 코스보기 - 맛집
+	@Results( value = {
+			  @Result(property = "c_no", column = "c_no", id = true),
+			  @Result(property = "pvo.p_name", column = "p_name"),
+			  @Result(property = "pvo.p_no", column = "p_no"),
+			  @Result(property = "pvo.p_addr", column = "p_addr"),
+			  @Result(property = "pvo.p_keyword", column = "p_keyword"),
+			  @Result(property = "pvo.p_img", column = "p_img"),
+			  @Result(property = "pvo.p_price", column = "p_price"),
+			  @Result(property = "pvo.p_hit", column = "p_hit")
+			})
+	@Select("SELECT c.c_no, p.p_name, p.p_no, p.p_addr, p.p_keyword, NVL(SUBSTR(p.p_img,1,INSTR(p.p_img,',',1,1)-1),p.p_img) AS p_img, p.p_price, p.p_hit "
+			+ "FROM COURSE c, PLACE p WHERE c.c_food = p.p_no AND c.c_no=#{no} ")
+	public MyPageCosVO CosDetailFood (int no);		
+
 }

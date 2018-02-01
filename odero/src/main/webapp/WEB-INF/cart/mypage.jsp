@@ -174,7 +174,7 @@ $(document).ready(function(){
 							<c:set var="grade" value="놀거리" />
 						</c:if>
 						<tr>
-							<td>${list[je].jvo.j_no }</td>
+							<td>${je+1 }</td>
 							<td>${grade }</td>
 							<td>${list[je].p_name }</td>
 							<td>${list[je].p_addr }</td>
@@ -224,7 +224,7 @@ $(document).ready(function(){
 					<c:if test="${psize!=0 }">
 					<c:forEach var="kk" begin="0" end="${psize>6?6:psize-1 }">
 						<tr>
-							<td>${flist[kk].c_no }</td>
+							<td>${kk+1 }</td>
 							<td>${flist[kk].pvo.p_name }</td>
 							<td>${plist[kk].pvo.p_name}</td>
 							<td>${clist[kk].pvo.p_name}</td>

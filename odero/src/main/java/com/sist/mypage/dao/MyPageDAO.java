@@ -55,4 +55,17 @@ public class MyPageDAO {
 	{
 		return mapper.MyPlacePage(map);
 	}
+	
+	public MyPageCosVO CosDetailPlay (int no)
+	{
+		return mapper.CosDetailPlay(no);
+	}
+	public MyPageCosVO CosDetailCafe (int no)
+	{
+		return mapper.CosDetailCafe(no);
+	}
+	public MyPageCosVO CosDetailFood (int no)
+	{
+		return mapper.CosDetailFood(no);
+	}
 }

@@ -82,7 +82,7 @@
 												<!-- 코스찜  -->
 												<article class="box box_space _space" data-sly-item>
 													<div class="inner">
-														<a href="mypage_cos.do" class="_innerLink nclk">
+														<a href="mypage_cos.do?no=${vo.c_no }" class="_innerLink nclk">
 															<div class="img_box">
 																<span style="background-image: url(${vo.pvo.p_img});" class="img lazy"></span>
 
@@ -93,7 +93,7 @@
 
 
 															<div class="info_area">
-																<h3 class="tit_space">${vo.c_no }. [${vo.pvo.p_name }] 코스</h3>
+																<h3 class="tit_space">[${vo.pvo.p_name }] 코스</h3>
 																<div class="tags">
 																	<span class='tag_area_name'>${vo.pvo.p_addr }</span>
 																	<%-- <c:forEach var="i" begin="1" end="5"> --%>
@@ -137,7 +137,7 @@
 
 
 															<div class="info_area">
-																<h3 class="tit_space">${vo.jvo.j_no }. [${vo.p_name }]</h3>
+																<h3 class="tit_space">[${vo.p_name }]</h3>
 																<div class="tags">
 																	<span class='tag_area_name'>${vo.p_addr }</span>
 																		<span>#${vo.p_keyword}</span>

@@ -32,9 +32,9 @@ public class MyPageController {
 		int count =clist.size();
 		int psize = plist.size();
 		int size = list.size();
-		System.out.println("psize:"+psize);
+/*		System.out.println("psize:"+psize);
 		System.out.println("size:"+size);
-		
+		*/
 		model.addAttribute("psize",psize);
 		model.addAttribute("size",size);
 		model.addAttribute("clist",clist);
@@ -85,7 +85,14 @@ public class MyPageController {
 		return "cart/mypage_list";
 	}
 	@RequestMapping("mypage_cos.do")
-	public String mypage_cos() {
+	public String mypage_cos(int no, Model model) {
+		
+		MyPageCosVO cvo = dao.CosDetailCafe(no);
+		MyPageCosVO pvo = dao.CosDetailPlay(no);
+		MyPageCosVO fvo = dao.CosDetailFood(no);
+		model.addAttribute("cvo",cvo);
+		model.addAttribute("pvo",pvo);
+		model.addAttribute("fvo",fvo);
 		
 		return "cart/mypage_cos";
 	}
