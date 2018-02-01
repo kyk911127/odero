@@ -315,15 +315,15 @@
                style="width: 30%; float: left; height: auto">
                <img src="${vo.p_img }" width=100% height="250px"
                 style="margin-bottom: 20px">
-               <p id="p_name_${s.index }_${v.index}">${vo.p_name }</p>
-               <p id="addr_${s.index }_${v.index }">${vo.p_addr }</p>
-               <p>${vo.p_tel }</p>
-               <p>${vo.p_price }</p>
-               <p>${vo.p_keyword }</p>
+               <p id="p_name_${s.index }_${v.index}"><img src="image/star.png">&nbsp;&nbsp;${vo.p_name }</p>
+               <p id="addr_${s.index }_${v.index }"><img src="image/directions.png">&nbsp;&nbsp;${vo.p_addr }</p>
+               <p><img src="image/tel.png">&nbsp;&nbsp;${vo.p_tel }</p>
+               <p><img src="image/price-tag.png">&nbsp;&nbsp;${vo.p_price }</p>
+               <p><img src="image/hashtag.png">&nbsp;&nbsp;${vo.p_keyword }</p>
               </div>
               <div class="next"
                style="width: 5%; float: left; margin: 0px auto; height: 380px;">
-               <img src="image/next.png" width=100%
+               <img src="image/next3.png" width=100%
                 style="padding-top: 100px;">
               </div>
              </c:if>
@@ -332,11 +332,11 @@
                style="width: 30%; float: left; height: auto">
                <img src="${vo.p_img }" width=100% height="250px"
                 style="margin-bottom: 20px">
-               <p id="p_name_${s.index }_${v.index}">${vo.p_name }</p>
-               <p id="addr_${s.index }_${v.index }">${vo.p_addr }</p>
-               <p>${vo.p_tel }</p>
-               <p>${vo.p_price }</p>
-               <p>${vo.p_keyword }</p>
+               <p id="p_name_${s.index }_${v.index}"><img src="image/star.png">&nbsp;&nbsp;${vo.p_name }</p>
+               <p id="addr_${s.index }_${v.index }"><img src="image/directions.png">&nbsp;&nbsp;${vo.p_addr }</p>
+               <p><img src="image/tel.png">&nbsp;&nbsp;${vo.p_tel }</p>
+               <p><img src="image/price-tag.png">&nbsp;&nbsp;${vo.p_price }</p>
+               <p><img src="image/hashtag.png">&nbsp;&nbsp;${vo.p_keyword }</p>
               </div>
              </c:if>
             </c:forEach>
@@ -380,7 +380,7 @@
        <h2>${fvo.p_name }</h2>
       </div>
       </figcaption>
-      <a href="#"></a>
+      <a href="p_detail.do?p_no=${fvo.p_no }"></a>
      </div>
     </c:forEach>
    </div>
@@ -396,7 +396,7 @@
        <h2>${pvo.p_name }</h2>
       </div>
       </figcaption>
-      <a href="#"></a>
+      <a href="p_detail.do?p_no=${pvo.p_no }"></a>
      </div>
     </c:forEach>
    </div>

@@ -22,8 +22,8 @@
 }
 .line{
  	width:100%;
- 	margin-top:25%;
-	border-bottom: 3px solid black;
+ 	margin-top:20%;
+	border-bottom: 5px solid #002060;
 	line-height: 100px;
 }
 </style>
@@ -56,7 +56,7 @@
 					${vo.subname }
 				</c:if>
 			<td width="20%" class="text-center">
-				이동수단: ${vo.pathtype }<br>
+				총 이동수단: ${vo.pathtype }<br>
 				이동시간: ${vo.min }분<br>
 				이동거리: ${vo.distance }m<br>
 				교통비: ${vo.payment }원
@@ -70,7 +70,7 @@
 				출발: ${vo2.firstStartStation }
 			</td>
 			<td width="20%" class="text-center">
-				이동수단: ${vo2.pathtype }<br>
+				총 이동수단: ${vo2.pathtype }<br>
 				이동시간: ${vo2.min }분<br>
 				이동거리: ${vo2.distance }m<br>
 				교통비: ${vo2.payment }원
