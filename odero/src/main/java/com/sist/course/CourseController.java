@@ -2,6 +2,8 @@ package com.sist.course;
 
 import java.util.*;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.annotations.Insert;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -35,6 +37,7 @@ public class CourseController {
 		if (strPosition == null || strPno == null) {
 			strPosition = "";
 			strPno = "";
+			model.addAttribute("mapCk", "0");
 		} else {
 			strPosition = strPosition.substring(0, strPosition.lastIndexOf("_"));
 			strPno = strPno.substring(0, strPno.lastIndexOf("_"));
@@ -86,6 +89,7 @@ public class CourseController {
 			}
 
 			System.out.println("strPosition2(controller) : " + strPosition);
+			model.addAttribute("mapCk", "1");
 		}
 
 		model.addAttribute("pf_list", pf_list);
@@ -214,6 +218,7 @@ public class CourseController {
 		/*System.out.println("p_no : " + p_no);
 		System.out.println("cnt : " + cnt);
 		System.out.println("vo.getP_name() : " + vo.getP_name());*/
+		System.out.println("placeCheck : " + placeCheck);
 		model.addAttribute("placeCheck", placeCheck);
 		model.addAttribute("vo", vo);
 		return "course/place_view/place_" + cnt;
@@ -259,6 +264,19 @@ public class CourseController {
 		model.addAttribute("key", key);
 
 		return "course/place_view/keyword_" + key;
+	}
+	
+	@RequestMapping("course_jjim_insert.do")
+	public String course_jjim_insert(String course_list,HttpSession session) {
+		Map map = new HashMap();
+		System.out.println("course_list : " + course_list);
+		String[] c_list = course_list.split("_");
+		map.put("course1", Integer.parseInt(c_list[0]));
+		map.put("course2", Integer.parseInt(c_list[1]));
+		map.put("course3", Integer.parseInt(c_list[2]));
+		map.put("m_id", session.getAttribute("m_id"));
+		dao.insertJjim(map);
+		return "redirect:/course_search.do";
 	}
 
 }

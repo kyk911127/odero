@@ -38,7 +38,9 @@ public class CourseDAO {
     	return mapper.getPlaceInfo(map);
     }
     
-    
+    public void insertJjim(Map map) {
+    	mapper.insertJjim(map);
+    }
 
 }
 

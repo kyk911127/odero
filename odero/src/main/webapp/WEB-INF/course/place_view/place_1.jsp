@@ -22,12 +22,11 @@
 			</tr>
 			<tr>
 				<td class="text-right"><span
-					class="tmap_detail glyphicon glyphicon-eye-open">${vo.p_hit }</span>
+					class="tmap_detail glyphicon glyphicon-eye-open">${vo.p_hit }&nbsp;&nbsp;</span>
 			</tr>
 		</table>
 	</c:if>
 	<c:if test="${placeCheck==false }">
-		<div></div>
 	</c:if>
 </body>
 </html>
