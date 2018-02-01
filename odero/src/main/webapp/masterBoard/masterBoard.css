@@ -218,3 +218,703 @@ body, textarea {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+body, div, li, dd, dt, td, select, textarea, input {
+	font-family: "돋움", dotum, Helvetica, sans-serif;
+	font-size: 12px;
+}
+.u_cbox {
+	position: relative;
+	color: #000;
+	text-align: left;
+	-webkit-text-size-adjust: none;
+}
+
+input {
+	color: #333;
+}
+
+.se2_line_layer button {
+	border: 0;
+	background: none;
+	font-size: 11px;
+	vertical-align: top;
+	cursor: pointer;
+}
+
+.se2_line_sticker_set {
+	position: absolute;
+	top: 1px;
+	left: 0px;
+	width: 458px;
+	margin: 0 !important;
+	padding: 1px 30px 0 28px !important;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+}
+
+.filter-30 {
+	filter: alpha(opacity = 30);
+	-ms-filter: "alpha(opacity=30)";
+	opacity: 0.3;
+}
+
+.filter-50 {
+	filter: alpha(opacity = 50);
+	-ms-filter: "alpha(opacity=50)";
+	opacity: 0.5;
+}
+
+.filter-70 {
+	filter: alpha(opacity = 70);
+	-ms-filter: "alpha(opacity=70)";
+	opacity: 0.7;
+}
+
+.filter-20, .filter-30, .filter-50, .filter-60, .filter-70, .filter-80 {
+	zoom: 1;
+}
+
+.u_cbox, .u_cbox p, .u_cbox h1, .u_cbox h2, .u_cboxh3, .u_cbox h4,
+	.u_cbox h5, .u_cbox h6, .u_cbox ul, .u_cbox ol, .u_cbox li, .u_cbox dl,
+	.u_cbox dt, .u_cbox dd, .u_cbox table, .u_cbox th, .u_cbox td, .u_cbox form,
+	.u_cbox fieldset, .u_cbox legend, .u_cbox input, .u_cbox textarea,
+	.u_cbox button, .u_cbox select {
+	margin: 0;
+	padding: 0;
+	font-family: "돋움", dotum, Helvetica, sans-serif;
+}
+
+.u_cbox, .u_cbox input, .u_cbox textarea, .u_cbox select, .u_cbox button,
+	.u_cbox table {
+	font-size: 12px;
+	line-height: 1.25em;
+}
+
+#main-area .bg-color {
+	background-color: #f9f9f9;
+}
+
+#content-area .box-reply2 {
+	zoom: 1;
+	margin: 0;
+	padding: 11px 26px 16px 24px;
+}
+
+#main-area .bg-color {
+	background-color: #fbe3e3;
+}
+
+.list-blog .inbox {
+	width: 743px;
+	margin: 14px;
+	_zoom: 1;
+}
+
+.list-blog {
+	clear: both;
+	width: 771px;
+	margin: 0;
+	border-style: solid;
+	border-width: 1px;
+	_zoom: 1;
+}
+
+#main-area .border-sub {
+	border-color: #facaca;
+}
+
+#main-area {
+	width: 773px !important;
+}
+
+#content-area {
+	position: relative;
+	clear: both;
+	width: 100%;
+	*zoom: 1:;
+}
+
+#content-area::after {
+	display: block;
+	clear: both;
+	content: "";
+}
+
+.u_cbox ul, .u_cbox ol {
+	list-style: none;
+}
+
+#content-area .cmlist {
+	margin: 0;
+	padding: 0;
+}
+
+#content-area .cc_paginate {
+	height: 51px;
+	padding: 7px 0 0;
+	text-align: center;
+}
+
+#content-area .cmt.cc_paginate {
+	height: 29px;
+}
+
+.u_cbox table {
+	border-collapse: collapse;
+}
+
+#content-area .cminput {
+	margin: 14px 0 0;
+	padding: 0;
+	width: 100%;
+	border-collapse: collapse;
+	table-layout: fixed;
+}
+
+.reply_error {
+	padding: 66px 20px 27px;
+	font-family: 나눔고딕, NanumGothic;
+	text-align: center;
+	background:
+		url(https://cafe.pstatic.net/img/notice/reply_error_exclam.gif)
+		no-repeat 50% 30px;
+}
+
+a:link {
+	text-decoration: none;
+}
+
+.u_cbox a {
+	color: #000;
+	text-decoration: none;
+}
+
+.u_cbox a, .u_cbox a:link {
+	background-color: transparent;
+}
+
+.u_cbox .u_cbox_addition .u_cbox_txt_upload_sticker, .u_cbox .u_cbox_addition .u_cbox_txt_upload_photo
+	{
+	display: inline-block;
+	height: 33px;
+	font-size: 12px;
+	color: #000;
+	opacity: 0.55;
+	filter: alpha(opacity = 55);
+	vertical-align: top;
+}
+
+#main-area select, #main-area textarea, #main-area .list-search input {
+	background-color: #FCEBEB;
+	border: 1px solid #facaca !important;
+}
+
+.list-blog .date {
+	font-size: 11px;
+	-ms-filter: "Alpha(opacity=50)";
+	filter: alpha(opacity = 50);
+	opacity: 0.5;
+}
+
+.pers_nick_area .p-nick a {
+	display: inline-block;
+	cursor: pointer;
+}
+
+#main-area .m-tcol-c {
+	color: #666;
+	word-wrap: break-word;
+}
+
+#main-area .m-tcol-c {
+	color: #666666;
+}
+
+.u_cbox b, .u_cbox strong {
+	font-weight: normal;
+}
+
+.reply_error strong {
+	display: block;
+	margin: 0 0 4px;
+}
+
+.u_cbox_link_wrap {
+	display: inline-block;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	color: #fff;
+	opacity: 0;
+	filter: alpha(opacity = 0);
+}
+
+.reply_error a {
+	text-decoration: underline;
+}
+
+.u_cbox .u_cbox_addition {
+	position: relative;
+	margin: 0;
+	padding: 0 0 0 29px;
+	height: 33px;
+	list-style: none;
+}
+
+.u_cbox .u_cbox_addition::after {
+	display: block;
+	clear: both;
+	content: "";
+}
+
+.u_cbox .u_cbox_addition li {
+	float: left;
+}
+
+.u_cbox .u_cbox_addition .u_cbox_btn_upload_sticker, .u_cbox .u_cbox_addition .u_cbox_btn_upload_photo
+	{
+	display: inline-block;
+	position: relative;
+	overflow: hidden;
+	*width: 58px:;
+	height: 33px;
+	line-height: 37px;
+	border: 0;
+	background-color: transparent;
+	vertical-align: top;
+}
+
+.u_cbox .u_cbox_addition .u_cbox_btn_upload_photo {
+	margin: 0 0 0 14px;
+}
+
+.u_cbox_btn_file {
+	display: inline-block;
+	position: absolute;
+	width: 53px;
+	height: 33px;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	z-index: 10;
+}
+
+.u_cbox .u_cbox_image_section .u_cbox_image_icon_crop, .u_cbox .u_cbox_image_section .u_cbox_image_icon_gif,
+	.u_cbox .u_cbox_upload_image_wrap .u_cbox_ico_delete_thumb, .u_cbox .u_cbox_addition .u_cbox_ico_upload_sticker,
+	.u_cbox .u_cbox_addition .u_cbox_ico_upload_photo, .u_cbox .u_cbox_upload_image_wrap .u_cbox_upload_thumb_add
+	{
+	background-image:
+		url(https://ssl.pstatic.net/static/cafe/sp_cbox_160222.png);
+	background-repeat: no-repeat;
+}
+
+.u_cbox .u_cbox_addition .u_cbox_ico_upload_sticker, .u_cbox .u_cbox_addition .u_cbox_ico_upload_photo
+	{
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	margin: -2px -2px 0 0;
+	*margin: 8px 2px 0 0:;
+	vertical-align: middle;
+}
+
+.u_cbox .u_cbox_addition .u_cbox_ico_upload_photo {
+	margin-right: -1px;
+	*margin-right: 3px:;
+}
+
+.u_cbox .u_cbox_addition .u_cbox_ico_upload_photo {
+	background-position: -46px -103px;
+}
+
+.u_cbox button, .u_cbox label, .u_cbox input[type=checkbox], .u_cbox input[type=radio],
+	.u_cbox input[type=button] {
+	cursor: pointer;
+}
+
+.u_cbox_btn_file label {
+	position: absolute;
+	width: 53px;
+	height: 33px;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	color: transparent;
+	line-height: 33px;
+	cursor: pointer;
+	text-align: right;
+	opacity: 0;
+	filter: alpha(opacity = 0);
+}
+
+.u_cbox_btn_file input[type=file] {
+	position: absolute;
+	overflow: hidden;
+	width: 0px;
+	height: 0px;
+	bottom: 0px;
+	border: 0;
+}
+
+#content-area .box-reply2 input {
+	border: none;
+	font-weight: normal;
+	vertical-align: top;
+}
+
+.line_stc_sec {
+	position: relative;
+	margin-top: -3px;
+}
+
+.se2_line_layer {
+	overflow: hidden;
+	display: none;
+	position: absolute;
+	top: 52px;
+	border: 1px solid #9b9b9b;
+	text-align: left;
+}
+
+.line_stc_sec .se2_line_layer {
+	display: none;
+	overflow: visible;
+	position: absolute;
+	top: 0px;
+	left: 1px;
+	z-index: 100;
+}
+
+.se2_line_layer .se2_in_layer {
+	float: left;
+	border-top: 1px solid #fcfcfc;
+	border-bottom: 1px solid #fcfcfc;
+}
+
+.se2_line_sticker {
+	overflow: hidden;
+	float: left;
+	width: 458px;
+	height: 381px;
+	background: #fff;
+}
+
+.se2_line_sticker button.se2_prev, .se2_line_sticker button.se2_next,
+	.se2_line_sticker button.se2_prev_off, .se2_line_sticker button.se2_next_off,
+	.se2_line_sticker_set li button, .se2_line_sticker_set div.se2_linesticker_list li
+	{
+	z-index: 20;
+	top: 0px;
+	width: 29px;
+	height: 74px;
+	background:
+		url("https://cafe.pstatic.net/editor/linesticker/sp_line_sticker_140429.gif")
+		no-repeat;
+}
+
+.se2_line_sticker button.se2_prev {
+	position: relative;
+	float: left;
+	background-position: -3px 16px;
+}
+
+.se2_line_sticker button.se2_next {
+	position: relative;
+	float: right;
+	background-position: -74px 16px;
+}
+
+.se2_line_layer button span, .se2_line_layer button em {
+	visibility: hidden;
+	overflow: hidden;
+	position: absolute;
+	top: 0px;
+	font-size: 0px;
+	line-height: 0;
+}
+
+.u_cbox .u_cbox_addition .u_cbox_ico_upload_sticker {
+	background-position: -24px -103px;
+}
+
+#content-area .cminput .i1 {
+	width: 29px;
+	white-space: nowrap;
+	vertical-align: top;
+}
+
+#content-area .cminput .i2 {
+	*padding-right: 2px:;
+}
+
+#content-area .cminput .i3 {
+	position: relative;
+	width: 89px;
+	text-align: right;
+	vertical-align: bottom;
+}
+
+.u_cbox .u_cbox_btn_upload {
+	display: inline-block;
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	z-index: 10;
+	width: 84px;
+	height: 61px;
+	border: 1px solid #ccc;
+	background: #fff !important;
+	font-size: 13px;
+	font-weight: bold;
+	line-height: 61px;
+	text-align: center;
+}
+
+.u_cbox .u_cbox_btn_upload a {
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	color: #666;
+}
+
+#main-area .skin-bgcolor {
+	background-color: #fcebeb;
+	background-image: none;
+	background-repeat: repeat;
+}
+
+#content-area .cminput .comm_write_wrap {
+	clear: both;
+	padding: 10px;
+	border-width: 1px;
+	border-style: solid;
+}
+
+#main-area select, #main-area textarea, #main-area .list-search input {
+	background-color: #fff;
+	border: 1px solid #e5e5e5 !important;
+}
+
+#content-area .cminput .textarea {
+	width: 100%;
+	margin: 0;
+	padding: 1px 0;
+	overflow: auto;
+	-webkit-appearance: none;
+	-webkit-border-radius: 0;
+	resize: none;
+}
+
+#content-area .cminput .comm_write_wrap .textarea {
+	border: 0 !important;
+}
+
+.u_cbox .u_cbox_upload_image {
+	position: relative;
+	z-index: 1;
+	padding: 0;
+	margin: 1px 0 0 0;
+	border-top: 0;
+	*zoom: 1:;
+}
+
+.u_cbox .u_cbox_upload_image::after {
+	display: block;
+	clear: both;
+	content: "";
+}
+
+.reply-write-ico {
+	width: 23px;
+	height: 31px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #C5CACD;
+	text-align: center;
+	background: #fff url(https://cafe.pstatic.net/cafe4/ico-black_2.gif)
+		no-repeat 0 100%;
+}
+
+.reply-write-ico img {
+	margin-top: 1px !important;
+}
+
+.u_cbox img, .u_cbox fieldset {
+	border: 0;
+}
+
+#main-area .board-box-line-dashed {
+	border-bottom-style: dashed;
+	border-bottom-width: 1px;
+	-ms-filter: "alpha(opacity=30)";
+	filter: alpha(opacity = 30);
+	opacity: 0.3;
+}
+
+#main-area .board-box-line-dashed {
+	border-color: #666666;
+}
+
+#content-area .cmlist li {
+	list-style: none;
+	margin: 0;
+	padding: 0 0 7px;
+	height: 1%;
+}
+
+.list-blog .board-box-line-dashed {
+	height: 3px;
+	font-size: 0px;
+}
+
+#content-area .cmlist .board-box-line-dashed {
+	height: 1px;
+	padding: 0;
+	overflow: hidden;
+	font: 0/0 arial;
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+}
+
+#content-area .cmlist .comm_cont {
+	padding-top: 10px;
+}
+
+#content-area .cmlist .h {
+	height: 20px;
+	margin: 0;
+}
+
+#content-area .cmlist .comm {
+	padding: 0 0 3px 28px;
+	margin: 3px 0 0 0;
+	line-height: 15px;
+	text-align: left;
+	word-break: break-all;
+	word-wrap: break-word;
+}
+
+.pers_nick_area {
+	padding: 0 0 2px !important;
+	text-align: left;
+	width: 100%;
+}
+
+#content-area .box-reply2 .pers_nick_area {
+	padding: 0 !important;
+	margin: 0;
+	text-align: left;
+	width: auto;
+	float: left;
+}
+
+#content-area .cmlist .date {
+	float: left;
+	font-size: 11px;
+	font-family: "돋움", dotum, Helvetica, sans-serif;
+	margin: 2px 0 0 1px;
+}
+
+#content-area .cmlist .dsc_comm {
+	float: left;
+	margin: 3px 0 0 7px;
+	padding-left: 10px;
+	background: url(https://cafe.pstatic.net/cafe4/bu_arr.png) no-repeat 0 0;
+	_background: none;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='https://cafe.pstatic.net/cafe4/bu_arr.png',
+		sizingMethod='crop');
+	font-size: 11px;
+	font-family: "돋움", Dotum;
+	letter-spacing: -1px;
+}
+
+#content-area .cmlist .btn_edit {
+	float: right;
+	margin: 0;
+	padding-top: 3px;
+}
+
+#content-area .cmlist .btn_edit a {
+	display: inline-block;
+	font-size: 11px;
+	font-family: "돋움", dotum, Helvetica, sans-serif;
+	letter-spacing: -1px;
+}
+
+#content-area .cmlist .dsc_comm a {
+	float: left;
+}
+
+.pers_nick_area table {
+	border: 0 !important;
+	width: 100%;
+	table-layout: fixed;
+}
+
+#content-area .box-reply2 .pers_nick_area table {
+	width: auto;
+	table-layout: auto;
+}
+
+.pers_nick_area .pc2w {
+	padding: 0 !important;
+	margin: 0;
+	vertical-align: top;
+	width: 22px;
+	border: none !important;
+}
+
+#content-area .box-reply2 .pers_nick_area .pc2w {
+	width: 28px;
+}
+
+.pers_nick_area .p-nick {
+	padding: 1px 0 0 !important; .
+	padding-top: 2px !important:;
+	margin: 0;
+	border: none !important;
+	line-height: 1.2em;
+	overflow: hidden;
+}
+
+#content-area .box-reply2 .pers_nick_area .p-nick {
+	padding: 1px 0 0 !important; .
+	padding-top: 2px !important:;
+	margin: 0;
+	font-weight: bold;
+	line-height: 16px;
+	overflow: visible;
+}
+
+#content-area .box-reply2 .pers_nick_area .p-nick a {
+	margin-right: 6px;
+	vertical-align: top;
+}
+
+.pers_nick_area .pc img, .pers_nick_area .pc2w img {
+	vertical-align: top;
+	margin: 0 2px 0 0 !important;
+}
+
+#content-area .box-reply2 .pers_nick_area .pc2w img {
+	vertical-align: top;
+	margin: 0 !important;
+}

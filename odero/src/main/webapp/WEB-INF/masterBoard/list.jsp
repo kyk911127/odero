@@ -36,8 +36,8 @@
 						</td>
 						<td class="text-left" width="45%">
 							<c:if test="${vo.group_tab > 0}">
-								<c:forEach var="i" begin="0" end="${vo.group_tab}">
-									<span style="margin-left:${10*i}px"></span>
+								<c:forEach var="i" begin="1" end="${vo.group_tab+1}">
+									<span style="margin-left:${5*i}px"></span>
 								</c:forEach>
 							</c:if>
 							<c:choose>

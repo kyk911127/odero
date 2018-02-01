@@ -1,355 +1,992 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html lang="ko" xml:lang="ko" xmlns="http://www.w3.org/1999/xhtml">
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+	pageEncoding="EUC-KR"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="ko">
 <head>
 <title></title>
 <style>
-html, body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6, pre,
-	code, form, fieldset, legend, input, textarea, p, blockquote, th, td,
-	img {
+html, body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	min-height: 100%;
+	font-size: 12px;
+}
+
+body, div, li, dd, dt, td, select, textarea, input {
+	font-family: "µ¸¿ò", dotum, Helvetica, sans-serif;
+	font-size: 12px;
+}
+
+ul, ol, dl, li, dd, dt, p, form, div {
+	list-style: none;
 	margin: 0;
 	padding: 0;
 }
 
-#front-linker {
-	z-index: 250;
-	position: fixed;
-	left: 0px;
-	top: 0px;
-	right: 0px;
-	min-width: 950px;
-	height: 61px;
-	background:
-		url(//img.echosting.cafe24.com/smartAdmin/img/design/sfix_linker.png)
-		repeat 0px 0px;
-}
-
-#front-linker {
-	min-width: 890px;
-}
-
-body, code {
-	font: 0.75em "ë‹ì›€", Dotum, AppleGothic, sans-serif;
-	color: #1c1c1c;
-	background: #fff;
-}
-
-body {
-	min-width: 1280px;
-}
-
-body {
-	min-width: 1180px;
-}
-
-html {
-	width: 100%;
-	height: 100%;
-}
-
-html {
+.u_cbox {
+	position: relative;
+	color: #000;
+	text-align: left;
 	-webkit-text-size-adjust: none;
 }
 
-#front-linker .show-ctrl {
-	position: relative;
+input {
+	color: #333;
 }
 
-#front-linker .hide-ctrl {
-	position: absolute;
-	right: 20px;
-	bottom: -18px;
-}
-
-button {
-	overflow: visible;
-	padding: 0;
-	margin: 0;
+.se2_line_layer button {
 	border: 0;
+	background: none;
+	font-size: 11px;
+	vertical-align: top;
 	cursor: pointer;
 }
 
-#front-linker .hide-ctrl .open {
-	overflow: hidden;
-	float: right;
-	width: 104px;
-	height: 30px;
-	text-indent: -9999px;
-	background:
-		url(//img.echosting.cafe24.com/smartAdmin/img/design/sfix_linker.png)
-		no-repeat -68px -191px;
-}
-
-#front-linker .show-ctrl h2 {
+.se2_line_sticker_set {
 	position: absolute;
+	top: 1px;
 	left: 0px;
-	top: 0px;
-	overflow: hidden;
-	width: 210px;
-	height: 50px;
-	text-indent: -9999px;
-	background:
-		url(//img.echosting.cafe24.com/smartAdmin/img/design/sfix_linker.png)
-		repeat 0px -71px;
+	width: 458px;
+	margin: 0 !important;
+	padding: 1px 30px 0 28px !important;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
 }
 
-#front-linker .show-ctrl h2 {
-	z-index: 260;
+.filter-30 {
+	filter: alpha(opacity = 30);
+	-ms-filter: "alpha(opacity=30)";
+	opacity: 0.3;
 }
 
-#front-linker .show-ctrl .admin {
-	position: absolute;
-	right: 58px;
-	top: 0px;
-	width: 164px;
-	height: 50px;
-	background:
-		url(//img.echosting.cafe24.com/smartAdmin/img/design/sfix_linker.png)
-		no-repeat 0px -131px;
+.filter-50 {
+	filter: alpha(opacity = 50);
+	-ms-filter: "alpha(opacity=50)";
+	opacity: 0.5;
 }
 
-#front-linker .show-ctrl .use {
-	position: absolute;
-	left: 50%;
-	top: 18px;
-	overflow: hidden;
-	width: 242px;
-	height: 15px;
-	margin-left: -216px;
-	background:
-		url(//img.echosting.cafe24.com/smartAdmin/img/design/sfix_linker.png)
-		no-repeat 0px -413px;
+.filter-70 {
+	filter: alpha(opacity = 70);
+	-ms-filter: "alpha(opacity=70)";
+	opacity: 0.7;
 }
 
-#front-linker .show-ctrl .manual {
-	position: absolute;
-	right: 222px;
-	top: 0px;
-	overflow: hidden;
-	width: 78px;
-	height: 50px;
-	background:
-		url(//img.echosting.cafe24.com/smartAdmin/img/design/sfix_linker.png)
-		no-repeat -174px -131px;
+.filter-20, .filter-30, .filter-50, .filter-60, .filter-70, .filter-80 {
+	zoom: 1;
 }
 
-#front-linker .show-ctrl .choice {
-	position: absolute;
-	top: 13px;
-	width: 240px;
-	margin-left: 30px;
+.u_cbox, .u_cbox p, .u_cbox h1, .u_cbox h2, .u_cboxh3, .u_cbox h4,
+	.u_cbox h5, .u_cbox h6, .u_cbox ul, .u_cbox ol, .u_cbox li, .u_cbox dl,
+	.u_cbox dt, .u_cbox dd, .u_cbox table, .u_cbox th, .u_cbox td, .u_cbox form,
+	.u_cbox fieldset, .u_cbox legend, .u_cbox input, .u_cbox textarea,
+	.u_cbox button, .u_cbox select {
+	margin: 0;
+	padding: 0;
+	font-family: "µ¸¿ò", dotum, Helvetica, sans-serif;
 }
 
-#front-linker .show-ctrl .choice {
-	margin-left: 0px;
-	right: 300px;
-	background:
-		url(//img.echosting.cafe24.com/smartAdmin/img/design/sfix_linker.png)
-		no-repeat 0px 0px;
+.u_cbox, .u_cbox input, .u_cbox textarea, .u_cbox select, .u_cbox button,
+	.u_cbox table {
+	font-size: 12px;
+	line-height: 1.25em;
 }
 
-#introduce {
-	display: none;
-	z-index: 260;
-	position: absolute;
-	top: 42px;
-	left: 50%;
-	margin-left: -250px;
-	width: 468px;
-	padding: 10px 20px;
-	font-size: 11px;
-	line-height: 1.5;
-	background-color: #fff;
-	border: 1px solid #565960;
+#main-area .bg-color {
+	background-color: #f9f9f9;
 }
 
-#introduce {
+#content-area .box-reply2 {
+	zoom: 1;
+	margin: 0;
+	padding: 11px 26px 16px 24px;
+}
+
+#main-area .bg-color {
+	background-color: #fbe3e3;
+}
+
+.list-blog .inbox {
+	width: 743px;
+	margin: 14px;
+	_zoom: 1;
+}
+
+.list-blog {
+	clear: both;
+	width: 771px;
+	margin: 0;
+	border-style: solid;
+	border-width: 1px;
+	_zoom: 1;
+}
+
+#main-area .border-sub {
+	border-color: #facaca;
+}
+
+#main-area {
+	width: 773px !important;
+}
+
+#content-area {
 	position: relative;
+	clear: both;
+	width: 100%;
+	*zoom: 1:;
 }
 
-#front-linker .show-ctrl .close {
-	border: 0;
-	position: absolute;
-	right: 0px;
-	top: 0px;
-	overflow: hidden;
-	width: 58px;
-	height: 50px;
-	text-indent: -9999px;
-	background:
-		url(//img.echosting.cafe24.com/smartAdmin/img/design/sfix_linker.png)
-		no-repeat 0px -191px;
+#content-area::after {
+	display: block;
+	clear: both;
+	content: "";
 }
 
-#introduce .title {
-	font-weight: bold;
-	color: #010101;
-	letter-spacing: -1px;
+body {
+	background-color: transparent;
 }
 
-#introduce p {
-	margin: 5px 0 0;
-	color: #787880;
-	letter-spacing: -1px;
-}
-
-#introduce ul {
-	margin: 15px 0 0;
-	color: #3c3f48;
-}
-
-#introduce .hide {
-	position: absolute;
-	right: 13px;
-	top: 8px;
-	overflow: hidden;
-	width: 7px;
-	height: 7px;
-	text-indent: -9999px;
-	border: 0;
-	background:
-		url(//img.echosting.cafe24.com/smartAdmin/img/design/sfix_linker.png)
-		no-repeat -22px -361px;
-}
-
-#introduce .edge {
-	position: absolute;
-	left: 140px;
-	top: -11px;
-	width: 0px;
-	height: 0px;
-	border: 5px solid #373946;
-	border-bottom: 6px solid #fff;
-}
-
-li {
+.u_cbox ul, .u_cbox ol {
 	list-style: none;
 }
 
-#introduce li strong {
-	color: #5893cf;
+#content-area .cmlist {
+	margin: 0;
+	padding: 0;
 }
 
-#introduce p strong {
-	font-weight: normal;
-	color: #5893cf;
+#content-area .cc_paginate {
+	height: 51px;
+	padding: 7px 0 0;
+	text-align: center;
 }
 
-#front-linker .show-ctrl .choice li {
-	position: relative;
-	float: left;
-	margin: 0 0 0 32px;
+#content-area .cmt.cc_paginate {
+	height: 29px;
+}
+
+.u_cbox table {
+	border-collapse: collapse;
+}
+
+#content-area .cminput {
+	margin: 14px 0 0;
+	padding: 0;
+	width: 100%;
+	border-collapse: collapse;
+	table-layout: fixed;
+}
+
+.reply_error {
+	padding: 66px 20px 27px;
+	font-family: ³ª´®°íµñ, NanumGothic;
+	text-align: center;
 	background:
-		url(//img.echosting.cafe24.com/smartAdmin/img/design/sfix_linker.png)
-		no-repeat 0 -309px;
+		url(https://cafe.pstatic.net/img/notice/reply_error_exclam.gif)
+		no-repeat 50% 30px;
 }
 
-#front-linker .show-ctrl .choice li.selected {
-	background-position: 0px -274px;
+a:link {
+	text-decoration: none;
 }
 
-#front-linker .show-ctrl .choice li label {
-	display: block;
-	height: 26px;
-	padding: 0 0 0 31px;
-	line-height: 26px;
-	color: #989898;
+.u_cbox a {
+	color: #000;
+	text-decoration: none;
+}
+
+.u_cbox a, .u_cbox a:link {
+	background-color: transparent;
+}
+
+.u_cbox .u_cbox_addition .u_cbox_txt_upload_sticker, .u_cbox .u_cbox_addition .u_cbox_txt_upload_photo
+	{
+	display: inline-block;
+	height: 33px;
 	font-size: 12px;
-	font-weight: bold;
+	color: #000;
+	opacity: 0.55;
+	filter: alpha(opacity = 55);
+	vertical-align: top;
 }
 
-#front-linker .show-ctrl .choice li.selected label {
-	color: #83bfff;
+#main-area select, #main-area textarea, #main-area .list-search input {
+	background-color: #FCEBEB;
+	border: 1px solid #facaca !important;
 }
 
-input, select, textarea {
-	font-size: 100%;
-	font-family: "ë‹ì›€", Dotum;
-	color: #1b1b1b;
+.list-blog .date {
+	font-size: 11px;
+	-ms-filter: "Alpha(opacity=50)";
+	filter: alpha(opacity = 50);
+	opacity: 0.5;
+}
+
+.pers_nick_area .p-nick a {
+	display: inline-block;
+	cursor: pointer;
+}
+
+#main-area .m-tcol-c {
+	color: #666;
+	word-wrap: break-word;
+}
+
+#main-area .m-tcol-c {
+	color: #666666;
+}
+
+.u_cbox b, .u_cbox strong {
+	font-weight: normal;
+}
+
+.reply_error strong {
+	display: block;
+	margin: 0 0 4px;
+}
+
+.u_cbox_link_wrap {
+	display: inline-block;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	bottom: 0px;
+	left: 0px;
+	color: #fff;
+	opacity: 0;
+	filter: alpha(opacity = 0);
+}
+
+.reply_error a {
+	text-decoration: underline;
+}
+
+.u_cbox .u_cbox_addition {
+	position: relative;
+	margin: 0;
+	padding: 0 0 0 29px;
+	height: 33px;
+	list-style: none;
+}
+
+.u_cbox .u_cbox_addition::after {
+	display: block;
+	clear: both;
+	content: "";
+}
+
+.u_cbox .u_cbox_addition li {
+	float: left;
+}
+
+.u_cbox .u_cbox_addition .u_cbox_btn_upload_sticker, .u_cbox .u_cbox_addition .u_cbox_btn_upload_photo
+	{
+	display: inline-block;
+	position: relative;
+	overflow: hidden;
+	*width: 58px:;
+	height: 33px;
+	line-height: 37px;
+	border: 0;
+	background-color: transparent;
+	vertical-align: top;
+}
+
+.u_cbox .u_cbox_addition .u_cbox_btn_upload_photo {
+	margin: 0 0 0 14px;
+}
+
+.u_cbox_btn_file {
+	display: inline-block;
+	position: absolute;
+	width: 53px;
+	height: 33px;
+	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	z-index: 10;
+}
+
+.u_cbox .u_cbox_image_section .u_cbox_image_icon_crop, .u_cbox .u_cbox_image_section .u_cbox_image_icon_gif,
+	.u_cbox .u_cbox_upload_image_wrap .u_cbox_ico_delete_thumb, .u_cbox .u_cbox_addition .u_cbox_ico_upload_sticker,
+	.u_cbox .u_cbox_addition .u_cbox_ico_upload_photo, .u_cbox .u_cbox_upload_image_wrap .u_cbox_upload_thumb_add
+	{
+	background-image:
+		url(https://ssl.pstatic.net/static/cafe/sp_cbox_160222.png);
+	background-repeat: no-repeat;
+}
+
+.u_cbox .u_cbox_addition .u_cbox_ico_upload_sticker, .u_cbox .u_cbox_addition .u_cbox_ico_upload_photo
+	{
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	margin: -2px -2px 0 0;
+	*margin: 8px 2px 0 0:;
 	vertical-align: middle;
 }
 
-#front-linker .show-ctrl .choice li input {
+.u_cbox .u_cbox_addition .u_cbox_ico_upload_photo {
+	margin-right: -1px;
+	*margin-right: 3px:;
+}
+
+.u_cbox .u_cbox_addition .u_cbox_ico_upload_photo {
+	background-position: -46px -103px;
+}
+
+.u_cbox button, .u_cbox label, .u_cbox input[type=checkbox], .u_cbox input[type=radio],
+	.u_cbox input[type=button] {
+	cursor: pointer;
+}
+
+.u_cbox_btn_file label {
 	position: absolute;
-	left: 0px;
+	width: 53px;
+	height: 33px;
 	top: 0px;
+	left: 0px;
+	right: 0px;
+	bottom: 0px;
+	color: transparent;
+	line-height: 33px;
+	cursor: pointer;
+	text-align: right;
+	opacity: 0;
+	filter: alpha(opacity = 0);
+}
+
+.u_cbox_btn_file input[type=file] {
+	position: absolute;
+	overflow: hidden;
+	width: 0px;
+	height: 0px;
+	bottom: 0px;
+	border: 0;
+}
+
+#content-area .box-reply2 input {
+	border: none;
+	font-weight: normal;
+	vertical-align: top;
+}
+
+.line_stc_sec {
+	position: relative;
+	margin-top: -3px;
+}
+
+.se2_line_layer {
+	overflow: hidden;
+	display: none;
+	position: absolute;
+	top: 52px;
+	border: 1px solid #9b9b9b;
+	text-align: left;
+}
+
+.line_stc_sec .se2_line_layer {
+	display: none;
+	overflow: visible;
+	position: absolute;
+	top: 0px;
+	left: 1px;
+	z-index: 100;
+}
+
+.se2_line_layer .se2_in_layer {
+	float: left;
+	border-top: 1px solid #fcfcfc;
+	border-bottom: 1px solid #fcfcfc;
+}
+
+.se2_line_sticker {
+	overflow: hidden;
+	float: left;
+	width: 458px;
+	height: 381px;
+	background: #fff;
+}
+
+.se2_line_sticker button.se2_prev, .se2_line_sticker button.se2_next,
+	.se2_line_sticker button.se2_prev_off, .se2_line_sticker button.se2_next_off,
+	.se2_line_sticker_set li button, .se2_line_sticker_set div.se2_linesticker_list li
+	{
+	z-index: 20;
+	top: 0px;
+	width: 29px;
+	height: 74px;
+	background:
+		url("https://cafe.pstatic.net/editor/linesticker/sp_line_sticker_140429.gif")
+		no-repeat;
+}
+
+.se2_line_sticker button.se2_prev {
+	position: relative;
+	float: left;
+	background-position: -3px 16px;
+}
+
+.se2_line_sticker button.se2_next {
+	position: relative;
+	float: right;
+	background-position: -74px 16px;
+}
+
+.se2_line_layer button span, .se2_line_layer button em {
 	visibility: hidden;
-}
-
-a {
-	text-decoration: none;
-	color: #000;
-}
-
-#front-linker .show-ctrl .manual a {
-	display: block;
 	overflow: hidden;
+	position: absolute;
+	top: 0px;
+	font-size: 0px;
+	line-height: 0;
+}
+
+.u_cbox .u_cbox_addition .u_cbox_ico_upload_sticker {
+	background-position: -24px -103px;
+}
+
+#content-area .cminput .i1 {
+	width: 29px;
+	white-space: nowrap;
+	vertical-align: top;
+}
+
+#content-area .cminput .i2 {
+	*padding-right: 2px:;
+}
+
+#content-area .cminput .i3 {
+	position: relative;
+	width: 89px;
+	text-align: right;
+	vertical-align: bottom;
+}
+
+.u_cbox .u_cbox_btn_upload {
+	display: inline-block;
+	position: absolute;
+	bottom: 0px;
+	right: 0px;
+	z-index: 10;
+	width: 84px;
+	height: 61px;
+	border: 1px solid #ccc;
+	background: #fff !important;
+	font-size: 13px;
+	font-weight: bold;
+	line-height: 61px;
+	text-align: center;
+}
+
+.u_cbox .u_cbox_btn_upload a {
+	display: inline-block;
 	width: 100%;
 	height: 100%;
-	text-indent: -9999px;
+	color: #666;
 }
 
-#front-linker .show-ctrl .use a {
-	display: block;
-	overflow: hidden;
-	width: 100%;
-	height: 100%;
-	text-indent: -9999px;
+#main-area .skin-bgcolor {
+	background-color: #fcebeb;
+	background-image: none;
+	background-repeat: repeat;
 }
 
-#front-linker .show-ctrl .admin a {
-	display: block;
-	overflow: hidden;
+#content-area .cminput .comm_write_wrap {
+	clear: both;
+	padding: 10px;
+	border-width: 1px;
+	border-style: solid;
+}
+
+#main-area select, #main-area textarea, #main-area .list-search input {
+	background-color: #fff;
+	border: 1px solid #e5e5e5 !important;
+}
+
+#content-area .cminput .textarea {
 	width: 100%;
-	height: 100%;
-	text-indent: -9999px;
+	margin: 0;
+	padding: 1px 0;
+	overflow: auto;
+	-webkit-appearance: none;
+	-webkit-border-radius: 0;
+	resize: none;
+}
+
+#content-area .cminput .comm_write_wrap .textarea {
+	border: 0 !important;
+}
+
+.u_cbox .u_cbox_upload_image {
+	position: relative;
+	z-index: 1;
+	padding: 0;
+	margin: 1px 0 0 0;
+	border-top: 0;
+	*zoom: 1:;
+}
+
+.u_cbox .u_cbox_upload_image::after {
+	display: block;
+	clear: both;
+	content: "";
+}
+
+.reply-write-ico {
+	width: 23px;
+	height: 31px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #C5CACD;
+	text-align: center;
+	background: #fff url(https://cafe.pstatic.net/cafe4/ico-black_2.gif)
+		no-repeat 0 100%;
+}
+
+img {
+	border: none;
+}
+
+.reply-write-ico img {
+	margin-top: 1px !important;
+}
+
+.u_cbox img, .u_cbox fieldset {
+	border: 0;
+}
+
+#main-area .board-box-line-dashed {
+	border-bottom-style: dashed;
+	border-bottom-width: 1px;
+	-ms-filter: "alpha(opacity=30)";
+	filter: alpha(opacity = 30);
+	opacity: 0.3;
+}
+
+#main-area .board-box-line-dashed {
+	border-color: #666666;
+}
+
+#content-area .cmlist li {
+	list-style: none;
+	margin: 0;
+	padding: 0 0 7px;
+	height: 1%;
+}
+
+.list-blog .board-box-line-dashed {
+	height: 3px;
+	font-size: 0px;
+}
+
+#content-area .cmlist .board-box-line-dashed {
+	height: 1px;
+	padding: 0;
+	overflow: hidden;
+	font: 0/0 arial;
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+}
+
+#content-area .cmlist .comm_cont {
+	padding-top: 10px;
+}
+
+#content-area .cmlist .h {
+	height: 20px;
+	margin: 0;
+}
+
+#content-area .cmlist .comm {
+	padding: 0 0 3px 28px;
+	margin: 3px 0 0 0;
+	line-height: 15px;
+	text-align: left;
+	word-break: break-all;
+	word-wrap: break-word;
+}
+
+.pers_nick_area {
+	padding: 0 0 2px !important;
+	text-align: left;
+	width: 100%;
+}
+
+#content-area .box-reply2 .pers_nick_area {
+	padding: 0 !important;
+	margin: 0;
+	text-align: left;
+	width: auto;
+	float: left;
+}
+
+#content-area .cmlist .date {
+	float: left;
+	font-size: 11px;
+	font-family: "µ¸¿ò", dotum, Helvetica, sans-serif;
+	margin: 2px 0 0 1px;
+}
+
+#content-area .cmlist .dsc_comm {
+	float: left;
+	margin: 3px 0 0 7px;
+	padding-left: 10px;
+	background: url(https://cafe.pstatic.net/cafe4/bu_arr.png) no-repeat 0 0;
+	_background: none;
+	_filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='https://cafe.pstatic.net/cafe4/bu_arr.png',
+		sizingMethod='crop');
+	font-size: 11px;
+	font-family: "µ¸¿ò", Dotum;
+	letter-spacing: -1px;
+}
+
+#content-area .cmlist .btn_edit {
+	float: right;
+	margin: 0;
+	padding-top: 3px;
+}
+
+#content-area .cmlist .btn_edit a {
+	display: inline-block;
+	font-size: 11px;
+	font-family: "µ¸¿ò", dotum, Helvetica, sans-serif;
+	letter-spacing: -1px;
+}
+
+#content-area .cmlist .dsc_comm a {
+	float: left;
+}
+
+.pers_nick_area table {
+	border: 0 !important;
+	width: 100%;
+	table-layout: fixed;
+}
+
+#content-area .box-reply2 .pers_nick_area table {
+	width: auto;
+	table-layout: auto;
+}
+
+.pers_nick_area .pc2w {
+	padding: 0 !important;
+	margin: 0;
+	vertical-align: top;
+	width: 22px;
+	border: none !important;
+}
+
+#content-area .box-reply2 .pers_nick_area .pc2w {
+	width: 28px;
+}
+
+.pers_nick_area .p-nick {
+	padding: 1px 0 0 !important; .
+	padding-top: 2px !important:;
+	margin: 0;
+	border: none !important;
+	line-height: 1.2em;
+	overflow: hidden;
+}
+
+#content-area .box-reply2 .pers_nick_area .p-nick {
+	padding: 1px 0 0 !important; .
+	padding-top: 2px !important:;
+	margin: 0;
+	font-weight: bold;
+	line-height: 16px;
+	overflow: visible;
+}
+
+#content-area .box-reply2 .pers_nick_area .p-nick a {
+	margin-right: 6px;
+	vertical-align: top;
+}
+
+.pers_nick_area .pc img, .pers_nick_area .pc2w img {
+	vertical-align: top;
+	margin: 0 2px 0 0 !important;
+}
+
+#content-area .box-reply2 .pers_nick_area .pc2w img {
+	vertical-align: top;
+	margin: 0 !important;
 }
 </style>
 </head>
-<body id="main" style="margin-top: 61px;">
-	<div id="front-linker" style="top: 0px;">
-		<div class="show-ctrl">
-			<h2>Front Remocon</h2>
-			<p class="admin">
-				<a href="/admin/php/index.php" target="_blank">ì‡¼í•‘ëª° ê´€ë¦¬ì ë°”ë¡œê°€ê¸°</a>
-			</p>
-			<p class="use">
-				<a href="#introduce">ì‡¼í•‘ëª° ê´€ë¦¬ì ê¸°ëŠ¥ì„ ì‚¬ìš©í•˜ì‹œê² ìŠµë‹ˆê¹Œ?</a>
-			</p>
-			<p class="manual">
-				<a href="//img.echosting.cafe24.com/guide/customerManual.pdf"
-					target="_blank">ì‡¼í•‘ëª° ê´€ë¦¬ì ë§¤ë‰´ì–¼</a>
-			</p>
-			<ul class="choice">
-				<li
-					title="ì‚¬ìš©í•¨ìœ¼ë¡œ ì„¤ì •í•˜ë©´, ì›í•˜ëŠ” ë¶€ë¶„ì„ ë°”ë¡œ ìˆ˜ì •í•  ìˆ˜ ìˆë„ë¡ ê´€ë¦¬ì í˜ì´ì§€ë¥¼ ë§í¬í•˜ì—¬ ì¤ë‹ˆë‹¤. ì›í•˜ëŠ” ë¶€ë¶„ì˜ ê´€ë¦¬ì ì„¤ì •ê³¼ ë””ìì¸ í¸ì§‘ì„ í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤."
-					class="yes"><label><input name="active" type="radio"
-						value="1"> ì‚¬ìš©í•¨</label></li>
-				<li title="ì‚¬ìš©ì•ˆí•¨ìœ¼ë¡œ ì„¤ì •í•˜ë©´, ê¸°ì¡´ ì‡¼í•‘ëª° í™”ë©´ì˜ ê° í˜ì´ì§€ë¡œ ì´ë™ í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤."
-					class="no selected"><label><input name="active"
-						type="radio" value="0"> ì‚¬ìš©ì•ˆí•¨</label></li>
-			</ul>
-			<div id="introduce" style="display: none;">
-				<strong class="title">ì‡¼í•‘ëª° ê´€ë¦¬ì ê¸°ëŠ¥</strong>
-				<p>
-					ì‡¼í•‘ëª° ê´€ë¦¬ì ê¸°ëŠ¥ì´ë€? ê´€ë¦¬ì í˜ì´ì§€ì— ì ‘ì†í•˜ì§€ ì•Šê³ ë„ ì‡¼í•‘ëª° í™”ë©´ì—<br> <strong>ëŒ€í‘œìš´ì˜ìë¡œ
-						ë¡œê·¸ì¸ ì‹œ, ì›í•˜ëŠ” ë¶€ë¶„ì„ ë°”ë¡œ ìˆ˜ì •í•  ìˆ˜ ìˆë„ë¡ ê´€ë¦¬ì ì„¤ì • í˜ì´ì§€ë¥¼<br> ë§í¬ ë˜ëŠ” ë””ìì¸ í¸ì§‘ì°½ì„ ë§í¬
-						í•´ì£¼ëŠ” ê¸°ëŠ¥
-					</strong>ì„ ë§í•©ë‹ˆë‹¤.
-				</p>
-				<ul>
-					<li><strong>* ì‚¬ìš©í•¨</strong> : ê´€ë¦¬ì ì„¤ì • í˜ì´ì§€ ë° ë””ìì¸ í¸ì§‘ì°½ ë§í¬í•˜ì—¬ ë°”ë¡œ ìˆ˜ì •í• 
-						ìˆ˜ ìˆìŠµë‹ˆë‹¤.</li>
-					<li><strong>* ì‚¬ìš©ì•ˆí•¨</strong> : ê¸°ì¡´ ì‡¼í•‘ëª° í™”ë©´ì˜ í˜ì´ì§€ë¥¼ ì´ë™í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.</li>
-				</ul>
-				<button class="hide" type="button">ë ˆì´ì–´ ë‹«ê¸°</button>
-				<span class="edge"></span>
+<body>
+	<div id="basisElement">
+		<div id="content-area">
+			<div id="main-area">
+				<div class="list-blog border-sub" id="post_213">
+					<div class="inbox">
+						<div class="box-reply2 bg-color u_cbox" id="Ej8vt"
+							style="display: block;">
+							<!-- ´ñ±Û ¸®½ºÆ®  -->
+							<ul class="cmlist" id="cmt_list">
+								<li>
+									<div class="comm_cont">
+										<div class="h">
+											<div class="pers_nick_area">
+												<table cellspacing="0" summary="ÆÛ½º³ªÄÜ/¾ÆÀÌµğ ¿µ¿ª">
+													<tbody>
+														<tr>
+															<td class="pc2w"><a
+																href="http://item.naver.com/personacon/PersonaconShop.jsp?Redirect=PersonaconSub.jsp?type=itemdetail%26itemseq=1433715"
+																target="itemshop"><img width="19" height="19" alt=""
+																	src="https://itemimgs.pstatic.net/personacon/15/37/1433715.gif"></a></td>
+															<td class="p-nick"><a
+																class="m-tcol-c _rosRestrict _nickUI" href="#">³»ÀÏÀº ÇØ</a></td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+											<span class="date m-tcol-c filter-50">2012.09.04.
+												17:25</span> <span class="dsc_comm"><a
+												class="m-tcol-c  _btnReply                    m-tcol-c _btnReply"
+												href="#">´ä±Û</a></span>
+											<p class="btn_edit m-tcol-c">
+												<a class="filter-70 m-tcol-c _btnNoti" href="#">½Å°í</a>
+											</p>
+										</div>
+										<p class="comm m-tcol-c">
+											<span class="comm_body">ÁÁÀº Á¤º¸ °¨»çÇÕ´Ï´Ù.<br>¾Æ¿ï·¯...
+												¹ø¿ªÇÏ½Å ºĞ²²µµ °¨»çÀÇ ¸¶À½À» ÀüÇÕ´Ï´Ù....¤¾¤¾
+											</span>
+										</p>
+										<div>
+											<input name="cmtid" type="hidden" value="11688615"> <input
+												name="writerid" type="hidden" value="woorimaeul"> <input
+												name="refcmtid" type="hidden" value="11688615"> <input
+												name="replytonick" type="hidden" value=""> <input
+												name="replytomemberid" type="hidden" value=""> <input
+												name="stickerId" type="hidden" value=""> <input
+												name="stickerOriginUrl" type="hidden" value=""> <input
+												name="imagePath" type="hidden" value=""> <input
+												name="imageFileName" type="hidden" value=""> <input
+												name="imageWidth" type="hidden" value=""> <input
+												name="imageHeight" type="hidden" value=""> <input
+												name="articleId" type="hidden" value="213">
+										</div>
+									</div>
+								</li>
+								<li class="filter-30 board-box-line-dashed"></li>
+								<li>
+									<div class="comm_cont">
+										<div class="h">
+											<div class="pers_nick_area">
+												<table cellspacing="0" summary="ÆÛ½º³ªÄÜ/¾ÆÀÌµğ ¿µ¿ª">
+													<tbody>
+														<tr>
+															<td class="pc2w"><a
+																href="http://item.naver.com/personacon/PersonaconShop.jsp?Redirect=PersonaconSub.jsp?type=itemdetail%26itemseq=2703121"
+																target="itemshop"><img width="19" height="19" alt=""
+																	src="https://itemimgs.pstatic.net/personacon/21/31/2703121.gif"></a></td>
+															<td class="p-nick"><a
+																class="m-tcol-c _rosRestrict _nickUI"
+																style='font-family: "2827835_9"; font-size: 9pt;'
+																href="#">³ª¸¥ÇÑÅä³¢</a></td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+											<span class="date m-tcol-c filter-50">2013.04.03.
+												22:18</span> <span class="dsc_comm"><a
+												class="m-tcol-c  _btnReply  m-tcol-c _btnReply" href="#">´ä±Û</a></span>
+											<p class="btn_edit m-tcol-c">
+												<a class="filter-70 m-tcol-c _btnNoti" href="#">½Å°í</a>
+											</p>
+										</div>
+										<p class="comm m-tcol-c"
+											style='font-family: "2827835_9"; font-size: 9pt;'>
+											<span class="comm_body">Á¤¸» ¹ø¿ªÇÏ½ÅºĞ °¨»çÇÏ³×¿ä^^</span>
+										</p>
+										<div>
+											<input name="cmtid" type="hidden" value="14387405"> <input
+												name="writerid" type="hidden" value="sinili"> <input
+												name="refcmtid" type="hidden" value="14387405"> <input
+												name="replytonick" type="hidden" value=""> <input
+												name="replytomemberid" type="hidden" value=""> <input
+												name="stickerId" type="hidden" value=""> <input
+												name="stickerOriginUrl" type="hidden" value=""> <input
+												name="imagePath" type="hidden" value=""> <input
+												name="imageFileName" type="hidden" value=""> <input
+												name="imageWidth" type="hidden" value=""> <input
+												name="imageHeight" type="hidden" value=""> <input
+												name="articleId" type="hidden" value="213">
+										</div>
+									</div>
+								</li>
+								<li class="filter-30 board-box-line-dashed"></li>
+							</ul>
+							<div
+								style="font: 0pt/0pt arial; height: 0pt; clear: both; font-size-adjust: none; font-stretch: normal;"></div>
+							<div class="cc_paginate cmt" id="cmt_paginate"
+								style="display: none;"></div>
+
+
+
+
+							<table class="cminput" cellspacing="0">
+								<tbody>
+									<tr>
+										<td class="i1">
+											<div class="reply-write-ico" id="refCmt_emoticon">
+												<img width="19" height="19" class="myemoticon"
+													style="cursor: pointer;" alt=""
+													src="https://itemimgs.pstatic.net/personacon/74/89/1098974.gif">
+											</div> <span style="display: none;"></span>
+										</td>
+										<td class="i2">
+											<div class="comm_write_wrap border-sub skin-bgcolor">
+												<textarea title="´ñ±ÛÀÔ·Â" class="textarea m-tcol-c"
+													id="comment_text"
+													style="height: 39px; line-height: 14px; overflow: hidden; -ms-overflow-y: hidden;"
+													maxlength="6000" rows="2" cols="50"></textarea>
+
+												<div class="u_cbox_upload_image" style="display: none;">
+												</div>
+											</div>
+										</td>
+										<td class="i3">
+
+											<div class="u_cbox_btn_upload _submitBtn">
+												<a class="u_cbox_txt_upload _submitCmt" href="#">µî·Ï</a>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="3">
+
+
+
+
+											<ul class="u_cbox_addition">
+												<li>
+													<div class="_stickerBtn u_cbox_btn_upload_sticker">
+														<span class="u_cbox_ico_upload_sticker"></span> <span
+															class="m-tcol-c u_cbox_txt_upload_sticker">½ºÆ¼Ä¿</span> <a
+															class="u_cbox_link_wrap"
+															onclick="clickcr(this,'cmt.sticker', '', '', event)"
+															href="#">½ºÆ¼Ä¿ ·¹ÀÌ¾î ÆË¾÷</a>
+													</div>
+
+													<div class="line_stc_sec">
+														<div class="se2_line_layer">
+															<div class="se2_in_layer">
+																<div class="se2_line_sticker">
+																	<button title="ÀÌÀü" disabled="" class="se2_prev"
+																		type="button">
+																		<span>ÀÌÀü</span>
+																	</button>
+																	<ul class="se2_line_sticker_set">
+																	</ul>
+																	<button title="´ÙÀ½" class="se2_next" type="button">
+																		<span>´ÙÀ½</span>
+																	</button>
+																</div>
+															</div>
+
+														</div>
+
+													</div>
+												</li>
+												<li>
+													<div class="u_cbox_btn_upload_photo">
+														<div class="_imageBtn u_cbox_btn_file">
+															<label
+																onclick="clickcr(this,'cmt.image', '', '', event);"
+																for="attachImageBtn213">¾÷·Îµå</label><input
+																id="attachImageBtn213" type="file" accept="Image/*">
+														</div>
+														<span class="u_cbox_ico_upload_photo"></span> <span
+															class="m-tcol-c u_cbox_txt_upload_photo">»çÁø</span>
+													</div>
+												</li>
+											</ul> <script type="text/javascript"> 
+//IE6~7????????? ?????? ?¨ö???? (10?????? ??¢¬?????¡¾?©ø¢¥?¢¬¡Æ ??????)
+//box-sizing:border-box ?????? (width/height?¡Æ? ?????? border?¡Æ???¢¥ ?????¡§????©÷? ????¢¬¡Æ) 
+//????????¡Æ?¨£¨ö??¢¥ ?¢¯¨ö??¢´?¨£¡§?????¢´?©ø¢¥??? ??¨ù??¢¬ ??¢´??¡Æ??¢´ css?¡Æ? ?¢¯¨ö??¢´?¨£¡§??? ?¢¬¡Æ?¢´???¨ù?¢®? ????????¡§. 
+//css??¨ù ???????????¢´??¢¥ ????¨£¨ö ?¢¬¡Æ?¢´???¨ù?¢®? ?¡×??¢Ò¡Æ??¨ù????????¡Æ ?¢¯¨ö??¢´?¢¬¡Æ?¢´???¨ù?¢®? ?¡×??¢Ò???? ?¡Æ???? ????¢¬¡Æ ?????¢¬??? 
+//?¢¯¨ö??¢´ ?¢¬¡Æ?¢´???¨ù?¢®? ???????????¢¥ ie6,7 ????©÷¨ö?????? borderBoxModel() ??? ??¡§?¢´???¨ù ????????¨ù?¢®? ?????¢¥.
+function borderBoxModel(elements, value) { 
+     var element, cs, s, width, height; 
+     // cicle through all DOM elements 
+     for (var i=0, max=elements.length; i < max; i++) { 
+             element = elements[i]; 
+             s = element.style; 
+             cs = element.currentStyle; 
+             // check if box-sizing is specified and is equal to border-box 
+             if(s.boxSizing == value || s["box-sizing"] == value 
+                     || cs.boxSizing == value || cs["box-sizing"] == value) { 
+                     // change width and height 
+                     try { 
+                     apply(); 
+                     } catch(e) {} 
+             } 
+     } 
+     function apply() { 
+             width = parseInt(cs.width, 10) || parseInt(s.width, 10); 
+             height = parseInt(cs.height, 10) || parseInt(s.height, 10); 
+             // if width is declared (and not 'auto','',...) 
+             if(width) { 
+                     var // border value could be 'medium' so parseInt returns NaN 
+                     borderLeft = parseInt(cs.borderLeftWidth || s.borderLeftWidth, 10) || 0, 
+                     borderRight = parseInt(cs.borderRightWidth || s.borderRightWidth, 10) || 0, 
+                     paddingLeft = parseInt(cs.paddingLeft || s.paddingLeft, 10), 
+                     paddingRight = parseInt(cs.paddingRight || s.paddingRight, 10), 
+                     horizSum = borderLeft + paddingLeft + paddingRight + borderRight; 
+
+                     // remove from width padding and border two times if != 0 
+                     if(horizSum) { 
+                     s.width = width - horizSum; //width ? width - horizSum * 2 : styleWidth - horizSum; 
+                     } 
+             } 
+             // if height is declared (and not 'auto','',...) 
+             if(height) { 
+                     var // border value could be 'medium' so parseInt returns NaN 
+                     borderTop = parseInt(cs.borderTopWidth || s.borderTopWidth, 10) || 0, 
+                     borderBottom = parseInt(cs.borderBottomWidth || s.borderBottomWidth, 10) || 0, 
+                     paddingTop = parseInt(cs.paddingTop || s.paddingTop, 10), 
+                     paddingBottom = parseInt(cs.paddingBottom || s.paddingBottom, 10), 
+                     vertSum = borderTop + paddingTop + paddingBottom + borderBottom; 
+
+                     // remove from height padding and border two times if != 0 
+                     if(vertSum) { 
+                     s.height = height - vertSum; //height ? height - vertSum * 2 : styleHeight - vertSum; 
+                     } 
+             } 
+     } 
+}
+
+try{
+	// 6,7??¨ù????¡×? ?????? (??¢¬?????¡¾ ?¨£¡§????????? userAgent??? documentMode?¡Æ? ??¢´??¨ù??? ?????¨ù????¢®? documentMode?¢®? ?©÷¢¥?????¢¥??¨ù??¡§) 
+	if(typeof document.documentMode !== 'undefined' && document.documentMode < 8 && document.documentMode > 5){ 
+	        //??¨ù??¢¬ ??¢¥??? ?????¢¥??¢¥ ?????? 
+		borderBoxModel(cssquery(".line_tooltip,.se2_line_sticker_set,.se2_naver_line_link_layer,.se2_naver_line_box1,.se2_naver_line_box2 input"), 'border-box');
+	} 
+}catch(e){}
+
+</script>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+
+
+
+							<div class="m-tcol-c reply_error" style="display: none;">
+								<strong>ÁË¼ÛÇÕ´Ï´Ù. ´ñ±Û ½Ã½ºÅÛ ¿À·ù·Î ´ñ±ÛÀ» ÀĞ°Å³ª ¾µ ¼ö ¾ø½À´Ï´Ù.</strong> ¹®Á¦°¡ Áö¼ÓµÉ °æ¿ì
+								<a class="m-tcol-c" href="http://help.naver.com/"
+									target="_blank">°í°´¼¾ÅÍ</a>¿¡ ¾Ë·ÁÁÖ½Ã¸é Ä£ÀıÇÏ°Ô ¾È³»ÇØ µå¸®°Ú½À´Ï´Ù.
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-			<button class="close" type="button" value="0">ì‡¼í•‘ëª° ê´€ë¦¬ì ê¸°ëŠ¥ ì ‘ê¸°</button>
-		</div>
-		<div class="hide-ctrl">
-			<button class="open" style="display: none;" type="button" value="1">ì—´ê¸°</button>
 		</div>
 	</div>
 </body>

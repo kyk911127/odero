@@ -26,6 +26,7 @@
 						<td width=85%>
 							<input type="text" name="name" size="15" value="${vo.name }"> 
 							<input type="hidden" name="no" value="${vo.no }">
+							<input type="hidden" name="page" value="${page}">
 						</td>
 					</tr>
 					<tr>
