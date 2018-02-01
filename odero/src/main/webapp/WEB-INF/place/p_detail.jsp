@@ -33,19 +33,19 @@ $(function() {
 	}); 
 
 	$('#replyBtn').click(function(){
-		/* var check = ${sessionScope.m_id != null}
+		var check = ${sessionScope.m_id != null}
+		var msg = $('#pr_msg').val();
 		if(check) {
-			$('#pReply').submit();
+			if(msg.trim()==""){
+				alert('댓글을 입력하세요');
+				$('#pr_msg').focus();
+				return;
+			} else {
+				$('#pReply').submit();
+			}
 		} else {
 			alert("로그인이 필요합니다.");
-		} */
-		var msg = $('#pr_msg').val();
-		if(msg.trim()==""){
-			alert('댓글을 입력하세요');
-			return;
-		} else {
-			$('#pReply').submit();	
-		}
+		} 
 	});
 
 	$('table').parent().children().find("td:nth-child(2):empty").parent().hide();
@@ -56,7 +56,7 @@ $(function() {
 	<div class="container-fluid top_container">
 		<div class="row imagerow" style="background-image : url(${backimg})" >
 			<div style="width: 100%; height: 100%; background-color: black; position: absolute; opacity:0.4"></div>
-			<div class="inner">		
+			<div class="inner">
 			<c:forEach var="i" items="${simg }" end="4" varStatus="im">
 				<div class="detail_img" data-target="#myModal" data-toggle="modal">
 					<div>
@@ -193,9 +193,15 @@ $(function() {
 		<div class="row1 row_reply">
 			<h3 class="p_h3">${vo.p_name }의 댓글(${vo.count })</h3>
 			<table class="reply_list" style="font-size: ">
+				<c:if test="${vo.count==0 }">
+					<div class="text-center" style="margin: 40px 0">
+						<p>첫번째 댓글을 남겨주세요.</p>
+					</div>
+				</c:if>
+				<c:if test="${vo.count!=0 }">
 				<c:forEach var="rvo" items="${r_list }">
-					<tr style="border-bottom: 1px solid #dbdbdb;">
-						<td class="p_td" width="13%">
+					<tr>
+						<td class="p_td" rowspan="2">
 							<div class="user_info">
 								<div class="user_img">
 									<img src="p_image/user.png" class="im" width="45px">
@@ -203,7 +209,7 @@ $(function() {
 								<div class="user_name" style="margin-top: 10px" name="m_id">${rvo.m_id }</div>
 							</div>
 						</td>
-						<td class="p_td" width="87%" style="padding: 20px 0 20px 20px">
+						<td class="p_td" width="87%">
 							<div class="reply_info">
 								<span class="reply_date">
 									<fmt:formatDate value="${rvo.pr_regdate}" pattern="yyyy-MM-dd HH:mm:ss" />
@@ -215,12 +221,11 @@ $(function() {
 										<button class="btn btn-sm btn-default" id="deleteBtn">삭제</button>
 									</form>
 									<button class="btn btn-sm btn-default modifyBtn" value="${rvo.pr_no }" style="float: right;">수정</button>
-								</c:if>
-								<p>${rvo.pr_msg }</p>	
+								</c:if>	
 								<div id="up${rvo.pr_no }" style="display: none">
 									<form method=post action="p_reply_update.do">
 										<input type="hidden" name=pr_no value="${rvo.pr_no }">
-										<textarea rows="3" class="com_2 form-control text-left" style="float: left" name="pr_msg">${rvo.pr_msg }</textarea>
+										<textarea rows="3" class="com_2 form-control text-left" style="float: left; margin-top: 5px" name="pr_msg">${rvo.pr_msg }</textarea>
 										<br> &nbsp; 
 										<input class="btn btn-default btn-sm pull-right" type=submit style="margin-top: 5px" value="수정하기">
 									</form>
@@ -228,7 +233,13 @@ $(function() {
 							</div>
 						</td>
 					</tr>
+					<tr>
+						<td>
+							<p class="p_msg">${rvo.pr_msg }</p>
+						</td>
+					</tr>
 				</c:forEach>
+				</c:if>
 			</table>
 		</div>
 
@@ -243,7 +254,7 @@ $(function() {
 						<table width="100%">
 							<tr valign="top">
 								<td class="p_td" width="86%">
-									<textarea class="reply_ta" rows="3" name="pr_msg" id="pr_msg" ></textarea>
+									<textarea class="reply_ta" rows="3" name="pr_msg" id="pr_msg"></textarea>
 								</td>
 								<td class="p_td" width="9%">
 									<input id="replyBtn" type="button"	class="btn btn-sm pull-right" value="등    록" style="width: 80px; height: 100px">
