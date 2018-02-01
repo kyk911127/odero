@@ -1,9 +1,12 @@
 package com.sist.mypage.dao;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
+
 import java.util.*;
 public interface MyPageMapper {
 
@@ -87,6 +90,18 @@ public interface MyPageMapper {
 			+ "WHERE m_id=#{m_id}")
 	public MyPageInfoVO MyPageInfoData(String m_id);
 	
+	// 닉네임수정
+	@Update("UPDATE MEMBER SET m_name = #{m_name} WHERE m_id = #{m_id}")
+	public void nickChange(MyPageInfoVO vo);
 	
-	
+	// 비밀번호수정
+	@Update("UPDATE MEMBER SET m_pwd = #{m_pwd} WHERE m_id = #{m_id}")
+	public void pwdChange(MyPageInfoVO vo);
+	// 찜삭제
+	@Delete("DELETE FROM jjim WHERE m_id = #{m_id} AND j_no=#{no}")
+	public void placeDelete(String m_id, int no);
+	@Delete("DELETE FROM jjim WHERE j_no=#{no}")
+	public void placeDeleteNo(int no);
+	@Delete("DELETE FROM course WHERE c_no=#{no}")
+	public void	cosDeleteNo(int no);
 }
