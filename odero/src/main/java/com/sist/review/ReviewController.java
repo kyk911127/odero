@@ -1,6 +1,8 @@
 package com.sist.review;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -101,8 +103,6 @@ public class ReviewController {
 	
 	@RequestMapping("review_detail.do")
 	public String reviewDetail(int no,Model model,String page) {
-		dao.reviewHitIncrement(no);
-		ReviewVo vo = dao.reviewDetail(no);
 		if (page == null)
 			page="1";
 		
@@ -114,18 +114,29 @@ public class ReviewController {
 		Map map = new HashMap();
 		map.put("start", start);
 		map.put("end", end);
+		map.put("no", no);
 		
 		List<Review_ReplyVo> list = dao.replyList(map);
+		int totalpage = dao.replyTotalList(no);
+		
+		dao.reviewHitIncrement(no);
+		ReviewVo vo = dao.reviewDetail(no);
 		
 		if (vo.getR_imgcount()>0) {
 			String[] images = vo.getR_imgname().split(",");
 			vo.setR_imgname(images[0]);
 			model.addAttribute("images",images);
 		}
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy.MM.dd");
+		String today = sdf.format(new Date());
+		for (Review_ReplyVo rvo : list) {
+			rvo.setDbday(sdf.format(rvo.getRr_regdate()));
+		}
+				
+		model.addAttribute("today",today);
 		model.addAttribute("vo", vo);
 		model.addAttribute("list", list);
-		
-		int totalpage = dao.replyTotalList();
 		model.addAttribute("curpage", curpage);
 		model.addAttribute("totalpage", totalpage);
 		return "review/detail";
@@ -160,10 +171,41 @@ public class ReviewController {
 		return "redirect:review_list.do";
 	}
 	
-	@RequestMapping("re_reply_insert.do")
+	
+	// 댓글
+	
+	@RequestMapping("reply_insert.do")
 	public String replyInsert(Review_ReplyVo vo){
-		System.out.println(vo.getM_id()+" "+vo.getR_no()+" "+vo.getRr_msg());
 		dao.replyInsert(vo);
 		return "redirect:review_detail.do?no="+vo.getR_no();
 	}
+	
+	@RequestMapping("re_reply_insert.do")
+	public String re_replyInsert(Review_ReplyVo vo){		
+		Review_ReplyVo rvo = dao.re_replyParent(vo.getRr_no());
+
+		vo.setRr_gid(rvo.getRr_gid());
+		vo.setRr_gstep(rvo.getRr_gstep()+1);
+		vo.setRr_gtab(rvo.getRr_gtab()+1);
+		
+		System.out.println(vo.getM_id());
+		System.out.println(vo.getRr_no());
+		System.out.println(vo.getR_no());
+		System.out.println(vo.getRr_msg());
+		System.out.println(vo.getRr_gid());
+		System.out.println(vo.getRr_gstep());
+		System.out.println(vo.getRr_gtab());
+		
+		dao.re_replySort(vo);
+		dao.re_replyInsert(vo);
+		return "redirect:review_detail.do?no="+vo.getR_no();
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 }
