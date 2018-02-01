@@ -71,7 +71,7 @@ $(function(){
 		             +'</div>'
 		             +'</div>'
 		             
-      			}
+      			} 
       	   
           $('#tp').html(data);
           $('.jjimbtn').click(function(){
