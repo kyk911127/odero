@@ -24,7 +24,7 @@ function insert(){
 <body>
 	<div class="container" style="margin-top: 30px">
 		<div class="row">
-			<center><h3><b>후기 게시판</b></h3></center><br>
+			<center><h3><b>추천 게시판</b></h3></center><br>
 			<div style="height: 50px;">
 				<c:choose>
 					<c:when test="${sessionScope.m_id!=null }">
