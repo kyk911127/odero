@@ -29,12 +29,18 @@ public class CourseDAO {
         mapper.sfood_insert(map);
     }
     
-    
+    //중복 제거된 키워드 가져오기
     public  List<String> sfood_distinct(String sf_grade){
         return mapper.sfood_distinct(sf_grade);
     }
     
+    public List<PlaceVO> getPlaceInfo(Map map) {
+    	return mapper.getPlaceInfo(map);
+    }
     
+    public void insertJjim(Map map) {
+    	mapper.insertJjim(map);
+    }
 
 }
 

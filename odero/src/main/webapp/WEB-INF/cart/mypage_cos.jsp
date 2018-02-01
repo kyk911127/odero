@@ -8,7 +8,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<script type="text/javascript"
+	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d7e1caf16f1fe180e708f6b17474f2fa"></script>
 <link rel="stylesheet"
 	href="http://fonts.googleapis.com/earlyaccess/hanna.css">
 <link rel="stylesheet"
@@ -20,23 +21,25 @@
 
 <style>
 .title_wrap {
-
 	margin-bottom: 25px;
+}
+.infoTable tr th, .infoTable tr td {
+	font-size:15px;
+	vertical-align: center;
+	padding : 5px;	
 }
 
 </style>
-	
+
 </head>
 <body class="body">
 	<div class="container">
-		<div class="title_wrap"> 코스 자세히 보기
-		</div>
+		<div class="title_wrap">코스 자세히 보기</div>
 		<div class="tab_wrap">
 
 
-			|<a href="mypage_list.do"><span class="tab">목록</span></a>|
-			<a href="#"><span class="seltab" id="delBtn"
-				onclick="delete_confirm()">찜 삭제</span></a>
+			|<a href="mypage_list.do"><span class="tab">목록</span></a>| 
+			<a href="cos_delete.do?no=${cvo.c_no }"><span class="seltab" id="delBtn">찜 삭제</span></a>
 
 		</div>
 
@@ -49,70 +52,65 @@
 				<h3 class="sub_text text-left main_text">코스 전체보기</h3>
 				<hr class="soften">
 				<div class="col-lg-3 cart_div">
-					<img src="c_image/date1.jpg" class="cart_img">
-					<table>
+					<img src="${fvo.pvo.p_img }" class="cart_img">
+					<table class="infoTable">
 						<tr>
-							<th>코스 1 :&nbsp;</th>
-							<td>00 장소</td>
+							<th width=20%>맛집</th>
+							<td width=80%> &nbsp;${fvo.pvo.p_name }</td>
 						</tr>
 						<tr>
-							<th>장소이름 :&nbsp;</th>
-							<td>$장소명</td>
+							<th width=20%>주소</th>
+							<td width=80%>&nbsp;${fvo.pvo.p_addr }</td>
 						</tr>
 						<tr>
-							<th>장소위치 :&nbsp;</th>
-							<td>00 장소</td>
+							<th width=20%>태그 </th>
+							<td width=80%>&nbsp;${fvo.pvo.p_keyword }</td>
 						</tr>
 						<tr>
-							<th>장소태그 :&nbsp;</th>
-							<td>#장소1 #장소2</td>
-						</tr>
-						<tr>
-							<th>추천도 :&nbsp;</th>
-							<td><span class="glyphicon glyphicon-heart-empty">10</span>
-								&nbsp; <span class="glyphicon glyphicon-thumbs-up">5</span></td>
+							<th width=20%>가격</th>
+							<td width=80%> &nbsp; ${fvo.pvo.p_price }</td>
 						</tr>
 					</table>
 				</div>
 				<div class="col-lg-3 cart_div">
-					<img src="c_image/res1.jpg" class="cart_img">
-					<table>
+					<img src="${pvo.pvo.p_img }" class="cart_img">
+					<table class="infoTable">
 						<tr>
-							<th>코스 2 :&nbsp;</th>
-							<td>00 장소</td>
+							<th width=20%>놀거리</th>
+							<td width=80%>&nbsp; ${pvo.pvo.p_name }</td>
 						</tr>
 						<tr>
-							<th>장소이름 :&nbsp;</th>
-							<td>$장소명</td>
+							<th width=20%>주소</th>
+							<td width=80%>&nbsp; ${pvo.pvo.p_addr }</td>
 						</tr>
 						<tr>
-							<th>장소위치 :&nbsp;</th>
-							<td>00 장소</td>
+							<th width=20%>태그</th>
+							<td width=80%>&nbsp;${pvo.pvo.p_keyword }</td>
 						</tr>
 						<tr>
-							<th>장소태그 :&nbsp;</th>
-							<td>#장소1 #장소2</td>
+							<th width=20%>가격 :&nbsp;</th>
+							<td width=80%>${pvo.pvo.p_price }</td>
 						</tr>
 					</table>
 				</div>
 				<div class="col-lg-3 cart_div">
-					<img src="c_image/res2.jpg" class="cart_img">
-					<table>
+					<img src="${cvo.pvo.p_img }" class="cart_img">
+					<table class="infoTable">
 						<tr>
-							<th>코스 3 :&nbsp;</th>
-							<td>00 장소</td>
+							<th width=20%>카페</th>
+							<td width=80%>&nbsp;${cvo.pvo.p_name }</td>
 						</tr>
 						<tr>
-							<th>장소이름 :&nbsp;</th>
-							<td>$장소명</td>
+							<th width=20%>주소</th>
+							<td width=80%>&nbsp;${cvo.pvo.p_addr }</td>
 						</tr>
 						<tr>
-							<th>장소위치 :&nbsp;</th>
-							<td>00 장소</td>
+							<th width=20%>태그 :&nbsp;</th>
+							<td width=80%>${cvo.pvo.p_keyword }</td>
 						</tr>
 						<tr>
-							<th>장소태그 :&nbsp;</th>
-							<td>#장소1 #장소2</td>
+							<th width=20%>가격</th>
+							<td width=80%>&nbsp;${cvo.pvo.p_price }</td>
 						</tr>
 					</table>
 				</div>
@@ -122,8 +120,18 @@
 				<h3 class="sub_text">코스 경로</h3>
 				<hr class="soften" />
 				<div class="map">
-
-					<br> <img src="c_image/map1.jpg" class="map_img">
+					<div class="map_img" id="map" style="width: 800px; height: 400px;"></div>
+					<br>
+					<script>
+						var container = document.getElementById('map');
+						var options = {
+								
+							center : new daum.maps.LatLng(33.450701, 126.570667), 
+							level : 3
+						};
+					
+						var map = new daum.maps.Map(container, options);
+					</script>
 				</div>
 
 			</div>
@@ -136,40 +144,34 @@
 			<hr class="soften" />
 
 
-			<br>
-			<br>
+			<br> <br>
 			<table class="info" id="table_content">
 
 				<tr>
-					<c:forEach var="i" begin="1" end="3">
-						<table id="table_content">
+						<table class="table_content">
 							<tr>
-								<td width=30% align=center rowspan="5"><img src="date1.jpg"
+								<td width=30% align=center rowspan="5"><img src="${fvo.pvo.p_img }"
 									width=300></td>
 							</tr>
 							<tr>
-								<td width=20% align=center><h4>${i }번째 장소</h4></td>
-								<td width=50% align=left class="explain">$ 장소종류 - 식당 / 놀거리
-									/ 카페</td>
+								<td width=20% align=center><h4>코스 개별정보 </h4></td>
+								<td width=50% align=left class="explain">음식점</td>
 							</tr>
 							<tr>
 								<td width=20% align=center><h4>장소 이름</h4></td>
-								<td width=50% align=left class="explain">$ 장소이름 - 00 식당</td>
+								<td width=50% align=left class="explain"> ${fvo.pvo.p_name }</td>
 							</tr>
 							<tr>
 								<td width=20% align=center><h4>지역 설명</h4></td>
-								<td width=50% align=left class="explain">$ 서울 마포구 00동 00번지</td>
+								<td width=50% align=left class="explain">${fvo.pvo.p_addr }</td>
 							</tr>
 							<tr>
 								<td width=20% align=center><h4>장소 설명</h4></td>
-								<td width=50% align=left class="explain">$ 장소 설명 - 해당 장소는
-									정말 끝내주는 장소이며 아주지리고요오지고요고요고요고요한밤이고요리얼팩트반박불가입니다 $ 장소 설명 - 해당 장소는
-									정말 끝내주는 장소이며 아주지리고요오지고요고요고요고요한밤이고요리얼팩트반박불가입니다 $ 장소 설명 - 해당 장소는
-									정말 끝내주는 장소이며 아주지리고요오지고요고요고요고요한밤이고요리얼팩트반박불가입니다 $ 장소 설명 - 해당 장소는
-									정말 끝내주는 장소이며 아주지리고요오지고요고요고요고요한밤이고요리얼팩트반박불가입니다 $ 장소 설명 - 해당 장소는
-									정말 끝내주는 장소이며 아주지리고요오지고요고요고요고요한밤이고요리얼팩트반박불가입니다 $ 장소 설명 - 해당 장소는
-									정말 끝내주는 장소이며 아주지리고요오지고요고요고요고요한밤이고요리얼팩트반박불가입니다 $ 장소 설명 - 해당 장소는
-									정말 끝내주는 장소이며 아주지리고요오지고요고요고요고요한밤이고요리얼팩트반박불가입니다</td>
+								<td width=50% align=left class="explain">
+								해시 태그 : ${fvo.pvo.p_keyword }	<br>
+								전화 번호 : ${fvo.pvo.p_tel } <br>
+								가격 대 : ${fvo.pvo.p_price } <br>
+								</td>
 							</tr>
 						</table>
 
@@ -178,11 +180,77 @@
 						<hr class="hr" />
 						<br>
 						<br>
-					</c:forEach>
+				</tr>
+				<tr>
+						<table class="table_content">
+							<tr>
+								<td width=30% align=center rowspan="5"><img src="${pvo.pvo.p_img }"
+									width=300></td>
+							</tr>
+							<tr>
+								<td width=20% align=center><h4>코스 개별정보 </h4></td>
+								<td width=50% align=left class="explain">놀거리</td>
+							</tr>
+							<tr>
+								<td width=20% align=center><h4>장소 이름</h4></td>
+								<td width=50% align=left class="explain"> ${pvo.pvo.p_name }</td>
+							</tr>
+							<tr>
+								<td width=20% align=center><h4>지역 설명</h4></td>
+								<td width=50% align=left class="explain">${pvo.pvo.p_addr }</td>
+							</tr>
+							<tr>
+								<td width=20% align=center><h4>장소 설명</h4></td>
+								<td width=50% align=left class="explain">
+								해시 태그 : ${pvo.pvo.p_keyword }	<br>
+								전화 번호 : ${pvo.pvo.p_tel } <br>
+								가격 대 : ${pvo.pvo.p_price } <br>
+								</td>
+							</tr>
+						</table>
+
+						<br>
+						<br>
+						<hr class="hr" />
+						<br>
+						<br>
+				</tr>
+				<tr>
+						<table class="table_content">
+							<tr>
+								<td width=30% align=center rowspan="5"><img src="${cvo.pvo.p_img }"
+									width=300></td>
+							</tr>
+							<tr>
+								<td width=20% align=center><h4>코스 개별정보 </h4></td>
+								<td width=50% align=left class="explain">카페</td>
+							</tr>
+							<tr>
+								<td width=20% align=center><h4>장소 이름</h4></td>
+								<td width=50% align=left class="explain"> ${cvo.pvo.p_name }</td>
+							</tr>
+							<tr>
+								<td width=20% align=center><h4>지역 설명</h4></td>
+								<td width=50% align=left class="explain">${cvo.pvo.p_addr }</td>
+							</tr>
+							<tr>
+								<td width=20% align=center><h4>장소 설명</h4></td>
+								<td width=50% align=left class="explain">
+								해시 태그 : ${cvo.pvo.p_keyword }	<br>
+								전화 번호 : ${cvo.pvo.p_tel } <br>
+								가격 대 : ${cvo.pvo.p_price } <br>
+								</td>
+							</tr>
+						</table>
+
+						<br>
+						<br>
+						<hr class="hr" />
+						<br>
+						<br>
 				</tr>
 			</table>
-			<br>
-			<br>
+			<br> <br>
 
 
 		</div>

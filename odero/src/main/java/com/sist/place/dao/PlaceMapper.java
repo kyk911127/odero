@@ -58,7 +58,7 @@ public interface PlaceMapper {
 	public int placeTotalList();
 		
 	//Select list (이색/체험)
-	@Select("SELECT p_no,p_grade,p_name,p_addr,p_price,p_keyword,SUBSTR(p_img,0,INSTR(p_img,'/',1,6)) as p_img,num "
+	@Select("SELECT p_no,p_grade,p_name,p_addr,NVL(p_price,'정보 없음') as p_price ,NVL(p_keyword,'없음') as p_keyword,SUBSTR(p_img,0,INSTR(p_img,'/',1,6)) as p_img,num "
 			+"FROM (SELECT p_no,p_grade,p_name,p_addr,p_price,p_keyword,p_img,rownum AS num "
 			+"FROM (SELECT p_no,p_grade,p_name,p_addr,p_price,p_keyword,p_img "
 			+"FROM place WHERE p_addr like '%'||#{sn_3}||'%' AND p_grade='p' ORDER BY p_no ASC)) "

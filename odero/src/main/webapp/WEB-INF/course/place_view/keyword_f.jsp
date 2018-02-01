@@ -4,45 +4,30 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <script>
-	var cnt_f = 0;
-	var cnt_c = 0;
-	var cnt_p = 0;
+	var cnt = 0;
 	var keylist_f = "";
-	var keylist_c = "";
-	var keylist_p = "";
 </script>
 <c:forEach var="s" items="${key_list }">
-	<c:if test="${key=='f' }">
-		<script>
-			cnt_f = cnt_f + 1;
-		</script>
-	</c:if>
-	<c:if test="${key=='c' }">
-		<script>
-			cnt_c = cnt_c + 1;
-		</script>
-	</c:if>
-	<c:if test="${key=='p' }">
-		<script>
-			cnt_p = cnt_p + 1;
-		</script>
-	</c:if>
+	<script>
+		cnt = cnt + 1;
+	</script>
 </c:forEach>
 <script type="text/javascript">
-	//선택할 때 선택해제할 때 모양 바꾸기 => 동적으로 추가된 태그에는 일반적인 이벤트는 동작하지 않음
-	$(document).on("click", ".key_btn", function() {
-		alert("cnt_f : " + cnt_f);
-		alert("cnt_c : " + cnt_c);
-		alert("cnt_p : " + cnt_p);
-		alert("class : " + $(this).attr("class"));
-		if($(this).hasClass("f_btn")) {
+	
+		
+		/* if($(this).hasClass("f_btn")) {
 			alert("class : " + $(this).attr("class"));
+			
 			var btn_bc = $(this).css("background-color");
+			
 			if (btn_bc == "rgb(0, 0, 0)") { // 선택 해제 => 선택
+				
 				alert("$(this).attr('value') : " + $(this).attr("value"));
+				
 				keylist_f = $(this).attr("value");
 				$(this).css("background", "rgb(243, 171, 186)");
 				$(this).css("opacity", "1");
+				
 				for (var i = 0; i < cnt_f; i++) {
 					var key_id = $("#f_" + i);
 					if($(this).attr("id") != key_id.attr("id")){
@@ -86,7 +71,7 @@
 				}
 			}
 			$("#key_hidden").html("<input type='hidden' name='keylist_p' value='"+ keylist +"'>");
-		}
+		} */
 		
 		/* var btn_bc = $(this).css("background-color");
 		if (btn_bc == "rgb(0, 0, 0)") { // 선택 해제 => 선택
@@ -125,7 +110,7 @@
 				$("#key_hidden").html("<input type='hidden' name='keylist_p' value='"+ keylist +"'>");
 			}
 		}*/
-	});
+
 </script>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">

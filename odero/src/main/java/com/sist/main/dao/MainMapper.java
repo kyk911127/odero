@@ -1,5 +1,6 @@
 package com.sist.main.dao;
 import com.sist.place.dao.*;
+import com.sist.review.dao.ReviewVo;
 
 import java.util.List;
 
@@ -25,6 +26,14 @@ public interface MainMapper {
 			+ "ORDER BY NVL(p_hit,0) DESC)) "
 			+ "WHERE num BETWEEN 1 and 3")
 	public List<PlaceVO> best_play();
+	
+	//BEST RECOMMEND
+	 @Select("SELECT r_no,m_id,r_subject,r_pname,r_addr,r_hit,r_regdate,r_imgname,num "
+	     + "FROM (SELECT r_no,m_id,r_subject,r_pname,r_addr,r_hit,r_regdate,r_imgname,rownum AS num "
+	     + "FROM (SELECT r_no,m_id,r_subject,r_pname,r_addr,r_hit,r_regdate,r_imgname "
+	     + "FROM review ORDER BY r_hit DESC)) "
+	     + "WHERE num BETWEEN 1 AND 12")
+	 public List<ReviewVo> best_recommend(); 
 	
 	//가성비 데이트 코스 
 	@Select("SELECT * FROM place "

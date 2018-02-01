@@ -34,13 +34,20 @@ $(function() {
 
 	$('#replyBtn').click(function(){
 		var check = ${sessionScope.m_id != null}
+		var msg = $('#pr_msg').val();
 		if(check) {
-			$('#pReply').submit();
+			if(msg.trim()==""){
+				alert('댓글을 입력하세요');
+				$('#pr_msg').focus();
+				return;
+			} else {
+				$('#pReply').submit();
+			}
 		} else {
-			alert("로그인이 필요합니다.")
-			location.href = "main.do";
-		}
+			alert("로그인이 필요합니다.");
+		} 
 	});
+
 	$('table').parent().children().find("td:nth-child(2):empty").parent().hide();
 });
 </script>
@@ -48,15 +55,16 @@ $(function() {
 <body>
 	<div class="container-fluid top_container">
 		<div class="row imagerow" style="background-image : url(${backimg})" >
-			<div style="width: 100%; height: 100%; background-color: black; position: absolute; opacity:0.4"></div>		
+			<div style="width: 100%; height: 100%; background-color: black; position: absolute; opacity:0.4"></div>
+			<div class="inner">
 			<c:forEach var="i" items="${simg }" end="4" varStatus="im">
 				<div class="detail_img" data-target="#myModal" data-toggle="modal">
 					<div>
 						<img class="place_img" id="pimg${im.index }" src="${i }">
-						<!--  <img class="place_img" id="pimg${im.index }" src="${i }"> -->
 					</div>
 				</div>
 			</c:forEach>
+			</div>
 			<div>
 				<a href="#" data-target="#myModal" data-toggle="modal">
 					<div class="img_more">
@@ -72,12 +80,13 @@ $(function() {
 	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-lg bora">
 			<div class="modal-content mo_content">
-				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
+				<div class="modal-header">
+     				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      					<span aria-hidden="true" style="color: white;">X</span><span class="sr-only">Close</span>
+    				 </button>
+     				<h3 style="text-align: center; color: #fff">${vo.p_name }</h3>
+     			</div>
 				<div id="modal-body">
-					<h3 style="text-align: center; color: #fff">${vo.p_name }</h3>
-					<!--  data-thumbmargin="20px 0"  -->
 					<div class="fotorama fo" data-width="800" data-maxwidth="100%"
 						data-ratio="16/9" data-allowfullscreen="true" data-nav="thumbs" data-thumbfit="cover">
 						 <c:forEach var="i" items="${simg }">
@@ -90,7 +99,7 @@ $(function() {
 	</div>
 	<div class="container mid_container">
 		<div class="row1 row_info">
-			<h3>${vo.p_name }</h3>
+			<h3 class="p_h">${vo.p_name }</h3>
 			<div style="padding: 15px; border-bottom: 1px solid #dbdbdb;">
 				<!-- <span class="glyphicon glyphicon-tent" aria-hidden="true"></span> 이색/체험 -->
 				<c:if test="${vo.p_grade=='p' }">
@@ -111,47 +120,39 @@ $(function() {
 
 				<table style=" width: 550px ; margin: 20px 0;">
 					<tr>
-						<td width="25%">주소</td>
-						<td width="75%">${vo.p_addr }</td>
+						<td class="p_td" width="25%">주소</td>
+						<td class="p_td" width="75%">${vo.p_addr }</td>
 					</tr>
-					<%-- <c:if test="${vo.p_tel==null}"> --%>
-						<tr class="tr_tel">
-							<td width="25%">전화번호</td>
-							<td>${vo.p_tel }</td>
-						</tr>
-					<%-- </c:if> --%>
-					<tr>
-						<td width="25%">가격대</td>
-						<td width="75%">${vo.p_price }</td>
+					<tr class="tr_tel">
+						<td class="p_td" width="25%">전화번호</td>
+						<td class="p_td">${vo.p_tel }</td>
 					</tr>
 					<tr>
-						<td width="25%">키워드</td>
-						<td width="75%">
+						<td class="p_td" width="25%">가격대</td>
+						<td class="p_td" width="75%">${vo.p_price }</td>
+					</tr>
+					<tr>
+						<td class="p_td" width="25%">키워드</td>
+						<td class="p_td" width="75%">
 							<ul class="tags">
 							<c:forEach var="kw" items="${skeyword }" varStatus="k">
 								<li class="li_1">
 									<div class="tag_1">${kw }</div>
 								</li>
 							</c:forEach>
-								<!-- <li class="li_2">
-									<div class="tag_2">힐링</div>
-									<div class="tag_2">휴식하기</div> <br>
-								</li> -->
 							</ul>
 						</td>
 					</tr>
-					<%-- <c:if test="${vo.p_time==null}"> --%><!-- time, tell 널 -->
-						<tr class="tr_time">
-							<td width="25%">영업시간</td>
-							<td width="75%">${vo.p_time }</td>
-						</tr>
-					<%-- </c:if> --%>
+					<tr class="tr_time">
+						<td class="p_td" width="25%">영업시간</td>
+						<td class="p_td" width="75%">${vo.p_time }</td>
+					</tr>
 				</table>
 			</div>
 		</div>
 
 		<div class="row1 row_map">
-			<h3>위치</h3>
+			<h3 class="p_h">위치</h3>
 			<div id="map" style="width: 100%; height: 450px;"></div>
 		</div>
 		<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=90ca2826f787f6d4fc01f89cb8bcdce3&libraries=services"></script>
@@ -191,46 +192,59 @@ $(function() {
 		</script>
 
 		<div class="row1 row_reply">
-			<h3>${vo.p_name }의 댓글(${vo.count })</h3>
-			<table class="reply_list">
+			<h3 class="p_h3">${vo.p_name }의 댓글(${vo.count })</h3>
+			<table class="reply_list" style="font-size: ">
+				<c:if test="${vo.count==0 }">
+					<div class="text-center" style="margin: 40px 0">
+						<p>첫번째 댓글을 남겨주세요.</p>
+					</div>
+				</c:if>
+				<c:if test="${vo.count!=0 }">
 				<c:forEach var="rvo" items="${r_list }">
-					<tr style="border-bottom: 1px solid #dbdbdb;">
-						<td width="13%">
+					<tr>
+						<td class="p_td" rowspan="2">
 							<div class="user_info">
 								<div class="user_img">
 									<img src="p_image/user.png" class="im" width="45px">
 								</div>
-								<div class="user_name" style="margin-top: 5px" name="m_id">${rvo.m_id }</div>
+								<div class="user_name" style="margin-top: 10px" name="m_id">${rvo.m_id }</div>
 							</div>
 						</td>
-						<td width="87%" style="padding: 20px 0">
+						<td class="p_td" width="87%">
 							<div class="reply_info">
 								<span class="reply_date">
 									<fmt:formatDate value="${rvo.pr_regdate}" pattern="yyyy-MM-dd HH:mm:ss" />
 								</span>
-								<button class="btn btn-xs btn-default modifyBtn" value="${rvo.pr_no }">수정</button>
-								<form method=post action="p_reply_delete.do" style="display: inline-block;">
-									<input type="hidden" name=p_no value="${rvo.p_no }"> 
-									<input type="hidden" name=pr_no value="${rvo.pr_no }">
-									<button class="btn btn-xs btn-default" id="deleteBtn">삭제</button>
-								</form>
-								<p class="reply_content">${rvo.pr_msg }</p>	
+								<c:if test="${sessionScope.m_id==rvo.m_id }">
+									<form method=post action="p_reply_delete.do" style="display: inline-block; float: right; margin-left: 5px">
+										<input type="hidden" name=p_no value="${rvo.p_no }"> 
+										<input type="hidden" name=pr_no value="${rvo.pr_no }">
+										<button class="btn btn-sm btn-default" id="deleteBtn">삭제</button>
+									</form>
+									<button class="btn btn-sm btn-default modifyBtn" value="${rvo.pr_no }" style="float: right;">수정</button>
+								</c:if>	
 								<div id="up${rvo.pr_no }" style="display: none">
 									<form method=post action="p_reply_update.do">
 										<input type="hidden" name=pr_no value="${rvo.pr_no }">
-										<textarea rows="3" class="com_2 form-control text-left" style="float: left" name="pr_msg">${rvo.pr_msg }</textarea>
+										<textarea rows="3" class="com_2 form-control text-left" style="float: left; margin-top: 5px" name="pr_msg">${rvo.pr_msg }</textarea>
 										<br> &nbsp; 
-										<input class="btn btn-default btn-xs pull-right" type=submit style="margin-top: 5px" value="수정하기">
+										<input class="btn btn-default btn-sm pull-right" type=submit style="margin-top: 5px" value="수정하기">
 									</form>
 								</div>
 							</div>
 						</td>
 					</tr>
+					<tr>
+						<td>
+							<p class="p_msg">${rvo.pr_msg }</p>
+						</td>
+					</tr>
 				</c:forEach>
+				</c:if>
 			</table>
 		</div>
 
-		<div class="row1 row_reply" style="margin-bottom: 10px">
+		<div class="row1 row_reply" style="margin-bottom: 15px">
 			<div class="col-md-12" style="padding: 0px 20px">
 				<h4 style="text-align: left; margin-left: 10px">
 					<span class="com_title"><b>댓글남기기</b></span>
@@ -240,10 +254,10 @@ $(function() {
 						<input type="hidden" name="p_no" value="${vo.p_no }">
 						<table width="100%">
 							<tr valign="top">
-								<td width="85%">
-									<textarea class="reply_ta" rows="3" cols="76" name="pr_msg" id="msgg" ></textarea>
+								<td class="p_td" width="86%">
+									<textarea class="reply_ta" rows="3" name="pr_msg" id="pr_msg"></textarea>
 								</td>
-								<td width="10%">
+								<td class="p_td" width="9%">
 									<input id="replyBtn" type="button"	class="btn btn-sm pull-right" value="등    록" style="width: 80px; height: 100px">
 								</td>
 							</tr>

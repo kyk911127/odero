@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,7 +12,7 @@
 <!-- 이미지슬라이드  -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> <!-- 충돌 -->
-   
+    
 <style>
 input[type=radio]
 {
@@ -19,11 +20,184 @@ input[type=radio]
 }
 </style>
 <script type="text/javascript">
+var curpage=1;
+var totalpage=0;
+
+var s_curpage=1;
+var s_totalpage=0;
+
+
 $(function(){
    
+	
    $('.loc_pick').hide();
    $('.gangnam_d').hide();
    $('.gangbuk_d').hide();
+   $('#pg').html(
+		   '<ul class="pagination">'
+			+'<li><span aria-hidden="true" class="btn btn-sm btn-info" id="prev">이전</span></li>'
+			+'<li><span aria-hidden="true" class="btn btn-sm btn-info" id="next">다음</span></li>'
+		   +'</ul>'	   
+   );
+   $.ajax({
+       type:"POST",
+       url:"s_list_start.do",
+       dataType:'json',
+       success: function(response){
+      	   var data="";
+      	   curpage=response[0].p_curpage;
+      	   totalpage=response[0].p_totalpage;
+      	   for(i=0;i<response.length;i++)
+      		{
+      		   data+='<div class="col-sm-6 col-md-4 col-lg-3 mt-4">'
+                    +'<div class="card">'
+                    +'<a href="p_detail.do?p_no='+response[i].p_no+'">'
+                    +'<img class="card-img-top tp_dimg" src="'+response[i].p_img+'">'
+                    +'</a>'
+                    +'<div class="card-block">'
+                    +'<h4 class="tp_tname">'+response[i].p_name +'</h4>'
+                    +'<div class="tp_locname">'
+                    +'<span class="glyphicon glyphicon-map-marker"></span>'
+		               +response[i].p_addr
+		             +'</div>'
+		             +'<div class="tp_keyword">'
+		                 +response[i].p_keyword
+		             +'</div>'
+		             +'</div>'
+		             +'<div class="card-footer">'
+		             +'<small>'+response[i].p_price+'</small>'
+		             +'<button class="btn btn-secondary float-right btn-sm jjimbtn"><i class="icon-heart">♥찜하기</i></button>'
+		             +'</div>'
+		             +'</div>'
+		             +'</div>'
+		             
+      			} 
+      	   
+          $('#tp').html(data);
+          $('.jjimbtn').click(function(){
+              var Jbtn=$(this).css("color");
+              if(Jbtn=="rgb(51, 51, 51)")
+                 {
+                  $(this).css("color", "#F3ABBA"); //rgb(243, 171, 186)
+                    $(this).css("font-weight","bold");
+                 }
+              else{
+                 $(this).css("color","rgb(51, 51, 51)")
+                 } 
+           });
+       }
+   });
+   
+   $('#prev').click(function(){
+	   
+	   curpage=(curpage>1?curpage-1:curpage);
+	   
+	   $.ajax({
+	       type:"POST",
+	       url:"s_list_start.do",
+	       data:{"page":curpage},
+	       dataType:'json',
+	       success: function(response){
+	      	   var data="";
+	      	   var page="";
+	      	   curpage=response[0].p_curpage;
+	      	   totalpage=response[0].p_totalpage;
+	      	   for(i=0;i<response.length;i++)
+	      		{
+	      		   data+='<div class="col-sm-6 col-md-4 col-lg-3 mt-4">'
+	                    +'<div class="card">'
+	                    +'<a href="p_detail.do?p_no='+response[i].p_no+'">'
+	                    +'<img class="card-img-top tp_dimg" src="'+response[i].p_img+'">'
+	                    +'</a>'
+	                    +'<div class="card-block">'
+	                    +'<h4 class="tp_tname">'+response[i].p_name +'</h4>'
+	                    +'<div class="tp_locname">'
+	                    +'<span class="glyphicon glyphicon-map-marker"></span>'
+			               +response[i].p_addr
+			             +'</div>'
+			             +'<div class="tp_keyword">'
+			                 +response[i].p_keyword
+			             +'</div>'
+			             +'</div>'
+			             +'<div class="card-footer">'
+			             +'<small>'+response[i].p_price+'</small>'
+			             +'<button class="btn btn-secondary float-right btn-sm jjimbtn"><i class="icon-heart">♥찜하기</i></button>'
+			             +'</div>'
+			             +'</div>'
+			             +'</div>'
+			             
+	      			}
+	      	
+	      	   
+	          $('#tp').html(data);
+	          $('.jjimbtn').click(function(){
+	              var Jbtn=$(this).css("color");
+	              if(Jbtn=="rgb(51, 51, 51)")
+	                 {
+	                  $(this).css("color", "#F3ABBA"); //rgb(243, 171, 186)
+	                    $(this).css("font-weight","bold");
+	                 }
+	              else{
+	                 $(this).css("color","rgb(51, 51, 51)")
+	                 } 
+	           });
+	       }
+   });
+   });
+   
+   $('#next').click(function(){
+	   curpage=(curpage<totalpage?curpage+1:curpage);
+	  
+	   $.ajax({
+	       type:"POST",
+	       url:"s_list_start.do",
+	       data:{"page":curpage},
+	       dataType:'json',
+	       success: function(response){
+	      	   var data="";
+	      	 
+	      	   curpage=response[0].p_curpage;
+	      	   totalpage=response[0].p_totalpage;
+	      	   for(i=0;i<response.length;i++)
+	      		{
+	      		   data+='<div class="col-sm-6 col-md-4 col-lg-3 mt-4">'
+	                    +'<div class="card">'
+	                    +'<a href="p_detail.do?p_no='+response[i].p_no+'">'
+	                    +'<img class="card-img-top tp_dimg" src="'+response[i].p_img+'">'
+	                    +'</a>'
+	                    +'<div class="card-block">'
+	                    +'<h4 class="tp_tname">'+response[i].p_name +'</h4>'
+	                    +'<div class="tp_locname">'
+	                    +'<span class="glyphicon glyphicon-map-marker"></span>'
+			               +response[i].p_addr
+			             +'</div>'
+			             +'<div class="tp_keyword">'
+			                 +response[i].p_keyword
+			             +'</div>'
+			             +'</div>'
+			             +'<div class="card-footer">'
+			             +'<small>'+response[i].p_price+'</small>'
+			             +'<button class="btn btn-secondary float-right btn-sm jjimbtn"><i class="icon-heart">♥찜하기</i></button>'
+			             +'</div>'
+			             +'</div>'
+			             +'</div>'
+			             
+	      			}
+	          $('#tp').html(data);
+	          $('.jjimbtn').click(function(){
+	              var Jbtn=$(this).css("color");
+	              if(Jbtn=="rgb(51, 51, 51)")
+	                 {
+	                  $(this).css("color", "#F3ABBA"); //rgb(243, 171, 186)
+	                    $(this).css("font-weight","bold");
+	                 }
+	              else{
+	                 $(this).css("color","rgb(51, 51, 51)")
+	                 } 
+	           });
+	       }
+   });
+   });
    
    
    $('input:radio').click(function(){
@@ -47,8 +221,7 @@ $(function(){
     	 		}
     	 
     	 }
-    
-
+      
    if(S=="강남"|| N=="gn")
 	   {
 		   if(S=="강남")
@@ -104,7 +277,6 @@ $(function(){
 		               str=$("input[name=gb]:eq("+i+")").val();
 		               if(S==str)
 		               {
-		               
 		                  $(".gb_ul>.tp_li >label:eq("+i+")").css("background", "rgb(3, 32, 95)");
 		                  return;
 		               }
@@ -119,90 +291,277 @@ $(function(){
    });
    
   
-   
+ //////////검색
    $('#Sbtn').click(function(){
-      $('.btn-navy').css("background", "rgb(203, 203, 203)");
+	   
+	   $('#pg').html(
+			   '<ul class="pagination">'
+				+'<li><span aria-hidden="true" class="btn btn-sm btn-info" onclick="prev_click()">이전</span></li>'
+				+'<li><span aria-hidden="true" class="btn btn-sm btn-info" onclick="next_click()">다음</span></li>'
+			   +'</ul>'	   
+	   );
+     
       var arr_sn=[];
       var sn_1=$("input[type=radio][name=ca]:checked").val();
-      arr_sn.push(sn_1);
       var sn_2=$("input[type=radio][name=loc]:checked").val();
+      var sn_3="";
       
-       
-       
-      if(sn_2=="강남")
+      if(sn_1==null)
     	  {
-    	  var sn_3=$("input[type=radio][name=gn]:checked").val();    	 
+    	  	alert("카테고리를 선택하세요");
+    	  	return;
     	  }
       
-      else if(sn_2=="강북")
+      else if(sn_2==null)
     	  {
-    	  var sn_3=$("input[type=radio][name=gb]:checked").val();
+    	   	alert("지역을 선택하세요");
+    	   	return;
     	  }
-   
-     arr_sn.push(sn_3); 
-     alert("최종: "+arr_sn);
-     
-     
-     $.ajax({
-         type:"POST",
-         url:"s_list.do",
-         data : {"sn_1":sn_1,"sn_3":sn_3},
-         success: function(response){
-             alert("값을 보냈다: "+arr_sn);
-         }
-     });
-
+      else
+    	  {
+    	  	  arr_sn.push(sn_1);
+    	  		
+	    	  if(sn_2=="강남")
+	    	  {
+	    	  		sn_3=$("input[type=radio][name=gn]:checked").val();
+	    	  		if(sn_3==null)
+	    	  			{
+	    	  			 	alert("구를 선택하세요!");
+	    	  			 	return;
+	    	  			}
+	    	  }
+	      
+	     	 if(sn_2=="강북")
+	    	  {
+	    	 		 sn_3=$("input[type=radio][name=gb]:checked").val();
+		    	  		if(sn_3==null)
+	    	  			{
+	    	  			 	alert("구를 선택하세요!");
+	    	  			 	return;
+	    	  			}
+	    	  }
+	     	
+	   
+		     arr_sn.push(sn_3); 
+		     //alert("최종: "+arr_sn);
+		     
+		         $.ajax({
+		             type:"POST",
+		             url:"s_list.do",
+		             data : {"sn_1":sn_1,"sn_3":sn_3},
+		             dataType:'json',
+		             success: function(response){
+		            	   var data="";
+		            	   s_curpage=response[0].p_curpage;
+		                 s_totalpage=response[0].p_totalpage;
+		            	   for(i=0;i<response.length;i++)
+		            		{
+		            		    data+='<div class="col-lg-3">'
+		                          +'<div class="card">'
+		                          +'<a href="p_detail.do?p_no='+response[i].p_no+'">'
+		                          +'<img class="card-img-top tp_dimg" src="'+response[i].p_img+'">'
+		                          +'</a>'
+		                          +'<div class="card-block">'
+		                          +'<h4 class="tp_tname">'+response[i].p_name +'</h4>'
+		                          +'<div class="tp_locname">'
+		                          +'<span class="glyphicon glyphicon-map-marker"></span>'
+		      		               +response[i].p_addr
+		      		             +'</div>'
+		      		             +'<div class="tp_keyword">'
+		      		                 +response[i].p_keyword
+		      		             +'</div>'
+		      		             +'</div>'
+		      		             +'<div class="card-footer">'
+		      		             +'<small>'+response[i].p_price+'</small>'
+		      		             +'<button class="btn btn-secondary float-right btn-sm jjimbtn"><i class="icon-heart">♥찜하기</i></button>'
+		      		             +'</div>'
+		      		             +'</div>'
+		      		             +'</div>'
+		      		             
+		            		}
+		                $('#tp').html(data);
+		             }
+		             });
+    	  }
+    
+     /*  //버튼 초기화
+     $('.btn-navy').css("background", "rgb(203, 203, 203)");
+      $("input:radio").prop("checked",false);
+      $('.loc_pick').hide();
+      $('.gangnam_d').hide();
+      $('.gangbuk_d').hide(); */
+      
    });
   
-   
-   
-   $('.jjimbtn').click(function(){
-      var Jbtn=$(this).css("color");
-      if(Jbtn=="rgb(51, 51, 51)")
-         {
-          $(this).css("color", "#F3ABBA"); //rgb(243, 171, 186)
-            $(this).css("font-weight","bold");
-         }
-      else{
-         $(this).css("color","rgb(51, 51, 51)")
-         } 
-   });
-   
-   
 });
 
+
+function prev_click()
+{
+		var sn_1=$("input[type=radio][name=ca]:checked").val();
+		var sn_2=$("input[type=radio][name=loc]:checked").val();
+		var sn_3="";
+		if(sn_2=="강남")
+			{
+				sn_3=$("input[type=radio][name=gn]:checked").val();
+			}
+		else
+			{
+				sn_3=$("input[type=radio][name=gb]:checked").val();
+			}
+	
+	   s_curpage=(s_curpage>1?s_curpage-1:s_curpage);
+	   
+	   $.ajax({
+	       type:"POST",
+	       url:"s_list.do",
+	       data:{"sn_1":sn_1,"sn_3":sn_3,"page":s_curpage},
+	       dataType:'json',
+	       success: function(response){
+	      	   var data="";
+	      	   
+	      	   s_curpage=response[0].p_curpage;
+	      	   s_totalpage=response[0].p_totalpage;
+	      	   for(i=0;i<response.length;i++)
+	      		{
+	      		   data+='<div class="col-sm-6 col-md-4 col-lg-3 mt-4">'
+	                    +'<div class="card">'
+	                    +'<a href="p_detail.do?p_no='+response[i].p_no+'">'
+	                    +'<img class="card-img-top tp_dimg" src="'+response[i].p_img+'">'
+	                    +'</a>'
+	                    +'<div class="card-block">'
+	                    +'<h4 class="tp_tname">'+response[i].p_name +'</h4>'
+	                    +'<div class="tp_locname">'
+	                    +'<span class="glyphicon glyphicon-map-marker"></span>'
+			               +response[i].p_addr
+			             +'</div>'
+			             +'<div class="tp_keyword">'
+			                 +response[i].p_keyword
+			             +'</div>'
+			             +'</div>'
+			             +'<div class="card-footer">'
+			             +'<small>'+response[i].p_price+'</small>'
+			             +'<button class="btn btn-secondary float-right btn-sm jjimbtn"><i class="icon-heart">♥찜하기</i></button>'
+			             +'</div>'
+			             +'</div>'
+			             +'</div>'
+			             
+	      			}
+	      	
+	      	   
+	          $('#tp').html(data);
+	          $('.jjimbtn').click(function(){
+	              var Jbtn=$(this).css("color");
+	              if(Jbtn=="rgb(51, 51, 51)")
+	                 {
+	                  $(this).css("color", "#F3ABBA"); //rgb(243, 171, 186)
+	                    $(this).css("font-weight","bold");
+	                 }
+	              else{
+	                 $(this).css("color","rgb(51, 51, 51)")
+	                 } 
+	           });
+	       }
+   });
+}
+function next_click()
+{
+		var sn_1=$("input[type=radio][name=ca]:checked").val();
+		var sn_2=$("input[type=radio][name=loc]:checked").val();
+		var sn_3="";
+		if(sn_2=="강남")
+			{
+				sn_3=$("input[type=radio][name=gn]:checked").val();
+			}
+		else
+			{
+				sn_3=$("input[type=radio][name=gb]:checked").val();
+			}
+
+	   s_curpage=(s_curpage<s_totalpage?s_curpage+1:s_curpage);
+	
+		$.ajax({
+	       type:"POST",
+	       url:"s_list.do",
+	       data:{"sn_1":sn_1,"sn_3":sn_3,"page":s_curpage},
+	       dataType:'json',
+	       success: function(response){
+	      	   var data="";
+	      	   s_curpage=response[0].p_curpage;
+	      	   s_totalpage=response[0].p_totalpage;
+	      	   
+	      	   for(i=0;i<response.length;i++)
+	      		{
+	      		   data+='<div class="col-sm-6 col-md-4 col-lg-3 mt-4">'
+	                    +'<div class="card">'
+	                    +'<a href="p_detail.do?p_no='+response[i].p_no+'">'
+	                    +'<img class="card-img-top tp_dimg" src="'+response[i].p_img+'">'
+	                    +'</a>'
+	                    +'<div class="card-block">'
+	                    +'<h4 class="tp_tname">'+response[i].p_name +'</h4>'
+	                    +'<div class="tp_locname">'
+	                    +'<span class="glyphicon glyphicon-map-marker"></span>'
+			               +response[i].p_addr
+			             +'</div>'
+			             +'<div class="tp_keyword">'
+			                 +response[i].p_keyword
+			             +'</div>'
+			             +'</div>'
+			             +'<div class="card-footer">'
+			             +'<small>'+response[i].p_price+'</small>'
+			             +'<button class="btn btn-secondary float-right btn-sm jjimbtn"><i class="icon-heart">♥찜하기</i></button>'
+			             +'</div>'
+			             +'</div>'
+			             +'</div>'
+			             
+	      			}
+	          $('#tp').html(data);
+	          $('.jjimbtn').click(function(){
+	              var Jbtn=$(this).css("color");
+	              if(Jbtn=="rgb(51, 51, 51)")
+	                 {
+	                  $(this).css("color", "#F3ABBA"); //rgb(243, 171, 186)
+	                    $(this).css("font-weight","bold");
+	                 }
+	              else{
+	                 $(this).css("color","rgb(51, 51, 51)")
+	                 } 
+	           });
+	       }
+   });
+}
 
 </script>
 </head>
 <body>
-<div class="container-fluid">
+<div class="container-fluid" style="padding-right:0px; padding-left:0px;">
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     
     <!-- Wrapper for slides -->
     <div class="carousel-inner ">
       <div class="item active tp_slideimg">
-        <img src="#" alt="Best 놀거리" style="width:100%; height:100%;">
+        <img src="p_image/foodhd.jpg" alt="Best 놀거리" style="width:100%; height:100%;">
            <ol class="tp_imgol">
-              <li class="tp_imgloc">서울시 강동구 천호동</li>
-              <li class="tp_imgname">"쭈꾸쭈꾸쭈꾸미"</li>
+              <li class="tp_imgloc">지역별 놀거리</li>
+              <li class="tp_imgname">검색하기</li>
            </ol>
       </div>
-
+	<c:forEach var="vo" items="${list }">
       <div class="item tp_slideimg">
-        <img src="img/la.jpg" alt="Best 맛집" style="width:100%; height:100%;">
+        <img src="${vo.p_img }" alt="Best 맛집" style="width:100%; height:100%;">
         <ol class="tp_imgol">
-              <li class="tp_imgloc">서울시 마포구 서교동</li>
-              <li class="tp_imgname">"대패삼겹살"</li>
+              <li class="tp_imgloc">${vo.p_addr }</li>
+              <li class="tp_imgname">${vo.p_name }</li>
            </ol>
       </div>
-    
-      <div class="item tp_slideimg">
+    </c:forEach>
+      <!-- <div class="item tp_slideimg">
         <img src="" alt="Best 카페" style="width:100%; height:100%;">
         <ol class="tp_imgol">
               <li class="tp_imgloc">서울시 강남구 역삼동</li>
               <li class="tp_imgname">"내가좋아하는피자"</li>
            </ol>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>
@@ -318,7 +677,13 @@ $(function(){
             
    </div>
    <div class="row tp_list">
-      <tiles:insertAttribute name="all_list" />
+      <div class="tp_dlist_1" id="tp"></div>
+      <div class="text-center" id="pg">
+	     <!--  <ul class="pagination">
+				<li><span aria-hidden="true" class="btn btn-sm btn-info" id="prev">이전</span></li>
+				<li><span aria-hidden="true" class="btn btn-sm btn-info" id="next">다음</span></li>
+			</ul> -->
+      </div>
    </div>
 
 

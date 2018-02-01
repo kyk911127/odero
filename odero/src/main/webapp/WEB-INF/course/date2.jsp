@@ -180,7 +180,19 @@
 .rc_detail {
 	font-size: 5px;
 }
+.reset_btn:hover {
+	background-color: #fff;
+}
 </style>
+<script>
+$(function() {
+	if(${mapCk}=="1"){
+		$('html, body').animate({
+			scrollTop: $('.review_wrap').offset().top
+			}, 300);
+	}
+});
+</script>
 
 </head>
 <body>
@@ -206,12 +218,30 @@
      };
      var p_addr = [];
      var p_nos = [];
-     <c:forEach var="addr" items="${strPosition }">
+     /* <c:forEach var="addr" items="${strPosition }">
        p_addr.push("${addr}");
      </c:forEach>
      <c:forEach var="no" items="${strPnos}">
      	p_nos.push("${no}");
-   	 </c:forEach>
+   	 </c:forEach> */
+     <c:forEach var="addr" items="${f_Positions }">
+     p_addr.push("${addr}");
+   </c:forEach>
+   <c:forEach var="no" items="${f_Pnos}">
+   	p_nos.push("${no}");
+ 	 </c:forEach>
+     <c:forEach var="addr" items="${c_Positions }">
+     p_addr.push("${addr}");
+   </c:forEach>
+   <c:forEach var="no" items="${c_Pnos}">
+   	p_nos.push("${no}");
+ 	 </c:forEach>
+     <c:forEach var="addr" items="${p_Positions }">
+     p_addr.push("${addr}");
+   </c:forEach>
+   <c:forEach var="no" items="${p_Pnos}">
+   	p_nos.push("${no}");
+ 	 </c:forEach>
      var map = new daum.maps.Map(container, options);
      
      var MARKER_WIDTH = 33, // 기본, 클릭 마커의 너비
@@ -264,8 +294,20 @@
 
      var map = new daum.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
      
-     //클릭 갯수 count할 변수
+  	  //클릭 갯수 count할 변수
      var cnt = 0;
+     // 지도에 표시된 마커 객체를 가지고 있을 배열입니다
+     var markers = [];
+     //코스 리스트 찜 목록
+     
+     var course_list  = "";
+     $(document).on("click", "#cjjim_btn", function() {
+    	 if(cnt < 3) {
+    		 alert("데이트 장소 3곳을 선택하세요!");
+    	 } else {
+    		 location.href='course_jjim_insert.do?course_list='+course_list;
+    	 }
+     });
 
      // 지도 위에 마커를 표시합니다
      for (var i = 0, len = positions.length; i < len; i++) {
@@ -277,11 +319,11 @@
              overOrigin = new daum.maps.Point(gapX * 2, overOriginY); // 스프라이트 이미지에서 클릭 마커로 사용할 영역의 좌상단 좌표
              
          // 마커를 생성하고 지도위에 표시합니다
-         addMarker(positions[i], normalOrigin, overOrigin, clickOrigin,p_nos[i]);
+         addMarker(positions[i], normalOrigin, overOrigin, clickOrigin,p_nos[i], map);
      }
 
      // 마커를 생성하고 지도 위에 표시하고, 마커에 mouseover, mouseout, click 이벤트를 등록하는 함수입니다
-     function addMarker(position, normalOrigin, overOrigin, clickOrigin, title_id) {
+     function addMarker(position, normalOrigin, overOrigin, clickOrigin, title_id, m_map) {
 
          // 기본 마커이미지, 오버 마커이미지, 클릭 마커이미지를 생성합니다
          var normalImage = createMarkerImage(markerSize, markerOffset, normalOrigin),
@@ -290,11 +332,17 @@
          
          // 마커를 생성하고 이미지는 기본 마커 이미지를 사용합니다
          var marker = new daum.maps.Marker({
-             map: map,
              position: position,
              image: normalImage,
              title: "m_"+title_id
          });
+         
+         // 마커가 지도 위에 표시되도록 설정합니다
+         marker.setMap(m_map);
+         
+         // 생성된 마커를 배열에 추가합니다
+         markers.push(marker);
+         
 
          // 마커 객체에 마커아이디와 마커의 기본 이미지를 추가합니다
          marker.normalImage = normalImage;
@@ -318,6 +366,24 @@
               }
              
          });
+         
+         // 배열에 추가된 마커들을 지도에 표시하거나 삭제하는 함수입니다
+         function setMarkers(map) {
+             for (var i = 0; i < markers.length; i++) {
+                 markers[i].setMap(map);
+             }            
+         }
+
+         // "마커 보이기" 버튼을 클릭하면 호출되어 배열에 추가된 마커를 지도에 표시하는 함수입니다
+         function showMarkers() {
+             setMarkers(map)    
+         }
+
+         // "마커 감추기" 버튼을 클릭하면 호출되어 배열에 추가된 마커를 지도에서 삭제하는 함수입니다
+         function hideMarkers() {
+             setMarkers(null);    
+         }
+         
          // 마커에 mouseout 이벤트를 등록합니다
          daum.maps.event.addListener(marker, 'mouseout', function() {
 
@@ -348,7 +414,6 @@
        	    	    cnt = cnt - 1;
        	    	 }
        	     } */
-       	     cnt = cnt + 1;
 	       	  var bCheck = false;
 	          for (var j=0; j<selectedMarker.length; j++) {
 	         	 if(selectedMarker[j] == marker.getTitle()) {
@@ -356,16 +421,19 @@
 	         	 }
 	           }
 	          if(bCheck == false) {
+	        	  cnt = cnt + 1;
 	        	  if(cnt <= 3) { //세 개까지
 	        	    	 selectedMarker.push(marker.getTitle());
 	               	 marker.setImage(clickImage);
 	               	 var p_no = marker.getTitle().split("_")[1];
+	          			 course_list = course_list + p_no + "_";
 	               	$.ajax({
 		        			type : "POST",
 		        			url : "placetoplace.do",
 		        			data : {
 		        				"p_no" :  p_no,
-		        				"cnt" : cnt
+		        				"cnt" : cnt,
+		        				"placeCheck" : true
 		        			},
 		        			success : function(res) {
 		        				$("#place_" + cnt).html(res);
@@ -375,6 +443,39 @@
 	        	    	 alert("이미 세개의 장소를 선택했습니다! 초기화 해주세요!");
 	        	     }
 	          }
+	          
+	          $(".reset_btn").click(function() {
+	      			cnt = 0;
+	      			course_list = "";
+	      			$.ajax({
+	        			type : "POST",
+	        			url : "placetoplace.do",
+	        			data : {
+	        				"p_no" :  0,
+	        				"cnt" : 1,
+	        				"placeCheck" : false
+	        			},
+	        			success : function(res) {
+	        				$("#place_" + cnt).html(res);
+	        			}
+	        		});
+	      			for(var i=0; i<3; i++) {
+	      				selectedMarker[i] = "";
+	      			}
+	      			hideMarkers();
+	      			for (var i = 0, len = positions.length; i < len; i++) {
+	      		         var gapX = (MARKER_WIDTH + SPRITE_GAP), // 스프라이트 이미지에서 마커로 사용할 이미지 X좌표 간격 값
+	      		             originY = (MARKER_HEIGHT + SPRITE_GAP) * i, // 스프라이트 이미지에서 기본, 클릭 마커로 사용할 Y좌표 값
+	      		             overOriginY = (OVER_MARKER_HEIGHT + SPRITE_GAP) * i, // 스프라이트 이미지에서 오버 마커로 사용할 Y좌표 값
+	      		             normalOrigin = new daum.maps.Point(0, originY), // 스프라이트 이미지에서 기본 마커로 사용할 영역의 좌상단 좌표
+	      		             clickOrigin = new daum.maps.Point(gapX, originY), // 스프라이트 이미지에서 마우스오버 마커로 사용할 영역의 좌상단 좌표
+	      		             overOrigin = new daum.maps.Point(gapX * 2, overOriginY); // 스프라이트 이미지에서 클릭 마커로 사용할 영역의 좌상단 좌표
+	      		             
+	      		         // 마커를 생성하고 지도위에 표시합니다
+	      		         addMarker(positions[i], normalOrigin, overOrigin, clickOrigin,p_nos[i], map);
+	      		     }
+	      			
+	      	   });
        	     
        	     
              // 클릭된 마커가 없고, click 마커가 클릭된 마커가 아니면
@@ -437,25 +538,7 @@
 							<td width="24%">
 								<!-- //1번째 장소 div -->
 								<div id="place_1">
-									<!-- <table class="tmap_wrap">
-										<tr>
-											<td style="padding: 3%;">
-												<h4 style="float: left;">
-													<scan class="glyphicon glyphicon-home"
-														style="margin-right:10px;">가게이름 
-												</h4>
-											</td>
-										</tr>
-										<tr>
-											<td><span class="tmap_detail">&nbsp;인천시 연수구 연수2동</span></td>
-										</tr>
-										<tr>
-											<td class="text-right"><span
-												class="tmap_detail glyphicon glyphicon-eye-open">조회수</span> <span
-												class="tmap_detail glyphicon glyphicon-heart">찜&nbsp;</span>
-											</td>
-										</tr>
-									</table> -->
+									
 								</div>
 								<!-- //1번째 장소 div끝 -->
 							</td>
@@ -482,25 +565,7 @@
 							<!--2번  -->
 							<td width="24%">
 								<div id="place_2">
-									<!-- <table class="tmap_wrap">
-										<tr>
-											<td style="padding: 3%;">
-												<h4 style="float: left;">
-													<scan class="glyphicon glyphicon-home"
-														style="margin-right:10px;">가게이름 
-												</h4>
-											</td>
-										</tr>
-										<tr>
-											<td><span class="tmap_detail">&nbsp;인천시 연수구 연수2동</span></td>
-										</tr>
-										<tr>
-											<td class="text-right"><span
-												class="tmap_detail glyphicon glyphicon-eye-open">조회수</span> <span
-												class="tmap_detail glyphicon glyphicon-heart">찜&nbsp;</span>
-											</td>
-										</tr>
-									</table> -->
+									
 								</div>
 							</td>
 							<td width="13%">
@@ -523,25 +588,7 @@
 							<!-- 3번 -->
 							<td width="24%">
 								<div id="place_3">
-									<!-- <table class="tmap_wrap">
-										<tr>
-											<td style="padding: 3%;">
-												<h4 style="float: left;">
-													<scan class="glyphicon glyphicon-home"
-														style="margin-right:10px;">가게이름 
-												</h4>
-											</td>
-										</tr>
-										<tr>
-											<td><span class="tmap_detail">&nbsp;인천시 연수구 연수2동</span></td>
-										</tr>
-										<tr>
-											<td class="text-right"><span
-												class="tmap_detail glyphicon glyphicon-eye-open">조회수</span> <span
-												class="tmap_detail glyphicon glyphicon-heart">찜&nbsp;</span>
-											</td>
-										</tr>
-									</table> -->
+									
 								</div>
 							</td>
 						</tr>
@@ -550,6 +597,7 @@
 					<table>
 						<tr>
 							<td class="btn-like text-center">
+								<input type="button" class="reset_btn btn btn-default" value="초기화" >
 								<button type="button" class="btn like" data-toggle="modal"
 									data-target="#myModal" aria-hidden="true"
 									style="outline: none;">
@@ -592,10 +640,9 @@
 					</div>
 					<div class="modal-footer">
 						<center>
-							<button type="button" class="btn btn-default"
-								style="background-color: white; outline: none;">
-								<b>코스 찜</b>
-							</button>
+							<input type="button" class="btn btn-default"
+								style="background-color: white; outline: none; font-weight: bold" value="코스 찜" 
+								id="cjjim_btn" onclick="location.href='course_jjim_insert.do?course_list=${course_list}'">
 							<button type="button" class="btn btn-default"
 								style="background-color: white; outline: none;"
 								data-dismiss="modal">
@@ -611,28 +658,31 @@
 	<div class="container rc">
 		<div class="rc_box">
 			<!--맛집 리스트  -->
+			
 			<div class="row">
 				<div style="width: 100%; height: 25px;">
 					<h4 style="margin: 0px; float: left">
 						<b>▶ 추천</b><b style="color: #DF0101;">맛집</b>
 					</h4>
 				</div>
-				<c:forEach begin="1" end="3">
-					<div class="col-md-4 text-center">
+				<c:forEach var="fvo" items="${pf_list }" varStatus="i">
+					<div class="col-md-4 text-center" onclick="location.href='p_detail.do?p_no=${fvo.p_no}'" style="cursor: pointer;">
 						<div class="box">
 							<div class="box-content">
 								<!--맛집 이름  -->
 								<a href="#" style="color: black; text-decoration: none;">
 									<h4>
-										<span class="glyphicon glyphicon-cutlery"
-											style="float: left; margin: 2%"></span>
+										<span
+											style="float: left; margin: 2%;">
+											<img width="30px" src="img_1/m_${i.index+1 }.png">	
+										</span>
 									</h4>
-									<h4 class="tag-title text-left">가게이름</h4> <br>
+									<h4 class="tag-title text-left">${fvo.p_name }</h4> <br>
 								</a>
 								<hr style="margin: 2%;">
 								<!-- 맛집 이미지 -->
 								<div class=rc_img>
-									<img src="img_1/food3.jpg" style="width: 100%; height: 250px;">
+									<img src="${fvo.p_img }" style="width: 100%; height: 250px;">
 									<br>
 									<hr style="margin: 3px;">
 								</div>
@@ -643,22 +693,21 @@
 											<td class="text-left">
 												<h5>
 													<span class="glyphicon glyphicon-map-marker"><b>
-															지역구</b></span>
+															${fvo.p_addr }</b></span>
 												</h5>
 											</td>
 										</tr>
 										<tr>
 											<td class="text-left">
 												<h5>
-													<span class="glyphicon glyphicon-usd"><b> 가격</b></span>
+													<span class="glyphicon glyphicon-usd"><b> ${fvo.p_price }</b></span>
 												</h5>
 											</td>
 										</tr>
 										<tr>
 											<td class="text-left">
 												<h5>
-													<span class="glyphicon glyphicon-time"><b> 평일
-															11:00~20:00</b></span>
+													<span class="glyphicon glyphicon-time"><b> ${fvo.p_time }</b></span>
 												</h5>
 											</td>
 										</tr>
@@ -666,10 +715,81 @@
 											<td class="text-right">
 												<h5>
 													<span class="glyphicon glyphicon-eye-open"
-														style="margin: 2px;">88</span>
+														style="margin: 2px;">${fvo.p_hit }</span>
 													<!--조회수  -->
-													<span class="glyphicon glyphicon-heart"
-														style="margin: 2px;">4</span>
+													<!-- <span class="glyphicon glyphicon-heart"
+														style="margin: 2px;">4</span> -->
+													<!--찜 수   -->
+												</h5>
+											</td>
+										</tr>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
+			</div>
+
+			<!-- 카페 리스트 -->
+			<div class="row">
+				<div style="width: 100%; height: 25px;">
+					<h4 style="margin: 0px; float: left">
+						<b>▶ 추천</b><b style="color: #DF0101;">카페</b>
+					</h4>
+				</div>
+				<c:forEach var="cvo" items="${ppc_list }" varStatus="i">
+					<div class="col-md-4 text-center" onclick="location.href='p_detail.do?p_no=${cvo.p_no}'" style="cursor: pointer;">
+						<div class="box">
+							<div class="box-content">
+								<a href="#" style="color: black; text-decoration: none;">
+									<h4>
+										<!-- <span class="glyphicon glyphicon-map-marker"
+											style="float: left; margin: 2%"></span> -->
+										<span
+											style="float: left; margin: 2%;">
+											<img width="30px" src="img_1/m_${i.index+7 }.png">	
+										</span>
+									</h4>
+									<h4 class="tag-title text-left">${cvo.p_name }</h4> <br>
+								</a>
+								<hr style="margin: 2%;">
+								<img src="${cvo.p_img }" style="width: 100%; height: 250px;">
+								<br>
+								<hr style="margin: 3px;">
+								<!-- 가게정보 -->
+								<div class="rc_detail">
+									<table class="" width=100%>
+										<tr>
+											<td class="text-left">
+												<h5>
+													<span class="glyphicon glyphicon-map-marker"><b>
+															${cvo.p_addr }</b></span>
+												</h5>
+											</td>
+										</tr>
+										<tr>
+											<td class="text-left">
+												<h5>
+													<span class="glyphicon glyphicon-usd"><b> ${cvo.p_price }</b></span>
+												</h5>
+											</td>
+										</tr>
+										<tr>
+											<td class="text-left">
+												<h5>
+													<span class="glyphicon glyphicon-time"><b> ${cvo.p_time }</b></span>
+												</h5>
+											</td>
+										</tr>
+										<tr>
+											<td class="text-right">
+												<h5>
+													<span class="glyphicon glyphicon-eye-open"
+														style="margin: 2px;">${cvo.p_hit }</span>
+													<!--조회수  -->
+													<!-- <span class="glyphicon glyphicon-heart"
+														style="margin: 2px;">4</span> -->
 													<!--찜 수   -->
 												</h5>
 											</td>
@@ -683,8 +803,6 @@
 			</div>
 
 
-
-
 			<!--놀거리 리스트  -->
 			<div class="row">
 				<div style="width: 100%; height: 25px;">
@@ -692,19 +810,22 @@
 						<b>▶ 추천</b><b style="color: #DF0101;">놀거리</b>
 					</h4>
 				</div>
-				<c:forEach begin="1" end="3">
-					<div class="col-md-4 text-center">
+
+				<c:forEach var="pvo" items="${pp_list }" varStatus="i">
+					<div class="col-md-4 text-center" onclick="location.href='p_detail.do?p_no=${pvo.p_no}'" style="cursor: pointer;">
 						<div class="box">
 							<div class="box-content">
 								<a href="#" style="color: black; text-decoration: none;">
 									<h4>
-										<span class="glyphicon glyphicon-map-marker"
-											style="float: left; margin: 2%"></span>
+										<span
+											style="float: left; margin: 2%;">
+											<img width="30px" src="img_1/m_${i.index+4 }.png">	
+										</span>
 									</h4>
-									<h4 class="tag-title text-left">가게이름</h4> <br>
+									<h4 class="tag-title text-left">${pvo.p_name }</h4> <br>
 								</a>
 								<hr style="margin: 2%;">
-								<img src="img_1/play1.jpg" style="width: 100%; height: 250px;">
+								<img src="${pvo.p_img }" style="width: 100%; height: 250px;">
 								<br>
 								<hr style="margin: 3px;">
 								<!-- 가게정보 -->
@@ -714,22 +835,21 @@
 											<td class="text-left">
 												<h5>
 													<span class="glyphicon glyphicon-map-marker"><b>
-															지역구</b></span>
+															${pvo.p_addr }</b></span>
 												</h5>
 											</td>
 										</tr>
 										<tr>
 											<td class="text-left">
 												<h5>
-													<span class="glyphicon glyphicon-usd"><b> 가격</b></span>
+													<span class="glyphicon glyphicon-usd"><b> ${pvo.p_price }</b></span>
 												</h5>
 											</td>
 										</tr>
 										<tr>
 											<td class="text-left">
 												<h5>
-													<span class="glyphicon glyphicon-time"><b> 평일
-															11:00~20:00</b></span>
+													<span class="glyphicon glyphicon-time"><b> ${pvo.p_time }</b></span>
 												</h5>
 											</td>
 										</tr>
@@ -737,10 +857,10 @@
 											<td class="text-right">
 												<h5>
 													<span class="glyphicon glyphicon-eye-open"
-														style="margin: 2px;">88</span>
+														style="margin: 2px;">${pvo.p_hit }</span>
 													<!--조회수  -->
-													<span class="glyphicon glyphicon-heart"
-														style="margin: 2px;">4</span>
+													<!-- <span class="glyphicon glyphicon-heart"
+														style="margin: 2px;">4</span> -->
 													<!--찜 수   -->
 												</h5>
 											</td>
@@ -754,73 +874,7 @@
 			</div>
 
 			<!--  -->
-			<!-- 카페 리스트 -->
-			<div class="row">
-				<div style="width: 100%; height: 25px;">
-					<h4 style="margin: 0px; float: left">
-						<b>▶ 추천</b><b style="color: #DF0101;">카페</b>
-					</h4>
-				</div>
-				<c:forEach begin="1" end="3">
-					<div class="col-md-4 text-center">
-						<div class="box">
-							<div class="box-content">
-								<a href="#" style="color: black; text-decoration: none;">
-									<h4>
-										<span class="glyphicon glyphicon-glass"
-											style="float: left; margin: 2%"></span>
-									</h4>
-									<h4 class="tag-title text-left">가게이름</h4> <br>
-								</a>
-								<hr style="margin: 2%;">
-								<img src="img_1/cafe1.png" style="width: 100%; height: 250px;">
-								<br>
-								<hr style="margin: 3px;">
-								<!-- 가게정보 -->
-								<div class="rc_detail">
-									<table width=100%>
-										<tr>
-											<td class="text-left">
-												<h5>
-													<span class="glyphicon glyphicon-map-marker"><b>
-															지역구</b></span>
-												</h5>
-											</td>
-										</tr>
-										<tr>
-											<td class="text-left">
-												<h5>
-													<span class="glyphicon glyphicon-usd"><b> 가격</b></span>
-												</h5>
-											</td>
-										</tr>
-										<tr>
-											<td class="text-left">
-												<h5>
-													<span class="glyphicon glyphicon-time"><b> 평일
-															11:00~20:00</b></span>
-												</h5>
-											</td>
-										</tr>
-										<tr>
-											<td class="text-right">
-												<h5>
-													<span class="glyphicon glyphicon-eye-open"
-														style="margin: 2px;">88</span>
-													<!--조회수  -->
-													<span class="glyphicon glyphicon-heart"
-														style="margin: 2px;">4</span>
-													<!--찜 수   -->
-												</h5>
-											</td>
-										</tr>
-									</table>
-								</div>
-							</div>
-						</div>
-					</div>
-				</c:forEach>
-			</div>
+			
 		</div>
 	</div>
 
