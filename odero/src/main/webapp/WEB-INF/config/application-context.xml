@@ -17,7 +17,7 @@
 	<context:component-scan base-package="com.sist.*"/>
 		<mvc:annotation-driven>
 		 <mvc:message-converters>
-			 <!-- @ResponseBody로 String 처리할때 한글처리 -->
+			 <!-- @ResponseBody로 String 처리할때 한글처리1 -->
 			 <bean class="org.springframework.http.converter.StringHttpMessageConverter">
 				 <property name="supportedMediaTypes">
 					 <list>
