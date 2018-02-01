@@ -412,7 +412,7 @@
       <h3>${rvo.r_pname }</h3>
       <p>${rvo.r_subject }</p>
       </figcaption>
-      <a href="review_detail.do?r_no=${rvo.r_no }"></a>
+      <a href="review_detail.do?no=${rvo.r_no }"></a>
      </div>
     </c:forEach>
    </div>
