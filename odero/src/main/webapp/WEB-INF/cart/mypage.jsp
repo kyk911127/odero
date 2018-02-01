@@ -30,6 +30,10 @@ table tr th {
 #info_table {
 	width: 800px;
 }
+.pwd {
+	font-family : sans-serif;
+}
+
 </style>
 <link href="css/mypage.css" rel="stylesheet" type="text/css">
 <!-- <script>
@@ -55,11 +59,20 @@ $(document).ready(function(){
 $(document).ready(function(){
 	$("#mBtn").click(function(){
 		var old_pwd = $("#old_pwd").val();
+		var pwd = $("#pwd").val();
+		var pwd_check = $("#pwd_check").val();
 		var session_pwd = <%=session.getAttribute("m_pwd")%>;
     	if( old_pwd == session_pwd ) {
-    		alert("비밀번호 일치");
+    		if ( pwd == pwd_check ) {
+    			alert("변경이 완료되었습니다. 다시 로그인 해주세요.");
+    			$('#infomd').submit();
+    		}
+    		else {
+    			alert("새로 입력한 비밀번호가 일치하지 않습니다.");
+    		}
+ 
     	}else {
-    		alert("비밀번호 틀림");
+    		alert("기존 비밀번호가 일치하지 않습니다.");
     	}
 	});
 }); 
@@ -92,6 +105,7 @@ $(document).ready(function(){
 				</h3>
 				<br> <br>
 				<center>
+					<form method="POST" action="info_modify.do" id="infomd">
 					<table class="table table-hover" id="info_table">
 						<tr>
 							<td class="text-center" rowspan="6"></td>
@@ -102,27 +116,29 @@ $(document).ready(function(){
 						</tr>
 						<tr>
 							<th class="text-center">닉네임</th>
-							<td class="text-center"><input type="text" class="text-center" value="${mvo.m_name }"></td>
+							<td class="text-center"><input type="text" class="text-center" value="${mvo.m_name }" name=m_name id="nick"></td>
 						</tr>
 
 						<tr>
 							<th class="text-center">기존 비밀번호</th>
-							<td class="text-center"><input type="password" name="old_pwd" class="text-center" id="old_pwd" style="color:black !important;"></td>
+							<td class="text-center"><input type="password" name="old_pwd" class="text-center pwd" id="old_pwd"></td>
 						</tr>
 						<tr>
 							<th class="text-center">새 비밀번호</th>
-							<td class="text-center"><input type="password" name="pwd" class="text-center" id="pwd" style="color:black;"></td>
+							<td class="text-center"><input type="password" name="m_pwd" class="text-center pwd" id="pwd"></td>
 						</tr>
 						<tr>
 							<th class="text-center">새 비밀번호 확인</th>
-							<td class="text-center"><input type="password" name="pwd_check" class="text-center" id="pwd_check" style="color:black;"></td>
+							<td class="text-center"><input type="password" name="pwd_check" class="text-center pwd" id="pwd_check" style="color:black;"></td>
 						</tr>
 						<tr>
 							<td colspan="4" class="text-right"><input type=button
 								value="modify" class="btn btn-sm btn-danger" id="mBtn"></td>
 						</tr>
 					</table>
-				</center>
+					</form>
+					</center>
+
 			</div>
 			<br> <br>
 			<div class="table_wrap">
@@ -147,7 +163,7 @@ $(document).ready(function(){
 						<th width="5%">삭제</th>
 					</tr>
 					<c:if test="${size!=0 }">
-					<c:forEach var="je" begin="0" end="6">
+					<c:forEach var="je" begin="0" end="${size>6?6:size-1 }">
 						<c:if test="${list[je].p_grade=='c'}">
 							<c:set var="grade" value="카페" />
 						</c:if>
@@ -168,7 +184,8 @@ $(document).ready(function(){
 							<td>${list[je].p_hit }</td>
 							
 							<td width="5%"><a href="p_detail.do?p_no=${list[je].p_no }"><button class="btn btn-info btn-xs">보기</button></a></td>
-							<td width="5%"><button class="btn btn-danger btn-xs">삭제</button></td>
+							<td width="5%"><a href="place_delete.do?no=${list[je].jvo.j_no }"><button class="btn btn-danger btn-xs">삭제</button></a></td>
+							
 						</tr>
 					</c:forEach>
 					<tr>
@@ -205,14 +222,14 @@ $(document).ready(function(){
 						<th>삭제</th>
 					</tr>
 					<c:if test="${psize!=0 }">
-					<c:forEach var="kk" begin="0" end="6">
+					<c:forEach var="kk" begin="0" end="${psize>6?6:psize-1 }">
 						<tr>
 							<td>${flist[kk].c_no }</td>
 							<td>${flist[kk].pvo.p_name }</td>
 							<td>${plist[kk].pvo.p_name}</td>
 							<td>${clist[kk].pvo.p_name}</td>
 							<td><a href="mypage_cos.do?no=${flist[kk].c_no }"><button class="btn btn-info btn-xs">보기</button></a></td>
-							<td><button class="btn btn-danger btn-xs">삭제</button></td>
+							<td><a href="cos_delete.do?no=${flist[kk].c_no }"><button class="btn btn-danger btn-xs">삭제</button></a></td>
 						</tr>
 					</c:forEach>
 				

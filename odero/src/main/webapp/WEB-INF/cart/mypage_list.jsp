@@ -162,7 +162,7 @@
 											</c:if>
 
 										</div>
-										<div class="pagination_div text-center">
+										<%-- <div class="pagination_div text-center">
 											<ul class="pagination">
 												<li><a href="#">이전</a></li>
 												<c:forEach var="i" begin="1" end="10">
@@ -171,7 +171,7 @@
 												</c:forEach>
 												<li><a href="#">다음</a></li>
 											</ul>
-										</div>
+										</div> --%>
 									</div>
 								</div>
 							</section>

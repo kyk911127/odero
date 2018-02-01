@@ -241,7 +241,9 @@ $(function() {
       <form action="course_search_ok.do" method="post">
 	      <div class="search_wrap">
 	      	  <div id="gu_hidden"></div>
-	      	  <div id="key_hidden"></div>
+	      	  <div id="f_hidden"></div>
+	      	  <div id="c_hidden"></div>
+	      	  <div id="p_hidden"></div>
 	         <center>
 	         <input type="submit" value=' 검   색 ' class="search_btn">
 	         </center>
