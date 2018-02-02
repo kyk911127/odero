@@ -15,6 +15,12 @@ import java.util.*;
 	private int p_no;
  */
 public interface PlaceMapper {
+	//조회수증가
+	@Update("update place "
+			+"set p_hit=p_hit+1 "
+			+"where p_no=#{p_no}")
+	public void placeHit(int p_no);
+	
 	// 상세조회
 	@Select("SELECT p_no, p_name, p_addr, p_price, p_keyword, p_img, p_tel, p_grade, p_time "
 			+ "FROM place "

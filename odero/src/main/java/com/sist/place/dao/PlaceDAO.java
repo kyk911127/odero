@@ -17,13 +17,19 @@ public class PlaceDAO {
 		return mapper.placeListData(map);
 	}
 	
+	//조회수 증가
+	public void placeHit(int p_no){
+		mapper.placeHit(p_no); 
+	}
 	// detail
 	public PlaceVO placeDetailData(int p_no) {
+		
 		return mapper.placeDetailData(p_no);
 	}
-	 
+	
 	// TotalPage
 	public int placeTotalList() {
+		
 		return mapper.placeTotalList();
 	}
 	
