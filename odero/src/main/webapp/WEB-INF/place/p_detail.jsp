@@ -99,7 +99,10 @@ $(function() {
 	</div>
 	<div class="container mid_container">
 		<div class="row1 row_info">
-			<h3 class="p_h">${vo.p_name }</h3>
+			<div class="p_h">
+				<h3 style="font-weight: bold;">${vo.p_name }</h3>
+				<img src="view1.png"> 110
+			</div>
 			<div style="padding: 15px; border-bottom: 1px solid #dbdbdb;">
 				<!-- <span class="glyphicon glyphicon-tent" aria-hidden="true"></span> 이색/체험 -->
 				<c:if test="${vo.p_grade=='p' }">
