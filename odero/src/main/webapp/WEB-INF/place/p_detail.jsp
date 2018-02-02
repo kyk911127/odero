@@ -267,9 +267,7 @@ $(function() {
 			</div>
 		</div>
 		<div class="text-right">
-			<a href="p_list.do">
-				<input type="button" class="btn btn-md" id="backBtn" value="이전으로">
-			</a>
+			<input type="button" class="btn btn-md" id="backBtn" value="이전으로" onclick="javascript:history.back()">
 		</div>
 	</div>
 </body>
