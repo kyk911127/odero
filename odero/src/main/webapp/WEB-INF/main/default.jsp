@@ -224,7 +224,7 @@
                  }
                  distance = resultArr[iindex].info.totalDistance;
                  lastEndStation = resultArr[iindex].info.lastEndStation;
-                 firstStartStation = resultArr[iindex].info.firstStarmin14tStation;
+                 firstStartStation = resultArr[iindex].info.firstStartStation;
                  //startID = resultArr[iindex].subPath[0].startID;
                  //endID = resultArr[iindex].endID;
                  payment = resultArr[iindex].info.payment;
