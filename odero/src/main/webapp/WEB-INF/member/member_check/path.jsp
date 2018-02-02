@@ -53,7 +53,7 @@
 		</tr>
 		<tr>
 			<td width="20%" class="text-center">
-				${vo.firstStartStation }<br>
+				출발: ${vo.firstStartStation }<br>
 				<%-- <c:if test="${vo.pathtype=='버스' }">
 					정류장번호: ${vo.startID }
 				</c:if> --%>
