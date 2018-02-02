@@ -142,7 +142,7 @@
     font-weight: bold;
 }
 .tp_locname {
-    font-size: 1em;
+    font-size: 0.9em;
     color: rgba(0, 0, 0, .68);
 }
 .tp_keyword {
@@ -150,7 +150,7 @@
     color: rgba(0, 0, 0, .4);
     /* padding-left:12%; */
     padding:5%;
-    height: 20px;
+    height: 40px;
 }
 .tp_price{
    font-size: 0.9em;
