@@ -68,4 +68,13 @@ public class MyPageDAO {
 	{
 		return mapper.CosDetailFood(no);
 	}
+	public int MyPageJJimTotal(String m_id)
+	{
+		return mapper.MyPageJJimTotal(m_id);
+	}
+	public int MyPageCosTotal(String m_id)
+	{
+		return mapper.MyPageCosTotal(m_id);
+	}
+	
 }

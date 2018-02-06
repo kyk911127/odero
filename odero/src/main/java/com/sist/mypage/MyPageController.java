@@ -51,36 +51,53 @@ public class MyPageController {
 		if(page==null)
 			page="1";
 		int curpage = Integer.parseInt(page);
-		int rowSize=10;
+		int rowSize=12;
 		int start = (rowSize*curpage)-(rowSize-1);
 		int end = rowSize*curpage;
+		int totalpage=0;
+		int block=10;
+		int fromPage = ((curpage-1)/block*block)+1;  //보여줄 페이지의 시작
+		int toPage = ((curpage-1)/block*block)+block; //보여줄 페이지의 끝
+		
+		
+		
+		
+		
 		Map map = new HashMap();
 		map.put("start", start);
 		map.put("end", end);
 		map.put("m_id",m_id);
+		
 		String jsort=sort;
 		if (sort==null)
 			jsort = "cos";
 		
-		List<MyPagePlaceVO> list = dao.MyPlaceBest5(m_id);
+		/*List<MyPagePlaceVO> list = dao.MyPlaceBest5(m_id);*/ 
 		List<MyPageCosVO> plist = dao.MyCosBestPlay(m_id);
-/*		List<MyPagePlaceVO> list = dao.MyPlacePage(map);
-		List<MyPageCosVO> plist = dao.MyCosBestPlay(m_id);*/
+		List<MyPagePlaceVO> list = dao.MyPlacePage(map);
+/*		List<MyPageCosVO> plist = dao.MyCosBestPlay(m_id);*/
 		if (jsort.equals("cos")) {
 			model.addAttribute("list",plist);
-			
+			totalpage=dao.MyPageCosTotal(m_id);
 		}
 		if (jsort.equals("place")) {
 			model.addAttribute("list",list);
+			totalpage=dao.MyPageJJimTotal(m_id);
 		}
-
+		if(toPage>totalpage)
+			   toPage=totalpage;
 		List<MyPageCosVO> clist = dao.MyCosBestCafe(m_id);
 		List<MyPageCosVO> flist = dao.MyCosBestFood(m_id);
 	
-
+		System.out.println("jsort : " + jsort + "curpage : " + curpage + "totalpage : " + totalpage + " block : " + block + " fromPage : "+ fromPage +"toPage: "  +toPage);
 		model.addAttribute("jsort",jsort);
 		model.addAttribute("clist",clist);
 		model.addAttribute("flist",flist);
+		model.addAttribute("curpage", curpage);
+		model.addAttribute("totalpage", totalpage);
+		model.addAttribute("block", block);
+		model.addAttribute("fromPage",fromPage);
+		model.addAttribute("toPage",toPage);
 /*		model.addAttribute("list",list);*/
 		return "cart/mypage_list";
 	}

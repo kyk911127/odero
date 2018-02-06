@@ -58,12 +58,38 @@ public interface MyPageMapper {
 				  @Result(property = "p_keyword", column = "p_keyword"),
 				  @Result(property = "p_img", column = "p_img")
 				})
-		@Select("SELECT j.j_no, p.p_no, p.p_name, p.p_addr, p.p_price, p.p_keyword, p_img, p.p_tel, p.p_grade, p.p_time, p.p_hit, num "
+		@Select("SELECT j_no, p_no, p_name, p_addr, p_price, p_keyword, p_img, p_tel, p_grade, p_time, p_hit, num "
+				+ "FROM (SELECT j_no, p_no, p_name, p_addr, p_price, p_keyword, p_img, p_tel, p_grade, p_time, p_hit, rownum as num "
+				+ "FROM (SELECT j.j_no, p.p_no, p.p_name, p.p_addr, p.p_price, p.p_keyword, NVL(SUBSTR(p.p_img,1,INSTR(p.p_img,',',1,1)-1),p.p_img) AS p_img, p.p_tel, p.p_grade, p.p_time, p.p_hit " 
+				+ "FROM JJIM j, PLACE p WHERE j.p_no = p.p_no and m_id=#{m_id} ORDER BY j.j_no DESC)) "
+				+ "WHERE num BETWEEN #{start} AND #{end}")
+		public List<MyPagePlaceVO>MyPlacePage(Map map);
+		
+		
+		//TotalPage
+		@Select("SELECT CEIL(COUNT(*)/12) FROM jjim WHERE m_id=#{m_id} ")
+		public int MyPageJJimTotal(String m_id);
+		
+		//TotalPage
+		@Select("SELECT CEIL(COUNT(*)/12) FROM course WHERE m_id=#{m_id} ")
+		public int MyPageCosTotal(String m_id);
+		
+		
+		/*
+		 * @Select("SELECT j.j_no, p.p_no, p.p_name, p.p_addr, p.p_price, p.p_keyword, p_img, p.p_tel, p.p_grade, p.p_time, p.p_hit, num "
 				+ "FROM (SELECT j.j_no, p.p_no, p.p_name, p.p_addr, p.p_price, p.p_keyword, p_img AS p_img, p.p_tel, p.p_grade, p.p_time, p.p_hit, rownum as num "
 				+ "FROM (SELECT j.j_no, p.p_no, p.p_name, p.p_addr, p.p_price, p.p_keyword, NVL(SUBSTR(p.p_img,1,INSTR(p.p_img,',',1,1)-1),p.p_img) AS p_img, p.p_tel, p.p_grade, p.p_time, p.p_hit " 
 				+ "FROM JJIM j, PLACE p ORDER BY j.j_no DESC)) "
 				+ "WHERE j.p_no = p.p_no and m_id=#{m_id} AND num BETWEEN #{start} AND #{end}")
-		public List<MyPagePlaceVO>MyPlacePage(Map map);
+		 * 
+		 * SELECT j_no, p_no, p_name,p_addr, p_price, p_keyword, p_img, p_tel, p_grade, p_time, p_hit, num
+FROM (SELECT j_no,p_no, p_name, p_addr, p_price, p_keyword, p_img,p_tel,p_grade,p_time,p_hit, rownum as num 
+FROM (SELECT j.j_no, p.p_no, p.p_name, p.p_addr, p.p_price, p.p_keyword, NVL(SUBSTR(p.p_img,1,INSTR(p.p_img,',',1,1)-1),p.p_img) AS p_img, p.p_tel, p.p_grade, p.p_time, p.p_hit
+FROM JJIM j join PLACE p ON j.p_no = p.p_no WHERE m_id='01059231010' ORDER BY j.j_no DESC))
+WHERE num BETWEEN 1 AND 10; 
+		 * 
+		 * 
+		 */
 	
 	// 마이페이지 - 코스 베스트 (food)
 		@Results( value = {
