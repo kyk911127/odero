@@ -48,7 +48,7 @@ public interface MyPageMapper {
 	FROM gggl_event ORDER BY event_no DESC))
 	WHERE num BETWEEN #{start} AND*/
 	
-	// 마이페이지 - 장소 베스트
+	// 마이페이지 - 장소 (페이지)
 		@Results( value = {
 				  @Result(property = "jvo.j_no", column = "j_no", id = true),
 				  @Result(property = "p_no", column = "p_no"),
@@ -65,6 +65,23 @@ public interface MyPageMapper {
 				+ "WHERE num BETWEEN #{start} AND #{end}")
 		public List<MyPagePlaceVO>MyPlacePage(Map map);
 		
+		// 마이페이지 - 놀거리(코스) (페이지)
+				@Results( value = {
+						  @Result(property = "c_no", column = "c_no", id = true),
+						  @Result(property = "pvo.p_name", column = "p_name"),
+						  @Result(property = "pvo.p_no", column = "p_no"),
+						  @Result(property = "pvo.p_addr", column = "p_addr"),
+						  @Result(property = "pvo.p_keyword", column = "p_keyword"),
+						  @Result(property = "pvo.p_img", column = "p_img"),
+						  @Result(property = "pvo.p_price", column = "p_price"),
+						  @Result(property = "pvo.p_hit", column = "p_hit")
+						})
+				@Select("SELECT c_no, p_name, p_no, p_addr, p_keyword, p_img, p_price, p_hit, num "
+						+ "FROM (SELECT c_no, p_name, p_no, p_addr, p_keyword, p_img, p_price, p_hit, rownum as num "
+						+ "FROM (SELECT c.c_no, p.p_name, p.p_no, p.p_addr, p.p_keyword, NVL(SUBSTR(p.p_img,1,INSTR(p.p_img,',',1,1)-1),p.p_img) AS p_img, p.p_price, p.p_hit "
+						+ "FROM COURSE c, PLACE p WHERE c.c_play = p.p_no AND m_id=#{m_id} ORDER BY c.c_no DESC)) "
+						+ "WHERE num BETWEEN #{start} AND #{end} ")
+				public List<MyPageCosVO> MyCosPage (Map map);	
 		
 		//TotalPage
 		@Select("SELECT CEIL(COUNT(*)/12) FROM jjim WHERE m_id=#{m_id} ")

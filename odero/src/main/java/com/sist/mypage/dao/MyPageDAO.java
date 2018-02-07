@@ -76,5 +76,8 @@ public class MyPageDAO {
 	{
 		return mapper.MyPageCosTotal(m_id);
 	}
-	
+	public List<MyPageCosVO> MyCosPage (Map map)
+	{
+		return mapper.MyCosPage(map);
+	}
 }

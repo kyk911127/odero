@@ -8,9 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript"
-	src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d7e1caf16f1fe180e708f6b17474f2fa"></script>
-	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d7e1caf16f1fe180e708f6b17474f2fa&libraries=services"></script>
+
 <link rel="stylesheet"
 	href="http://fonts.googleapis.com/earlyaccess/hanna.css">
 <link rel="stylesheet"
@@ -19,50 +17,8 @@
 <link href="css/mypage.css" rel="stylesheet" type="text/css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
- <script>
-$(document).ready(function(){
-	var caddr  = $("#caddr").val();
-	var faddr = $("#faddr").val();
-	var paddr = $("#paddr").val();
-
-	var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
-	    mapOption = {
-	        center: new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
-	        level: 3 // 지도의 확대 레벨
-	    };  
-
-	// 지도를 생성합니다    
-	var map = new daum.maps.Map(mapContainer, mapOption); 
-
-	// 주소-좌표 변환 객체를 생성합니다
-	var geocoder = new daum.maps.services.Geocoder();
-
-	// 주소로 좌표를 검색합니다
-	geocoder.addressSearch('제주특별자치도 제주시 첨단로 242', function(result, status) {
-
-	    // 정상적으로 검색이 완료됐으면 
-	     if (status === daum.maps.services.Status.OK) {
-
-	        var coords = new daum.maps.LatLng(result[0].y, result[0].x);
-
-	        // 결과값으로 받은 위치를 마커로 표시합니다
-	        var marker = new daum.maps.Marker({
-	            map: map,
-	            position: coords
-	        });
-
-	        // 인포윈도우로 장소에 대한 설명을 표시합니다
-	        var infowindow = new daum.maps.InfoWindow({
-	            content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
-	        });
-	        infowindow.open(map, marker);
-
-	        // 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
-	        map.setCenter(coords);
-	    } 
-	});    
-
-});
+<script>
+	
 </script>
 
 <style>
@@ -75,6 +31,16 @@ $(document).ready(function(){
 	vertical-align: center;
 	padding: 5px;
 }
+.map_marker a, .map_marker a:link {
+text-decoration: none;
+color:white;
+}
+.map_marker a:hover {
+text-decoration: none;
+color:gray;
+}
+
+
 </style>
 
 </head>
@@ -98,9 +64,9 @@ $(document).ready(function(){
 				<hr class="soften">
 				<h3 class="sub_text text-left main_text">코스 전체보기</h3>
 				<hr class="soften">
-				<input type=hidden id="caddr" value="${cvo.pvo.p_addr }">
-				<input type=hidden id="faddr" value="${fvo.pvo.p_addr }">
-				<input type=hidden id="paddr" value="${pvo.pvo.p_addr }">
+				<input type=hidden id="caddr" value="${cvo.pvo.p_addr }"> <input
+					type=hidden id="faddr" value="${fvo.pvo.p_addr }"> <input
+					type=hidden id="paddr" value="${pvo.pvo.p_addr }">
 				<div class="col-lg-3 cart_div">
 					<img src="${fvo.pvo.p_img }" class="cart_img">
 					<table class="infoTable">
@@ -110,7 +76,7 @@ $(document).ready(function(){
 						</tr>
 						<tr>
 							<th width=20%>주소</th>
-							<td width=80% id ="faddr">${fvo.pvo.p_addr }</td>
+							<td width=80% id="faddr">${fvo.pvo.p_addr }</td>
 						</tr>
 						<tr>
 							<th width=20%>태그</th>
@@ -131,7 +97,7 @@ $(document).ready(function(){
 						</tr>
 						<tr>
 							<th width=20%>주소</th>
-							<td width=80% id = "paddr"> ${pvo.pvo.p_addr }</td>
+							<td width=80% id="paddr">${pvo.pvo.p_addr }</td>
 						</tr>
 						<tr>
 							<th width=20%>태그</th>
@@ -170,33 +136,108 @@ $(document).ready(function(){
 				<h3 class="sub_text">코스 경로</h3>
 				<hr class="soften" />
 				<div class="map">
-					<div class="map_img" id="map" style="width: 800px; height: 400px;"></div>
+				
 					<br>
-				<script>
-	var p_addr = [];
-	var strPosition = "";
-	var strPno = "";
-</script>
-<c:forEach var="vo" items="${p_list }">
-	<script>
-		
-		var geocoder = new daum.maps.services.Geocoder();
-		// 주소로 좌표를 검색합니다
-		geocoder.addressSearch("${vo.p_addr}", function(result, status) {
-		// 정상적으로 검색이 완료됐으면 
-		  if (status === daum.maps.services.Status.OK) {
-		     var coords = new daum.maps.LatLng(result[0].y, result[0].x);
-		     strPosition = strPosition + coords.toString() + "_";
-		     strPno = strPno + "${vo.p_no}" + "_";
-		     if(strPosition.split("_").length > 9) {
-		      form_data(true);
-		     } else {
-		      form_data(false);
-		     }
-		 } 
-		});
-		</script>
-		</c:forEach>
+					<div id="map" style="width: 100%; height: 600px;"></div>
+					<script type="text/javascript"
+						src="//dapi.kakao.com/v2/maps/sdk.js?appkey=d7e1caf16f1fe180e708f6b17474f2fa&libraries=services"></script>
+					<script>
+						var point1;
+						var point2;
+						var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+						mapOption = {
+							center : new daum.maps.LatLng(33.450701, 126.570667), // 지도의 중심좌표
+							level : 5
+						// 지도의 확대 레벨
+						};
+
+						// 지도를 생성합니다    
+						var map = new daum.maps.Map(mapContainer, mapOption);
+
+						// 주소-좌표 변환 객체를 생성합니다
+
+						var geocoder1 = new daum.maps.services.Geocoder();
+						geocoder1
+								.addressSearch(
+										"${fvo.pvo.p_addr}",
+										function(result, status) {
+											if (status === daum.maps.services.Status.OK)
+												var coords1 = new daum.maps.LatLng(
+														result[0].y,
+														result[0].x);
+											point1 = new daum.maps.LatLng(
+													result[0].y, result[0].x);
+											var marker1 = new daum.maps.Marker(
+													{
+														map : map,
+														position : coords1
+													});
+
+											var infowindow1 = new daum.maps.InfoWindow(
+													{
+														content :'<div class="map_marker" style="background: #002060;; color:white; width:150px;text-align:center;padding:6px 0;"><a href="p_detail.do?p_no=${fvo.pvo.p_no}">${fvo.pvo.p_name} </a></div>'
+													});
+											infowindow1.open(map, marker1);
+											// 지도의 중심을 결과값으로 받은 위치로 이동시킵니다
+
+										});
+						var geocoder2 = new daum.maps.services.Geocoder();
+						geocoder2
+								.addressSearch(
+										"${pvo.pvo.p_addr}",
+										function(result, status) {
+											if (status === daum.maps.services.Status.OK)
+												var coords2 = new daum.maps.LatLng(
+														result[0].y,
+														result[0].x);
+											point2 = new daum.maps.LatLng(
+													result[0].y, result[0].x);
+											var marker2 = new daum.maps.Marker(
+													{
+														map : map,
+														position : coords2
+													});
+											var infowindow2 = new daum.maps.InfoWindow(
+													{
+														content : '<div class="map_marker" style="background: #002060;; color:white; width:150px;text-align:center;padding:6px 0;"><a href="p_detail.do?p_no=${pvo.pvo.p_no}">${pvo.pvo.p_name} </a></div>'
+													});
+											infowindow2.open(map, marker2);
+
+										});
+						var geocoder3 = new daum.maps.services.Geocoder();
+						geocoder3
+								.addressSearch(
+										"${cvo.pvo.p_addr}",
+										function(result, status) {
+											if (status === daum.maps.services.Status.OK)
+												var coords3 = new daum.maps.LatLng(
+														result[0].y,
+														result[0].x);
+											var marker3 = new daum.maps.Marker(
+													{
+														map : map,
+														position : coords3
+													});
+											var infowindow3 = new daum.maps.InfoWindow(
+													{
+														content : '<div class="map_marker" style="background: #002060;; color:white; width:150px;text-align:center;padding:6px 0;"><a href="p_detail.do?p_no=${cvo.pvo.p_no}">${cvo.pvo.p_name} </a></div>'
+													});
+											infowindow3.open(map, marker3);
+											// 3곳의 평균좌표 로 센터설정
+											var center = new daum.maps.LatLng(
+													(point1.getLat()
+															+ point2.getLat() + coords3
+															.getLat()) / 3,
+													(point1.getLng()
+															+ point2.getLng() + coords3
+															.getLng()) / 3);
+										
+
+											map.setCenter(center);
+
+										});
+					</script>
+
 				</div>
 
 			</div>
@@ -239,11 +280,11 @@ $(document).ready(function(){
 						</tr>
 					</table>
 
-				<br>
-				<br>
-				<hr class="hr" />
-				<br>
-				<br>
+					<br>
+					<br>
+					<hr class="hr" />
+					<br>
+					<br>
 				</tr>
 				<tr>
 					<table class="table_content">

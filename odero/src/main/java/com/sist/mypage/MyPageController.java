@@ -73,7 +73,7 @@ public class MyPageController {
 			jsort = "cos";
 		
 		/*List<MyPagePlaceVO> list = dao.MyPlaceBest5(m_id);*/ 
-		List<MyPageCosVO> plist = dao.MyCosBestPlay(m_id);
+		List<MyPageCosVO> plist = dao.MyCosPage(map);
 		List<MyPagePlaceVO> list = dao.MyPlacePage(map);
 /*		List<MyPageCosVO> plist = dao.MyCosBestPlay(m_id);*/
 		if (jsort.equals("cos")) {
@@ -150,6 +150,12 @@ public class MyPageController {
 
 		dao.cosDeleteNo(no);
 		return "redirect:mypage.do";
+	}
+	
+	@RequestMapping("mypage_test.do") 
+	public String testMapping ()
+	{
+		return "cart/mypageTestMap";
 	}
 	
 }
