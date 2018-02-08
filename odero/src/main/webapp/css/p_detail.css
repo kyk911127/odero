@@ -1,4 +1,9 @@
 @CHARSET "UTF-8";
+body {
+	overflow-x:hidden; 
+	overflow-y:auto;
+}
+
 .row1 {
    margin-top: 15px;
    overflow: hidden;
@@ -48,9 +53,7 @@ ul, li {
 .top_container {
 	padding: 0;
 	margin: 0;
-	/* width: 100%; */
-	width: 1860px;
-	height: 100%;
+	width: 1920px;
 }
 
 .imagerow {
@@ -66,15 +69,15 @@ ul, li {
 	display: table-cell;
 	vertical-align: middle;
 	text-align: center;
-	padding: 10px 0
+	padding: 5px 0 ;
+	height: 100%;
 }
 
 .detail_img {
 	position: relative;
 	display: inline-block;
 	width: 19%;
-	height: 100%;
-	margin: 15px 0px 15px 15px;
+	margin: 15px 0px 15px 10px;
 	vertical-align: middle;
 }
 
@@ -82,7 +85,7 @@ ul, li {
    border-radius: 5px;
    position: relative;
    width: 100%; 
-   height: 100%;
+   height: 400px;
    cursor: pointer;
    float: left;
 }

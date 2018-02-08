@@ -22,7 +22,7 @@ public interface PlaceMapper {
 	public void placeHit(int p_no);
 	
 	// 상세조회
-	@Select("SELECT p_no, p_name, p_addr, p_price, p_keyword, p_img, p_tel, p_grade, p_time "
+	@Select("SELECT p_no, p_name, p_addr, p_price, p_keyword, p_img, p_tel, p_grade, p_time, p_hit "
 			+ "FROM place "
 			+ "WHERE p_no=#{p_no}")
 	public PlaceVO placeDetailData(int p_no);

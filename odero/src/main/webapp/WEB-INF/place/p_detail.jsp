@@ -54,22 +54,19 @@ $(function() {
 </head>
 <body>
 	<div class="container-fluid top_container">
-		<div class="row imagerow" style="background-image : url(${backimg})" >
+		<div class="row imagerow" style="background-image : url(${backimg})">
 			<div style="width: 100%; height: 100%; background-color: black; position: absolute; opacity:0.4"></div>
 			<div class="inner">
-			<c:forEach var="i" items="${simg }" end="4" varStatus="im">
-				<div class="detail_img" data-target="#myModal" data-toggle="modal">
-					<div>
+				<c:forEach var="i" items="${simg }" end="4" varStatus="im">
+					<div class="detail_img" data-target="#myModal" data-toggle="modal">
 						<img class="place_img" id="pimg${im.index }" src="${i }">
 					</div>
-				</div>
-			</c:forEach>
+				</c:forEach>
 			</div>
 			<div>
 				<a href="#" data-target="#myModal" data-toggle="modal">
 					<div class="img_more">
-						<p class="i_more">
-							사진 더보기 &nbsp;<img src="p_image/right-arrow.png">
+						<p class="i_more">사진 더보기 &nbsp;<img src="p_image/right-arrow.png">
 						</p>
 					</div>
 				</a>
@@ -101,7 +98,7 @@ $(function() {
 		<div class="row1 row_info">
 			<div class="p_h">
 				<h3 style="font-weight: bold;">${vo.p_name }</h3>
-				<img src="view1.png"> 110
+				<img src="p_image/eye.png">&nbsp;&nbsp;<span style="color: #AAAAAA">${vo.p_hit }</span>
 			</div>
 			<div style="padding: 15px; border-bottom: 1px solid #dbdbdb;">
 				<!-- <span class="glyphicon glyphicon-tent" aria-hidden="true"></span> 이색/체험 -->
@@ -228,6 +225,7 @@ $(function() {
 								</c:if>	
 								<div id="up${rvo.pr_no }" style="display: none">
 									<form method=post action="p_reply_update.do">
+										<input type="hidden" name=p_no value="${rvo.p_no }"> 
 										<input type="hidden" name=pr_no value="${rvo.pr_no }">
 										<textarea rows="3" class="com_2 form-control text-left" style="float: left; margin-top: 5px" name="pr_msg">${rvo.pr_msg }</textarea>
 										<br> &nbsp; 
