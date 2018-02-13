@@ -26,6 +26,8 @@ var totalpage=0;
 var s_curpage=1;
 var s_totalpage=0;
 
+var m_id='${m_id}';
+alert("m_id "+m_id);
 
 $(function(){
    
@@ -75,8 +77,14 @@ $(function(){
       	   
           $('#tp').html(data);
           $('.jjimbtn').click(function(){
+        	  alert("들어온: "+ m_id);
+        	  
               var Jbtn=$(this).css("color");
-              if(Jbtn=="rgb(51, 51, 51)")
+              if(m_id=="")
+            	  {
+            	  	alert("로그인을 해주세요!");
+            	  }
+              else if(Jbtn=="rgb(51, 51, 51)")
                  {
                   $(this).css("color", "#F3ABBA"); //rgb(243, 171, 186)
                     $(this).css("font-weight","bold");

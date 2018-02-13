@@ -78,8 +78,8 @@ public class PlaceController {
 	}
 	
 	@RequestMapping("p_list.do")
-	public String placeListData(String page, Model model) {
-		
+	public String placeListData(HttpSession session,String page, Model model) {
+		String m_id=(String)session.getAttribute("m_id");
 		if(page==null)
 			page="1";
 		int curpage= Integer.parseInt(page);
@@ -99,7 +99,7 @@ public class PlaceController {
 		model.addAttribute("list",list);
 		model.addAttribute("curpage",curpage);
 		model.addAttribute("totalpage",totalpage);
-		
+		model.addAttribute("m_id",m_id);
 		
 		return "place/p_list";
 	}
