@@ -97,6 +97,17 @@ public interface PlaceMapper {
 			+"WHERE p_addr like '%'||#{sn_3}||'%' "
 			+"AND p_grade = 'p') ORDER BY p_no ASC))")
 	public int placeTotalpage_cf(String sn_3);
+	
+	
+	//찜 중복체크
+	@Select("SELECT COUNT(*) FROM jjim "
+			+"WHERE m_id=#{m_id} AND p_no=#{p_no}")
+	public int jjimCount(Map map);
+	
+	//찜하기
+	@Insert("INSERT INTO jjim "
+			+"VALUES((SELECT NVL(MAX(j_no)+1,1) FROM jjim),#{m_id},#{p_no})")
+	public void jjimInsert(Map map);
 
 
 

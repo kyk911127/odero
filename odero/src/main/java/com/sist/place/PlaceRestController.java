@@ -259,4 +259,33 @@ public class PlaceRestController {
 
       return json;  //[{},{},{}]
   }
+  
+  
+  //찜하기
+  @RequestMapping("jjim.do")
+  public String jjim (String m_id,String p_no)
+  {
+	  
+	  Map map=new HashMap();
+      map.put("m_id", m_id);
+      map.put("p_no", p_no);
+      
+      int count=dao.jjimCount(map);
+      boolean bCheck=false;
+      
+      if(count==0)
+      {
+    	  dao.jjimInsert(map);
+    	  bCheck=true;
+      }
+     
+      
+     JSONObject obj=new JSONObject();
+     obj.put("bCheck", bCheck);
+   
+      System.out.println("bcheck: "+bCheck);
+	  System.out.println("obj: "+obj.toJSONString());
+	  
+	  return obj.toJSONString();
+  }
 } 

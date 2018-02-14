@@ -52,4 +52,16 @@ public class PlaceDAO {
 	public int placeTotalpage_cf(String sn_3){
 		return mapper.placeTotalpage_cf(sn_3);
 	}
+	
+	
+	//찜 중복체크
+	public int jjimCount(Map map){
+		return mapper.jjimCount(map);
+	}
+	
+	
+	//찜하기
+	public void jjimInsert(Map map){
+		mapper.jjimInsert(map);
+	}
 }

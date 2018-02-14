@@ -27,7 +27,6 @@ var s_curpage=1;
 var s_totalpage=0;
 
 var m_id='${m_id}';
-alert("m_id "+m_id);
 
 $(function(){
    
@@ -68,33 +67,60 @@ $(function(){
 		             +'</div>'
 		             +'<div class="card-footer">'
 		             +'<small>'+response[i].p_price+'</small>'
-		             +'<button class="btn btn-secondary float-right btn-sm jjimbtn"><i class="icon-heart">♥찜하기</i></button>'
+		             +'<button class="btn btn-secondary float-right btn-sm jjimbtn" id="'+response[i].p_no+'"><i class="icon-heart">♥찜하기'+response[i].p_no+'</i></button>'
 		             +'</div>'
 		             +'</div>'
 		             +'</div>'
-		             
       			} 
       	   
           $('#tp').html(data);
+          
           $('.jjimbtn').click(function(){
-        	  alert("들어온: "+ m_id);
         	  
-              var Jbtn=$(this).css("color");
+        	  var Jbtn=$(this).css("color");
+        	  var p_no=$(this).attr("id");
+        	  
               if(m_id=="")
-            	  {
-            	  	alert("로그인을 해주세요!");
-            	  }
-              else if(Jbtn=="rgb(51, 51, 51)")
-                 {
-                  $(this).css("color", "#F3ABBA"); //rgb(243, 171, 186)
-                    $(this).css("font-weight","bold");
-                 }
-              else{
-                 $(this).css("color","rgb(51, 51, 51)")
-                 } 
-           });
+         	  {
+         	  	alert("로그인을 해주세요!");
+         	  }
+/*            else if(Jbtn=="rgb(243, 171, 186)")     //찜취소
+         	  {
+	         	  alert("찜을 취소하시겠습니까?");
+	         	  $(this).css("color","rgb(0, 0, 0)");
+         	  } */
+           else 											//찜하기
+              {
+        	    $(this).css("color", "#F3ABBA"); 	//rgb(243, 171, 186)
+               $.ajax({
+             	   type:"POST",
+        	       url:"jjim.do",
+        	       data:{"m_id":m_id,"p_no":p_no},
+        	       dataType:'json',
+        	       success: function(response){
+        	    	   if(response.bCheck===true)
+        	    		   {
+        	    		   		alert("찜!");
+        	    		   		
+        	    		   }
+        	    	   else
+        	    		   {
+        	    		   		alert("이미 찜한 내역입니다!");
+        	    		   }
+        	    	   
+        	       }
+             	  
+               }); 
+              }
+        	  
+          });
+          
        }
    });
+   
+
+   
+
    
    $('#prev').click(function(){
 	   
