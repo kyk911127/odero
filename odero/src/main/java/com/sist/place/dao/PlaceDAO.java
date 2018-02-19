@@ -5,6 +5,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import java.util.*;
+import com.sist.mypage.dao.*;
 
 @Repository
 public class PlaceDAO {
@@ -64,4 +65,13 @@ public class PlaceDAO {
 	public void jjimInsert(Map map){
 		mapper.jjimInsert(map);
 	}
+	
+	
+	//찜정보
+	public List<MyPageJJimVO> jjimInfo(String m_id){
+		return mapper.jjimInfo(m_id);
+	}
+	
+	
+	
 }

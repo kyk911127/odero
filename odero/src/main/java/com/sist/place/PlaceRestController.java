@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.sist.place.dao.PlaceDAO;
 import com.sist.place.dao.PlaceVO;
+import com.sist.mypage.dao.*;
+
 
 @RestController
 public class PlaceRestController {
@@ -288,4 +290,35 @@ public class PlaceRestController {
 	  
 	  return obj.toJSONString();
   }
+  
+  
+  //찜정보
+  @RequestMapping("jjim_info.do")
+  public String jjim_info(String m_id)
+  {
+	  String json="";
+	  
+	  System.out.println("1. 넘어간 m_id : "+m_id);
+	  List<MyPageJJimVO> jjim_pno=dao.jjimInfo(m_id);
+	 
+	  
+	  JSONArray arr=new JSONArray();
+	  
+	  
+	 for(MyPageJJimVO vo:jjim_pno)
+		 {
+		 	JSONObject obj=new JSONObject();
+			obj.put("jjim_pno", vo.getP_no());
+			arr.add(obj);
+		 }
+	  
+	 
+	  json=arr.toJSONString();
+	  System.out.println("2. json: "+json);
+	  
+	  return json;
+	  
+
+  }
+  
 } 

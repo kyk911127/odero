@@ -67,13 +67,31 @@ $(function(){
 		             +'</div>'
 		             +'<div class="card-footer">'
 		             +'<small>'+response[i].p_price+'</small>'
-		             +'<button class="btn btn-secondary float-right btn-sm jjimbtn" id="'+response[i].p_no+'"><i class="icon-heart">♥찜하기'+response[i].p_no+'</i></button>'
+		             +'<button class="btn btn-secondary float-right btn-sm jjimbtn" id="'+response[i].p_no+'"><i class="icon-heart">♥찜하기</i></button>'
 		             +'</div>'
 		             +'</div>'
 		             +'</div>'
+		             
       			} 
+      	 
+      	
+      	 $.ajax({
+    		 type:"POST",
+    		 url:"jjim_info.do",
+    		 data:{"m_id":m_id},
+    		 dataType:'json',
+    		 success: function(response){
+    			 for(i=0; i<response.length;i++)
+    			{
+    				 var idd=response[i].jjim_pno;
+    				 $('#'+idd).css("color", "#F3ABBA");
+    				 $('#'+idd).css("font-weight","bold");
+    			}
+    		 }
+    	  });
       	   
           $('#tp').html(data);
+          
           
           $('.jjimbtn').click(function(){
         	  
@@ -81,37 +99,33 @@ $(function(){
         	  var p_no=$(this).attr("id");
         	  
               if(m_id=="")
-         	  {
-         	  	alert("로그인을 해주세요!");
-         	  }
-/*            else if(Jbtn=="rgb(243, 171, 186)")     //찜취소
-         	  {
-	         	  alert("찜을 취소하시겠습니까?");
-	         	  $(this).css("color","rgb(0, 0, 0)");
-         	  } */
-           else 											//찜하기
-              {
-        	    $(this).css("color", "#F3ABBA"); 	//rgb(243, 171, 186)
-               $.ajax({
-             	   type:"POST",
-        	       url:"jjim.do",
-        	       data:{"m_id":m_id,"p_no":p_no},
-        	       dataType:'json',
-        	       success: function(response){
-        	    	   if(response.bCheck===true)
-        	    		   {
-        	    		   		alert("찜!");
-        	    		   		
-        	    		   }
-        	    	   else
-        	    		   {
-        	    		   		alert("이미 찜한 내역입니다!");
-        	    		   }
-        	    	   
-        	       }
-             	  
-               }); 
-              }
+	         	  {
+	         	  	alert("로그인을 해주세요!");
+	         	  }
+
+	           else 											//찜하기
+	              {
+	        	    $(this).css("color", "#F3ABBA"); 	//rgb(243, 171, 186)
+	               $.ajax({
+	             	   type:"POST",
+	        	       url:"jjim.do",
+	        	       data:{"m_id":m_id,"p_no":p_no},
+	        	       dataType:'json',
+	        	       success: function(response){
+	        	    	   if(response.bCheck===true)
+	        	    		   {
+	        	    		   		alert("찜!");
+	        	    		   		
+	        	    		   }
+	        	    	   else
+	        	    		   {
+	        	    		   		alert("이미 찜한 내역입니다!");
+	        	    		   }
+	        	    	   
+	        	       }
+	             	  
+	               }); 
+	              }
         	  
           });
           
@@ -155,26 +169,65 @@ $(function(){
 			             +'</div>'
 			             +'<div class="card-footer">'
 			             +'<small>'+response[i].p_price+'</small>'
-			             +'<button class="btn btn-secondary float-right btn-sm jjimbtn"><i class="icon-heart">♥찜하기</i></button>'
+			             +'<button class="btn btn-secondary float-right btn-sm jjimbtn" id="'+response[i].p_no+'"><i class="icon-heart">♥찜하기</i></button>'
 			             +'</div>'
 			             +'</div>'
 			             +'</div>'
 			             
 	      			}
+	      	   
+	        	 $.ajax({
+	        		 type:"POST",
+	        		 url:"jjim_info.do",
+	        		 data:{"m_id":m_id},
+	        		 dataType:'json',
+	        		 success: function(response){
+	        			 for(i=0; i<response.length;i++)
+	        			{
+	        				 var idd=response[i].jjim_pno;
+	        				 $('#'+idd).css("color", "#F3ABBA");
+	        				 $('#'+idd).css("font-weight","bold");
+	        			}
+	        		 }
+	        	  });
 	      	
 	      	   
 	          $('#tp').html(data);
 	          $('.jjimbtn').click(function(){
-	              var Jbtn=$(this).css("color");
-	              if(Jbtn=="rgb(51, 51, 51)")
-	                 {
-	                  $(this).css("color", "#F3ABBA"); //rgb(243, 171, 186)
-	                    $(this).css("font-weight","bold");
-	                 }
-	              else{
-	                 $(this).css("color","rgb(51, 51, 51)")
-	                 } 
-	           });
+	        	  
+	        	  var Jbtn=$(this).css("color");
+	        	  var p_no=$(this).attr("id");
+	        	  
+	              if(m_id=="")
+		         	  {
+		         	  	alert("로그인을 해주세요!");
+		         	  }
+
+		           else 											//찜하기
+		              {
+		        	    $(this).css("color", "#F3ABBA"); 	//rgb(243, 171, 186)
+		               $.ajax({
+		             	   type:"POST",
+		        	       url:"jjim.do",
+		        	       data:{"m_id":m_id,"p_no":p_no},
+		        	       dataType:'json',
+		        	       success: function(response){
+		        	    	   if(response.bCheck===true)
+		        	    		   {
+		        	    		   		alert("찜!");
+		        	    		   		
+		        	    		   }
+		        	    	   else
+		        	    		   {
+		        	    		   		alert("이미 찜한 내역입니다!");
+		        	    		   }
+		        	    	   
+		        	       }
+		             	  
+		               }); 
+		              }
+	        	  
+	          });
 	       }
    });
    });
@@ -211,24 +264,65 @@ $(function(){
 			             +'</div>'
 			             +'<div class="card-footer">'
 			             +'<small>'+response[i].p_price+'</small>'
-			             +'<button class="btn btn-secondary float-right btn-sm jjimbtn"><i class="icon-heart">♥찜하기</i></button>'
+			             +'<button class="btn btn-secondary float-right btn-sm jjimbtn" id="'+response[i].p_no+'"><i class="icon-heart">♥찜하기</i></button>'
 			             +'</div>'
 			             +'</div>'
 			             +'</div>'
 			             
 	      			}
+	      	   
+	        	 $.ajax({
+	        		 type:"POST",
+	        		 url:"jjim_info.do",
+	        		 data:{"m_id":m_id},
+	        		 dataType:'json',
+	        		 success: function(response){
+	        			 for(i=0; i<response.length;i++)
+	        			{
+	        				 var idd=response[i].jjim_pno;
+	        				 $('#'+idd).css("color", "#F3ABBA");
+	        				 $('#'+idd).css("font-weight","bold");
+	        			}
+	        		 }
+	        	  });
+	      	   
 	          $('#tp').html(data);
+	          
 	          $('.jjimbtn').click(function(){
-	              var Jbtn=$(this).css("color");
-	              if(Jbtn=="rgb(51, 51, 51)")
-	                 {
-	                  $(this).css("color", "#F3ABBA"); //rgb(243, 171, 186)
-	                    $(this).css("font-weight","bold");
-	                 }
-	              else{
-	                 $(this).css("color","rgb(51, 51, 51)")
-	                 } 
-	           });
+	        	  
+	        	  var Jbtn=$(this).css("color");
+	        	  var p_no=$(this).attr("id");
+	        	  
+	              if(m_id=="")
+		         	  {
+		         	  	alert("로그인을 해주세요!");
+		         	  }
+
+		           else 											//찜하기
+		              {
+		        	    $(this).css("color", "#F3ABBA"); 	//rgb(243, 171, 186)
+		               $.ajax({
+		             	   type:"POST",
+		        	       url:"jjim.do",
+		        	       data:{"m_id":m_id,"p_no":p_no},
+		        	       dataType:'json',
+		        	       success: function(response){
+		        	    	   if(response.bCheck===true)
+		        	    		   {
+		        	    		   		alert("찜!");
+		        	    		   		
+		        	    		   }
+		        	    	   else
+		        	    		   {
+		        	    		   		alert("이미 찜한 내역입니다!");
+		        	    		   }
+		        	    	   
+		        	       }
+		             	  
+		               }); 
+		              }
+	        	  
+	          });
 	       }
    });
    });
@@ -407,15 +501,67 @@ $(function(){
 		      		             +'</div>'
 		      		             +'<div class="card-footer">'
 		      		             +'<small>'+response[i].p_price+'</small>'
-		      		             +'<button class="btn btn-secondary float-right btn-sm jjimbtn"><i class="icon-heart">♥찜하기</i></button>'
+		      		             +'<button class="btn btn-secondary float-right btn-sm jjimbtn" id="'+response[i].p_no+'"><i class="icon-heart">♥찜하기</i></button>'
 		      		             +'</div>'
 		      		             +'</div>'
 		      		             +'</div>'
 		      		             
 		            		}
-		                $('#tp').html(data);
+		            	   
+		  	        	 $.ajax({
+			        		 type:"POST",
+			        		 url:"jjim_info.do",
+			        		 data:{"m_id":m_id},
+			        		 dataType:'json',
+			        		 success: function(response){
+			        			 for(i=0; i<response.length;i++)
+			        			{
+			        				 var idd=response[i].jjim_pno;
+			        				 $('#'+idd).css("color", "#F3ABBA");
+			        				 $('#'+idd).css("font-weight","bold");
+			        			}
+			        		 }
+			        	  });
+		            	   
+		                 $('#tp').html(data);
+		                
+			  	          $('.jjimbtn').click(function(){
+				        	  
+				        	  var Jbtn=$(this).css("color");
+				        	  var p_no=$(this).attr("id");
+				        	  
+				              if(m_id=="")
+					         	  {
+					         	  	alert("로그인을 해주세요!");
+					         	  }
+	
+					           else 											//찜하기
+					              {
+					        	    $(this).css("color", "#F3ABBA"); 	//rgb(243, 171, 186)
+					               $.ajax({
+					             	   type:"POST",
+					        	       url:"jjim.do",
+					        	       data:{"m_id":m_id,"p_no":p_no},
+					        	       dataType:'json',
+					        	       success: function(response){
+					        	    	   if(response.bCheck===true)
+					        	    		   {
+					        	    		   		alert("찜!");
+					        	    		   		
+					        	    		   }
+					        	    	   else
+					        	    		   {
+					        	    		   		alert("이미 찜한 내역입니다!");
+					        	    		   }
+					        	    	   
+					        	       }
+					             	  
+					               }); 
+					              }
+				        	  
+				          });
 		             }
-		             });
+		        });
     	  }
     
      /*  //버튼 초기화
@@ -475,26 +621,64 @@ function prev_click()
 			             +'</div>'
 			             +'<div class="card-footer">'
 			             +'<small>'+response[i].p_price+'</small>'
-			             +'<button class="btn btn-secondary float-right btn-sm jjimbtn"><i class="icon-heart">♥찜하기</i></button>'
+			             +'<button class="btn btn-secondary float-right btn-sm jjimbtn" id="'+response[i].p_no+'"><i class="icon-heart">♥찜하기</i></button>'
 			             +'</div>'
 			             +'</div>'
 			             +'</div>'
 			             
 	      			}
 	      	
+	        	 $.ajax({
+	        		 type:"POST",
+	        		 url:"jjim_info.do",
+	        		 data:{"m_id":m_id},
+	        		 dataType:'json',
+	        		 success: function(response){
+	        			 for(i=0; i<response.length;i++)
+	        			{
+	        				 var idd=response[i].jjim_pno;
+	        				 $('#'+idd).css("color", "#F3ABBA");
+	        				 $('#'+idd).css("font-weight","bold");
+	        			}
+	        		 }
+	        	  });
 	      	   
 	          $('#tp').html(data);
 	          $('.jjimbtn').click(function(){
-	              var Jbtn=$(this).css("color");
-	              if(Jbtn=="rgb(51, 51, 51)")
-	                 {
-	                  $(this).css("color", "#F3ABBA"); //rgb(243, 171, 186)
-	                    $(this).css("font-weight","bold");
-	                 }
-	              else{
-	                 $(this).css("color","rgb(51, 51, 51)")
-	                 } 
-	           });
+	        	  
+	        	  var Jbtn=$(this).css("color");
+	        	  var p_no=$(this).attr("id");
+	        	  
+	              if(m_id=="")
+		         	  {
+		         	  	alert("로그인을 해주세요!");
+		         	  }
+
+		           else 											//찜하기
+		              {
+		        	    $(this).css("color", "#F3ABBA"); 	//rgb(243, 171, 186)
+		               $.ajax({
+		             	   type:"POST",
+		        	       url:"jjim.do",
+		        	       data:{"m_id":m_id,"p_no":p_no},
+		        	       dataType:'json',
+		        	       success: function(response){
+		        	    	   if(response.bCheck===true)
+		        	    		   {
+		        	    		   		alert("찜!");
+		        	    		   		
+		        	    		   }
+		        	    	   else
+		        	    		   {
+		        	    		   		alert("이미 찜한 내역입니다!");
+		        	    		   }
+		        	    	   
+		        	       }
+		             	  
+		               }); 
+		              }
+	        	  
+	          });
 	       }
    });
 }
@@ -543,24 +727,65 @@ function next_click()
 			             +'</div>'
 			             +'<div class="card-footer">'
 			             +'<small>'+response[i].p_price+'</small>'
-			             +'<button class="btn btn-secondary float-right btn-sm jjimbtn"><i class="icon-heart">♥찜하기</i></button>'
+			             +'<button class="btn btn-secondary float-right btn-sm jjimbtn" id="'+response[i].p_no+'"><i class="icon-heart">♥찜하기</i></button>'
 			             +'</div>'
 			             +'</div>'
 			             +'</div>'
 			             
 	      			}
+	      	   
+	        	 $.ajax({
+	        		 type:"POST",
+	        		 url:"jjim_info.do",
+	        		 data:{"m_id":m_id},
+	        		 dataType:'json',
+	        		 success: function(response){
+	        			 for(i=0; i<response.length;i++)
+	        			{
+	        				 var idd=response[i].jjim_pno;
+	        				 $('#'+idd).css("color", "#F3ABBA");
+	        				 $('#'+idd).css("font-weight","bold");
+	        			}
+	        		 }
+	        	  });
+	        	 
 	          $('#tp').html(data);
+	          
 	          $('.jjimbtn').click(function(){
-	              var Jbtn=$(this).css("color");
-	              if(Jbtn=="rgb(51, 51, 51)")
-	                 {
-	                  $(this).css("color", "#F3ABBA"); //rgb(243, 171, 186)
-	                    $(this).css("font-weight","bold");
-	                 }
-	              else{
-	                 $(this).css("color","rgb(51, 51, 51)")
-	                 } 
-	           });
+	        	  
+	        	  var Jbtn=$(this).css("color");
+	        	  var p_no=$(this).attr("id");
+	        	  
+	              if(m_id=="")
+		         	  {
+		         	  	alert("로그인을 해주세요!");
+		         	  }
+
+		           else 											//찜하기
+		              {
+		        	    $(this).css("color", "#F3ABBA"); 	//rgb(243, 171, 186)
+		               $.ajax({
+		             	   type:"POST",
+		        	       url:"jjim.do",
+		        	       data:{"m_id":m_id,"p_no":p_no},
+		        	       dataType:'json',
+		        	       success: function(response){
+		        	    	   if(response.bCheck===true)
+		        	    		   {
+		        	    		   		alert("찜!");
+		        	    		   		
+		        	    		   }
+		        	    	   else
+		        	    		   {
+		        	    		   		alert("이미 찜한 내역입니다!");
+		        	    		   }
+		        	    	   
+		        	       }
+		             	  
+		               }); 
+		              }
+	        	  
+	          });
 	       }
    });
 }

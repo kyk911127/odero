@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectKey;
 import org.apache.ibatis.annotations.Update;
+import com.sist.mypage.dao.*;
 
 import java.util.*;
 /*
@@ -108,14 +109,10 @@ public interface PlaceMapper {
 	@Insert("INSERT INTO jjim "
 			+"VALUES((SELECT NVL(MAX(j_no)+1,1) FROM jjim),#{m_id},#{p_no})")
 	public void jjimInsert(Map map);
-
-
-
-
-
-
-
-
+	
+	//찜정보
+	@Select("select p_no from jjim where m_id=#{m_id}")
+	public List<MyPageJJimVO> jjimInfo(String m_id);
 
 
 
