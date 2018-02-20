@@ -16,13 +16,6 @@
 	<definition name="course/*/*" extends="course">
 		<put-attribute name="place" value="/WEB-INF/course/{1}/{2}.jsp"></put-attribute>
 	</definition>
-	
-<!-- 	<definition name="place" template="/WEB-INF/place/p_list.jsp">
-		<put-attribute name="all_list" value="/WEB-INF/place/list_view/default.jsp"></put-attribute>
-	</definition>
-	<definition name="place/*/*" extends="place">
-		<put-attribute name="all_list" value="/WEB-INF/place/{1}/{2}.jsp"></put-attribute>
-	</definition> -->
 
 	<definition name="member_check"
 		template="/WEB-INF/member/member_check/member_template.jsp">
