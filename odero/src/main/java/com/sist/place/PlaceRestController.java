@@ -285,8 +285,6 @@ public class PlaceRestController {
      JSONObject obj=new JSONObject();
      obj.put("bCheck", bCheck);
    
-      System.out.println("bcheck: "+bCheck);
-	  System.out.println("obj: "+obj.toJSONString());
 	  
 	  return obj.toJSONString();
   }
@@ -298,23 +296,26 @@ public class PlaceRestController {
   {
 	  String json="";
 	  
-	  System.out.println("1. 넘어간 m_id : "+m_id);
-	  List<MyPageJJimVO> jjim_pno=dao.jjimInfo(m_id);
+	  List<String> jjim_pno=dao.jjimInfo(m_id);
+	  
+	  /*for(int i = 0; i<jjim_pno.size();i++)
+		  System.out.println(jjim_pno.get(i));*/
+	  
+	 JSONArray arr=new JSONArray();
 	 
 	  
-	  JSONArray arr=new JSONArray();
 	  
-	  
-	 for(MyPageJJimVO vo:jjim_pno)
+	 for(String a:jjim_pno)
 		 {
 		 	JSONObject obj=new JSONObject();
-			obj.put("jjim_pno", vo.getP_no());
+		 
+			obj.put("jjim_pno", a);
 			arr.add(obj);
 		 }
 	  
 	 
 	  json=arr.toJSONString();
-	  System.out.println("2. json: "+json);
+	 
 	  
 	  return json;
 	  

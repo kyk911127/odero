@@ -112,7 +112,7 @@ public interface PlaceMapper {
 	
 	//찜정보
 	@Select("select p_no from jjim where m_id=#{m_id}")
-	public List<MyPageJJimVO> jjimInfo(String m_id);
+	public List<String> jjimInfo(String m_id);
 
 
 

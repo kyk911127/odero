@@ -68,7 +68,7 @@ public class PlaceDAO {
 	
 	
 	//찜정보
-	public List<MyPageJJimVO> jjimInfo(String m_id){
+	public List<String> jjimInfo(String m_id){
 		return mapper.jjimInfo(m_id);
 	}
 	
