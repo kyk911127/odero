@@ -80,7 +80,7 @@ public class PlaceController {
 	@RequestMapping("p_list.do")
 	public String placeListData(HttpSession session,String page, Model model) {
 		String m_id=(String)session.getAttribute("m_id");
-		if(page==null)
+/*		if(page==null)
 			page="1";
 		int curpage= Integer.parseInt(page);
 		int rowsize=8;
@@ -98,7 +98,7 @@ public class PlaceController {
 		List<PlaceVO> list =dao.placeListData(map);
 		model.addAttribute("list",list);
 		model.addAttribute("curpage",curpage);
-		model.addAttribute("totalpage",totalpage);
+		model.addAttribute("totalpage",totalpage);*/
 		model.addAttribute("m_id",m_id);
 		
 		return "place/p_list";

@@ -53,7 +53,7 @@ public interface PlaceMapper {
 	public int p_replyCount(int p_no);
 	
 	//맛집,놀거리 list
-	@Select("SELECT p_no,p_name,p_addr,p_price,p_keyword,SUBSTR(p_img,0,INSTR(p_img,'/',1,6)) as p_img,num "
+	@Select("SELECT p_no,p_name,p_addr,NVL(p_price,'정보 없음') as p_price,NVL(p_keyword,'없음') as p_keyword,SUBSTR(p_img,0,INSTR(p_img,'/',1,6)) as p_img,num "
 			+"FROM (SELECT p_no,p_name,p_addr,p_price,p_keyword,p_img,rownum AS num "
 			+"FROM (SELECT p_no,p_name,p_addr,p_price,p_keyword,p_img "
 			+"FROM place ORDER BY p_no ASC)) "
@@ -65,7 +65,7 @@ public interface PlaceMapper {
 	public int placeTotalList();
 		
 	//Select list (이색/체험)
-	@Select("SELECT p_no,p_grade,p_name,p_addr,NVL(p_price,'정보 없음') as p_price ,NVL(p_keyword,'없음') as p_keyword,SUBSTR(p_img,0,INSTR(p_img,'/',1,6)) as p_img,num "
+	@Select("SELECT p_no,p_grade,p_name,p_addr,NVL(p_price,'정보 없음') as p_price,NVL(p_keyword,'없음') as p_keyword,SUBSTR(p_img,0,INSTR(p_img,'/',1,6)) as p_img,num "
 			+"FROM (SELECT p_no,p_grade,p_name,p_addr,p_price,p_keyword,p_img,rownum AS num "
 			+"FROM (SELECT p_no,p_grade,p_name,p_addr,p_price,p_keyword,p_img "
 			+"FROM place WHERE p_addr like '%'||#{sn_3}||'%' AND p_grade='p' ORDER BY p_no ASC)) "
@@ -74,14 +74,12 @@ public interface PlaceMapper {
 	
 	//Select list Totalpage (이색/체험) 
 	@Select("SELECT CEIL(COUNT(*)/8) "
-			+"FROM (SELECT p_no,p_grade,p_name,p_addr,p_price,p_keyword,p_img,rownum AS num "
-			+"FROM (SELECT p_no,p_grade,p_name,p_addr,p_price,p_keyword,p_img "
-			+"FROM place WHERE p_addr like '%'||#{sn_3}||'%' AND p_grade='p' ORDER BY p_no ASC))")
+			+"FROM place WHERE p_addr like '%'||#{sn_3}||'%' AND p_grade='p'")
 	public int placeTotalpage_sp(String sn_3);
 	//'%'||#{search_value}||'%'
 
 	//Select list (맛집/카페)
-	@Select("SELECT p_no,p_grade,p_name,p_addr,p_price,p_keyword,SUBSTR(p_img,0,INSTR(p_img,'/',1,6)) as p_img,num "
+	@Select("SELECT p_no,p_grade,p_name,p_addr,NVL(p_price,'정보 없음') as p_price,NVL(p_keyword,'없음') as p_keyword,SUBSTR(p_img,0,INSTR(p_img,'/',1,6)) as p_img,num "
 			+"FROM (SELECT p_no,p_grade,p_name,p_addr,p_price,p_keyword,p_img,rownum AS num "
 			+"FROM (SELECT p_no,p_grade,p_name,p_addr,p_price,p_keyword,p_img "
 			+"FROM place WHERE p_addr like '%'||#{sn_3}||'%' AND p_grade NOT IN( select p_grade from place "
@@ -92,11 +90,9 @@ public interface PlaceMapper {
 	
 	//Select list Totalpage(맛집/카페)
 	@Select("SELECT CEIL(COUNT(*)/8) "
-			+"FROM (SELECT p_no,p_grade,p_name,p_addr,p_price,p_keyword,p_img,rownum AS num "
-			+"FROM (SELECT p_no,p_grade,p_name,p_addr,p_price,p_keyword,p_img "
 			+"FROM place WHERE p_addr like '%'||#{sn_3}||'%' AND p_grade NOT IN( select p_grade from place "
 			+"WHERE p_addr like '%'||#{sn_3}||'%' "
-			+"AND p_grade = 'p') ORDER BY p_no ASC))")
+			+"AND p_grade = 'p')")
 	public int placeTotalpage_cf(String sn_3);
 	
 	

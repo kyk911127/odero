@@ -265,7 +265,7 @@ public class PlaceRestController {
   
   //찜하기
   @RequestMapping("jjim.do")
-  public String jjim (String m_id,String p_no)
+  public boolean jjim (String m_id,String p_no)
   {
 	  
 	  Map map=new HashMap();
@@ -282,11 +282,11 @@ public class PlaceRestController {
       }
      
       
-     JSONObject obj=new JSONObject();
-     obj.put("bCheck", bCheck);
+     /*JSONObject obj=new JSONObject();
+     obj.put("bCheck", bCheck);*/
    
 	  
-	  return obj.toJSONString();
+	  return bCheck;
   }
   
   

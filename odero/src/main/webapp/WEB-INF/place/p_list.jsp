@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -112,7 +111,7 @@ $(function(){
 	        	       data:{"m_id":m_id,"p_no":p_no},
 	        	       dataType:'json',
 	        	       success: function(response){
-	        	    	   if(response.bCheck===true)
+	        	    	   if(response===true)
 	        	    		   {
 	        	    		   		alert("찜!");
 	        	    		   		
@@ -147,7 +146,6 @@ $(function(){
 	       dataType:'json',
 	       success: function(response){
 	      	   var data="";
-	      	   var page="";
 	      	   curpage=response[0].p_curpage;
 	      	   totalpage=response[0].p_totalpage;
 	      	   for(i=0;i<response.length;i++)
@@ -212,7 +210,7 @@ $(function(){
 		        	       data:{"m_id":m_id,"p_no":p_no},
 		        	       dataType:'json',
 		        	       success: function(response){
-		        	    	   if(response.bCheck===true)
+		        	    	   if(response===true)
 		        	    		   {
 		        	    		   		alert("찜!");
 		        	    		   		
@@ -242,7 +240,6 @@ $(function(){
 	       dataType:'json',
 	       success: function(response){
 	      	   var data="";
-	      	 
 	      	   curpage=response[0].p_curpage;
 	      	   totalpage=response[0].p_totalpage;
 	      	   for(i=0;i<response.length;i++)
@@ -307,7 +304,7 @@ $(function(){
 		        	       data:{"m_id":m_id,"p_no":p_no},
 		        	       dataType:'json',
 		        	       success: function(response){
-		        	    	   if(response.bCheck===true)
+		        	    	   if(response===true)
 		        	    		   {
 		        	    		   		alert("찜!");
 		        	    		   		
@@ -330,13 +327,13 @@ $(function(){
    
    $('input:radio').click(function(){
       
-      var S=$(this).val();    //value
+      var V=$(this).val();    //value
       var N=$(this).attr('name'); //name : 공통값
  
-     if(S=="이색/체험" || S=="맛집/카페")
+     if(V=="이색/체험" || V=="맛집/카페")
     	 {
     	 	
-    	 	if(S=="이색/체험")
+    	 	if(V=="이색/체험")
     	 		{
     	 		$('#l_food').css("background", "rgb(203, 203, 203)");
         	 	$('#l_play').css("background", "rgb(3, 32, 95)");
@@ -350,9 +347,9 @@ $(function(){
     	 
     	 }
       
-   if(S=="강남"|| N=="gn")
+   if(V=="강남"|| N=="gn")
 	   {
-		   if(S=="강남")
+		   if(V=="강남")
 		   {
 		     
 		     $('#l_gangbuk').css("background", "rgb(203, 203, 203)");
@@ -372,7 +369,7 @@ $(function(){
 	            {
 	               str=$("input[name=gn]:eq("+i+")").val();
 	              
-	               if(S==str)
+	               if(V==str)
 	               {
 	                  $(".gn_ul>.tp_li >label:eq("+i+")").css("background", "rgb(3, 32, 95)");
 	                  return;
@@ -383,9 +380,9 @@ $(function(){
 		
 	   }
 	  
-   if(S=="강북"|| N=="gb")
+   if(V=="강북"|| N=="gb")
 	   {
-	   		if(S=="강북")
+	   		if(V=="강북")
 	   			{
 			   		
 				     $('#l_gangnam').css("background", "rgb(203, 203, 203)");
@@ -403,7 +400,7 @@ $(function(){
 				 	for(var i=0; i<gn_size; i++)
 		            {
 		               str=$("input[name=gb]:eq("+i+")").val();
-		               if(S==str)
+		               if(V==str)
 		               {
 		                  $(".gb_ul>.tp_li >label:eq("+i+")").css("background", "rgb(3, 32, 95)");
 		                  return;
@@ -429,7 +426,7 @@ $(function(){
 			   +'</ul>'	   
 	   );
      
-      var arr_sn=[];
+      //var arr_sn=[];
       var sn_1=$("input[type=radio][name=ca]:checked").val();
       var sn_2=$("input[type=radio][name=loc]:checked").val();
       var sn_3="";
@@ -447,7 +444,7 @@ $(function(){
     	  }
       else
     	  {
-    	  	  arr_sn.push(sn_1);
+    	  	  //arr_sn.push(sn_1);
     	  		
 	    	  if(sn_2=="강남")
 	    	  {
@@ -470,7 +467,7 @@ $(function(){
 	    	  }
 	     	
 	   
-		     arr_sn.push(sn_3); 
+		     //arr_sn.push(sn_3); 
 		     //alert("최종: "+arr_sn);
 		     
 		         $.ajax({
@@ -482,6 +479,7 @@ $(function(){
 		            	   var data="";
 		            	   s_curpage=response[0].p_curpage;
 		                 s_totalpage=response[0].p_totalpage;
+		                
 		            	   for(i=0;i<response.length;i++)
 		            		{
 		            		    data+='<div class="col-lg-3">'
@@ -544,7 +542,7 @@ $(function(){
 					        	       data:{"m_id":m_id,"p_no":p_no},
 					        	       dataType:'json',
 					        	       success: function(response){
-					        	    	   if(response.bCheck===true)
+					        	    	   if(response===true)
 					        	    		   {
 					        	    		   		alert("찜!");
 					        	    		   		
@@ -561,8 +559,14 @@ $(function(){
 				        	  
 				          });
 		             }
+		           
 		        });
+		        // alert("ajax끝: "+s_curpage+","+s_totalpage);
+		        
     	  }
+      //alert("else끝: "+s_curpage+","+s_totalpage);
+      
+     
     
      /*  //버튼 초기화
      $('.btn-navy').css("background", "rgb(203, 203, 203)");
@@ -572,8 +576,10 @@ $(function(){
       $('.gangbuk_d').hide(); */
       
    });
+   // $('#Sbtn').click(function() 끝
   
-});
+}); 
+//$(function()끝
 
 
 function prev_click()
@@ -663,7 +669,7 @@ function prev_click()
 		        	       data:{"m_id":m_id,"p_no":p_no},
 		        	       dataType:'json',
 		        	       success: function(response){
-		        	    	   if(response.bCheck===true)
+		        	    	   if(response===true)
 		        	    		   {
 		        	    		   		alert("찜!");
 		        	    		   		
@@ -682,6 +688,9 @@ function prev_click()
 	       }
    });
 }
+
+
+
 function next_click()
 {
 		var sn_1=$("input[type=radio][name=ca]:checked").val();
@@ -696,7 +705,11 @@ function next_click()
 				sn_3=$("input[type=radio][name=gb]:checked").val();
 			}
 
+		//alert("1. next_click함수에서 s_curpage: "+ s_curpage + ","+ s_totalpage);
+		
+		
 	   s_curpage=(s_curpage<s_totalpage?s_curpage+1:s_curpage);
+	  //alert("1-1. next_click함수에서 s_curpage: "+ s_curpage + ","+ s_totalpage);
 	
 		$.ajax({
 	       type:"POST",
@@ -707,7 +720,7 @@ function next_click()
 	      	   var data="";
 	      	   s_curpage=response[0].p_curpage;
 	      	   s_totalpage=response[0].p_totalpage;
-	      	   
+	      	 //alert("2. next_click함수에서 s_curpage: "+ s_curpage + ","+ s_totalpage);
 	      	   for(i=0;i<response.length;i++)
 	      		{
 	      		   data+='<div class="col-sm-6 col-md-4 col-lg-3 mt-4">'
@@ -770,11 +783,11 @@ function next_click()
 		        	       data:{"m_id":m_id,"p_no":p_no},
 		        	       dataType:'json',
 		        	       success: function(response){
-		        	    	   if(response.bCheck===true)
+		        	    	   if(response===true)
 		        	    		   {
 		        	    		   		alert("찜!");
 		        	    		   		
-		        	    		   }
+		        	    		   } 
 		        	    	   else
 		        	    		   {
 		        	    		   		alert("이미 찜한 내역입니다!");
@@ -788,7 +801,9 @@ function next_click()
 	          });
 	       }
    });
+  //alert("3. next_click함수에서 s_curpage: "+ s_curpage + ","+ s_totalpage);
 }
+
 
 </script>
 </head>
